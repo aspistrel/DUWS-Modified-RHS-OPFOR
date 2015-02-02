@@ -1,0 +1,61 @@
+OnLoadMission = "A procedurally generated campaign where you earn resources, execute missions and lead the United States Armed forces to capture the island and win the war.";
+onLoadName = "Dynamic Universal WAR System (DUWS) Modified: RHS Escalation";
+dev = "dev";
+author = "Kibot / Modified by BigShot / Modified again by Ceitho";
+overviewText = "A procedurally generated campaign where you earn resources, execute missions and lead the United States Armed forces to capture the island and win the war. Play the way you want: be a spec ops, a squad leader or control a whole army, the choice is yours.";
+overviewPicture = "rtipic.paa";
+LoadScreen = "rtipic.paa";
+respawnDialog = 0;
+
+class Header
+{
+ gameType = COOP;            //DM, Team, Coop, ...
+ minPlayers = 1;             //min # of players the mission supports
+ maxPlayers = 12;            //Max # of players the mission supports
+};
+
+respawn = 3;
+respawnDelay = 16;
+disabledAI = 1;
+allowFunctionsLog = 0;
+
+#include "debriefing.hpp"
+#include "dialog\defines.hpp"
+#include "dialog\startup\startup.hpp"
+#include "dialog\squad\squadmng.hpp"
+#include "dialog\squad\rename\renamesquad.hpp"
+#include "dialog\request.hpp"
+#include "dialog\request_fob.hpp"
+#include "dialog\fob\fobmanager.hpp"
+#include "dialog\info\info.hpp"
+#include "dialog\info\reset\reset.hpp"
+#include "locations.hpp"
+#include "support\support.hpp"
+#include "hints.hpp"
+#include "dialog\startup\hq_placement\placement.hpp"
+#include "sounds\sounds.hpp"
+#include "dialog\operative\identities.hpp"
+#include "dialog\operative\operative.hpp"
+#include "params.hpp"
+#include "duws_revive\gui\duws_revive.hpp"
+#include "missions\missions\roulette\bomb\keypad_defuse\explosivePad.hpp"
+
+
+
+// VAS INIT BEGIN --  ALSO TAW VIEWDISTANCE
+#include "taw_vd\dialog.hpp"       
+#include "VAS\menu.hpp"
+class CfgFunctions
+{
+	#include "VAS\cfgfunctions.hpp"
+	#include "taw_vd\CfgFunctions.hpp"
+	#include "ais_injury\cfgFunctionsAIS.hpp"
+	#include "EPD\EPDcfgFunctions.hpp"
+
+};
+
+// VAS INIT END --
+
+class RscTitles {
+	#include "ais_injury\dialogs\rscTitlesAIS.hpp"
+};
