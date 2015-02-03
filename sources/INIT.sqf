@@ -462,7 +462,7 @@ if (isMultiplayer) then {
 
 		// WAIT UNTIL ALL ZONES ARE CAPTURED
 		waitUntil {sleep 1; amount_zones_created > 0};
-		waitUntil {sleep 3; (zoneundercontrolblu >= amount_zones_created);}; // Toutes les zones sont captur�es
+		waitUntil {sleep 3; (zoneundercontrolblu >= amount_zones_created);}; // Toutes les zones sont captures
 		persistent_stat_script_win = [] execVM "persistent\persistent_stats_win.sqf";
 		["TaskSucceeded",["","Island captured!"]] call bis_fnc_showNotification;
 		capture_island_obj setTaskState "Succeeded";
@@ -472,6 +472,11 @@ if (isMultiplayer) then {
 		};  // -- END OF SPAWN
 
 
+_scriptExec = [] execVM "Squads\Opfor.sqf";
+waitUntil {scriptDone _scriptExec};
+
+_scriptExec = [] execVM "Squads\Blufor.sqf";
+waitUntil {scriptDone _scriptExec};
 
 
 if (zones_manually_placed) then {

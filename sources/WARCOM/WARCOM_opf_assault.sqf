@@ -22,7 +22,7 @@ aliveAllUnits = {alive _x} count allunits;
           WARCOM_opf_attack_wave_type = (configfile >> "CfgGroups" >> "EAST" >> "rhs_faction_msv" >> "rhs_group_rus_msv_bmp2" >> "rhs_group_rus_msv_bmp2_squad");
 
           waitUntil {sleep 1;WARCOM_opfor_ap>135};
-		  WARCOM_opf_attack_wave_type = (configfile >> "CfgGroups" >> "EAST" >> "rhs_faction_msv" >> "rhs_group_rus_msv_bmp2" >> "rhs_group_rus_msv_bmp2_squad_mg_sniper"););		  
+		  WARCOM_opf_attack_wave_type = (configfile >> "CfgGroups" >> "EAST" >> "rhs_faction_msv" >> "rhs_group_rus_msv_bmp2" >> "rhs_group_rus_msv_bmp2_squad_mg_sniper");
 		 
 };
 

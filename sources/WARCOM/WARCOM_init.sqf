@@ -29,7 +29,9 @@ WARCOM_opf_ai_skill_range = _opfor_ai_skill;
 WARCOM_opf_attack_delay = _opfor_assault_delay;
 publicVariable "WARCOM_blufor_ap";
 
-
+// exec script for function init
+_scriptExec = [] execVM "Squads\SpawnRhsSquad.sqf";
+waitUntil {scriptDone _scriptExec};
 
 // SORT ARRAY OF OPFOR ZONES ACCORDING TO DISTANCE FROM BLUHQ 
 WARCOM_createdZones = [_array_of_zones_total,[WARCOM_blu_hq_pos],{_input0 distance _x},"ASCEND"] call BIS_fnc_sortBy;
