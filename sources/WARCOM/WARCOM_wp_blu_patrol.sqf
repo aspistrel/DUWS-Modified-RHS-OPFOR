@@ -6,8 +6,8 @@ _group setCombatMode "RED";
 {
     _wp = _group addWaypoint [_x, 0];
     _wp setWaypointType "MOVE";
-	_wp setWaypointBehaviour "SAFE";
-	_wp setWaypointSpeed "LIMITED";
+	_wp setWaypointBehaviour "COMBAT";
+	_wp setWaypointSpeed "FULL";
 	_wp setWaypointCompletionRadius 40;
 	_wp setWaypointTimeout [300, 450, 600]; 
 }

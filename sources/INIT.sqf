@@ -210,7 +210,7 @@ execvm "dynamic_music\dyn_music_init.sqf";
 
 	#include "dialog\supports_init.hpp"
 	#include "dialog\squad_number_init.hpp"
-	
+
 	
 		
 if (!isMultiplayer) then {
@@ -462,7 +462,7 @@ if (isMultiplayer) then {
 
 		// WAIT UNTIL ALL ZONES ARE CAPTURED
 		waitUntil {sleep 1; amount_zones_created > 0};
-		waitUntil {sleep 3; (zoneundercontrolblu >= amount_zones_created);}; // Toutes les zones sont capturées
+		waitUntil {sleep 3; (zoneundercontrolblu >= amount_zones_created);}; // Toutes les zones sont capturï¿½es
 		persistent_stat_script_win = [] execVM "persistent\persistent_stats_win.sqf";
 		["TaskSucceeded",["","Island captured!"]] call bis_fnc_showNotification;
 		capture_island_obj setTaskState "Succeeded";
@@ -477,7 +477,7 @@ if (isMultiplayer) then {
 if (zones_manually_placed) then {
 waitUntil {!isNil ("Array_of_OPFOR_zones")};
 sleep 1;
-_warcom_init = [Array_of_OPFOR_zones, getpos hq_blu1, [0,0,0], blufor_ap, opfor_ap, 900,blufor_ai_skill,opfor_ai_skill, 900] execVM "WARCOM\WARCOM_init.sqf";
+_warcom_init = [Array_of_OPFOR_zones, getpos hq_blu1, [0,0,0], blufor_ap, opfor_ap, 60,blufor_ai_skill,opfor_ai_skill, 60] execVM "WARCOM\WARCOM_init.sqf";
 };
 
 

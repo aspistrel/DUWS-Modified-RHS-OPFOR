@@ -71,7 +71,7 @@ else {
 
           while {true} do {
 		  aliveAllUnits = {alive _x} count allunits;
-		  waitUntil {sleep (random 30); aliveAllUnits < 200};
+		  waitUntil {sleep (random 30); aliveAllUnits < 500};
 		            
           // find a zone where to spawn OPF wave *** BEGIN
           _found = false;

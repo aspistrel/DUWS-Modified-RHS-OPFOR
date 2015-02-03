@@ -56,7 +56,7 @@ else {
 
           while {true} do {
 		  aliveAllUnits = {alive _x} count allunits;
-		  waitUntil {sleep (random 30); aliveAllUnits < 200;};
+		  waitUntil {sleep (random 30); aliveAllUnits < 500;};
 		  _group = [WARCOM_blu_hq_pos, WEST, WARCOM_blu_attack_wave_type,[],[],blufor_ai_skill] call BIS_fnc_spawnGroup;
           _TFname = [1] call compile preprocessFile "random_name.sqf";
           [West,"HQ"] sidechat format["This is HQ, We are sending Task Force %1, we will try to push as far as possible in enemy territory",_TFname];
