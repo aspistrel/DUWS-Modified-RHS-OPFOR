@@ -71,7 +71,7 @@ else {
 
           while {true} do {
 		  aliveAllUnits = {alive _x} count allunits;
-		  waitUntil {sleep (random 30); aliveAllUnits < 500};
+		  waitUntil {sleep (random 30); aliveAllUnits < WARCOMLimitAI};
 		            
           // find a zone where to spawn OPF wave *** BEGIN
           _found = false;

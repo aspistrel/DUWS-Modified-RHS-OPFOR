@@ -56,7 +56,7 @@ else {
 
           while {true} do {
 		  aliveAllUnits = {alive _x} count allunits;
-		  waitUntil {sleep (random 30); aliveAllUnits < 500;};
+		  waitUntil {sleep (random 30); aliveAllUnits < WARCOMLimitAI;};
 		  //_group = [WARCOM_blu_hq_pos, WEST, WARCOM_blu_attack_wave_type,[],[],blufor_ai_skill] call BIS_fnc_spawnGroup;
 		  SQUAD = ((BLUFOR_ASSAULT_SQUADS select 0) select 1);
 		  _group = [WARCOM_blu_hq_pos, SQUAD, west] call SpawnRhsSquad;

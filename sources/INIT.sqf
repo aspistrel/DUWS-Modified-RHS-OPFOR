@@ -228,9 +228,12 @@ if (isMultiplayer) then {
 	player_fatigue = paramsArray select 2;
 	AttackHeli = paramsArray select 4; //disable/enable attack choppers
 	TrkAllPlayer = paramsArray select 5; //disbale/enable player markers
-	UseIED = paramsArray select 7;
-	UseSiren = paramsArray select 8;
-	MisEndCond = paramsArray select 9;
+    WARCOMLimitAI = paramsArray select 7;
+	UseIED = paramsArray select 8;
+	UseSiren = paramsArray select 9;
+	MisEndCond = paramsArray select 10;
+
+	publicVariable "WARCOMLimitAI";
 
 	
 	if (revive_activated == 1) then {[]execVM "duws_revive\reviveInit.sqf"};

@@ -45,7 +45,7 @@ aliveAllUnits = {alive _x} count allunits;
 			  else {
 			  
 			  aliveAllUnits = {alive _x} count allunits;
-			  if ((count WARCOM_zones_controled_by_OPFOR > 0) && (aliveAllUnits < 200)) then { // make sure opfor is controlling at least 1 zones
+			  if ((count WARCOM_zones_controled_by_OPFOR > 0) && (aliveAllUnits < WARCOMLimitAI)) then { // make sure opfor is controlling at least 1 zones
 			  sleep 2;
 			  
 			  // find a zone where to spawn OPF wave away from player *** BEGIN

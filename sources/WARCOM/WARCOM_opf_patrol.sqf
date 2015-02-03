@@ -89,7 +89,7 @@ FIRSTCHOICEOPF = "";
 		while {Warcom_Limiter_Param == 0} do {
 				aliveAllUnits = {alive _x} count allunits;
 		  
-			  if ((count WARCOM_zones_controled_by_OPFOR > 1) && (aliveAllUnits<200)) then { // make sure opfor is controlling at least 2 zones
+			  if ((count WARCOM_zones_controled_by_OPFOR > 1) && (aliveAllUnits<WARCOMLimitAI)) then { // make sure opfor is controlling at least 2 zones
 			  sleep 2;
 			  
 			  // find a zone where to spawn OPF wave *** BEGIN
