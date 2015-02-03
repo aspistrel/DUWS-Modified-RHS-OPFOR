@@ -49,7 +49,7 @@ class Params {
 		title = "Max AI on map (for disabled DUWS AI Limiter)";
 		values[] = {200, 300, 400, 500, 600, 700, 800, 900, 1000};
 		texts[] = {"200", "300", "400", "500", "600", "700", "800", "900", "1000"};
-		default = 1;
+		default = 200;
 	};
 
     class IedBomb {
