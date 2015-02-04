@@ -16,9 +16,23 @@
 
 OPFOR_ASSAULT_SQUADS =
 [
+    [ 25,
+    [
+        "",
+        [
+            "rhs_msv_sergeant",
+            "rhs_msv_LAT",
+            "rhs_msv_medic",
+            "rhs_msv_rifleman"
+        ],
+        [
+            "rhs_gaz66_msv"
+        ]
+    ]],
+
     [ 50,
     [
-        "rhs_gaz66_msv",
+        "",
         [
             "rhs_msv_sergeant",
             "rhs_msv_machinegunner",
@@ -28,27 +42,32 @@ OPFOR_ASSAULT_SQUADS =
             "rhs_msv_rifleman",
             "rhs_msv_rifleman"
         ],
-        []
+        [
+            "RHS_Ural_MSV_01"
+        ]
     ]],
 
     [ 75,
     [
-        "rhs_btr70_msv",
+        "",
          [
             "rhs_msv_sergeant",
             "rhs_msv_machinegunner",
             "rhs_msv_machinegunner_assistant",
-            "rhs_msv_LAT", "rhs_msv_medic",
+            "rhs_msv_LAT",
+            "rhs_msv_medic",
             "rhs_msv_grenadier",
             "rhs_msv_rifleman",
             "rhs_msv_rifleman"
          ],
-         []
+         [
+            "rhs_btr70_msv"
+         ]
     ]],
 
     [ 100,
     [
-        "rhs_btr80_msv",
+        "",
         [
             "rhs_msv_sergeant",
             "rhs_msv_machinegunner",
@@ -59,18 +78,21 @@ OPFOR_ASSAULT_SQUADS =
             "rhs_msv_rifleman",
             "rhs_msv_rifleman"
         ],
-        []
+        [
+            "rhs_btr80_msv"
+        ]
     ]],
 
     [ 130,
     [
-        "rhs_bmp1d_msv",
+        "",
          [
             "rhs_msv_officer",
             "rhs_msv_sergeant",
             "rhs_msv_machinegunner",
             "rhs_msv_machinegunner_assistant",
-            "rhs_msv_at", "rhs_msv_medic",
+            "rhs_msv_at",
+            "rhs_msv_medic",
             "rhs_msv_grenadier",
             "rhs_msv_engineer",
             "rhs_msv_marksman",
@@ -79,19 +101,21 @@ OPFOR_ASSAULT_SQUADS =
             "rhs_msv_rifleman"
          ],
          [
+            "rhs_bmp1d_msv",
             "rhs_btr70_msv"
          ]
     ]],
 
     [ 160,
     [
-       "rhs_bmp2d_msv",
+       "",
        [
             "rhs_msv_officer",
             "rhs_msv_sergeant",
             "rhs_msv_machinegunner",
             "rhs_msv_machinegunner_assistant",
-            "rhs_msv_at", "rhs_msv_medic",
+            "rhs_msv_at",
+            "rhs_msv_medic",
             "rhs_msv_grenadier",
             "rhs_msv_engineer",
             "rhs_msv_marksman",
@@ -100,19 +124,21 @@ OPFOR_ASSAULT_SQUADS =
             "rhs_msv_rifleman"
        ],
        [
+            "rhs_bmp2d_msv",
             "rhs_btr80_msv"
        ]
     ]],
 
     [ 200,
     [
-       "rhs_bmp2d_msv",
+       "",
        [
             "rhs_msv_officer_armored",
             "rhs_msv_sergeant",
             "rhs_msv_machinegunner",
             "rhs_msv_machinegunner_assistant",
-            "rhs_msv_at", "rhs_msv_aa",
+            "rhs_msv_at",
+            "rhs_msv_aa",
             "rhs_msv_strelok_rpg_assist",
             "rhs_msv_medic",
             "rhs_msv_grenadier",
@@ -123,13 +149,14 @@ OPFOR_ASSAULT_SQUADS =
             "rhs_msv_rifleman"
        ],
        [
+            "rhs_bmp2d_msv",
             "rhs_btr80a_msv"
        ]
     ]],
 
     [ 240,
     [
-       "rhs_bmp2d_msv",
+       "",
        [
             "rhs_msv_officer_armored",
             "rhs_msv_sergeant",
@@ -145,8 +172,9 @@ OPFOR_ASSAULT_SQUADS =
             "rhs_msv_marksman"
        ],
        [
+            "rhs_bmp2d_msv",
             "rhs_bmp1d_msv",
-             "rhs_bmp2d_msv"
+            "rhs_bmp2d_msv"
        ]
     ]],
 
