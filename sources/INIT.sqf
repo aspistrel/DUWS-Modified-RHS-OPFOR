@@ -235,7 +235,9 @@ if (isMultiplayer) then {
 
 	publicVariable "WARCOMLimitAI";
 
-	
+	if(Warcom_Limiter_Param == 1) then {WARCOMLimitAI = 130}; // legacy parameter waits when he will be removed
+	// TODO: delete all "Warcom_Limiter_Param" usings
+
 	if (revive_activated == 1) then {[]execVM "duws_revive\reviveInit.sqf"};
 	if (revive_activated == 0) then {vas_onRespawn = true};
 	if (AttackHeli == 0) then {Attack = false};

@@ -240,14 +240,13 @@ OPFOR_ASSAULT_SQUADS =
        ]
     ]]
 ];
-
 publicVariable "OPFOR_ASSAULT_SQUADS";
 
 OPFOR_CONVOY_SQUADS =
 [
     [0,
         [
-            "rhs_tigr_msv",
+            "",
             [
                 "rhs_msv_sergeant",
                 "rhs_msv_junior_sergeant",
@@ -258,13 +257,14 @@ OPFOR_CONVOY_SQUADS =
                 "rhs_msv_medic"
             ],
             [
+                "rhs_tigr_msv",
                 "rhs_gaz66_repair_msv",
                 "rhs_gaz66_repair_msv"
             ]
     ]],
     [100,
         [
-            "rhs_btr80_msv",
+            "",
             [
                 "rhs_msv_sergeant",
                 "rhs_msv_junior_sergeant",
@@ -275,9 +275,11 @@ OPFOR_CONVOY_SQUADS =
                 "rhs_msv_medic"
             ],
             [
+                "rhs_btr80_msv",
                 "rhs_gaz66_repair_msv",
                 "rhs_gaz66_repair_msv",
                 "rhs_tigr_msv"
+
             ]
     ]],
     [200,
