@@ -37,7 +37,7 @@ aliveAllUnits = {alive _x} count allunits;
             if(PREV_wave_index != WARCOM_blu_attack_wave_index) then 
             {
                 PREV_wave_index = WARCOM_blu_attack_wave_index;
-                [West,"HQ"] sidechat ("This is HQ, we are readey to send reinforcements (level " + str WARCOM_blu_attack_wave_index + ")");
+                [West,"HQ"] sidechat ("This is HQ, we are ready to send reinforcements (level " + str WARCOM_blu_attack_wave_index + ")");
             };
 
             WARCOM_blu_attack_wave_type = ((BLUFOR_ASSAULT_SQUADS select WARCOM_blu_attack_wave_index) select 1);
@@ -74,7 +74,13 @@ aliveAllUnits = {alive _x} count allunits;
 		  waitUntil {sleep (random 1); ((aliveAllUnits < WARCOMLimitAI) && WARCOM_blu_attack_wave_avalaible);};
 		  //_group = [WARCOM_blu_hq_pos, WEST, WARCOM_blu_attack_wave_type,[],[],blufor_ai_skill] call BIS_fnc_spawnGroup;
 		  //SQUAD = ((BLUFOR_ASSAULT_SQUADS select 0) select 1);
-		  _group = [WARCOM_blu_hq_pos, WARCOM_blu_attack_wave_type, west] call SpawnRhsSquad;
+		  _returnedArray = [WARCOM_blu_hq_pos, WARCOM_blu_attack_wave_type, west, 1] call SpawnRhsSquad;
+
+            {
+              [(_x select 0), position (_x select 0)] spawn Rhs_paradrop;
+            } forEach (_returnedArray select 1);
+
+		  _group = (_returnedArray select 0);
 
           _TFname = [1] call compile preprocessFile "random_name.sqf";
           [West,"HQ"] sidechat format["This is HQ, We are sending Task Force %1, we will try to push as far as possible in enemy territory",_TFname];

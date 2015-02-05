@@ -485,7 +485,7 @@ _scriptExec = [] execVM "Squads\Blufor.sqf";
 waitUntil {scriptDone _scriptExec};
 
 // exec script for function init
-_scriptExec = [] execVM "Squads\SpawnRhsSquad.sqf";
+_scriptExec = [] execVM "Squads\512functions.sqf";
 waitUntil {scriptDone _scriptExec};
 
 if (zones_manually_placed) then {
