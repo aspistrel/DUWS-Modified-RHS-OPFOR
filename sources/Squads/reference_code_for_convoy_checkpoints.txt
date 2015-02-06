@@ -1,0 +1,129 @@
+_scriptExec = [] execVM "Opfor.sqf";
+waitUntil {scriptDone _scriptExec};
+
+_scriptExec = [] execVM "Blufor.sqf";
+waitUntil {scriptDone _scriptExec};
+
+_scriptExec = [] execVM "SpawnRhsSquad.sqf";
+waitUntil {scriptDone _scriptExec};
+
+//DSADSADSSASDA = [[5509, 13364, 300], 0, "rhs_bmp1_vdv", east] call BIS_fnc_spawnVehicle;
+
+//[DSADSADSSASDA select 0, [5509, 13364, 300]] call Rhs_paradrop;	
+
+
+mousePosHandler = 
+{
+  _player	= _this select 0;
+  _event	= _this select 1;
+  
+  if(DOWN) then 
+  {
+    LINE_END = ((findDisplay 12 displayCtrl 51) ctrlMapScreenToWorld [_event select 1, _event select 2]);
+    hint str LINE_END;
+  };
+  
+};
+
+keyDownHandler = 
+{
+  _player	= _this select 0;
+  _event  = _this select 1;
+  _down   = _this select 2;
+
+
+  if((_event select 1) == 46) then 
+  {
+    DOWN = _down;
+  } 
+};
+
+mouseClickHandler = 
+{
+  _player	= _this select 0;
+  _event	= _this select 1;
+  
+  if(DOWN) then 
+  {
+    CLICK_POSES = CLICK_POSES + [[LINE_END select 0, LINE_END select 1, 0]];
+  };
+};
+
+
+DOWN = false;
+
+((findDisplay 12) displayCtrl 51) ctrlSetEventHandler ["MouseButtonClick", "[player, _this] call mouseClickHandler"];
+((findDisplay 12) displayCtrl 51) ctrlSetEventHandler ["MouseMoving", "[player, _this] call mousePosHandler"];
+((findDisplay 12) displayCtrl 51) ctrlSetEventHandler ["keyDown", "[player, _this, true] call keyDownHandler"];
+((findDisplay 12) displayCtrl 51) ctrlSetEventHandler ["keyUp", "[player, _this, false] call keyDownHandler"];
+
+LOLPOS = (position player);
+LINE_END = [LOLPOS select 0, LOLPOS select 1, 0];
+CLICK_POSES = [[LOLPOS select 0, LOLPOS select 1, 0]];
+
+CurrentLineStartPos = getPos player;
+
+[] spawn 
+{
+  (findDisplay 12 displayCtrl 51) ctrlAddEventHandler ["Draw",
+  {
+    _x_prev = [];
+    {
+      if(_forEachIndex == 0) then
+      {
+         _x_prev = _x;
+      }
+      else
+      {    
+        
+        (_this select 0) drawArrow [
+          _x_prev,
+          _x,
+          [1,0,0,1]
+        ];
+        
+        _x_prev = _x;
+      };
+    } forEach CLICK_POSES;
+    
+    if(DOWN) then
+    {
+      (_this select 0) drawArrow [
+        (CLICK_POSES select (count (CLICK_POSES) - 1)),
+        LINE_END,
+        [1,0,0,1]
+      ];
+    };
+    
+  }];
+};
+
+
+waitUntil {sleep 1;(count CLICK_POSES)>30};
+
+SQUAD = ((OPFOR_CONVOY_SQUADS select 1) select 1);
+returnedArray = [[5397, 13344,0], SQUAD, east] call SpawnRhsSquad;
+
+UNITEGROUP = (returnedArray select 0);
+
+{
+  [(_x select 0), position (_x select 0)] spawn Rhs_paradrop;	
+} forEach (returnedArray select 1);
+
+sleep 5;
+
+hint "time to move";
+
+//UNITEGROUP = (DSADSADSSASDA select 2);
+
+UNITEGROUP setCombatMode "RED";
+{
+  _wp = UNITEGROUP addWaypoint [_x, 0];
+  _wp setWaypointType "MOVE";
+  _wp setWaypointFormation "COLUMN";
+  _wp setWaypointBehaviour "SAFE";
+  _wp setWaypointSpeed "NORMAL";
+  _wp setWaypointCompletionRadius 40;
+  _wp setWaypointTimeout [1, 2, 3];
+} forEach CLICK_POSES;
+
