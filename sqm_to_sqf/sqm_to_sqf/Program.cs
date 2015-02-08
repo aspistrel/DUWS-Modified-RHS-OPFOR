@@ -90,41 +90,83 @@ namespace sqm_to_sqf
                 source = sr.ReadToEnd();
             }
 
+            int elementsCount;
+
             //position\[\]={([0-9.\-e]+),([0-9.\-e]+),([0-9.\-e]+)};\s*\n*\s*azimut=([0-9.\-e]+);\s*\n*\s*id=([0-9]+);\s*\n*\s*side= ""EMPTY"";\s*\n*\s*vehicle=""([A-Za-z 0-9_]+)"";\s*\n*\s*skill=[0-9.\-]+;\s*\n*\s*offsetY=([0-9.\-]+)
             //position\[\]={([0-9.\-e]+),([0-9.\-e]+),([0-9.\-e]+)};\s*\n*\s*azimut=([0-9.\-e]+);\s*\n*\s*id=([0-9]+);\s*\n*\s*side= "([A-Za-z]+)";\s*\n*\s*vehicle="([A-Za-z 0-9_]+)";
             //position\[\]={([0-9.\-e]+),([0-9.\-e]+),([0-9.\-e]+)};\s*\n*\s*azimut=([0-9.\-e]+);\s*\n*\s*id=([0-9]+);\s*\n*\s*side= "([A-Za-z]+)";\s*\n*\s*vehicle="([A-Za-z 0-9_]+)";[\s\nA-Za-z0-9=;.]*offsetY=([0-9.\-e]+)
 
-            Regex re = new Regex(@"position\[\]={([0-9.\-e]+),([0-9.\-e]+),([0-9.\-e]+)};\s*\n*\s*azimut=([0-9.\-e]+);\s*\n*\s*id=([0-9]+);\s*\n*\s*side= ""([A-Za-z]+)"";\s*\n*\s*vehicle=""([A-Za-z 0-9_]+)"";[\s\nA-Za-z0-9=;.]*offsetY=([0-9.\-e]+)", RegexOptions.Multiline);
-            MatchCollection mc = re.Matches(source);
+            //Regex re = new Regex(@"position\[\]={([0-9.\-e]+),([0-9.\-e]+),([0-9.\-e]+)};\s*\n*\s*azimut=([0-9.\-e]+);\s*\n*\s*id=([0-9]+);\s*\n*\s*side= ""([A-Za-z]+)"";\s*\n*\s*vehicle=""([A-Za-z 0-9_]+)"";[\s\nA-Za-z0-9=;.]*offsetY=([0-9.\-e]+)", RegexOptions.Multiline);
+            //MatchCollection mc = re.Matches(source);
 
-            if (options.Verbose) Console.WriteLine("Count: {0}", mc.Count);
-            
-            Units = new List<Unit>(mc.Count);
+            Regex re = new Regex(@"};\s*\n*\s*class\sVehicles\s*\n*\s{\s*\n*\s*items=\s*([0-9]+)", RegexOptions.Multiline);
+            Match mCount = re.Match(source);
 
-            for (int i = 0; i < mc.Count; i++)
+            elementsCount = int.Parse(mCount.Groups[1].Value);
+            if (options.Verbose) Console.WriteLine("Count: {0}", elementsCount);
+
+            Match mcPos, mcAzimut, mcSide, mcVehicle, mcId, mcOffset;
+
+            Units = new List<Unit>(elementsCount);
+
+            // get right text: };\s*\n*\s*class\sVehicles\s*\n*\s*{\s*\n*\s*(?:(?!class\sItem0).)*(.*?)\n\s*};
+
+            string currentCodeBlock = "";
+            for (int i = 0; i < elementsCount; i++)
             {
-                if ((options.Empty && mc[i].Groups[6].Value == "EMPTY") || !options.Empty)
+                re = new Regex(@"};\s*\n*\s*class\sVehicles\s*\n*\s*{\s*\n*\s*(?:(?!class\sItem" + i + @").)*(.*?)\n\s*};", RegexOptions.Singleline);
+                currentCodeBlock = re.Match(source).Groups[1].Value;
+
+                re = new Regex(@"position\[\]={([0-9.\-e]+),([0-9.\-e]+),([0-9.\-e]+)};", RegexOptions.Multiline);
+                mcPos = re.Match(currentCodeBlock);
+
+                re = new Regex(@"azimut=([0-9.\-e]+);", RegexOptions.Multiline);
+                mcAzimut = re.Match(currentCodeBlock);
+
+                re = new Regex(@"side=\s*""([A-Za-z]+)"";", RegexOptions.Multiline);
+                mcSide = re.Match(currentCodeBlock);
+
+                re = new Regex(@"vehicle=""([A-Za-z 0-9_]+)"";", RegexOptions.Multiline);
+                mcVehicle = re.Match(currentCodeBlock);
+
+                re = new Regex(@"id=([0-9]+);", RegexOptions.Multiline);
+                mcId = re.Match(currentCodeBlock);
+
+                re = new Regex(@"offsetY=([0-9.\-e]+);", RegexOptions.Multiline);
+                mcOffset = re.Match(currentCodeBlock);
+
+                if ((options.Empty && mcSide.Groups[1].Value == "EMPTY") || !options.Empty)
                 {
                     float x, y, z, azimut, offset;
 
-                    float.TryParse(mc[i].Groups[1].Value, NumberStyles.Any, CultureInfo.InvariantCulture, out x);
-                    float.TryParse(mc[i].Groups[3].Value, NumberStyles.Any, CultureInfo.InvariantCulture, out y);
-                    float.TryParse(mc[i].Groups[2].Value, NumberStyles.Any, CultureInfo.InvariantCulture, out z);
-                    float.TryParse(mc[i].Groups[4].Value, NumberStyles.Any, CultureInfo.InvariantCulture, out azimut);
-                    float.TryParse(mc[i].Groups[8].Value, NumberStyles.Any, CultureInfo.InvariantCulture, out offset);
+                    float.TryParse(mcPos.Groups[1].Value, NumberStyles.Any, CultureInfo.InvariantCulture, out x);
+                    float.TryParse(mcPos.Groups[3].Value, NumberStyles.Any, CultureInfo.InvariantCulture, out y);
+                    float.TryParse(mcPos.Groups[2].Value, NumberStyles.Any, CultureInfo.InvariantCulture, out z);
+
+                    if (mcAzimut.Success)
+                        float.TryParse(mcAzimut.Groups[1].Value, NumberStyles.Any, CultureInfo.InvariantCulture,
+                            out azimut);
+                    else
+                        azimut = 0;
+
+                    if (mcOffset.Success)
+                        float.TryParse(mcOffset.Groups[1].Value, NumberStyles.Any, CultureInfo.InvariantCulture, out offset);
+                    else
+                        offset = 0;
 
                     Units.Add(
                         new Unit(
                             new Vector3(x, y, z),
                             azimut,
-                            int.Parse(mc[i].Groups[5].Value),
-                            mc[i].Groups[6].Value,
-                            mc[i].Groups[7].Value,
+                            int.Parse(mcId.Groups[1].Value),
+                            mcSide.Groups[1].Value,
+                            mcVehicle.Groups[1].Value,
                             offset
                             ));
 
                     if (options.Verbose) Console.WriteLine(Units[Units.Count - 1].ToString());
                 }
+
             }
 
             return Units;
