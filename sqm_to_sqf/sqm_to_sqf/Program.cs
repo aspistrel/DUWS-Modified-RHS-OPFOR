@@ -44,19 +44,21 @@ namespace sqm_to_sqf
         public int Id { get; set; }
         public string Side { get; set; }
         public string Vehicle { get; set; }
+        public float Offset { get; set; }
 
-        public Unit(Vector3 position, float azimut, int id, string side, string vehicle)
+        public Unit(Vector3 position, float azimut, int id, string side, string vehicle, float offset)
         {
             Position = position;
             Azimut = azimut;
             Id = id;
             Side = side;
             Vehicle = vehicle;
+            Offset = offset;
         }
 
         public override string ToString()
         {
-            return "Unit {\n\tPosition=" + Position + "\n\tAzimut=" + Azimut + "\n\tId=" + Id + "\n\tVehicle=" + Vehicle + "\n\tSide=" + Side + "\n}\n";
+            return "Unit {\n\tPosition=" + Position + "\n\tAzimut=" + Azimut + "\n\tId=" + Id + "\n\tVehicle=" + Vehicle + "\n\tSide=" + Side + "\n\tOffset=" + Offset + "\n}\n";
         }
     }
 
@@ -90,8 +92,9 @@ namespace sqm_to_sqf
 
             //position\[\]={([0-9.\-e]+),([0-9.\-e]+),([0-9.\-e]+)};\s*\n*\s*azimut=([0-9.\-e]+);\s*\n*\s*id=([0-9]+);\s*\n*\s*side= ""EMPTY"";\s*\n*\s*vehicle=""([A-Za-z 0-9_]+)"";\s*\n*\s*skill=[0-9.\-]+;\s*\n*\s*offsetY=([0-9.\-]+)
             //position\[\]={([0-9.\-e]+),([0-9.\-e]+),([0-9.\-e]+)};\s*\n*\s*azimut=([0-9.\-e]+);\s*\n*\s*id=([0-9]+);\s*\n*\s*side= "([A-Za-z]+)";\s*\n*\s*vehicle="([A-Za-z 0-9_]+)";
+            //position\[\]={([0-9.\-e]+),([0-9.\-e]+),([0-9.\-e]+)};\s*\n*\s*azimut=([0-9.\-e]+);\s*\n*\s*id=([0-9]+);\s*\n*\s*side= "([A-Za-z]+)";\s*\n*\s*vehicle="([A-Za-z 0-9_]+)";[\s\nA-Za-z0-9=;.]*offsetY=([0-9.\-e]+)
 
-            Regex re = new Regex(@"position\[\]={([0-9.\-e]+),([0-9.\-e]+),([0-9.\-e]+)};\s*\n*\s*azimut=([0-9.\-e]+);\s*\n*\s*id=([0-9]+);\s*\n*\s*side= ""([A-Za-z]+)"";\s*\n*\s*vehicle=""([A-Za-z 0-9_]+)"";", RegexOptions.Multiline);
+            Regex re = new Regex(@"position\[\]={([0-9.\-e]+),([0-9.\-e]+),([0-9.\-e]+)};\s*\n*\s*azimut=([0-9.\-e]+);\s*\n*\s*id=([0-9]+);\s*\n*\s*side= ""([A-Za-z]+)"";\s*\n*\s*vehicle=""([A-Za-z 0-9_]+)"";[\s\nA-Za-z0-9=;.]*offsetY=([0-9.\-e]+)", RegexOptions.Multiline);
             MatchCollection mc = re.Matches(source);
 
             if (options.Verbose) Console.WriteLine("Count: {0}", mc.Count);
@@ -102,12 +105,13 @@ namespace sqm_to_sqf
             {
                 if ((options.Empty && mc[i].Groups[6].Value == "EMPTY") || !options.Empty)
                 {
-                    float x, y, z, azimut;
+                    float x, y, z, azimut, offset;
 
                     float.TryParse(mc[i].Groups[1].Value, NumberStyles.Any, CultureInfo.InvariantCulture, out x);
                     float.TryParse(mc[i].Groups[3].Value, NumberStyles.Any, CultureInfo.InvariantCulture, out y);
                     float.TryParse(mc[i].Groups[2].Value, NumberStyles.Any, CultureInfo.InvariantCulture, out z);
                     float.TryParse(mc[i].Groups[4].Value, NumberStyles.Any, CultureInfo.InvariantCulture, out azimut);
+                    float.TryParse(mc[i].Groups[8].Value, NumberStyles.Any, CultureInfo.InvariantCulture, out offset);
 
                     Units.Add(
                         new Unit(
@@ -115,7 +119,8 @@ namespace sqm_to_sqf
                             azimut,
                             int.Parse(mc[i].Groups[5].Value),
                             mc[i].Groups[6].Value,
-                            mc[i].Groups[7].Value
+                            mc[i].Groups[7].Value,
+                            offset
                             ));
 
                     if (options.Verbose) Console.WriteLine(Units[Units.Count - 1].ToString());
@@ -141,7 +146,7 @@ if (true) then
     _this = createVehicle ["""+unitList[i].Vehicle+@""", ["+unitList[i].Position+@"], [], 0, ""CAN_COLLIDE""];
     _vehicle_" + (options.Index + i) + @" = _this;
     _this setDir " + unitList[i].Azimut.ToString(nfi)+ @";
-    _this setPos [(" + unitList[i].Position.X.ToString(nfi) + @")-_centerX+_centerSpawnX, (" + unitList[i].Position.Y.ToString(nfi) + @")-_centerY+_centerSpawnY, " + unitList[i].Position.Z.ToString(nfi) + @"];
+    _this setPos [(" + unitList[i].Position.X.ToString(nfi) + @")-_centerX+_centerSpawnX, (" + unitList[i].Position.Y.ToString(nfi) + @")-_centerY+_centerSpawnY, " + unitList[i].Offset.ToString(nfi) + @"];
 };
 ";
             }
