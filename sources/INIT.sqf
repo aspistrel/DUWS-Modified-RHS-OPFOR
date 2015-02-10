@@ -238,12 +238,12 @@ if (isMultiplayer) then {
 	if(PlayableSide == west) then
     {
         EnemySide = east;
-    }
+    };
 
     if(PlayableSide == east) then
     {
         EnemySide = west;
-    }
+    };
 
 	PAPABEAR=[PlayableSide,"HQ"];
 
