@@ -51,7 +51,7 @@ class Mission
 	};
 	class Groups
 	{
-		items=12;
+		items=13;
 		class Item0
 		{
 			side="EAST";
@@ -355,38 +355,50 @@ class Mission
 			};
 		};
 		class Item12
-        		{
-        			side="EAST";
-        			class Vehicles
-        			{
-        				items=1;
-        				class Item0
-        				{
-        					presenceCondition="isMultiplayer";
-        					position[]={178.88544,0.019906089,657.59033};
-        					azimut=135;
-        					id=10;
-        					side="WEST";
-        					vehicle="rhs_msv_rifleman";
-        					player="PLAY CDG";
-        					leader=1;
-        					rank="CAPTAIN";
-        					skill=0.60000002;
-        					text="Russian test player";
-        				};
-        			};
-        		};
+        {
+            side="EAST";
+            class Vehicles
+            {
+                items=2;
+                class Item0
+                {
+                    position[]={4850.665,9,2439.8694};
+                    id=3;
+                    side="EAST";
+                    vehicle="rhs_msv_rifleman";
+                    player="PLAY CDG";
+                    leader=1;
+                    skill=0.60000002;
+                };
+                class Item1
+                {
+                    position[]={4815.0811,8.9737453,2450.4492};
+                    id=4;
+                    side="EAST";
+                    vehicle="rhs_msv_rifleman";
+                    player="PLAY CDG";
+                    skill=0.60000002;
+                };
+            };
+        };
 	};
 	class Markers
-	{
-		items=1;
-		class Item0
-		{
-			position[]={91.06839,0.14840496,23.99707};
-			name="respawn_west";
-			type="Empty";
-		};
-	};
+    	{
+    		items=2;
+    		class Item0
+    		{
+    			position[]={91.06839,0.14840496,23.99707};
+    			name="respawn_west";
+    			type="Empty";
+    		};
+    		class Item1
+            {
+                position[]={91.06839,0.14840496,23.99707};
+                name="respawn_east";
+                type="Empty";
+            };
+    	};
+
 };
 class Intro
 {
