@@ -37,12 +37,12 @@ str(_markername2) setMarkerAlpha 0.5;
      if(PlayableSide == west) then
      {
 	     _group = [_randompos, EAST, WARCOM_opf_attack_wave_type,[],[],[0.90,1.0]] call BIS_fnc_spawnGroup;
-     }
+     };
 
      if(PlayableSide == east) then
      {
 	    _group = [_randompos, WEST, WARCOM_blu_attack_wave_type,[],[],[0.90,1.0]] call BIS_fnc_spawnGroup;
-     }
+     };
 
 	  _group setCombatMode "RED";
       _wp = _group addWaypoint [_randompos, 50];

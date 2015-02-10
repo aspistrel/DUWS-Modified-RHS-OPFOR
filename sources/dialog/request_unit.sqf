@@ -4,13 +4,13 @@ if(PlayableSide == west) then
 {
     _skill = (blufor_ai_skill select 0)+0.2;
     _skillSF = (blufor_ai_skill select 0)+0.5;
-}
+};
 
 if(PlayableSide == east) then
 {
     _skill = (opfor_ai_skill select 0)+0.2;
     _skillSF = (opfor_ai_skill select 0)+0.5;
-}
+};
 
 _spawnpos = [(getpos player select 0)-78, (getpos player select 1)-73.5];
 

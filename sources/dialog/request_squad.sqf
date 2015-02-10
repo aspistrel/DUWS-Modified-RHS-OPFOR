@@ -9,19 +9,24 @@ SpawnRequestSquad = {
     _currentIndex = select 0;
     _pos = select 1;
 
-    if(_aiBoosted) then
-    {
-        _aiSkill = [0.9,1];
-    };
-
     if(PlayableSide == west) then
     {
         _currentAiSkill = blufor_ai_skill;
-    }
+    };
 
     if(PlayableSide == east) then
     {
         _currentAiSkill = opfor_ai_skill;
+    };
+
+
+    if(_aiBoosted) then
+    {
+        _aiSkill = [0.9,1];
+    }
+    else
+    {
+        _aiSkill = _currentAiSkill;
     }
 
     _cost = (RequestCost select _currentIndex);

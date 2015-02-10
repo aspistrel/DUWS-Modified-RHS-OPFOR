@@ -8,12 +8,12 @@
   if(PlayableSide == west) then
   {
       ctrlSetText [1002, format["%1",WARCOM_blufor_ap]];
-  }
+  };
 
   if(PlayableSide == east) then
   {
       ctrlSetText [1002, format["%1",WARCOM_opfor_ap]];
-  }
+  };
     
 // UNITS  
     _index = lbAdd [2120, "Rifleman(2CP)"];                 // 0

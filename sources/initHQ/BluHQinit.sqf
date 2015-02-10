@@ -77,13 +77,13 @@ _handle = [getpos hq_player] execVM "initHQ\fortify.sqf";
         {
             WARCOM_opfor_ap = WARCOM_opfor_ap + 50;
             WARCOM_blufor_ap = WARCOM_blufor_ap - 50;
-        }
+        };
 
         if(PlayableSide == east) then
         {
             WARCOM_opfor_ap = WARCOM_opfor_ap - 50;
             WARCOM_blufor_ap = WARCOM_blufor_ap + 50;
-        }
+        };
 
 		publicVariable "WARCOM_blufor_ap";
 		publicVariable "WARCOM_opfor_ap";

@@ -29,12 +29,12 @@ _trg setTriggerArea[_checkedRadius,_checkedRadius,0,false];
 if(PlayableSide == west) then
 {
     _trg setTriggerActivation["EAST","PRESENT",false];
-}
+};
 
 if(PlayableSide == east) then
 {
     _trg setTriggerActivation["WEST","PRESENT",false];
-}
+};
 
 
 _trg setTriggerStatements["this","", ""];
@@ -76,12 +76,12 @@ _trgwest setTriggerArea[_checkedRadius,_checkedRadius,0,false];
 if(PlayableSide == west) then
 {
     _trgwest setTriggerActivation["WEST","PRESENT",false];
-}
+};
 
 if(PlayableSide == east) then
 {
     _trgwest setTriggerActivation["EAST","PRESENT",false];
-}
+};
 
 
 _trgwest setTriggerStatements["this","", ""];

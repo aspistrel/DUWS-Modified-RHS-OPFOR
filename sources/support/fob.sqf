@@ -30,12 +30,12 @@ _trg setTriggerArea[_size,_size,0,false];
 if(PlayableSide == west) then
 {
     _trg setTriggerActivation["EAST","PRESENT",true];
-}
+};
 
 if(PlayableSide == east) then
 {
     _trg setTriggerActivation["WEST","PRESENT",true];
-}
+};
 
 _trg setTriggerStatements["this", "", ""];
 sleep 10;
@@ -137,12 +137,12 @@ _trgWarning setTriggerArea[500,500,0,false];
 if(PlayableSide == west) then
 {
     _trgWarning setTriggerActivation["EAST","PRESENT",true];
-}
+};
 
 if(PlayableSide == east) then
 {
     _trgWarning setTriggerActivation["WEST","PRESENT",true];
-}
+};
 
 //_trgWarning setTriggerStatements["this",format["PAPABEAR sidechat 'This is HQ, enemies have been reported around FOB %1';execVM 'warningfob.sqf'",_fobname], ""];
 _trgWarning setTriggerStatements["this","[]execVM 'warningfob.sqf'", ""];

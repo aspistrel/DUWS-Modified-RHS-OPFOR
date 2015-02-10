@@ -55,7 +55,7 @@ RequestNames = [["Fireteam", 0],
 ["AA Armor squad", 0]
 ];
 
-RequestBoostedAI  [false,
+RequestBoostedAI = [false,
 false,
 false,
 false,

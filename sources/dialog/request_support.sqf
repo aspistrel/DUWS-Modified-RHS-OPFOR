@@ -456,12 +456,12 @@ switch (_index2) do
 				  if(PlayableSide == west) then
                   {
 				    blufor_ai_skill = [(blufor_ai_skill select 0)+0.3,(blufor_ai_skill select 1)+0.3];
-                  }
+                  };
 
                   if(PlayableSide == east) then
                   {
                     opfor_ai_skill = [(opfor_ai_skill select 0)+0.3,(opfor_ai_skill select 1)+0.3];
-                  }
+                  };
                   lbSetColor [2103, 14, [0, 1, 0, 1]];
                   support_specialized_training_available = true;
 				  publicVariable "support_specialized_training_available";

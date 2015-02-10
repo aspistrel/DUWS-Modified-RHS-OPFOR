@@ -7,13 +7,13 @@ if(PlayableSide == west) then
 {
     WARCOM_blufor_ap = WARCOM_blufor_ap + 15;
     ctrlSetText [1002, format["%1",WARCOM_blufor_ap]];
-}
+};
 
 if(PlayableSide == east) then
 {
     WARCOM_opfor_ap = WARCOM_opfor_ap + 15;
     ctrlSetText [1002, format["%1",WARCOM_opfor_ap]];
-}
+};
 
 
 

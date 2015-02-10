@@ -67,12 +67,12 @@ allowExplosiveToTriggerIEDs = true;
  if(PlayableSide == west) then
   {
     _enemySide = east;
-  }
+  };
 
   if(PlayableSide == east) then
   {
     _enemySide = west;
-  }
+  };
 
 iedInitialArray = [
 	["AllCities",PlayableSide],

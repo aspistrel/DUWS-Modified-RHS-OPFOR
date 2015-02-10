@@ -10,12 +10,12 @@ _grouptype = ["RHS_AH64D_wd"];
 if(PlayableSide == west) then
 {
     _currentAiSkill = blufor_ai_skill;
-}
+};
 
 if(PlayableSide == east) then
 {
     _currentAiSkill = opfor_ai_skill;
-}
+};
 	
          if (commandpoints >= _cost) then
              {

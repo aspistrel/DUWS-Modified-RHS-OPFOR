@@ -8,12 +8,12 @@ _grouptype = ["B_APC_Tracked_01_CRV_F"];
 if(PlayableSide == west) then
 {
     _currentAiSkill = blufor_ai_skill;
-}
+};
 
 if(PlayableSide == east) then
 {
     _currentAiSkill = opfor_ai_skill;
-}
+};
 
 	
          if (commandpoints >= _cost) then

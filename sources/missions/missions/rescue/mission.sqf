@@ -57,12 +57,12 @@ _trg setTriggerArea[25,25,0,false];
 if(PlayableSide == west) then
 {
     _trg setTriggerActivation["WEST","PRESENT",false];
-}
+};
 
 if(PlayableSide == east) then
 {
     _trg setTriggerActivation["EAST","PRESENT",false];
-}
+};
 
 _trg setTriggerStatements["this",format["['%1',%2,%3,%4,%5,'%6',this]execvm 'missions\missions\rescue\success.sqf'",_markername,_soldier1,_soldier2,_soldier3,_MissionPos,_markername2], ""];
 _trg setTriggerTimeout [10, 10, 10, true ];  

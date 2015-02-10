@@ -47,12 +47,12 @@ _trg setTriggerArea[_size,_size,0,false];
 if(PlayableSide == west) then
 {
     _trg setTriggerActivation["WEST SEIZED","PRESENT",false];
-}
+};
 
 if(PlayableSide == east) then
 {
     _trg setTriggerActivation["EAST SEIZED","PRESENT",false];
-}
+};
 
 //_trg setTriggerActivation["WEST","PRESENT",false];
 _trg setTriggerStatements["this", format["[""%1"",%2,""%3"",""%4"",%5] execvm 'captured.sqf'",_place,_points,_markername,_markername2,_trigger], ""];

@@ -4,12 +4,12 @@ _currentSideAp = 0;
 if(PlayableSide == west) then
 {
     _currentSideAp = WARCOM_blufor_ap;
-}
+};
 
 if(PlayableSide == east) then
 {
     _currentSideAp = WARCOM_opfor_ap;
-}
+};
 
 if ((_currentSideAp<175) || (commandpoints < 5)) exitWith {
 hint format ["Recon Camera Required Minimums:\n175AP (army power)\n5CP (command points)\n\nYour Current AP is: %1\nYour Current CP is: %2",_currentSideAp,commandpoints];
