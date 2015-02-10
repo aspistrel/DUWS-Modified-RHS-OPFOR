@@ -64,9 +64,19 @@ allowExplosiveToTriggerIEDs = true;
 //Ex. "West"   or ["West,"East"]
 //http://community.bistudio.com/wiki/side
 
+ if(PlayableSide == west) then
+  {
+    _enemySide = east;
+  }
+
+  if(PlayableSide == east) then
+  {
+    _enemySide = west;
+  }
+
 iedInitialArray = [
-	["AllCities","West"],
-	["AllVillages","West"],
+	["AllCities",PlayableSide],
+	["AllVillages",PlayableSide],
 	/*["AltisRandom1",6,"West"],
 	["AltisRandom2",6,"West"],
 	["AltisRandom3",6,"West"],
@@ -87,9 +97,9 @@ iedInitialArray = [
 	//["Lakka", 2, 8,  ["West","East"] ],
 	//["OreoKastro", "West"],
 	//["Athira", 2, "West" ],
-	["IEDSINGLE1", ["West","East"]],
-	["IEDSINGLE2", 12 ,"West"],
-	["IEDSINGLE3", [0,0,0,25], "West"]
+	["IEDSINGLE1", [PlayableSide,_enemySide]],
+	["IEDSINGLE2", 12 ,PlayableSide],
+	["IEDSINGLE3", [0,0,0,25], PlayableSide]
 	];
 	
 //Place the mapLocations, predefinedLocations, and markerNames of places you don't want any IEDs spawning

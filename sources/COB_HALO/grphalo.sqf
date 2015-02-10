@@ -1,4 +1,4 @@
-if (commandpointsblu1<5) exitWith  
+if (commandpoints<5) exitWith
 {
   ["info",["Not enough command points","Not enough Command Points (5CP required)"]] call bis_fnc_showNotification;
 };
@@ -41,7 +41,7 @@ ATM_Jump_mapclick = if(true) then{
 		yCoord = posJump select 1;publicvariable "yCoord";
 		zCoord = posJump select 2;publicvariable "zCoord";
 		
-	commandpointsblu1 = commandpointsblu1 - 5;
+	commandpoints = commandpoints - 5;
 	{_x setpos [xCoord,yCoord,zCoord+Altitude];sleep 0.1;} forEach units group player; 
 	[[{{[_x, 2500, true, true, true] execVM "COB_HALO\functions\fn_halo.sqf";} forEach units group player}],"BIS_fnc_Call",group player,false] call BIS_fnc_MP;	
 	hint '';

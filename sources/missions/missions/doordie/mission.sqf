@@ -1,4 +1,4 @@
-//0= {_x setpos [getpos hq_blu1 select 0, (getpos hq_blu1 select 1)+20];} forEach units _bombcode1;/////////////////////////////////////////////////////////////
+//0= {_x setpos [getpos hq_player select 0, (getpos hq_player select 1)+20];} forEach units _bombcode1;/////////////////////////////////////////////////////////////
 
 
 [[{[]execVM "missions\missions\doordie\timer.sqf"}],"BIS_fnc_Spawn",true,false] call BIS_fnc_MP;
@@ -40,18 +40,18 @@ _taskhandle setSimpleTaskDestination (getMarkerPos str(_markername));
 
 // CREATE bomb, timer and keypad on Officer
 
-expl1 = "DemoCharge_Remote_Ammo_scripted" createVehicle position hq_blu1;
-expl1 attachTo [hq_blu1, [-0.1,0,0.15],"pelvis"];
+expl1 = "DemoCharge_Remote_Ammo_scripted" createVehicle position hq_player;
+expl1 attachTo [hq_player, [-0.1,0,0.15],"pelvis"];
 expl1 setVectorDirAndUp [[0.5,0.5,0],[-0.5,0.5,0]];
-expl2 = "DemoCharge_Remote_Ammo_scripted" createVehicle position hq_blu1;
-expl2 attachTo [hq_blu1, [0,0,0.15],"pelvis"];
+expl2 = "DemoCharge_Remote_Ammo_scripted" createVehicle position hq_player;
+expl2 attachTo [hq_player, [0,0,0.15],"pelvis"];
 expl2 setVectorDirAndUp [[1,0,0],[0,1,0]];
-expl3 = "DemoCharge_Remote_Ammo_scripted" createVehicle position hq_blu1;
-expl3 attachTo [hq_blu1,[0.1,0,0.15],"pelvis"];
+expl3 = "DemoCharge_Remote_Ammo_scripted" createVehicle position hq_player;
+expl3 attachTo [hq_player,[0.1,0,0.15],"pelvis"];
 expl3 setVectorDirAndUp [[0.5,-0.5,0],[0.5,0.5,0]]; 
-[[{KEYPAD1 = hq_blu1 addAction [("<t color='#E61616'>" + ("Access Bomb Keypad") + "</t>"),"missions\missions\doordie\bomb\keypad_defuse\defuseAction.sqf","",1,true,true,"","(_target distance _this) < 5"]}],"BIS_fnc_Spawn",true,true] call BIS_fnc_MP;
-[hq_blu1, 1800] execVM "missions\missions\doordie\bomb\keypad_defuse\BombTimer.sqf";
-hq_blu1 switchmove "AmovPsitMstpSnonWnonDnon_ground";
+[[{KEYPAD1 = hq_player addAction [("<t color='#E61616'>" + ("Access Bomb Keypad") + "</t>"),"missions\missions\doordie\bomb\keypad_defuse\defuseAction.sqf","",1,true,true,"","(_target distance _this) < 5"]}],"BIS_fnc_Spawn",true,true] call BIS_fnc_MP;
+[hq_player, 1800] execVM "missions\missions\doordie\bomb\keypad_defuse\BombTimer.sqf";
+hq_player switchmove "AmovPsitMstpSnonWnonDnon_ground";
 publicVariable "KEYPAD1";
 
 
@@ -88,8 +88,8 @@ if ((MisEndCond==1) && (officedead) && (!DEFUSED) && (!EXPL)) exitWith {
 sleep 5;	
 ["TaskFailed",["","Your commanding officer has been killed, All Command Points Lost!"]] call bis_fnc_showNotification;
 [[{hint"**Side Mission FAILED**\n\nYour commanding officer was killed, All Command Points Lost!"}],"BIS_fnc_Spawn",true] call BIS_fnc_MP;
-commandpointsblu1 = commandpointsblu1 - commandpointsblu1 + 1;
-publicVariable "commandpointsblu1";  
+commandpoints = commandpoints - commandpoints + 1;
+publicVariable "commandpoints";  
 sleep 2;
 deleteVehicle BOMBCODE1;
 deleteMarker str(_markername2);
@@ -98,13 +98,13 @@ player removeSimpleTask _taskhandle;
 };
 
 // IF MISSION FAILS, BUT OFFICER SURVIVES////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-if ((alive hq_blu1) && (!DEFUSED) && (EXPL)) exitWith {
+if ((alive hq_player) && (!DEFUSED) && (EXPL)) exitWith {
 
 sleep 5;	
 ["TaskFailed",["","The HQ is destroyed, All Command Points Lost!"]] call bis_fnc_showNotification;
 [[{hint"**Side Mission FAILED**\n\nthe HQ was destroyed, All Command Points Lost!"}],"BIS_fnc_Spawn",true] call BIS_fnc_MP;
-commandpointsblu1 = commandpointsblu1 - commandpointsblu1 + 1;
-publicVariable "commandpointsblu1";  
+commandpoints = commandpoints - commandpoints + 1;
+publicVariable "commandpoints";  
 sleep 2;
 deleteVehicle BOMBCODE1;
 deleteMarker str(_markername2);
@@ -118,19 +118,19 @@ if (DEFUSED) then {
 sleep 2;
 ["TaskSucceeded",["",_mission_name]] call bis_fnc_showNotification;
 ["cpaddedmission",[250]] call bis_fnc_showNotification;
-commandpointsblu1 = commandpointsblu1 + 250;
+commandpoints = commandpoints + 250;
 missions_success = missions_success + 1;
 WARCOM_blufor_ap = WARCOM_blufor_ap + 30;
 opfor_ap = opfor_ap - 30;
 finishedMissionsNumber = finishedMissionsNumber + 1;
 publicvariable "finishedMissionsNumber";
-publicVariable "commandpointsblu1";
+publicVariable "commandpoints";
 publicVariable "WARCOM_blufor_ap";
 _operHandler = []execVM "dialog\operative\operative_mission_complete.sqf";
 sleep 1;
 deleteVehicle BOMBCODE1;
-[[{hq_blu1 removeaction KEYPAD1}], "BIS_fnc_Spawn",true] call BIS_fnc_MP;
-hq_blu1 switchMove "acts_StandingSpeakingUnarmed";
+[[{hq_player removeaction KEYPAD1}], "BIS_fnc_Spawn",true] call BIS_fnc_MP;
+hq_player switchMove "acts_StandingSpeakingUnarmed";
 deleteMarker str(_markername2);
 deleteMarker str(_markername);
 player removeSimpleTask _taskhandle;

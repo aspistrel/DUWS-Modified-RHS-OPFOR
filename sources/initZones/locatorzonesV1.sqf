@@ -63,7 +63,7 @@ while {!_found} do
 		
 
 
-    if (_playerDistance>(zones_max_radius + 500) && (hq_blu1 distance _posDeMeilleurTruc)<=zones_max_dist_from_hq)  then {  // VERIFIE SI ELOIGNE DU JOUEUR ET REGARDE LA DISTANCE DES AUTRES ZONES. REGARDE AUSSI LA DISTANCE PAR RAPPORT AU QG
+    if (_playerDistance>(zones_max_radius + 500) && (hq_player distance _posDeMeilleurTruc)<=zones_max_dist_from_hq)  then {  // VERIFIE SI ELOIGNE DU JOUEUR ET REGARDE LA DISTANCE DES AUTRES ZONES. REGARDE AUSSI LA DISTANCE PAR RAPPORT AU QG
 
      _found_distance = true;
      _MissionPos = _posDeMeilleurTruc;
@@ -117,7 +117,7 @@ sleep 9;
 _zones_array = [_zones_array, 0] call BIS_fnc_removeIndex;
 
 //player globalchat format["%1",_zones_array];
-_warcom_init = [_zones_array, getpos hq_blu1, [0,0,0], blufor_ap, opfor_ap, 2700,blufor_ai_skill,opfor_ai_skill, 2000] execVM "WARCOM\WARCOM_init.sqf"; // 2700 is 40 mins
+_warcom_init = [_zones_array, getpos hq_player, [0,0,0], blufor_ap, opfor_ap, 2700,blufor_ai_skill,opfor_ai_skill, 2000] execVM "WARCOM\WARCOM_init.sqf"; // 2700 is 40 mins
 waitUntil {scriptDone _warcom_init};
 sleep 0.1;
 //savegame;

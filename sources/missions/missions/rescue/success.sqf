@@ -49,9 +49,9 @@ publicvariable "finishedMissionsNumber";
 ["TaskSucceeded",["","Rescue the friendly troops"]] call bis_fnc_showNotification;
 ["cpaddedmission",[10]] call bis_fnc_showNotification;
 missions_success = missions_success + 1;
-commandpointsblu1 = commandpointsblu1 + 10;
+commandpoints = commandpoints + 10;
 WARCOM_blufor_ap = WARCOM_blufor_ap + 15;
-publicVariable "commandpointsblu1";
+publicVariable "commandpoints";
 publicVariable "WARCOM_blufor_ap";
 _operHandler = []execVM "dialog\operative\operative_mission_complete.sqf"; 
 

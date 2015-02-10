@@ -18,8 +18,8 @@ DUWS_revive_revived = {
 		DUWS_player_injured = false;
 		[player,"DUWS_sync_animgood"] spawn BIS_fnc_mp;
 		player allowdamage true;
-		commandpointsblu1 = commandpointsblu1 + DUWSMP_CP_death_cost;
-		publicvariable "commandpointsblu1";
+		commandpoints = commandpoints + DUWSMP_CP_death_cost;
+		publicvariable "commandpoints";
 		closedialog 0;
 		_handle = [player,"DUWS_revive_respawned"] spawn BIS_fnc_MP;
 		};

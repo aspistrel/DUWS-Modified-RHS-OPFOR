@@ -7,7 +7,7 @@ Htaxi290InUse = true;
 _music = call compile preprocessFile "support\taxi\random_music.sqf";
 
 
-if (commandpointsblu1 < 10) exitWith {
+if (commandpoints < 10) exitWith {
   ["info",["Not enough command points","Not enough Command Points (1 CP required)"]] call bis_fnc_showNotification;
   sleep 15;
   _helotax290 = [player,"helo_taxi290"] call BIS_fnc_addCommMenuItem;
@@ -24,8 +24,8 @@ if (0 == _foundPickupPos select 0 && 0 == _foundPickupPos select 1) exitWith {hi
 
 
 // A POS NEAR THE PLAYER HAS BEEN FOUND, CHOOPA EN ROUTE
-commandpointsblu1 = commandpointsblu1 - 10;
-publicVariable "commandpointsblu1";
+commandpoints = commandpoints - 10;
+publicVariable "commandpoints";
 
 // create marker on LZ
 _markerpickup = format["lz%1%2",_foundPickupPos]; // Define marker name

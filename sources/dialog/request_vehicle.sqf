@@ -8,11 +8,11 @@ switch (_index) do
 {
     case 0:  
     {
-          if (commandpointsblu1 >= 4) then 
+          if (commandpoints >= 4) then 
           {
            hint "Vehicle ready !";
-           commandpointsblu1 = commandpointsblu1 - 4;
-           ctrlSetText [1000, format["%1",commandpointsblu1]];
+           commandpoints = commandpoints - 4;
+           ctrlSetText [1000, format["%1",commandpoints]];
            _vehic = "rhsusf_m998_w_4dr" createVehicle _spawnPos;
           } 
           else 
@@ -23,11 +23,11 @@ switch (_index) do
 	
 	case 1:  
     {
-          if (commandpointsblu1 >= 4) then 
+          if (commandpoints >= 4) then 
           {
            hint "Vehicle ready !";
-           commandpointsblu1 = commandpointsblu1 - 4;
-           ctrlSetText [1000, format["%1",commandpointsblu1]];
+           commandpoints = commandpoints - 4;
+           ctrlSetText [1000, format["%1",commandpoints]];
            _vehic = "rhsusf_m998_w_4dr_halftop" createVehicle _spawnPos;
           } 
           else 
@@ -38,11 +38,11 @@ switch (_index) do
 	
 	case 2:  
     {
-          if (commandpointsblu1 >= 4) then 
+          if (commandpoints >= 4) then 
           {
            hint "Vehicle ready !";
-           commandpointsblu1 = commandpointsblu1 - 4;
-           ctrlSetText [1000, format["%1",commandpointsblu1]];
+           commandpoints = commandpoints - 4;
+           ctrlSetText [1000, format["%1",commandpoints]];
            _vehic = "rhsusf_m998_w_4dr_fulltop" createVehicle _spawnPos;
           } 
           else 
@@ -53,11 +53,11 @@ switch (_index) do
 
     case 3:  
     {
-          if (commandpointsblu1 >= 6) then 
+          if (commandpoints >= 6) then 
           {
            hint "Vehicle ready !";
-           commandpointsblu1 = commandpointsblu1 - 6;
-           ctrlSetText [1000, format["%1",commandpointsblu1]];
+           commandpoints = commandpoints - 6;
+           ctrlSetText [1000, format["%1",commandpoints]];
            _vehic = "rhsusf_m998_w_2dr" createVehicle _spawnPos;
           } 
           else 
@@ -68,11 +68,11 @@ switch (_index) do
 
     case 4:  
     {
-          if (commandpointsblu1 >= 6) then 
+          if (commandpoints >= 6) then 
           {
            hint "Vehicle ready !";
-           commandpointsblu1 = commandpointsblu1 - 6;
-           ctrlSetText [1000, format["%1",commandpointsblu1]];
+           commandpoints = commandpoints - 6;
+           ctrlSetText [1000, format["%1",commandpoints]];
            _vehic = "rhsusf_m998_w_2dr_halftop" createVehicle _spawnPos;
           } 
           else 
@@ -83,11 +83,11 @@ switch (_index) do
     
     case 5:  
     {
-          if (commandpointsblu1 >= 6) then 
+          if (commandpoints >= 6) then 
           {
            hint "Vehicle ready !";
-           commandpointsblu1 = commandpointsblu1 - 6;
-           ctrlSetText [1000, format["%1",commandpointsblu1]];
+           commandpoints = commandpoints - 6;
+           ctrlSetText [1000, format["%1",commandpoints]];
            _vehic = "rhsusf_m998_w_2dr_fulltop" createVehicle _spawnPos;
           } 
           else 
@@ -98,11 +98,11 @@ switch (_index) do
     
     case 6:  
     {
-          if (commandpointsblu1 >= 6) then 
+          if (commandpoints >= 6) then 
           {
            hint "Vehicle ready !";
-           commandpointsblu1 = commandpointsblu1 - 6;
-           ctrlSetText [1000, format["%1",commandpointsblu1]];
+           commandpoints = commandpoints - 6;
+           ctrlSetText [1000, format["%1",commandpoints]];
            _vehic = "rhsusf_m1025_w" createVehicle _spawnPos;
           } 
           else 
@@ -113,11 +113,11 @@ switch (_index) do
     
     case 7:  
     {
-          if (commandpointsblu1 >= 12) then 
+          if (commandpoints >= 12) then 
           {
            hint "Vehicle ready !";
-           commandpointsblu1 = commandpointsblu1 - 12;
-           ctrlSetText [1000, format["%1",commandpointsblu1]];
+           commandpoints = commandpoints - 12;
+           ctrlSetText [1000, format["%1",commandpoints]];
            _vehic = "rhsusf_m1025_w_m2" createVehicle _spawnPos;
           } 
           else 
@@ -128,11 +128,11 @@ switch (_index) do
     
     case 8:  
     {
-          if (commandpointsblu1 >= 18) then 
+          if (commandpoints >= 18) then 
           {
            hint "Vehicle ready !";
-           commandpointsblu1 = commandpointsblu1 - 18;
-           ctrlSetText [1000, format["%1",commandpointsblu1]];
+           commandpoints = commandpoints - 18;
+           ctrlSetText [1000, format["%1",commandpoints]];
            _vehic = "rhsusf_m1025_w_mk19" createVehicle _spawnPos;
           } 
           else 
@@ -143,11 +143,11 @@ switch (_index) do
     
     case 9:  
     {
-          if (commandpointsblu1 >= 8) then 
+          if (commandpoints >= 8) then 
           {
            hint "Vehicle ready !";
-           commandpointsblu1 = commandpointsblu1 - 8;
-           ctrlSetText [1000, format["%1",commandpointsblu1]];
+           commandpoints = commandpoints - 8;
+           ctrlSetText [1000, format["%1",commandpoints]];
            _vehic = "B_Truck_01_transport_F" createVehicle _spawnPos;
           } 
           else 
@@ -158,11 +158,11 @@ switch (_index) do
 	
 	case 10:  
     {
-          if (commandpointsblu1 >= 8) then 
+          if (commandpoints >= 8) then 
           {
            hint "Vehicle ready !";
-           commandpointsblu1 = commandpointsblu1 - 8;
-           ctrlSetText [1000, format["%1",commandpointsblu1]];
+           commandpoints = commandpoints - 8;
+           ctrlSetText [1000, format["%1",commandpoints]];
            _vehic = "B_Truck_01_covered_F" createVehicle _spawnPos;
           } 
           else 
@@ -173,11 +173,11 @@ switch (_index) do
 	
 	case 11:  
     {
-          if (commandpointsblu1 >= 10) then 
+          if (commandpoints >= 10) then 
           {
            hint "Vehicle ready !";
-           commandpointsblu1 = commandpointsblu1 - 10;
-           ctrlSetText [1000, format["%1",commandpointsblu1]];
+           commandpoints = commandpoints - 10;
+           ctrlSetText [1000, format["%1",commandpoints]];
            _vehic = "B_Truck_01_fuel_F" createVehicle _spawnPos;
           } 
           else 
@@ -188,11 +188,11 @@ switch (_index) do
     
     case 12:  
     {
-          if (commandpointsblu1 >= 10) then 
+          if (commandpoints >= 10) then 
           {
            hint "Vehicle ready !";
-           commandpointsblu1 = commandpointsblu1 - 10;
-           ctrlSetText [1000, format["%1",commandpointsblu1]];
+           commandpoints = commandpoints - 10;
+           ctrlSetText [1000, format["%1",commandpoints]];
            _vehic = "B_Truck_01_medical_F" createVehicle _spawnPos;
           } 
           else 
@@ -203,11 +203,11 @@ switch (_index) do
 	
 	case 13:  
     {
-          if (commandpointsblu1 >= 10) then 
+          if (commandpoints >= 10) then 
           {
            hint "Vehicle ready !";
-           commandpointsblu1 = commandpointsblu1 - 10;
-           ctrlSetText [1000, format["%1",commandpointsblu1]];
+           commandpoints = commandpoints - 10;
+           ctrlSetText [1000, format["%1",commandpoints]];
            _vehic = "B_Truck_01_Repair_F" createVehicle _spawnPos;
           } 
           else 
@@ -218,11 +218,11 @@ switch (_index) do
     
     case 14:  
     {
-          if (commandpointsblu1 >= 10) then 
+          if (commandpoints >= 10) then 
           {
            hint "Vehicle ready !";
-           commandpointsblu1 = commandpointsblu1 - 10;
-           ctrlSetText [1000, format["%1",commandpointsblu1]];
+           commandpoints = commandpoints - 10;
+           ctrlSetText [1000, format["%1",commandpoints]];
            _vehic = "B_Truck_01_ammo_F" createVehicle _spawnPos;
           } 
           else 
@@ -233,11 +233,11 @@ switch (_index) do
     
     case 15:  
     {
-          if (commandpointsblu1 >= 28) then 
+          if (commandpoints >= 28) then 
           {
            hint "Vehicle ready !";
-           commandpointsblu1 = commandpointsblu1 - 28;
-           ctrlSetText [1000, format["%1",commandpointsblu1]];
+           commandpoints = commandpoints - 28;
+           ctrlSetText [1000, format["%1",commandpoints]];
            _vehic = "B_APC_Tracked_01_CRV_F" createVehicle _spawnPos;
           } 
           else 
@@ -248,11 +248,11 @@ switch (_index) do
    
     case 16:  
     {
-          if (commandpointsblu1 >= 8) then 
+          if (commandpoints >= 8) then 
           {
            hint "Vehicle ready !";
-           commandpointsblu1 = commandpointsblu1 - 8;
-           ctrlSetText [1000, format["%1",commandpointsblu1]];
+           commandpoints = commandpoints - 8;
+           ctrlSetText [1000, format["%1",commandpoints]];
            _vehic = "B_MRAP_01_F" createVehicle _spawnPos;
           } 
           else 
@@ -263,11 +263,11 @@ switch (_index) do
 
     case 17:  
     {
-          if (commandpointsblu1 >= 14) then 
+          if (commandpoints >= 14) then 
           {
            hint "Vehicle ready !";
-           commandpointsblu1 = commandpointsblu1 - 14;
-           ctrlSetText [1000, format["%1",commandpointsblu1]];
+           commandpoints = commandpoints - 14;
+           ctrlSetText [1000, format["%1",commandpoints]];
            _vehic = "B_MRAP_01_hmg_F" createVehicle _spawnPos;
           } 
           else 
@@ -278,11 +278,11 @@ switch (_index) do
    
     case 18:  
     {
-          if (commandpointsblu1 >= 20) then 
+          if (commandpoints >= 20) then 
           {
            hint "Vehicle ready !";
-           commandpointsblu1 = commandpointsblu1 - 20;
-           ctrlSetText [1000, format["%1",commandpointsblu1]];
+           commandpoints = commandpoints - 20;
+           ctrlSetText [1000, format["%1",commandpoints]];
            _vehic = "B_MRAP_01_gmg_F" createVehicle _spawnPos;
           } 
           else 
@@ -293,11 +293,11 @@ switch (_index) do
 
     case 19:  
     {
-          if (commandpointsblu1 >= 20) then 
+          if (commandpoints >= 20) then 
           {
            hint "Vehicle ready !";
-           commandpointsblu1 = commandpointsblu1 - 20;
-           ctrlSetText [1000, format["%1",commandpointsblu1]];
+           commandpoints = commandpoints - 20;
+           ctrlSetText [1000, format["%1",commandpoints]];
            _vehic = "rhsusf_m113_usarmy" createVehicle _spawnPos;
           } 
           else 
@@ -308,11 +308,11 @@ switch (_index) do
 	
 case 20:  
     {
-          if (commandpointsblu1 >= 30) then 
+          if (commandpoints >= 30) then 
           {
            hint "Vehicle ready !";
-           commandpointsblu1 = commandpointsblu1 - 30;
-           ctrlSetText [1000, format["%1",commandpointsblu1]];
+           commandpoints = commandpoints - 30;
+           ctrlSetText [1000, format["%1",commandpoints]];
            _vehic = "RHS_M2A2_wd" createVehicle _spawnPos;
           } 
           else 
@@ -323,11 +323,11 @@ case 20:
 
 case 21:  
     {
-          if (commandpointsblu1 >= 32) then 
+          if (commandpoints >= 32) then 
           {
            hint "Vehicle ready !";
-           commandpointsblu1 = commandpointsblu1 - 32;
-           ctrlSetText [1000, format["%1",commandpointsblu1]];
+           commandpoints = commandpoints - 32;
+           ctrlSetText [1000, format["%1",commandpoints]];
            _vehic = "RHS_M2A2_BUSKI_wd" createVehicle _spawnPos;
           } 
           else 
@@ -338,11 +338,11 @@ case 21:
 	
 case 22:  
     {
-          if (commandpointsblu1 >= 34) then 
+          if (commandpoints >= 34) then 
           {
            hint "Vehicle ready !";
-           commandpointsblu1 = commandpointsblu1 - 34;
-           ctrlSetText [1000, format["%1",commandpointsblu1]];
+           commandpoints = commandpoints - 34;
+           ctrlSetText [1000, format["%1",commandpoints]];
            _vehic = "RHS_M2A3_wd" createVehicle _spawnPos;
           } 
           else 
@@ -353,11 +353,11 @@ case 22:
 
 case 23:  
     {
-          if (commandpointsblu1 >= 36) then 
+          if (commandpoints >= 36) then 
           {
            hint "Vehicle ready !";
-           commandpointsblu1 = commandpointsblu1 - 36;
-           ctrlSetText [1000, format["%1",commandpointsblu1]];
+           commandpoints = commandpoints - 36;
+           ctrlSetText [1000, format["%1",commandpoints]];
            _vehic = "RHS_M2A3_BUSKI_wd" createVehicle _spawnPos;
           } 
           else 
@@ -368,11 +368,11 @@ case 23:
 
 case 24:  
     {
-          if (commandpointsblu1 >= 38) then 
+          if (commandpoints >= 38) then 
           {
            hint "Vehicle ready !";
-           commandpointsblu1 = commandpointsblu1 - 38;
-           ctrlSetText [1000, format["%1",commandpointsblu1]];
+           commandpoints = commandpoints - 38;
+           ctrlSetText [1000, format["%1",commandpoints]];
            _vehic = "RHS_M2A3_BUSKIII_wd" createVehicle _spawnPos;
           } 
           else 
@@ -383,11 +383,11 @@ case 24:
 
 case 25:  
     {
-          if (commandpointsblu1 >= 32) then 
+          if (commandpoints >= 32) then 
           {
            hint "Vehicle ready !";
-           commandpointsblu1 = commandpointsblu1 - 32;
-           ctrlSetText [1000, format["%1",commandpointsblu1]];
+           commandpoints = commandpoints - 32;
+           ctrlSetText [1000, format["%1",commandpoints]];
            _vehic = "RHS_M6_wd" createVehicle _spawnPos;
           } 
           else 
@@ -398,11 +398,11 @@ case 25:
 	
 case 26:  
     {
-          if (commandpointsblu1 >= 38) then 
+          if (commandpoints >= 38) then 
           {
            hint "Vehicle ready !";
-           commandpointsblu1 = commandpointsblu1 - 38;
-           ctrlSetText [1000, format["%1",commandpointsblu1]];
+           commandpoints = commandpoints - 38;
+           ctrlSetText [1000, format["%1",commandpoints]];
            _vehic = "rhsusf_m1a1aimwd_usarmy" createVehicle _spawnPos;
           } 
           else 
@@ -413,11 +413,11 @@ case 26:
 
 case 27:  
     {
-          if (commandpointsblu1 >= 40) then 
+          if (commandpoints >= 40) then 
           {
            hint "Vehicle ready !";
-           commandpointsblu1 = commandpointsblu1 - 40;
-           ctrlSetText [1000, format["%1",commandpointsblu1]];
+           commandpoints = commandpoints - 40;
+           ctrlSetText [1000, format["%1",commandpoints]];
            _vehic = "rhsusf_m1a1aim_tuski_wd" createVehicle _spawnPos; 
           } 
           else 
@@ -428,11 +428,11 @@ case 27:
 	
 case 28:  
     {
-          if (commandpointsblu1 >= 44) then 
+          if (commandpoints >= 44) then 
           {
            hint "Vehicle ready !";
-           commandpointsblu1 = commandpointsblu1 - 44;
-           ctrlSetText [1000, format["%1",commandpointsblu1]];
+           commandpoints = commandpoints - 44;
+           ctrlSetText [1000, format["%1",commandpoints]];
            _vehic = "rhsusf_m1a2sep1wd_usarmy" createVehicle _spawnPos; 
           } 
           else 
@@ -443,11 +443,11 @@ case 28:
 
 case 29:  
     {
-          if (commandpointsblu1 >= 50) then 
+          if (commandpoints >= 50) then 
           {
            hint "Vehicle ready !";
-           commandpointsblu1 = commandpointsblu1 - 50;
-           ctrlSetText [1000, format["%1",commandpointsblu1]];
+           commandpoints = commandpoints - 50;
+           ctrlSetText [1000, format["%1",commandpoints]];
            _vehic = "rhsusf_m1a2sep1tuskiwd_usarmy" createVehicle _spawnPos;
           } 
           else 
@@ -458,11 +458,11 @@ case 29:
    
 case 30:  
     {
-          if (commandpointsblu1 >= 75) then 
+          if (commandpoints >= 75) then 
           {
            hint "Vehicle ready !";
-           commandpointsblu1 = commandpointsblu1 - 75;
-           ctrlSetText [1000, format["%1",commandpointsblu1]];
+           commandpoints = commandpoints - 75;
+           ctrlSetText [1000, format["%1",commandpoints]];
            _vehic = "rhsusf_m109_usarmy" createVehicle _spawnPos;
           } 
           else 
@@ -473,11 +473,11 @@ case 30:
    
 case 31:  
     {
-          if (commandpointsblu1 >= 75) then 
+          if (commandpoints >= 75) then 
           {
            hint "Vehicle ready !";
-           commandpointsblu1 = commandpointsblu1 - 75;
-           ctrlSetText [1000, format["%1",commandpointsblu1]];
+           commandpoints = commandpoints - 75;
+           ctrlSetText [1000, format["%1",commandpoints]];
            _vehic = "B_MBT_01_mlrs_F" createVehicle _spawnPos;
           } 
           else 
@@ -488,11 +488,11 @@ case 31:
    
 case 32:  
     {
-          if (commandpointsblu1 >= 18) then 
+          if (commandpoints >= 18) then 
           {
            hint "Vehicle ready !";
-           commandpointsblu1 = commandpointsblu1 - 18;
-           ctrlSetText [1000, format["%1",commandpointsblu1]];
+           commandpoints = commandpoints - 18;
+           ctrlSetText [1000, format["%1",commandpoints]];
            _vehic = "B_Heli_Light_01_F" createVehicle _spawnPos;
           } 
           else 
@@ -503,11 +503,11 @@ case 32:
    
 case 33:  
     {
-          if (commandpointsblu1 >= 28) then 
+          if (commandpoints >= 28) then 
           {
            hint "Vehicle ready !";
-           commandpointsblu1 = commandpointsblu1 - 28;
-           ctrlSetText [1000, format["%1",commandpointsblu1]];
+           commandpoints = commandpoints - 28;
+           ctrlSetText [1000, format["%1",commandpoints]];
            _vehic = "B_Heli_Light_01_armed_F" createVehicle _spawnPos;
           } 
           else 
@@ -518,11 +518,11 @@ case 33:
    
 case 34:  
     {
-          if (commandpointsblu1 >= 45) then 
+          if (commandpoints >= 45) then 
           {
            hint "Vehicle ready !";
-           commandpointsblu1 = commandpointsblu1 - 45;
-           ctrlSetText [1000, format["%1",commandpointsblu1]];
+           commandpoints = commandpoints - 45;
+           ctrlSetText [1000, format["%1",commandpoints]];
            _vehic = "rhs_ah64d_wd" createVehicle _spawnPos;
           } 
           else 
@@ -533,11 +533,11 @@ case 34:
    
 case 35:  
     {
-          if (commandpointsblu1 >= 28) then 
+          if (commandpoints >= 28) then 
           {
            hint "Vehicle ready !";
-           commandpointsblu1 = commandpointsblu1 - 28;
-           ctrlSetText [1000, format["%1",commandpointsblu1]];
+           commandpoints = commandpoints - 28;
+           ctrlSetText [1000, format["%1",commandpoints]];
            _vehic = "rhs_ch_47f" createVehicle _spawnPos;
           } 
           else 
@@ -548,11 +548,11 @@ case 35:
    
 case 36:  
     {
-          if (commandpointsblu1 >= 22) then 
+          if (commandpoints >= 22) then 
           {
            hint "Vehicle ready !";
-           commandpointsblu1 = commandpointsblu1 - 22;
-           ctrlSetText [1000, format["%1",commandpointsblu1]];
+           commandpoints = commandpoints - 22;
+           ctrlSetText [1000, format["%1",commandpoints]];
            _vehic = "rhs_uh60m" createVehicle _spawnPos;
           } 
           else 
@@ -563,11 +563,11 @@ case 36:
    
 case 37:  
     {
-          if (commandpointsblu1 >= 24) then 
+          if (commandpoints >= 24) then 
           {
            hint "Vehicle ready !";
-           commandpointsblu1 = commandpointsblu1 - 24;
-           ctrlSetText [1000, format["%1",commandpointsblu1]];
+           commandpoints = commandpoints - 24;
+           ctrlSetText [1000, format["%1",commandpoints]];
            _vehic = "rhs_uh60m_mev" createVehicle _spawnPos;
           } 
           else 
@@ -578,11 +578,11 @@ case 37:
    
 case 38:  
     {
-          if (commandpointsblu1 >= 45) then 
+          if (commandpoints >= 45) then 
           {
            hint "Vehicle ready !";
-           commandpointsblu1 = commandpointsblu1 - 5;
-           ctrlSetText [1000, format["%1",commandpointsblu1]];
+           commandpoints = commandpoints - 5;
+           ctrlSetText [1000, format["%1",commandpoints]];
            _vehic = "rhs_a10" createVehicle _spawnPos;
           } 
           else 
@@ -593,11 +593,11 @@ case 38:
    
 case 39:  
     {
-          if (commandpointsblu1 >= 15) then 
+          if (commandpoints >= 15) then 
           {
            hint "Vehicle ready !";
-           commandpointsblu1 = commandpointsblu1 - 15;
-           ctrlSetText [1000, format["%1",commandpointsblu1]];
+           commandpoints = commandpoints - 15;
+           ctrlSetText [1000, format["%1",commandpoints]];
            _vehic = "B_UAV_02_F" createVehicle _spawnPos; createVehicleCrew _vehic; 
           } 
           else 
@@ -608,11 +608,11 @@ case 39:
    
 case 40:  
     {
-          if (commandpointsblu1 >= 15) then 
+          if (commandpoints >= 15) then 
           {
            hint "Vehicle ready !";
-           commandpointsblu1 = commandpointsblu1 - 15;
-           ctrlSetText [1000, format["%1",commandpointsblu1]];
+           commandpoints = commandpoints - 15;
+           ctrlSetText [1000, format["%1",commandpoints]];
            _vehic = "B_UAV_02_CAS_F" createVehicle _spawnPos; createVehicleCrew _vehic; 
           } 
           else 
@@ -623,11 +623,11 @@ case 40:
    
 case 31:  
     {
-          if (commandpointsblu1 >= 5) then 
+          if (commandpoints >= 5) then 
           {
            hint "Vehicle ready !";
-           commandpointsblu1 = commandpointsblu1 - 5;
-           ctrlSetText [1000, format["%1",commandpointsblu1]];
+           commandpoints = commandpoints - 5;
+           ctrlSetText [1000, format["%1",commandpoints]];
            _vehic = "B_UAV_01_F" createVehicle _spawnPos; createVehicleCrew _vehic; 
           } 
           else 
@@ -637,6 +637,6 @@ case 31:
     };		
 
 };
-publicVariable "commandpointsblu1";
+publicVariable "commandpoints";
 //hint format["index: %1",_index];
 

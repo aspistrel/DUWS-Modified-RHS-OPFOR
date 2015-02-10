@@ -13,7 +13,7 @@ if (!zoneFound) exitWith {
   DUWSrepfob = _repfob;
 };
 
-if (commandpointsblu1 < 10) exitWith {
+if (commandpoints < 10) exitWith {
   ["info",["Not enough command points","Not enough Command Points (10CP required)"]] call bis_fnc_showNotification;
   sleep 15;
   _repfob = [player,"fob_support"] call BIS_fnc_addCommMenuItem;
@@ -26,7 +26,17 @@ player sidechat "Requesting a FOB on my position...";
 
 _trg=createTrigger["EmptyDetector",_position];
 _trg setTriggerArea[_size,_size,0,false];
-_trg setTriggerActivation["EAST","PRESENT",true];
+
+if(PlayableSide == west) then
+{
+    _trg setTriggerActivation["EAST","PRESENT",true];
+}
+
+if(PlayableSide == east) then
+{
+    _trg setTriggerActivation["WEST","PRESENT",true];
+}
+
 _trg setTriggerStatements["this", "", ""];
 sleep 10;
 _amountOPFOR = count list _trg;
@@ -47,8 +57,8 @@ if (0 == _foundPickupPos select 0 && 0 == _foundPickupPos select 1) exitWith {hi
 
 // LA ZONE EST OK
 
-commandpointsblu1 = commandpointsblu1 - 10;
-publicVariable "commandpointsblu1";
+commandpoints = commandpoints - 10;
+publicVariable "commandpoints";
 PAPABEAR sidechat "Roger that, the FOB is being deployed...";
 
 _fobname = [1] call compile preprocessFile "random_name.sqf";
@@ -123,7 +133,17 @@ _trg23 setTriggerStatements["this", format["[""FOB %1"",thislist] execvm 'enterl
 // warning trigger when an enemy approaches the camp
 _trgWarning=createTrigger["EmptyDetector",_foundPickupPos];
 _trgWarning setTriggerArea[500,500,0,false];
-_trgWarning setTriggerActivation["EAST","PRESENT",true];
+
+if(PlayableSide == west) then
+{
+    _trgWarning setTriggerActivation["EAST","PRESENT",true];
+}
+
+if(PlayableSide == east) then
+{
+    _trgWarning setTriggerActivation["WEST","PRESENT",true];
+}
+
 //_trgWarning setTriggerStatements["this",format["PAPABEAR sidechat 'This is HQ, enemies have been reported around FOB %1';execVM 'warningfob.sqf'",_fobname], ""];
 _trgWarning setTriggerStatements["this","[]execVM 'warningfob.sqf'", ""];
 

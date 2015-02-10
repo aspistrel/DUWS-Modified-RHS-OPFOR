@@ -36,7 +36,7 @@ _tracksAmountIndexed = (count _music_list) - 1;
 sleep 2;
 while {true} do {
 if (!alive _object OR isNull _object) exitWith {};
-player sidechat "lol";
+//player sidechat "lol"; //Wut?
 
 _dice = round random _tracksAmountIndexed;
 

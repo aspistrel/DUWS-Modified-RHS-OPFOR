@@ -34,7 +34,16 @@ str(_markername2) setMarkerAlpha 0.5;
       [_randompos, _radius] execvm "createopteam.sqf";
 	  [_randompos, _radius] execvm "createopteam.sqf";
      // "RHS_Mi24V_vvs" createVehicle ([(_missionpos select 0)+(random 150),(_missionpos select 1)+(random 150)]); //  	RHS_Mi24V_vvs
-	  _group = [_randompos, EAST, WARCOM_opf_attack_wave_type,[],[],[0.90,1.0]] call BIS_fnc_spawnGroup;
+     if(PlayableSide == west) then
+     {
+	     _group = [_randompos, EAST, WARCOM_opf_attack_wave_type,[],[],[0.90,1.0]] call BIS_fnc_spawnGroup;
+     }
+
+     if(PlayableSide == east) then
+     {
+	    _group = [_randompos, WEST, WARCOM_blu_attack_wave_type,[],[],[0.90,1.0]] call BIS_fnc_spawnGroup;
+     }
+
 	  _group setCombatMode "RED";
       _wp = _group addWaypoint [_randompos, 50];
       _wp setWaypointType "MOVE";
@@ -53,7 +62,9 @@ str(_markername2) setMarkerAlpha 0.5;
 	  _wp setWaypointCompletionRadius 50;
 	  	
 
-_group = createGroup east;
+_group = createGroup EnemySide;
+
+// TODO: Make variants for all sides
 _target = _group createUnit ["rhs_pilot_combat_heli", _missionpos, [], 0, "FORM"];
 _unit = _group createUnit ["rhs_pilot_combat_heli", _missionpos, [], 0, "FORM"];
 _unit = _group createUnit ["rhs_vdv_rifleman", _missionpos, [], 0, "FORM"];
@@ -62,7 +73,7 @@ _unit = _group createUnit ["rhs_vdv_rifleman", _missionpos, [], 0, "FORM"];
 
 // TASK AND NOTIFICATION
 _taskhandle = player createSimpleTask ["taskTarget"];
-_taskhandle setSimpleTaskDescription ["An elite Tank commander has been spotted somewhere in this location by our scouts. It would be benificial to remove him. It is likley that the Russians will send more troops into the AO in retaliation if you succeed.",_mission_name,""];
+_taskhandle setSimpleTaskDescription ["An elite Tank commander has been spotted somewhere in this location by our scouts. It would be benificial to remove him. It is likley that the enemy will send more troops into the AO in retaliation if you succeed.",_mission_name,""];
 _taskhandle setSimpleTaskDestination (getMarkerPos str(_markername));
 
 [["TaskAssigned",["",_mission_name]],"bis_fnc_showNotification"] call BIS_fnc_MP;
@@ -84,9 +95,9 @@ sleep 1;
 ["cpaddedmission",[20]] call bis_fnc_showNotification;
 WARCOM_blufor_ap = WARCOM_blufor_ap + 20;
 missions_success = missions_success + 1;
-commandpointsblu1 = commandpointsblu1 + 20;
+commandpoints = commandpoints + 20;
 opfor_ap = opfor_ap + 20;
-publicVariable "commandpointsblu1";
+publicVariable "commandpoints";
 publicVariable "WARCOM_blufor_ap";
 finishedMissionsNumber = finishedMissionsNumber + 1;
 publicvariable "finishedMissionsNumber";

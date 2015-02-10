@@ -20,13 +20,13 @@ _proceed = true;
 switch (_selected_soldier_status) do
 {
   case "Ready": {
-	if (commandpointsblu1<10) exitWith {_proceed = false;};
-	commandpointsblu1 = commandpointsblu1 - 10;
+	if (commandpoints<10) exitWith {_proceed = false;};
+	commandpoints = commandpoints - 10;
   };
 
   case "Healed": {
-	if (commandpointsblu1<-9999) exitWith {_proceed = false;};
-	commandpointsblu1 = commandpointsblu1 - 0;
+	if (commandpoints<-9999) exitWith {_proceed = false;};
+	commandpoints = commandpoints - 0;
   };  
 };
 if (!_proceed) exitWith {hint "You don't have enough Command Points"};

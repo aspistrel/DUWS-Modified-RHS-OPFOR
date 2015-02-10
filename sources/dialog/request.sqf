@@ -2,9 +2,21 @@
 
   _handle = createDialog "ressourceheader";  
   waitUntil {dialog};
-  ctrlSetText [1000, format["%1",commandpointsblu1]];
-  ctrlSetText [1001, format["%1",zoneundercontrolblu]];
-  ctrlSetText [1002, format["%1",WARCOM_blufor_ap]];
+  ctrlSetText [1000, format["%1",commandpoints]];
+  ctrlSetText [1001, format["%1",zoneundercontrolplayer]];
+
+  if(PlayableSide == west) then
+  {
+      ctrlSetText [1002, format["%1",WARCOM_blufor_ap]];
+  }
+
+  if(PlayableSide == east) then
+  {
+      ctrlSetText [1002, format["%1",WARCOM_opfor_ap]];
+  }
+
+  //ctrlSetText [1002, format["%1",WARCOM_blufor_ap]];
+  //ctrlSetText [1002, format["%1",WARCOM_opfor_ap]];
     
 // UNITS  
     _index = lbAdd [2100, "Rifleman(2CP)"];                  // 0

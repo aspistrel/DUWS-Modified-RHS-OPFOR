@@ -42,7 +42,7 @@ diag_log format ["------------------ DUWS Modified START ----v1.75 Modified by B
 	};	
 	if (isNil "commandpointsblu1") then
 	{	        
-		commandpointsblu1 = 20;            // Starting CP
+		commandpoints = 20;            // Starting CP
 	};
         if (isNil "blufor_ap") then {blufor_ap = 0;};              // STARTING ARMY POWER
         opfor_ap = 0; 
@@ -80,7 +80,7 @@ execvm "dynamic_music\dyn_music_init.sqf";
 	missions_success = 0; // nber of missions succes(!!dont touch!!)
 
 	zones_created = false;
-	blu_hq_created = false;
+	hq_created = false;
 	can_get_mission = true;
 	failsafe_zones_not_found = false;
 	createcenter sideLogic;
@@ -165,9 +165,9 @@ execvm "dynamic_music\dyn_music_init.sqf";
 	{
 	WARCOM_zones_controled_by_BLUFOR = [];publicVariable "WARCOM_zones_controled_by_BLUFOR";
 	};
-	if (isNil "Array_of_OPFOR_zones") then
+	if (isNil "Array_of_ENEMY_zones") then
 	{
-	Array_of_OPFOR_zones = [];publicVariable "Array_of_OPFOR_zones";
+	Array_of_ENEMY_zones = [];publicVariable "Array_of_ENEMY_zones";
 	};
 	if (isNil "WARCOM_zones_controled_by_OPFOR") then
 	{
@@ -233,9 +233,25 @@ if (isMultiplayer) then {
 	UseSiren = paramsArray select 9;
 	MisEndCond = paramsArray select 10;
 
+	PlayableSide = east; //east - opfor, west - blufor
+
+	if(PlayableSide == west) then
+    {
+        EnemySide = east;
+    }
+
+    if(PlayableSide == east) then
+    {
+        EnemySide = west;
+    }
+
+	PAPABEAR=[PlayableSide,"HQ"];
+
+    publicVariable "PlayableSide";
+    publicVariable "EnemySide";
 	publicVariable "WARCOMLimitAI";
 
-	if(Warcom_Limiter_Param == 1) then {WARCOMLimitAI = 130}; // legacy parameter waits when he will be removed
+	if(Warcom_Limiter_Param == 1) then {WARCOMLimitAI = 130}; // legacy
 	// TODO: delete all "Warcom_Limiter_Param" usings
 
 	if (revive_activated == 1) then {[]execVM "duws_revive\reviveInit.sqf"};
@@ -259,10 +275,10 @@ if ((!isDedicated) || (!isServer)) then {
 	
 		
 
-	if (support_armory_available) then {hq_blu1 addaction ["<t color='#ff0066'>Armory 1 (VAS)</t>","VAS\open.sqf", "", 0, true, true, "", "_this == player"];};
-	if (support_armory_available) then {hq_blu1 addaction ["<t color='#ff0066'>Armory 2 (VA)</t>","va.sqf", "", 0, true, true, "", "_this == player"];};
-	if (support_halo_available) then {hq_blu1 addAction ["<t color='#15ff00'>HALO Alone (5CP)</t>", "ATM_airdrop\atm_airdrop.sqf", "", 0, true, true, "", "_this == player"];};
-	if (support_halo_available) then {hq_blu1 addAction ["<t color='#15ff00'>HALO Group (5CP)</t>", "COB_HALO\grphalo.sqf", "", 0, true, true, "", "_this == player"];};
+	if (support_armory_available) then {hq_player addaction ["<t color='#ff0066'>Armory 1 (VAS)</t>","VAS\open.sqf", "", 0, true, true, "", "_this == player"];};
+	if (support_armory_available) then {hq_player addaction ["<t color='#ff0066'>Armory 2 (VA)</t>","va.sqf", "", 0, true, true, "", "_this == player"];};
+	if (support_halo_available) then {hq_player addAction ["<t color='#15ff00'>HALO Alone (5CP)</t>", "ATM_airdrop\atm_airdrop.sqf", "", 0, true, true, "", "_this == player"];};
+	if (support_halo_available) then {hq_player addAction ["<t color='#15ff00'>HALO Group (5CP)</t>", "COB_HALO\grphalo.sqf", "", 0, true, true, "", "_this == player"];};
 	
 	if (support_armory_available) then {_x addaction ["<t color='#ff0066'>Armory 1 (VAS)</t>","VAS\open.sqf", "", 0, true, true, "", "_this == player"]} forEach (Array_of_FOBS);
 	if (support_armory_available) then {_x addaction ["<t color='#ff0066'>Armory 2 (VA)</t>","va.sqf", "", 0, true, true, "", "_this == player"]} forEach (Array_of_FOBS);
@@ -272,9 +288,9 @@ if ((!isDedicated) || (!isServer)) then {
 	
 		
 	
-	PlayerKilledEH = player addEventHandler ["killed", {commandpointsblu1 = commandpointsblu1 - DUWSMP_CP_death_cost; publicVariable "commandpointsblu1"}];
+	PlayerKilledEH = player addEventHandler ["killed", {commandpoints = commandpoints - DUWSMP_CP_death_cost; publicVariable "commandpoints"}];
 	"support_specialized_training_available" addPublicVariableEventHandler {lbSetColor [2103, 11, [0, 1, 0, 1]];};
-	"commandpointsblu1" addPublicVariableEventHandler {ctrlSetText [1000, format["%1",commandpointsblu1]];}; // change the shown CP for request dialog
+	"commandpoints" addPublicVariableEventHandler {ctrlSetText [1000, format["%1",commandpoints]];}; // change the shown CP for request dialog
 
 	
 	// each time there is a new FOB
@@ -371,11 +387,11 @@ if (!isServer) then { // WHEN CLIENT CONNECTS INIT (might need sleep)
 	waitUntil {HQ_pos_found_generated && time > 0.1};
 	sleep 1;
 //	player setpos [(getpos hq_blu1 select 0),(getpos hq_blu1 select 1)+10];
-	player setpos [(getmarkerpos str blu_hq_markername select 0),(getmarkerpos str blu_hq_markername select 1)+10];
+	player setpos [(getmarkerpos str player_hq_markername select 0),(getmarkerpos str player_hq_markername select 1)+10];
 	_drawicon = [] execVM "inithq\drawIcon.sqf";
 	hintsilent "Waiting for the host to select the campaign parameters...";	
 	waitUntil {chosen_settings};	
-	[hq_blu1] execVM "initHQ\HQaddactions.sqf";
+	[hq_player] execVM "initHQ\HQaddactions.sqf";
 	sleep 1;
 	player setdamage 0;	
 	player allowDamage true;
@@ -463,11 +479,11 @@ if (isMultiplayer) then {
 
 		// CREATE MAIN OBJECTIVE
 		capture_island_obj = player createSimpleTask ["taskIsland"];
-		capture_island_obj setSimpleTaskDescription ["The ennemy is controlling the island, we must take it back! Capture every zone under enemy control and the mission will succeed.<br/>You can let your BLUFOR forces take the island by themselves and help them getting a bigger army by accomplishing side missions. Or you can capture the zones yourself and do all the big work. As the campaign progress, the war will escalate and the armies will get stronger and start to use bigger guns.<br/>To capture a zone, you need to have more units inside the zone than the enemy.<br/><br/>It's up to you on how you want to play this.<br/>Good luck, soldier!","Take the island",""];
+		capture_island_obj setSimpleTaskDescription ["The ennemy is controlling the island, we must take it back! Capture every zone under enemy control and the mission will succeed.<br/>You can let your forces take the island by themselves and help them getting a bigger army by accomplishing side missions. Or you can capture the zones yourself and do all the big work. As the campaign progress, the war will escalate and the armies will get stronger and start to use bigger guns.<br/>To capture a zone, you need to have more units inside the zone than the enemy.<br/><br/>It's up to you on how you want to play this.<br/>Good luck, soldier!","Take the island",""];
 
 		// WAIT UNTIL ALL ZONES ARE CAPTURED
 		waitUntil {sleep 1; amount_zones_created > 0};
-		waitUntil {sleep 3; (zoneundercontrolblu >= amount_zones_created);}; // Toutes les zones sont captures
+		waitUntil {sleep 3; (zoneundercontrolplayer >= amount_zones_created);}; // Toutes les zones sont captures
 		persistent_stat_script_win = [] execVM "persistent\persistent_stats_win.sqf";
 		["TaskSucceeded",["","Island captured!"]] call bis_fnc_showNotification;
 		capture_island_obj setTaskState "Succeeded";
@@ -489,9 +505,9 @@ _scriptExec = [] execVM "Squads\512functions.sqf";
 waitUntil {scriptDone _scriptExec};
 
 if (zones_manually_placed) then {
-waitUntil {!isNil ("Array_of_OPFOR_zones")};
+waitUntil {!isNil ("Array_of_ENEMY_zones")};
 sleep 1;
-_warcom_init = [Array_of_OPFOR_zones, getpos hq_blu1, [0,0,0], blufor_ap, opfor_ap, 60,blufor_ai_skill,opfor_ai_skill, 60] execVM "WARCOM\WARCOM_init.sqf";
+_warcom_init = [Array_of_ENEMY_zones, getpos hq_player, [0,0,0], blufor_ap, opfor_ap, 60,blufor_ai_skill,opfor_ai_skill, 60] execVM "WARCOM\WARCOM_init.sqf";
 };
 
 
@@ -542,7 +558,7 @@ BOMBCODE1 = [];
 
 waitUntil {!isNil "hq_blu1"};
 waitUntil {!isNil "protect_officer"};
-hq_blu1 addeventhandler ["firednear", {_this call protect_officer}];
+hq_player addeventhandler ["firednear", {_this call protect_officer}];
 execVM "grenadeStop.sqf";
 
 

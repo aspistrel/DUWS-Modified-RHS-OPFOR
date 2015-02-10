@@ -3,9 +3,9 @@ _actionID = _this select 2;
 _object = _this select 0;
 aliveAllUnits = {alive _x} count allunits;
 
-if (commandpointsblu1 < 4) exitWith {hint "You don't have enough Command Points"};
-commandpointsblu1 = commandpointsblu1 - 4;
-publicvariable "commandpointsblu1";
+if (commandpoints < 4) exitWith {hint "You don't have enough Command Points"};
+commandpoints = commandpoints - 4;
+publicvariable "commandpoints";
 
 
 if ((Warcom_Limiter_Param == 1) && (aliveAllUnits>130)) exitWith {hint "*DUWS AI Limiter is ENABLED!*\n\nTry Fortifying again when there are less than 130 AI units on the map"};
@@ -13,7 +13,7 @@ if ((Warcom_Limiter_Param == 1) && (aliveAllUnits>130)) exitWith {hint "*DUWS AI
 _object removeAction _actionID;
 playSound "loadgun";
 
-_groupGuard = createGroup WEST;
+_groupGuard = createGroup PlayableSide;
 
 // AA on the roof
 _aapod = createVehicle ["B_static_AA_F", [0,0,0], [], 0, "NONE"];

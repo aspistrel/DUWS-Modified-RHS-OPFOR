@@ -1,18 +1,28 @@
 _index = lbCurSel 2120;
 
-_skill = (blufor_ai_skill select 0)+0.2;
-_skillSF = (blufor_ai_skill select 0)+0.5;
+if(PlayableSide == west) then
+{
+    _skill = (blufor_ai_skill select 0)+0.2;
+    _skillSF = (blufor_ai_skill select 0)+0.5;
+}
+
+if(PlayableSide == east) then
+{
+    _skill = (opfor_ai_skill select 0)+0.2;
+    _skillSF = (opfor_ai_skill select 0)+0.5;
+}
+
 _spawnpos = [(getpos player select 0)-78, (getpos player select 1)-73.5];
 
 switch (_index) do
 {
     case 0:  
     {
-         if (commandpointsblu1 >= 2) then 
+         if (commandpoints >= 2) then 
              {
                hint "Unit ready !";
-               commandpointsblu1 = commandpointsblu1 - 2;
-               ctrlSetText [1000, format["%1",commandpointsblu1]];
+               commandpoints = commandpoints - 2;
+               ctrlSetText [1000, format["%1",commandpoints]];
                _group = group player ;
                "rhsusf_army_ocp_rifleman" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execvm 'ais_injury\init_ais.sqf'}; if (player_fatigue == 0) then {this enablefatigue false};", _skill, "private"] ;
              } 
@@ -24,11 +34,11 @@ switch (_index) do
 
     case 1:
     {
-         if (commandpointsblu1 >= 4) then 
+         if (commandpoints >= 4) then 
              {
                hint "Unit ready !";
-               commandpointsblu1 = commandpointsblu1 - 4;
-               ctrlSetText [1000, format["%1",commandpointsblu1]];
+               commandpoints = commandpoints - 4;
+               ctrlSetText [1000, format["%1",commandpoints]];
                _group = group player ;
                "rhsusf_army_ocp_medic" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execvm 'ais_injury\init_ais.sqf'}; if (player_fatigue == 0) then {this enablefatigue false};", _skill, "private"] ;
              } 
@@ -40,11 +50,11 @@ switch (_index) do
 
     case 2:
     {
-         if (commandpointsblu1 >= 4) then 
+         if (commandpoints >= 4) then 
              {
                hint "Unit ready !";
-               commandpointsblu1 = commandpointsblu1 - 4;
-               ctrlSetText [1000, format["%1",commandpointsblu1]];
+               commandpoints = commandpoints - 4;
+               ctrlSetText [1000, format["%1",commandpoints]];
                _group = group player ;
                "rhsusf_army_ocp_engineer" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execvm 'ais_injury\init_ais.sqf'}; if (player_fatigue == 0) then {this enablefatigue false};", _skill, "private"] ;
              } 
@@ -57,6 +67,6 @@ switch (_index) do
 };
 
 //hint format["AI skill: %1",_skill];            
-publicVariable "commandpointsblu1";
+publicVariable "commandpoints";
 
 //hint format["index: %1",_index];

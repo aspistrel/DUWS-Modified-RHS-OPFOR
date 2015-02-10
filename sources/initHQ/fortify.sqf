@@ -1,6 +1,6 @@
 _centerPos = _this select 0;
 
-_groupGuard = createGroup WEST;
+_groupGuard = createGroup PlayableSide;
 
 // AA on the roof
 _aapod = createVehicle ["B_static_AA_F", [0,0,0], [], 0, "NONE"];

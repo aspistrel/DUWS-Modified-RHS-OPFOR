@@ -2,18 +2,18 @@ _target = _this select 0;
 
 _lz = getpos _target;
 
-if (commandpointsblu1<24) exitWith  
+if (commandpoints<24) exitWith  
 {
   ["info",["Not enough command points","Not enough Command Points (25CP required)"]] call bis_fnc_showNotification;
 };
-commandpointsblu1 = commandpointsblu1 - 24;
-publicVariable "commandpointsblu1";
+commandpoints = commandpoints - 24;
+publicVariable "commandpoints";
 
 hint "Reinforcements ETA: 1 minute";
 sleep 60;
 hint "Paratroopers deployed";
 
-_group = creategroup WEST;
+_group = creategroup PlayableSide;
 _radius = 130;
 
 _parachute1 = "Steerable_Parachute_F" CreateVehicle _lz;  

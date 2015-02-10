@@ -1,7 +1,7 @@
 _centerPos = _this select 0;
 
 // Create the guards
-_groupGuard = createGroup WEST;
+_groupGuard = createGroup PlayableSide;
 _HQguard1 = _groupGuard createUnit ["rhsusf_army_ocp_rifleman", _centerPos, [], 0, "FORM"]; 
 _HQguard1 setpos [(_centerPos select 0)-6.5, (_centerPos select 1)-1.6];
 _HQguard1 setdir 270;
@@ -16,7 +16,7 @@ _HQguard2 setdir 270;
 
 
 // patrolling guard
-_groupPatrol = createGroup WEST;
+_groupPatrol = createGroup PlayableSide;
 _HQguard5 = _groupPatrol createUnit ["rhsusf_army_ocp_grenadier", _centerPos, [], 0, "FORM"]; 
 _HQguard5 setpos [(_centerPos select 0)+10, (_centerPos select 1)+10];
 

@@ -2,18 +2,27 @@ _index = lbCurSel 2103;
 AttChopInUse = true;
 
 
-_spawnPos = getmarkerpos str blu_hq_markername;
+_spawnPos = getmarkerpos str player_hq_markername;
 _spawnPos = [(_spawnPos select 0)+250, _spawnPos select 1, (_spawnPos select 2)+200];    
 _cost = 5;
 _grouptype = ["RHS_AH64D_wd"];
 
+if(PlayableSide == west) then
+{
+    _currentAiSkill = blufor_ai_skill;
+}
+
+if(PlayableSide == east) then
+{
+    _currentAiSkill = opfor_ai_skill;
+}
 	
-         if (commandpointsblu1 >= _cost) then 
+         if (commandpoints >= _cost) then
              {
-              _group = [_spawnPos, WEST, _grouptype, [], [], blufor_ai_skill] call BIS_fnc_spawnGroup; 
+              _group = [_spawnPos, PlayableSide, _grouptype, [], [], _currentAiSkill] call BIS_fnc_spawnGroup;
               player hcsetgroup [_group,""];
-              commandpointsblu1 = commandpointsblu1 - _cost;
-              ctrlSetText [1000, format["%1",commandpointsblu1]];
+              commandpoints = commandpoints - _cost;
+              ctrlSetText [1000, format["%1",commandpoints]];
 			  DUWS_number_attackchopa = DUWS_number_attackchopa + 1;
 			  _group setGroupId [format["Air attack squad %1",DUWS_number_attackchopa]];
               hint "Squad ready !\nAccess it with [L.CTRL - SPACE]";
@@ -34,4 +43,4 @@ AttChopInUse = false;
 
 
 
-publicVariable "commandpointsblu1";
+publicVariable "commandpoints";

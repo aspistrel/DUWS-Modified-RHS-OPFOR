@@ -6,7 +6,7 @@
 //                   visit us : atmarma.fr                 //
 /////////////////////////////////////////////////////////
 
-if (commandpointsblu1<5) exitWith  
+if (commandpoints<5) exitWith
 {
   ["info",["Not enough command points","Not enough Command Points (5CP required)"]] call bis_fnc_showNotification;
 };
@@ -52,7 +52,7 @@ else {Jump=true};
 	"mkr_halo" setMarkerTextLocal "Jump";'];
 	};
 	
-commandpointsblu1 = commandpointsblu1 - 5;
+commandpoints = commandpoints - 5;
 
 	_target = player;
 	

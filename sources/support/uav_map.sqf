@@ -1,8 +1,8 @@
 _centerPos = _this select 0;
 _checkedRadius = _this select 1;
 
-commandpointsblu1 = commandpointsblu1 - 3;
-publicVariable "commandpointsblu1";
+commandpoints = commandpoints - 3;
+publicVariable "commandpoints";
 
 // CREATE MARKER FOR CHECKED SIZE
 _markername = format["%1%2vc",round(_centerPos select 0),round(_centerPos select 1)]; // Define marker name
@@ -25,7 +25,18 @@ PAPABEAR SideChat "We've sent the last known location of the enemy to your map. 
 // CREATE TRIGGER
 _trg=createTrigger["EmptyDetector",_centerPos];
 _trg setTriggerArea[_checkedRadius,_checkedRadius,0,false];
-_trg setTriggerActivation["EAST","PRESENT",false];
+
+if(PlayableSide == west) then
+{
+    _trg setTriggerActivation["EAST","PRESENT",false];
+}
+
+if(PlayableSide == east) then
+{
+    _trg setTriggerActivation["WEST","PRESENT",false];
+}
+
+
 _trg setTriggerStatements["this","", ""];
 _trg setTriggerTimeout [0, 0, 0, true ];  
 sleep 1;
@@ -61,7 +72,18 @@ str(_markername2) setMarkerAlpha 1;
 // CREATE TRIGGER
 _trgwest=createTrigger["EmptyDetector",_centerPos];
 _trgwest setTriggerArea[_checkedRadius,_checkedRadius,0,false];
-_trgwest setTriggerActivation["WEST","PRESENT",false];
+
+if(PlayableSide == west) then
+{
+    _trgwest setTriggerActivation["WEST","PRESENT",false];
+}
+
+if(PlayableSide == east) then
+{
+    _trgwest setTriggerActivation["EAST","PRESENT",false];
+}
+
+
 _trgwest setTriggerStatements["this","", ""];
 _trgwest setTriggerTimeout [0, 0, 0, true ];  
 sleep 1;

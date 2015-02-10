@@ -27,7 +27,9 @@ WARCOM_qrf_ready = true;
 WARCOM_blu_ai_skill_range = _blu_ai_skill_range;  // !! IS USING blufor_ai_skill INSTEAD
 WARCOM_opf_ai_skill_range = _opfor_ai_skill;
 WARCOM_opf_attack_delay = _opfor_assault_delay;
+
 publicVariable "WARCOM_blufor_ap";
+publicVariable "WARCOM_opfor_ap";
 
 // SORT ARRAY OF OPFOR ZONES ACCORDING TO DISTANCE FROM BLUHQ 
 WARCOM_createdZones = [_array_of_zones_total,[WARCOM_blu_hq_pos],{_input0 distance _x},"ASCEND"] call BIS_fnc_sortBy;

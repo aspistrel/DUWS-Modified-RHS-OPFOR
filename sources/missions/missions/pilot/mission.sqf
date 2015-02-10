@@ -1,5 +1,5 @@
 _MissionPos = _this select 0;
-_initpos = getpos hq_blu1;
+_initpos = getpos hq_player;
 // define random pos AROUND TARGET. spawn markers at random.
 _radius = 175;
 _randompos = [(_missionpos select 0)+(random _radius)-(random _radius), (_missionpos select 1)+(random _radius)-(random _radius)];
@@ -90,8 +90,8 @@ publicvariable "finishedMissionsNumber";
 ["TaskSucceeded",["",_mission_name]] call bis_fnc_showNotification;
 ["cpaddedmission",[20]] call bis_fnc_showNotification;
 WARCOM_blufor_ap = WARCOM_blufor_ap + 20;
-commandpointsblu1 = commandpointsblu1 + 20;
-publicVariable "commandpointsblu1";
+commandpoints = commandpoints + 20;
+publicVariable "commandpoints";
 publicVariable "WARCOM_blufor_ap";
 missions_success = missions_success + 1;
 _operHandler = []execVM "dialog\operative\operative_mission_complete.sqf"; 

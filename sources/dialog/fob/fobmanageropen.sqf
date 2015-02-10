@@ -31,7 +31,7 @@ _listFT = _listFT + [_array_of_fobs_list_selected];
 
 // add the base and mtv
 //_hqpos = getpos hq_blu1;
-_hqpos = getmarkerpos str blu_hq_markername;
+_hqpos = getmarkerpos str player_hq_markername;
 _listFT = _listFT + [[_hqpos,"Main base"]];
 
 

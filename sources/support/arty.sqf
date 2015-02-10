@@ -21,8 +21,8 @@ hint "Coordinates received, splash in 30 seconds";
 
 
 
-commandpointsblu1 = commandpointsblu1 - _cost;
-publicVariable "commandpointsblu1";
+commandpoints = commandpoints - _cost;
+publicVariable "commandpoints";
 
 sleep 30;
 

@@ -61,13 +61,13 @@ player removeSimpleTask _taskhandle;
 // Give cookies  (bonus & notifications)
 ["TaskSucceeded",["",_mission_name]] call bis_fnc_showNotification;
 ["cpaddedmission",[30]] call bis_fnc_showNotification;
-commandpointsblu1 = commandpointsblu1 + 30;
+commandpoints = commandpoints + 30;
 missions_success = missions_success + 1;
 WARCOM_blufor_ap = WARCOM_blufor_ap + 30;
 opfor_ap = opfor_ap - 30;
 finishedMissionsNumber = finishedMissionsNumber + 1;
 publicvariable "finishedMissionsNumber";
-publicVariable "commandpointsblu1";
+publicVariable "commandpoints";
 publicVariable "WARCOM_blufor_ap";
 _operHandler = []execVM "dialog\operative\operative_mission_complete.sqf"; 
 

@@ -3,19 +3,75 @@ _index = lbCurSel 2101;
 _spawnPos = getpos player;
 _spawnPos = [(_spawnPos select 0)+25, _spawnPos select 1];
 
+SpawnRequestSquad = {
+
+    private ["_currentIndex"];
+    _currentIndex = select 0;
+    _pos = select 1;
+
+    if(_aiBoosted) then
+    {
+        _aiSkill = [0.9,1];
+    };
+
+    if(PlayableSide == west) then
+    {
+        _currentAiSkill = blufor_ai_skill;
+    }
+
+    if(PlayableSide == east) then
+    {
+        _currentAiSkill = opfor_ai_skill;
+    }
+
+    _cost = (RequestCost select _currentIndex);
+    _side = PlayableSide;
+    _grouptype = (RequestGroups select _currentIndex);
+    _name = ((RequestNames select _currentIndex) select 0);
+
+    _grouptype = _type;
+    if (commandpoints >= _cost) then
+    {
+        _group = [_pos, _side, _grouptype, [], [], _aiSkill] call BIS_fnc_spawnGroup;
+        player hcsetgroup [_group,""];
+        commandpoints = commandpoints - _cost;
+        ctrlSetText [1000, format["%1",commandpoints]];
+
+        RequestNames set [_currentIndex, [_name, ((RequestNames select _currentIndex) select 0)+1];
+
+        _newNumber = ((RequestNames select _currentIndex) select 1);
+
+        _group setGroupId [format[_name+" %1",_newNumber]];
+        hint "Squad ready !\nAccess it with [L.CTRL - SPACE]";
+    }
+    else
+    {
+        hint "Not enough command points";
+    };
+
+};
+
+[_index, _spawnPos] call SpawnRequestSquad;
+
+publicVariable "commandpoints";
 
 
+
+
+
+/*
+// Oh, are you serious? Switch-case??
   switch (_index) do
 {
     case 0:  
     {
     _cost = 8;
     _grouptype = (configfile >> "CfgGroups" >> "West" >> "rhs_faction_usarmy_wd" >> "rhs_group_nato_usarmy_wd_infantry" >> "rhs_group_nato_usarmy_wd_infantry_team");
-         if (commandpointsblu1 >= _cost) then 
+         if (commandpoints >= _cost) then
              {
-              _group = [_spawnPos, WEST, _grouptype, [], [], blufor_ai_skill] call BIS_fnc_spawnGroup;
+              _group = [_spawnPos, PlayableSide, _grouptype, [], [], _currentAiSkill] call BIS_fnc_spawnGroup;
               player hcsetgroup [_group,""];
-              commandpointsblu1 = commandpointsblu1 - _cost;
+              commandpoints = commandpoints - _cost;
               ctrlSetText [1000, format["%1",commandpointsblu1]];
 			  DUWS_number_fireteam = DUWS_number_fireteam + 1;
 			  _group setGroupId [format["Fireteam %1",DUWS_number_fireteam]];
@@ -294,6 +350,4 @@ _spawnPos = [(_spawnPos select 0)+25, _spawnPos select 1];
 
 
 };
-
-
-publicVariable "commandpointsblu1";
+*/

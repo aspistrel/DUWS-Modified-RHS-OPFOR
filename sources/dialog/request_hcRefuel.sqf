@@ -5,13 +5,22 @@ _spawnPos = [(_spawnPos select 0)+25, _spawnPos select 1];
 _cost = 2;
 _grouptype = ["B_G_Van_01_fuel_F"];
 
+if(PlayableSide == west) then
+{
+    _currentAiSkill = blufor_ai_skill;
+}
+
+if(PlayableSide == east) then
+{
+    _currentAiSkill = opfor_ai_skill;
+}
 	
-         if (commandpointsblu1 >= _cost) then 
+         if (commandpoints >= _cost) then
              {
-              _group = [_spawnPos, WEST, _grouptype, [], [], blufor_ai_skill] call BIS_fnc_spawnGroup; 
+              _group = [_spawnPos, PlayableSide, _grouptype, [], [], _currentAiSkill] call BIS_fnc_spawnGroup;
               player hcsetgroup [_group,""];
-              commandpointsblu1 = commandpointsblu1 - _cost;
-              ctrlSetText [1000, format["%1",commandpointsblu1]];
+              commandpoints = commandpoints - _cost;
+              ctrlSetText [1000, format["%1",commandpoints]];
 			  DUWS_number_refuela = DUWS_number_refuela + 1;
 			  _group setGroupId [format["Fuel Team %1",DUWS_number_refuela]];
               hint "Squad ready !\nAccess it with [L.CTRL - SPACE]";
@@ -31,4 +40,4 @@ hcREFUEL = _hcREFUEL;
 
 
 
-publicVariable "commandpointsblu1";
+publicVariable "commandpoints";

@@ -29,7 +29,7 @@ _soldier1 = format ["s1%1%2",round(_MissionPos select 0),round(_Missionpos selec
 _soldier2 = format ["s2%1%2",round(_MissionPos select 0),round(_Missionpos select 1)];    
 _soldier3 = format ["s3%1%2",round(_MissionPos select 0),round(_Missionpos select 1)];    
 
-_group = createGroup west;
+_group = createGroup PlayableSide;
 
 "rhsusf_army_ocp_teamleader" createUnit [[(_missionpos select 0)+(random 10),(_missionpos select 1)+(random 10)], _group,format["this setcaptive true; this switchMove ""acts_InjuredCoughRifle02""; %1 = this",_soldier1]];
 "rhsusf_army_ocp_rifleman" createUnit [[(_missionpos select 0),(_missionpos select 1)], _group,format["this setcaptive true; this switchMove ""acts_InjuredLookingRifle02""; %1 = this",_soldier2]];
@@ -54,7 +54,16 @@ call compile format ["%1 = _taskhandle",_VARtaskgeneratedName]; // create variab
 // CREATE TRIGGER ZONES
 _trg=createTrigger["EmptyDetector",_MissionPos];
 _trg setTriggerArea[25,25,0,false];
-_trg setTriggerActivation["WEST","PRESENT",false];
+if(PlayableSide == west) then
+{
+    _trg setTriggerActivation["WEST","PRESENT",false];
+}
+
+if(PlayableSide == east) then
+{
+    _trg setTriggerActivation["EAST","PRESENT",false];
+}
+
 _trg setTriggerStatements["this",format["['%1',%2,%3,%4,%5,'%6',this]execvm 'missions\missions\rescue\success.sqf'",_markername,_soldier1,_soldier2,_soldier3,_MissionPos,_markername2], ""];
 _trg setTriggerTimeout [10, 10, 10, true ];  
 

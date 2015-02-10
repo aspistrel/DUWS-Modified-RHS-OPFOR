@@ -1,5 +1,5 @@
 _hqblu = _this select 0;
-blu_hq_created = true;
+hq_created = true;
 
 
 PosOfBLUHQ = _hqblu;
@@ -19,7 +19,7 @@ _markerstr setMarkerShape "ICON";
 str(_markername) setMarkerType "mil_flag";
 str(_markername) setMarkerColor "ColorBlue";
 str(_markername) setMarkerText "Main base";
-blu_hq_markername = _markername; publicVariable "blu_hq_markername";
+player_hq_markername = _markername; publicVariable "player_hq_markername";
 
 // make HQ zone notification trigger
 _trg5=createTrigger["EmptyDetector",_hqblu];
@@ -37,25 +37,25 @@ _trgWarning setTriggerStatements["this","[]execVM 'warninghq.sqf'", ""];
 
 
 // CREATE THE OFFICER
-_group = createGroup west;
-_hq = _group createUnit ["rhsusf_army_ocp_squadleader",(getmarkerpos str(blu_hq_markername)), [], 0, "FORM"];
+_group = createGroup PlayableSide;
+_hq = _group createUnit ["rhsusf_army_ocp_squadleader",(getmarkerpos str(player_hq_markername)), [], 0, "FORM"];
 sleep 0.2;
 _hq setformdir 240;
 sleep 1;
 _hq disableAI "MOVE";
-hq_blu1 = _hq;
-publicVariable "hq_blu1";
+hq_player = _hq;
+publicVariable "hq_player";
 _hq setpos [_hqblu select 0, _hqblu select 1, .59];
-_handle = [hq_blu1] execVM "initHQ\HQaddactions.sqf";
+_handle = [hq_player] execVM "initHQ\HQaddactions.sqf";
 removeallweapons _hq;
 _handle = [_hq] execVM "sounds\radiochatter.sqf";
 
 
 //GUARDS
-_handle = [getpos hq_blu1] execVM "initHQ\guards.sqf";
+_handle = [getpos hq_player] execVM "initHQ\guards.sqf";
 
 //STATIC DEFENSES
-_handle = [getpos hq_blu1] execVM "initHQ\fortify.sqf";
+_handle = [getpos hq_player] execVM "initHQ\fortify.sqf";
 
 
 // IF THE OFFICER IS DEAD -- BEGIN OF "SPAWN"
@@ -72,8 +72,19 @@ _handle = [getpos hq_blu1] execVM "initHQ\fortify.sqf";
 		[[{hint "Your HQ Officer has been killed!\n\nRESPAWN: OFF\n\nYou must now take the island without the help of your commander. The mission will end in failure if all players are killed!"}],"BIS_fnc_Spawn",true,true] call BIS_fnc_MP;
 		officedead = true; publicvariable "officedead";
 		// MODIFY ARMY POWER
-		WARCOM_opfor_ap = WARCOM_opfor_ap + 50;
-		WARCOM_blufor_ap = WARCOM_blufor_ap - 50;
+
+		if(PlayableSide == west) then
+        {
+            WARCOM_opfor_ap = WARCOM_opfor_ap + 50;
+            WARCOM_blufor_ap = WARCOM_blufor_ap - 50;
+        }
+
+        if(PlayableSide == east) then
+        {
+            WARCOM_opfor_ap = WARCOM_opfor_ap - 50;
+            WARCOM_blufor_ap = WARCOM_blufor_ap + 50;
+        }
+
 		publicVariable "WARCOM_blufor_ap";
 		publicVariable "WARCOM_opfor_ap";
 		[[[],"spectate.sqf"],"BIS_fnc_execVM",true,true ] call BIS_fnc_MP;
@@ -93,7 +104,15 @@ player setdir 110;
 
 
 //////// HQ GENERATED /////
-"respawn_west" setMarkerPos _hqblu;
+if(PlayableSide == west) then
+{
+    "respawn_west" setMarkerPos _hqblu;
+}
+
+if(PlayableSide == east) then
+{
+    "respawn_east" setMarkerPos _hqblu;
+}
 sleep 0.1;
 
 

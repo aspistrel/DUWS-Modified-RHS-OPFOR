@@ -43,7 +43,17 @@ str(_markername2) setMarkerAlpha 0.1;
 // CREATE ZONE CAPTURABLE TRIGGER
 _trg=createTrigger["EmptyDetector",_trigger];
 _trg setTriggerArea[_size,_size,0,false];
-_trg setTriggerActivation["WEST SEIZED","PRESENT",false];
+
+if(PlayableSide == west) then
+{
+    _trg setTriggerActivation["WEST SEIZED","PRESENT",false];
+}
+
+if(PlayableSide == east) then
+{
+    _trg setTriggerActivation["EAST SEIZED","PRESENT",false];
+}
+
 //_trg setTriggerActivation["WEST","PRESENT",false];
 _trg setTriggerStatements["this", format["[""%1"",%2,""%3"",""%4"",%5] execvm 'captured.sqf'",_place,_points,_markername,_markername2,_trigger], ""];
 _trg setTriggerTimeout [30, 60, 300, true ];

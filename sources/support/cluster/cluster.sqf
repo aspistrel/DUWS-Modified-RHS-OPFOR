@@ -19,8 +19,8 @@ _rpsinit = _rps;
 
 //hint format["Position: %1\nSalvos:%2\nRadius:%3\nInterval:%4\nRPS:%5\nSupport type:%6\nCost:%7\nAmmo type:%8", _position, _salvos, _radius, _interval, _rps,_supportype,_cost,_ammotype];
 
-commandpointsblu1 = commandpointsblu1 - _cost;
-publicVariable "commandpointsblu1";
+commandpoints = commandpoints - _cost;
+publicVariable "commandpoints";
 
 hint "Coordinates received !";
 
