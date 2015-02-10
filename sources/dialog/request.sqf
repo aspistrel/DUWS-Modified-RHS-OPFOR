@@ -8,12 +8,12 @@
   if(PlayableSide == west) then
   {
       ctrlSetText [1002, format["%1",WARCOM_blufor_ap]];
-  }
+  };
 
   if(PlayableSide == east) then
   {
       ctrlSetText [1002, format["%1",WARCOM_opfor_ap]];
-  }
+  };
 
   //ctrlSetText [1002, format["%1",WARCOM_blufor_ap]];
   //ctrlSetText [1002, format["%1",WARCOM_opfor_ap]];

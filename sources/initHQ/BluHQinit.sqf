@@ -107,12 +107,12 @@ player setdir 110;
 if(PlayableSide == west) then
 {
     "respawn_west" setMarkerPos _hqblu;
-}
+};
 
 if(PlayableSide == east) then
 {
     "respawn_east" setMarkerPos _hqblu;
-}
+};
 sleep 0.1;
 
 
