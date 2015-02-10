@@ -233,7 +233,7 @@ if (isMultiplayer) then {
 	UseSiren = paramsArray select 9;
 	MisEndCond = paramsArray select 10;
 
-	PlayableSide = east; //east - opfor, west - blufor
+	PlayableSide = west; //east - opfor, west - blufor
 
 	if(PlayableSide == west) then
     {
