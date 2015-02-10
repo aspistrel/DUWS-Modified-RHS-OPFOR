@@ -4,9 +4,9 @@ RscSpectator_allowFreeCam = true; // Free cam
 RscSpectator_hints = [true,true,true]; // Shows the controls as hint
     
 setPlayerRespawnTime 9999;
-str blu_hq_markername setMarkerColor "ColorOrange";
-str blu_hq_markername setMarkerText "Main base **OFFICER KILLED**";
-//blu_hq_markername = _markername; publicVariable "blu_hq_markername";
+str player_hq_markername setMarkerColor "ColorOrange";
+str player_hq_markername setMarkerText "Main base **OFFICER KILLED**";
+//player_hq_markername = _markername; publicVariable "player_hq_markername";
 
 waitUntil {sleep 3;!alive player};
 

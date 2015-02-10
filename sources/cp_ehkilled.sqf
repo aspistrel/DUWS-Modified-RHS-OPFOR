@@ -20,6 +20,6 @@ if (isServer or isDedicated) then {
 			}; 
 		} foreach allUnits;
 
-		{_x addEventHandler ["killed", {commandpointsblu1 = commandpointsblu1 + 0.5; publicVariable "commandpointsblu1"}]} forEach east_units; 
+		{_x addEventHandler ["killed", {commandpoints = commandpoints + 0.5; publicVariable "commandpoints"}]} forEach east_units;
 	};
 };

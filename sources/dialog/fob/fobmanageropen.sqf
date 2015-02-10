@@ -30,7 +30,7 @@ _listFT = _listFT + [_array_of_fobs_list_selected];
 //// CREATE THE ARRAY OF FOBS w/ POSITION -- END
 
 // add the base and mtv
-//_hqpos = getpos hq_blu1;
+//_hqpos = getpos hq_player;
 _hqpos = getmarkerpos str player_hq_markername;
 _listFT = _listFT + [[_hqpos,"Main base"]];
 

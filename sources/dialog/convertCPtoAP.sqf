@@ -17,7 +17,7 @@ if(PlayableSide == east) then
 
 
 
-publicVariable "commandpointsblu1";
+publicVariable "commandpoints";
 publicVariable "WARCOM_blufor_ap";
 publicVariable "WARCOM_opfor_ap";
 

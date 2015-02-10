@@ -31,13 +31,13 @@ publicVariable "WARCOM_zones_controled_by_OPFOR";
 // ADD POINTS
 if (isServer) then {
 _points = round(_points/3);
-commandpointsblu1 = commandpointsblu1 + _points;
-publicVariable "commandpointsblu1";
+commandpoints = commandpoints + _points;
+publicVariable "commandpoints";
 };
 
 // ADD NUMBER OF CONTROLLED ZONES
-zoneundercontrolblu = zoneundercontrolblu + 1;
-publicVariable "zoneundercontrolblu";
+zoneundercontrolplayer = zoneundercontrolplayer + 1;
+publicVariable "zoneundercontrolplayer";
 
 // MODIFY ARMY POWER
 WARCOM_opfor_ap = WARCOM_opfor_ap - (_points/2);

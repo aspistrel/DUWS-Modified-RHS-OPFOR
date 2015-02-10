@@ -72,7 +72,7 @@ publicVariable "commandpoints";
               _group = [_spawnPos, PlayableSide, _grouptype, [], [], _currentAiSkill] call BIS_fnc_spawnGroup;
               player hcsetgroup [_group,""];
               commandpoints = commandpoints - _cost;
-              ctrlSetText [1000, format["%1",commandpointsblu1]];
+              ctrlSetText [1000, format["%1",commandpoints]];
 			  DUWS_number_fireteam = DUWS_number_fireteam + 1;
 			  _group setGroupId [format["Fireteam %1",DUWS_number_fireteam]];
               hint "Squad ready !\nAccess it with [L.CTRL - SPACE]";
@@ -87,12 +87,12 @@ publicVariable "commandpoints";
     {
     _cost = 16;
     _grouptype = (configfile >> "CfgGroups" >> "West" >> "rhs_faction_usarmy_wd" >> "rhs_group_nato_usarmy_wd_infantry" >> "rhs_group_nato_usarmy_wd_infantry_squad");
-         if (commandpointsblu1 >= _cost) then 
+         if (commandpoints >= _cost) then
              {
               _group = [_spawnPos, WEST, _grouptype, [], [], blufor_ai_skill] call BIS_fnc_spawnGroup;
               player hcsetgroup [_group,""];
-              commandpointsblu1 = commandpointsblu1 - _cost;
-              ctrlSetText [1000, format["%1",commandpointsblu1]];
+              commandpoints = commandpoints - _cost;
+              ctrlSetText [1000, format["%1",commandpoints]];
 			  DUWS_number_riflesquad = DUWS_number_riflesquad + 1;
 			  _group setGroupId [format["Rifle squad %1",DUWS_number_riflesquad]];
               hint "Squad ready !\nAccess it with [L.CTRL - SPACE]";
@@ -107,12 +107,12 @@ publicVariable "commandpoints";
     {
     _cost = 18;
     _grouptype = (configfile >> "CfgGroups" >> "West" >> "rhs_faction_usarmy_wd" >> "rhs_group_nato_usarmy_wd_infantry" >> "rhs_group_nato_usarmy_wd_infantry_weaponsquad");
-         if (commandpointsblu1 >= _cost) then 
+         if (commandpoints >= _cost) then
              {
               _group = [_spawnPos, WEST, _grouptype, [], [], blufor_ai_skill] call BIS_fnc_spawnGroup;
               player hcsetgroup [_group,""];
-              commandpointsblu1 = commandpointsblu1 - _cost;
-              ctrlSetText [1000, format["%1",commandpointsblu1]];
+              commandpoints = commandpoints - _cost;
+              ctrlSetText [1000, format["%1",commandpoints]];
 			  DUWS_number_weaponsquad = DUWS_number_weaponsquad + 1;
 			  _group setGroupId [format["Wpns squad %1",DUWS_number_weaponsquad]];
               hint "Squad ready !\nAccess it with [L.CTRL - SPACE]";
@@ -127,12 +127,12 @@ publicVariable "commandpoints";
     {
     _cost = 12;
     _grouptype = (configfile >> "CfgGroups" >> "West" >> "rhs_faction_usarmy_wd" >> "rhs_group_nato_usarmy_wd_infantry" >> "rhs_group_nato_usarmy_wd_infantry_team_heavy_AT");
-         if (commandpointsblu1 >= _cost) then 
+         if (commandpoints >= _cost) then
              {
               _group = [_spawnPos, WEST, _grouptype, [], [], blufor_ai_skill] call BIS_fnc_spawnGroup;
               player hcsetgroup [_group,""];
-              commandpointsblu1 = commandpointsblu1 - _cost;
-              ctrlSetText [1000, format["%1",commandpointsblu1]];
+              commandpoints = commandpoints - _cost;
+              ctrlSetText [1000, format["%1",commandpoints]];
 			  DUWS_number_at = DUWS_number_at + 1;
 			  _group setGroupId [format["AT team %1",DUWS_number_at]];
               hint "Squad ready !\nAccess it with [L.CTRL - SPACE]";
@@ -147,12 +147,12 @@ publicVariable "commandpoints";
     {
     _cost = 15;
     _grouptype = (configfile >> "CfgGroups" >> "West" >> "rhs_faction_usarmy_wd" >> "rhs_group_nato_usarmy_wd_infantry" >> "rhs_group_nato_usarmy_wd_infantry_team_AA");
-         if (commandpointsblu1 >= _cost) then 
+         if (commandpoints >= _cost) then
              {
               _group = [_spawnPos, WEST, _grouptype, [], [], blufor_ai_skill] call BIS_fnc_spawnGroup;
               player hcsetgroup [_group,""];
-              commandpointsblu1 = commandpointsblu1 - _cost;
-              ctrlSetText [1000, format["%1",commandpointsblu1]];
+              commandpoints = commandpoints - _cost;
+              ctrlSetText [1000, format["%1",commandpoints]];
 			  DUWS_number_aa = DUWS_number_aa + 1;
 			  _group setGroupId [format["AA team %1",DUWS_number_aa]];
               hint "Squad ready !\nAccess it with [L.CTRL - SPACE]";
@@ -167,12 +167,12 @@ publicVariable "commandpoints";
     {
     _cost = 12;
     _grouptype = (configFile >> "CfgGroups" >> "West" >> "BLU_F" >> "Infantry" >> "BUS_ReconPatrol");
-         if (commandpointsblu1 >= _cost) then 
+         if (commandpoints >= _cost) then
              {
               _group = [_spawnPos, WEST, _grouptype, [], [], [0.9,1]] call BIS_fnc_spawnGroup;  // these have special AI skill range
               player hcsetgroup [_group,""];
-              commandpointsblu1 = commandpointsblu1 - _cost;
-              ctrlSetText [1000, format["%1",commandpointsblu1]];
+              commandpoints = commandpoints - _cost;
+              ctrlSetText [1000, format["%1",commandpoints]];
 			  DUWS_number_sfteam = DUWS_number_sfteam + 1;
 			  _group setGroupId [format["SF team %1",DUWS_number_sfteam]];
               hint "Squad ready !\nAccess it with [L.CTRL - SPACE]";
@@ -188,12 +188,12 @@ publicVariable "commandpoints";
     {
     _cost = 20;
     _grouptype = (configFile >> "CfgGroups" >> "West" >> "BLU_F" >> "Infantry" >> "BUS_ReconTeam");
-         if (commandpointsblu1 >= _cost) then 
+         if (commandpoints >= _cost) then
              {
               _group = [_spawnPos, WEST, _grouptype, [], [], [0.9,1]] call BIS_fnc_spawnGroup;  // these have special AI skill range
               player hcsetgroup [_group,""];
-              commandpointsblu1 = commandpointsblu1 - _cost;
-              ctrlSetText [1000, format["%1",commandpointsblu1]];
+              commandpoints = commandpoints - _cost;
+              ctrlSetText [1000, format["%1",commandpoints]];
 			  DUWS_number_sfsquad = DUWS_number_sfsquad + 1;
 			  _group setGroupId [format["SF squad %1",DUWS_number_sfsquad]];
               hint "Squad ready !\nAccess it with [L.CTRL - SPACE]";
@@ -208,12 +208,12 @@ publicVariable "commandpoints";
     {
     _cost = 12;
     _grouptype = (configFile >> "CfgGroups" >> "West" >> "BLU_F" >> "SpecOps" >> "BUS_DiverTeam");
-         if (commandpointsblu1 >= _cost) then 
+         if (commandpoints >= _cost) then
              {
               _group = [_spawnPos, WEST, _grouptype, [], [], [0.9,1]] call BIS_fnc_spawnGroup;  // these have special AI skill range
               player hcsetgroup [_group,""];
-              commandpointsblu1 = commandpointsblu1 - _cost;
-              ctrlSetText [1000, format["%1",commandpointsblu1]];
+              commandpoints = commandpoints - _cost;
+              ctrlSetText [1000, format["%1",commandpoints]];
 			  DUWS_number_divers = DUWS_number_divers + 1;
 			  _group setGroupId [format["Divers team %1",DUWS_number_divers]];
               hint "Squad ready !\nAccess it with [L.CTRL - SPACE]";
@@ -228,12 +228,12 @@ publicVariable "commandpoints";
     {
     _cost = 8;
     _grouptype = (configFile >> "CfgGroups" >> "West" >> "BLU_F" >> "Infantry" >> "BUS_SniperTeam");
-         if (commandpointsblu1 >= _cost) then 
+         if (commandpoints >= _cost) then
              {
               _group = [_spawnPos, WEST, _grouptype, [], [], [0.9,1]] call BIS_fnc_spawnGroup;  // these have special AI skill range
               player hcsetgroup [_group,""];
-              commandpointsblu1 = commandpointsblu1 - _cost;
-              ctrlSetText [1000, format["%1",commandpointsblu1]];
+              commandpoints = commandpoints - _cost;
+              ctrlSetText [1000, format["%1",commandpoints]];
 			  DUWS_number_sniper = DUWS_number_sniper + 1;
 			  _group setGroupId [format["Sniper team %1",DUWS_number_sniper]];
               hint "Squad ready !\nAccess it with [L.CTRL - SPACE]";
@@ -249,13 +249,13 @@ publicVariable "commandpoints";
     _cost = 10;
     _grouptype = (configFile >> "CfgGroups" >> "West" >> "BLU_F" >> "Support" >> "BUS_Support_CLS");
 	
-         if (commandpointsblu1 >= _cost) then 
+         if (commandpoints >= _cost) then
              {
               _group = [_spawnPos, WEST, _grouptype, [], [], blufor_ai_skill] call BIS_fnc_spawnGroup;
 			  
               player hcsetgroup [_group,""];
-              commandpointsblu1 = commandpointsblu1 - _cost;
-              ctrlSetText [1000, format["%1",commandpointsblu1]];
+              commandpoints = commandpoints - _cost;
+              ctrlSetText [1000, format["%1",commandpoints]];
 			  DUWS_number_medical = DUWS_number_medical + 1;
 			  _group setGroupId [format["Medical team %1",DUWS_number_medical]];
               hint "Squad ready !\nAccess it with [L.CTRL - SPACE]";
@@ -270,12 +270,12 @@ publicVariable "commandpoints";
     {
     _cost = 28;
     _grouptype = (configfile >> "CfgGroups" >> "West" >> "rhs_faction_usarmy_wd" >> "rhs_group_nato_usarmy_wd_bradley" >> "rhs_group_nato_usarmy_wd_bradley_squad");
-         if (commandpointsblu1 >= _cost) then 
+         if (commandpoints >= _cost) then
              {
               _group = [_spawnPos, WEST, _grouptype, [], [], blufor_ai_skill] call BIS_fnc_spawnGroup; 
               player hcsetgroup [_group,""];
-              commandpointsblu1 = commandpointsblu1 - _cost;
-              ctrlSetText [1000, format["%1",commandpointsblu1]];
+              commandpoints = commandpoints - _cost;
+              ctrlSetText [1000, format["%1",commandpoints]];
 			  DUWS_number_motor = DUWS_number_motor + 1;
 			  _group setGroupId [format["Mot. scouts %1",DUWS_number_motor]];
               hint "Squad ready !\nAccess it with [L.CTRL - SPACE]";
@@ -290,12 +290,12 @@ publicVariable "commandpoints";
     {
     _cost = 36;
     _grouptype = (configfile >> "CfgGroups" >> "West" >> "rhs_faction_usarmy_wd" >> "rhs_group_nato_usarmy_wd_bradleyA3" >> "rhs_group_nato_usarmy_wd_bradleyA3_squad");
-         if (commandpointsblu1 >= _cost) then 
+         if (commandpoints >= _cost) then
              {
               _group = [_spawnPos, WEST, _grouptype, [], [], blufor_ai_skill] call BIS_fnc_spawnGroup; 
               player hcsetgroup [_group,""];
-              commandpointsblu1 = commandpointsblu1 - _cost;
-              ctrlSetText [1000, format["%1",commandpointsblu1]];
+              commandpoints = commandpoints - _cost;
+              ctrlSetText [1000, format["%1",commandpoints]];
 			  DUWS_number_meca = DUWS_number_meca + 1;
 			  _group setGroupId [format["Mec. squad %1",DUWS_number_meca]];
               hint "Squad ready !\nAccess it with [L.CTRL - SPACE]";
@@ -310,12 +310,12 @@ publicVariable "commandpoints";
     {
     _cost = 40;
     _grouptype = (configfile >> "CfgGroups" >> "West" >> "rhs_faction_usarmy_wd" >> "rhs_group_nato_usarmy_wd_M1A2" >> "RHS_M1A2SEP_wd_Platoon");
-         if (commandpointsblu1 >= _cost) then 
+         if (commandpoints >= _cost) then
              {
               _group = [_spawnPos, WEST, _grouptype, [], [], blufor_ai_skill] call BIS_fnc_spawnGroup; 
               player hcsetgroup [_group,""];
-              commandpointsblu1 = commandpointsblu1 - _cost;
-              ctrlSetText [1000, format["%1",commandpointsblu1]];
+              commandpoints = commandpoints - _cost;
+              ctrlSetText [1000, format["%1",commandpoints]];
 			  DUWS_number_tank = DUWS_number_tank + 1;
 			  _group setGroupId [format["Tank Armor squad %1",DUWS_number_tankaa]];
               hint "Squad ready !\nAccess it with [L.CTRL - SPACE]";
@@ -330,12 +330,12 @@ publicVariable "commandpoints";
     {
     _cost = 40;
     _grouptype = (configfile >> "CfgGroups" >> "West" >> "rhs_faction_usarmy_wd" >> "rhs_group_nato_usarmy_wd_M1A2" >> "RHS_M1A2SEP_wd_Platoon_AA");
-         if (commandpointsblu1 >= _cost) then 
+         if (commandpoints >= _cost) then
              {
               _group = [_spawnPos, WEST, _grouptype, [], [], blufor_ai_skill] call BIS_fnc_spawnGroup; 
               player hcsetgroup [_group,""];
-              commandpointsblu1 = commandpointsblu1 - _cost;
-              ctrlSetText [1000, format["%1",commandpointsblu1]];
+              commandpoints = commandpoints - _cost;
+              ctrlSetText [1000, format["%1",commandpoints]];
 			  DUWS_number_tankaa = DUWS_number_tankaa + 1;
 			  _group setGroupId [format["AA Armor squad %1",DUWS_number_tank]];
               hint "Squad ready !\nAccess it with [L.CTRL - SPACE]";

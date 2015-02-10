@@ -14,9 +14,9 @@ publicVariable "amount_zones_created";
 zones_created = true; // Tell that at least 1 zone is created
 
 // Add the zone to the array of zones (need for manual placement of zones and WARCOM)
-if (isNil ("Array_of_OPFOR_zones")) then {Array_of_OPFOR_zones = [];};
-Array_of_OPFOR_zones = Array_of_OPFOR_zones + [_trigger];
-publicVariable "Array_of_OPFOR_zones";
+if (isNil ("Array_of_ENEMY_zones")) then {Array_of_ENEMY_zones = [];};
+Array_of_ENEMY_zones = Array_of_ENEMY_zones + [_trigger];
+publicVariable "Array_of_ENEMY_zones";
 
 // CREATE MARKER (ICON)
 _markername = format["%1%2",round(_trigger select 0),round(_trigger select 1)]; // Define marker name

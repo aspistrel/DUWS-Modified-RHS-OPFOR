@@ -4,7 +4,7 @@ _helo = _this select 0;
 _actionID = _this select 2;
    /*
 // IF NOT ENOUGH PTS
-if (commandpointsblu1<3) exitWith {
+if (commandpoints<3) exitWith {
   ["info",["Not enough command points","Not enough Command Points (3CP required)"]] call bis_fnc_showNotification;
   sleep 30;
 _art = [player,"uav_recon"] call BIS_fnc_addCommMenuItem;

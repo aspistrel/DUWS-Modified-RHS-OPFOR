@@ -1,11 +1,11 @@
 if (!enable_fast_travel) exitWith {hint "Fast travel is disabled"};
 
 
-if (commandpointsblu1<2) exitWith  
+if (commandpoints<2) exitWith
 {
   ["info",["Not enough command points","Not enough Command Points (2CP required)"]] call bis_fnc_showNotification;
 };
-commandpointsblu1 = commandpointsblu1 - 2;
+commandpoints = commandpoints - 2;
 
 
 //// CREATE THE ARRAY OF FOBS w/ POSITION
@@ -27,8 +27,8 @@ _list = _list + [_array_of_fobs_list_selected];
 } forEach Array_of_FOBS;
 //// CREATE THE ARRAY OF FOBS w/ POSITION -- END
 // add the base
-//_hqpos = getpos hq_blu1;
-_hqpos = getmarkerpos str blu_hq_markername;
+//_hqpos = getpos hq_player;
+_hqpos = getmarkerpos str player_hq_markername;
 _list = _list + [[_hqpos,"Main base"]];
 if ((MTV1cap) && (alive MTV1)) then {
 _mtv1pos = getpos MTV1;

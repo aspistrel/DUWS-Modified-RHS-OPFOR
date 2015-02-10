@@ -1,6 +1,6 @@
 /* Written by Brian Sweeney - [EPD] Brian*/
 
-//waitUntil {blu_hq_markername};
+//waitUntil {player_hq_markername};
 //waitUntil {chosen_settings};
 //waitUntil {zones_created};
 //sleep 15;

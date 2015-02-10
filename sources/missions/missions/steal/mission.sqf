@@ -3,7 +3,7 @@ _MissionPos = _this select 0;
 _radius = 200;
 _randompos = [(_missionpos select 0)+(random _radius)-(random _radius), (_missionpos select 1)+(random _radius)-(random _radius)];
 
-_initpos = getpos hq_blu1;
+_initpos = getpos hq_player;
 
 // CREATE NAME
 _mission_name = MissionNameCase4;
@@ -83,10 +83,10 @@ hint "Unloading the truck...";
 ["TaskSucceeded",["",_mission_name]] call bis_fnc_showNotification;
 ["cpaddedmission",[25]] call bis_fnc_showNotification;
 missions_success = missions_success + 1;
-commandpointsblu1 = commandpointsblu1 + 25;
+commandpoints = commandpoints + 25;
 WARCOM_blufor_ap = WARCOM_blufor_ap + 25;
 opfor_ap = opfor_ap - 25;
-publicVariable "commandpointsblu1";
+publicVariable "commandpoints";
 publicVariable "WARCOM_blufor_ap";
 finishedMissionsNumber = finishedMissionsNumber + 1;
 publicvariable "finishedMissionsNumber";

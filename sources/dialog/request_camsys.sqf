@@ -24,7 +24,7 @@ _time = 60;
 
 BIS_fnc_feedback_allowPP = false;
 commandpoints = commandpoints - 5;
-publicVariable "commandpointsblu1";
+publicVariable "commandpoints";
 ctrlSetText [1000, format["%1",commandpoints]];
 
 cutRsc ["RscSpectator", "PLAIN"];

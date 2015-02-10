@@ -228,67 +228,67 @@ switch (_index) do
 
     case index_amount_cp_600:  
     {
-    commandpointsblu1 = 600
+    commandpoints = 600
     };
 	
 	case index_amount_cp_400:  
     {
-    commandpointsblu1 = 400
+    commandpoints = 400
     };
 	
 	case index_amount_cp_300:  
     {
-    commandpointsblu1 = 300
+    commandpoints = 300
     };
 	
 	case index_amount_cp_200:  
     {
-    commandpointsblu1 = 200
+    commandpoints = 200
     };
 	
 	case index_amount_cp_100:  
     {
-    commandpointsblu1 = 100
+    commandpoints = 100
     };
 	
 	case index_amount_cp_60:  
     {
-    commandpointsblu1 = 60
+    commandpoints = 60
     };
 
     case index_amount_cp_50:  
     {
-    commandpointsblu1 = 50
+    commandpoints = 50
     };
 
     case index_amount_cp_40:  
     {
-    commandpointsblu1 = 40
+    commandpoints = 40
     };
 
     case index_amount_cp_30:  
     {
-    commandpointsblu1 = 30
+    commandpoints = 30
     };
 
     case index_amount_cp_20:  
     {
-    commandpointsblu1 = 20
+    commandpoints = 20
     };
 
     case index_amount_cp_10:  
     {
-    commandpointsblu1 = 10
+    commandpoints = 10
     };
 
     case index_amount_cp_5:  
     {
-    commandpointsblu1 = 5
+    commandpoints = 5
     };
 
     case index_amount_cp_2:  
     {
-    commandpointsblu1 = 2
+    commandpoints = 2
     };
 
 };
@@ -608,13 +608,13 @@ if (zones_max_radius <= zones_min_radius) exitWith {Hint "Unable to generate cam
 zones_spacing = zones_max_radius + 800;
 chosen_settings = true;  //  Give the go ! BluHQinit.sqf can continue execution
 publicVariable "chosen_settings";
-publicVariable "commandpointsblu1";
+publicVariable "commandpoints";
 publicVariable "weather_type";
 publicVariable "blufor_ai_skill";
 publicVariable "opfor_ai_skill";
 publicVariable "enableChopperFastTravel";
 
-	//	commandpointsblu1 = 9999999; 
-//hint format["Max radius: %1\nMin radius: %2\nZones number: %3\nCommand points: %4\nBLU AP: %5\nOPF AP: %6\nWeather type: %7\nBLU AI skill: %8\nOPF AI skill: %9",zones_max_radius,zones_min_radius,zones_number,commandpointsblu1,opfor_ap,blufor_ap,weather_type,blufor_ai_skill,opfor_ai_skill];
-diag_log format["----- DUWS CHOSEN SETTINGS --------- Max radius: %1-------Min radius: %2-------Zones number: %3-------Command points: %4-------BLU AP: %5-------OPF AP: %6-------Weather type: %7-------BLU AI skill: %8-------OPF AI skill: %9",zones_max_radius,zones_min_radius,zones_number,commandpointsblu1,opfor_ap,blufor_ap,weather_type,blufor_ai_skill,opfor_ai_skill];
+	//	commandpoints = 9999999;
+//hint format["Max radius: %1\nMin radius: %2\nZones number: %3\nCommand points: %4\nBLU AP: %5\nOPF AP: %6\nWeather type: %7\nBLU AI skill: %8\nOPF AI skill: %9",zones_max_radius,zones_min_radius,zones_number,commandpoints,opfor_ap,blufor_ap,weather_type,blufor_ai_skill,opfor_ai_skill];
+diag_log format["----- DUWS CHOSEN SETTINGS --------- Max radius: %1-------Min radius: %2-------Zones number: %3-------Command points: %4-------BLU AP: %5-------OPF AP: %6-------Weather type: %7-------BLU AI skill: %8-------OPF AI skill: %9",zones_max_radius,zones_min_radius,zones_number,commandpoints,opfor_ap,blufor_ap,weather_type,blufor_ai_skill,opfor_ai_skill];
 closeDialog 0;

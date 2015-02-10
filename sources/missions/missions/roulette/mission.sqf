@@ -106,8 +106,8 @@ if ((!alive GORGON1) && (!DEFUSED)) exitWith {
 	
 [["TaskFailed",["","The armored vehicle is destroyed, Command Points Lost!"]],"bis_fnc_showNotification"] call BIS_fnc_MP;
 [[{hint"**Side Mission FAILED**\n\n...the vehicle was destroyed\n\nYou Only Have 2 Command Points Remaining!"}],"BIS_fnc_Spawn",true] call BIS_fnc_MP;
-commandpointsblu1 = commandpointsblu1 - commandpointsblu1 + 2;
-publicVariable "commandpointsblu1";  
+commandpoints = commandpoints - commandpoints + 2;
+publicVariable "commandpoints";
 sleep 2;
 deleteVehicle BOMBCODE1;
 deleteMarker str(_markername2);
@@ -121,13 +121,13 @@ if (DEFUSED) then {
 sleep 2;
 [["TaskSucceeded",["",_mission_name]],"bis_fnc_showNotification"] call BIS_fnc_MP;
 ["cpaddedmission",[200]] call bis_fnc_showNotification;
-commandpointsblu1 = commandpointsblu1 + 200;
+commandpoints = commandpoints + 200;
 missions_success = missions_success + 1;
 WARCOM_blufor_ap = WARCOM_blufor_ap + 30;
 opfor_ap = opfor_ap - 30;
 finishedMissionsNumber = finishedMissionsNumber + 1;
 publicvariable "finishedMissionsNumber";
-publicVariable "commandpointsblu1";
+publicVariable "commandpoints";
 publicVariable "WARCOM_blufor_ap";
 _operHandler = []execVM "dialog\operative\operative_mission_complete.sqf";
 sleep 1;

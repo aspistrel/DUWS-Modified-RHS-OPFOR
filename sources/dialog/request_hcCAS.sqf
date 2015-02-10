@@ -1,7 +1,7 @@
 _index = lbCurSel 2103;
 CASInUse = true;
 
-_spawnPos = getmarkerpos str blu_hq_markername;
+_spawnPos = getmarkerpos str player_hq_markername;
 _spawnPos = [(_spawnPos select 0)+250, _spawnPos select 1, (_spawnPos select 2)+500];
 _cost = 5;
 _grouptype = ["RHS_A10"];

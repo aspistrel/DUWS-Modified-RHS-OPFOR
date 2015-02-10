@@ -42,7 +42,7 @@ if (_found_dist_away) then {};
 
 
 
-    if (_foundsafePos distance player > 1000 && _found_dist_away && _foundsafePos distance hq_blu1 < zones_max_dist_from_hq) then {  // A VALID POS HAS BEEN FOUND
+    if (_foundsafePos distance player > 1000 && _found_dist_away && _foundsafePos distance hq_player < zones_max_dist_from_hq) then {  // A VALID POS HAS BEEN FOUND
     switch (_counter) do
    {
     case 0: // mission RECOVER

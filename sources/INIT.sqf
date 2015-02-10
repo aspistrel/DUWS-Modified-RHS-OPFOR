@@ -40,7 +40,7 @@ diag_log format ["------------------ DUWS Modified START ----v1.75 Modified by B
 	if (isNil "enableChopperFastTravel") then {
 	enableChopperFastTravel = true;  // chopper taxi (support) will fast travel (teleport) or not
 	};	
-	if (isNil "commandpointsblu1") then
+	if (isNil "commandpoints") then
 	{	        
 		commandpoints = 20;            // Starting CP
 	};
@@ -114,9 +114,9 @@ execvm "dynamic_music\dyn_music_init.sqf";
 	chosen_hq_placement = false;
 	};
 	
-	if (isNil "zoneundercontrolblu") then
+	if (isNil "zoneundercontrolplayer") then
 	{	
-	zoneundercontrolblu = 0;
+	zoneundercontrolplayer = 0;
 	};
 
 	if (isNil "amount_zones_captured") then
@@ -386,7 +386,7 @@ if (!isServer) then { // WHEN CLIENT CONNECTS INIT (might need sleep)
 	hintsilent "Waiting for the host to find an HQ...";	
 	waitUntil {HQ_pos_found_generated && time > 0.1};
 	sleep 1;
-//	player setpos [(getpos hq_blu1 select 0),(getpos hq_blu1 select 1)+10];
+//	player setpos [(getpos hq_player select 0),(getpos hq_player select 1)+10];
 	player setpos [(getmarkerpos str player_hq_markername select 0),(getmarkerpos str player_hq_markername select 1)+10];
 	_drawicon = [] execVM "inithq\drawIcon.sqf";
 	hintsilent "Waiting for the host to select the campaign parameters...";	
@@ -556,7 +556,7 @@ BOMBCODE1 = [];
 [] call compile preprocessfilelinenumbers "missions\missions\roulette\deathhint.sqf";
 
 
-waitUntil {!isNil "hq_blu1"};
+waitUntil {!isNil "hq_player"};
 waitUntil {!isNil "protect_officer"};
 hq_player addeventhandler ["firednear", {_this call protect_officer}];
 execVM "grenadeStop.sqf";

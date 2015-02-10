@@ -9,8 +9,8 @@ amount_zones_captured = amount_zones_captured + 1;
 [["us_takencontrol",[_place]],"bis_fnc_showNotification"] call BIS_fnc_MP;
 
 // MODIFY NUMBER OF CONTROLLED ZONES
-zoneundercontrolblu = zoneundercontrolblu + 1;
-publicVariable "zoneundercontrolblu";
+zoneundercontrolplayer = zoneundercontrolplayer + 1;
+publicVariable "zoneundercontrolplayer";
 
 // TELL THE ZONE IS UNDER BLU CONTROL
 WARCOM_zones_controled_by_BLUFOR = WARCOM_zones_controled_by_BLUFOR + [_triggerPos];
@@ -53,8 +53,8 @@ str(_markername) setMarkerColor "ColorGreen";
 str(_markername2) setMarkerColor "ColorGreen";
 
 if (isServer) then {
-commandpointsblu1 = commandpointsblu1 + (_points/2); 
-publicVariable "commandpointsblu1"; 
+commandpoints = commandpoints + (_points/2);
+publicVariable "commandpoints";
 };
 
 ["CPadded_retaken",[(_points/2)]] call bis_fnc_showNotification;

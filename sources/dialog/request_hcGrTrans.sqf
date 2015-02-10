@@ -1,6 +1,6 @@
 _index = lbCurSel 2103;
 
-_spawnPos = getmarkerpos str blu_hq_markername;
+_spawnPos = getmarkerpos str player_hq_markername;
 _spawnPos = [(_spawnPos select 0)+25, _spawnPos select 1];    
 _cost = 2;
 _grouptype = ["B_Truck_01_transport_F"];
@@ -15,7 +15,7 @@ if(PlayableSide == east) then
     _currentAiSkill = opfor_ai_skill;
 }
 	
-         if (commandpointsblu1 >= _cost) then 
+         if (commandpoints >= _cost) then
              {
               _group = [_spawnPos, PlayableSide, _grouptype, [], [], _currentAiSkill] call BIS_fnc_spawnGroup;
               player hcsetgroup [_group,""];

@@ -1,6 +1,6 @@
 _index = lbCurSel 2103;
 
-_spawnPos = getmarkerpos str blu_hq_markername;
+_spawnPos = getmarkerpos str player_hq_markername;
 _spawnPos = [(_spawnPos select 0)+25, _spawnPos select 1];    
 _cost = 8;
 _grouptype = ["B_APC_Tracked_01_CRV_F"];

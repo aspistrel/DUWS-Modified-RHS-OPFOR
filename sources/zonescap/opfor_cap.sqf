@@ -33,8 +33,8 @@ WARCOM_zones_controled_by_BLUFOR = WARCOM_zones_controled_by_BLUFOR - [_triggerP
 
 
 // MODIFY NUMBER OF CONTROLLED ZONES
-zoneundercontrolblu = zoneundercontrolblu - 1;
-publicVariable "zoneundercontrolblu";
+zoneundercontrolplayer = zoneundercontrolplayer - 1;
+publicVariable "zoneundercontrolplayer";
 
 // MODIFY ARMY POWER
 WARCOM_opfor_ap = WARCOM_opfor_ap + _points;
