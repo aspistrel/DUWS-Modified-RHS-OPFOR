@@ -354,6 +354,28 @@ class Mission
 				};
 			};
 		};
+		class Item12
+        		{
+        			side="EAST";
+        			class Vehicles
+        			{
+        				items=1;
+        				class Item0
+        				{
+        					presenceCondition="isMultiplayer";
+        					position[]={178.88544,0.019906089,657.59033};
+        					azimut=135;
+        					id=10;
+        					side="WEST";
+        					vehicle="rhs_msv_rifleman";
+        					player="PLAY CDG";
+        					leader=1;
+        					rank="CAPTAIN";
+        					skill=0.60000002;
+        					text="Russian test player";
+        				};
+        			};
+        		};
 	};
 	class Markers
 	{
