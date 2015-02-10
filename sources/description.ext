@@ -1,8 +1,8 @@
-OnLoadMission = "A procedurally generated campaign where you earn resources, execute missions and lead the United States Armed forces to capture the island and win the war.";
-onLoadName = "Dynamic Universal WAR System (DUWS) Modified: RHS Escalation";
+OnLoadMission = "A procedurally generated campaign where you earn resources, execute missions and lead your side army to capture the island and win the war.";
+onLoadName = "Dynamic Universal WAR System (DUWS): Conversion";
 dev = "dev";
-author = "Kibot / Mod. by BigShot / Mod. by Ceitho / Mod. by 512studio";
-overviewText = "A procedurally generated campaign where you earn resources, execute missions and lead the United States Armed forces to capture the island and win the war. Play the way you want: be a spec ops, a squad leader or control a whole army, the choice is yours.";
+author = " Kibot / BigShot / Ceitho / BUDUKRATOK & aspistrel";
+overviewText = "A procedurally generated campaign where you earn resources, execute missions and lead your side army to capture the island and win the war. Play the way you want: be a spec ops, a squad leader or control a whole army, the choice is yours.";
 overviewPicture = "rtipic.paa";
 LoadScreen = "rtipic.paa";
 respawnDialog = 0;
