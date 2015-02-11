@@ -1,5 +1,8 @@
 _index = lbCurSel 2100;
 
+_skill = blufor_ai_skill;
+_skillSF = blufor_ai_skill;
+
 if(PlayableSide == west) then
 {
     _skill = (blufor_ai_skill select 0)+0.2;

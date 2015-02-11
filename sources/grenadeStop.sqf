@@ -14,7 +14,7 @@
 	Edit the #defines below.
 */
 
-#define SAFETY_ZONES	[["respawn_west", 50]] // Syntax: [["marker1", radius1], ["marker2", radius2], ...]
+#define SAFETY_ZONES	[["respawn_west", 50], ["respawn_east", 50]] // Syntax: [["marker1", radius1], ["marker2", radius2], ...]
 #define MESSAGE			"Player explosives are not allowed within 50m of HQ!"
 						
 //_mylist = ["HandGrenadeMuzzle"]

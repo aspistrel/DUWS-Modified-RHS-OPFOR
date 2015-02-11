@@ -9,17 +9,32 @@
 ///////////////////////////////////////////////////
 if (isServer or isDedicated) then {
 	cp_ehkilledeast = {
-	
-	east_units = [];
 
-		{
-			if ((side _x) == east) then {
-			
-				east_units = east_units + [_x] - [BOMBCODE1];
-				{_x removeAllEventHandlers "killed"} forEach east_units; 
-			}; 
-		} foreach allUnits;
+    	east_units = [];
 
-		{_x addEventHandler ["killed", {commandpoints = commandpoints + 0.5; publicVariable "commandpoints"}]} forEach east_units;
-	};
+    		{
+    			if ((side _x) == east) then {
+
+    				east_units = east_units + [_x] - [BOMBCODE1];
+    				{_x removeAllEventHandlers "killed"} forEach east_units;
+    			};
+    		} foreach allUnits;
+
+    		{_x addEventHandler ["killed", {commandpoints = commandpoints + 0.5; publicVariable "commandpoints"}]} forEach east_units;
+    	};
+
+    cp_ehkilledwest = {
+
+        west_units = [];
+
+            {
+                if ((side _x) == west) then {
+
+                    west_units = west_units + [_x] - [BOMBCODE1];
+                    {_x removeAllEventHandlers "killed"} forEach west_units;
+                };
+            } foreach allUnits;
+
+            {_x addEventHandler ["killed", {commandpoints = commandpoints + 0.5; publicVariable "commandpoints"}]} forEach west_units;
+        };
 };

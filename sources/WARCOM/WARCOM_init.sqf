@@ -7,8 +7,8 @@ player globalchat "Initializing WARCOM...";
 WARCOM_init_done = false;
 
 _array_of_zones_total =_this select 0;
-_blu_hq_pos =_this select 1;
-_op_hq_pos =_this select 2;
+_blu_hq_pos = getpos hq_player;
+_opf_hq_pos = getpos hq_player;
 _blufor_ap =_this select 3;
 _opfor_ap =_this select 4;
 _blu_attack_delay =_this select 5;
@@ -18,7 +18,7 @@ _opfor_assault_delay = _this select 8;
 
 // INIT VARIABLES
 WARCOM_blu_hq_pos = [_blu_hq_pos select 0, (_blu_hq_pos select 1) + 16];
-WARCOM_op_hq_pos = _op_hq_pos;
+WARCOM_opf_hq_pos = [_opf_hq_pos select 0, (_opf_hq_pos select 1) + 16];
 WARCOM_blufor_ap = _blufor_ap;    
 WARCOM_opfor_ap = _opfor_ap;
 WARCOM_blu_attack_delay = _blu_attack_delay;
@@ -28,29 +28,54 @@ WARCOM_blu_ai_skill_range = _blu_ai_skill_range;  // !! IS USING blufor_ai_skill
 WARCOM_opf_ai_skill_range = _opfor_ai_skill;
 WARCOM_opf_attack_delay = _opfor_assault_delay;
 
+
 publicVariable "WARCOM_blufor_ap";
 publicVariable "WARCOM_opfor_ap";
+publicVariable "WARCOM_blu_hq_pos";
+publicVariable "WARCOM_opf_hq_pos";
 
-// SORT ARRAY OF OPFOR ZONES ACCORDING TO DISTANCE FROM BLUHQ 
-WARCOM_createdZones = [_array_of_zones_total,[WARCOM_blu_hq_pos],{_input0 distance _x},"ASCEND"] call BIS_fnc_sortBy;
+// SORT ARRAY OF OPFOR ZONES ACCORDING TO DISTANCE FROM BLUHQ
+if(PlayableSide == west) then
+{
+    WARCOM_createdZones = [_array_of_zones_total,[WARCOM_blu_hq_pos],{_input0 distance _x},"ASCEND"] call BIS_fnc_sortBy;
+}
+else
+{
+    WARCOM_createdZones = [_array_of_zones_total,[WARCOM_opf_hq_pos],{_input0 distance _x},"ASCEND"] call BIS_fnc_sortBy;
+};
 
-// ARRAY OF ZONES UNDER BLUFOR CONTROL
-WARCOM_zones_controled_by_BLUFOR = [];
+if(PlayableSide == west) then
+{
+    // ARRAY OF ZONES UNDER BLUFOR CONTROL
+    WARCOM_zones_controled_by_BLUFOR = [];
 
 
-// ARRAY OF ZONES UNDER OPFOR CONTROL 
-// make sure it's not a reference
-_WARCOM_zones_controled_by_OPFOR = WARCOM_createdZones;
-WARCOM_zones_controled_by_OPFOR = [] + _WARCOM_zones_controled_by_OPFOR;
+    // ARRAY OF ZONES UNDER OPFOR CONTROL
+    // make sure it's not a reference
+    _WARCOM_zones_controled_by_OPFOR = WARCOM_createdZones;
+    WARCOM_zones_controled_by_OPFOR = [] + _WARCOM_zones_controled_by_OPFOR;
+}
+else
+{
+    // ARRAY OF ZONES UNDER BLUFOR CONTROL
+    WARCOM_zones_controled_by_OPFOR = [];
+
+
+    // ARRAY OF ZONES UNDER OPFOR CONTROL
+    // make sure it's not a reference
+    _WARCOM_zones_controled_by_BLUFOR = WARCOM_createdZones;
+    WARCOM_zones_controled_by_BLUFOR = [] + _WARCOM_zones_controled_by_BLUFOR;
+};
 publicvariable "WARCOM_zones_controled_by_OPFOR";
+publicvariable "WARCOM_zones_controled_by_BLUFOR";
 
 // Init BLU patrols
-_blu_patrol = [] execVM "WARCOM\WARCOM_blu_patrol.sqf";
-waitUntil {scriptDone _blu_patrol};
+//_blu_patrol = [] execVM "WARCOM\WARCOM_blu_patrol.sqf";
+//waitUntil {scriptDone _blu_patrol};
 
 // Init OPF patrols
-_opf_patrol = [] execVM "WARCOM\WARCOM_opf_patrol.sqf";
-waitUntil {scriptDone _opf_patrol};
+//_opf_patrol = [] execVM "WARCOM\WARCOM_opf_patrol.sqf";
+//waitUntil {scriptDone _opf_patrol};
 
 // Initialize the BLU attack waves
 _blu_assault = [] execVM "WARCOM\WARCOM_blu_assault.sqf";

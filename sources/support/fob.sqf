@@ -28,7 +28,7 @@ _trg=createTrigger["EmptyDetector",_position];
 _trg setTriggerArea[_size,_size,0,false];
 
 if(PlayableSide == west) then
-{
+ {
     _trg setTriggerActivation["EAST","PRESENT",true];
 };
 
@@ -39,13 +39,14 @@ if(PlayableSide == east) then
 
 _trg setTriggerStatements["this", "", ""];
 sleep 10;
-_amountOPFOR = count list _trg;
+_amountENEMIES = count list _trg;
 
 deleteVehicle _trg;
 
-if (_amountOPFOR > 3) exitWith {
+
+if (_amountENEMIES > 3) exitWith {
 Hint "This position is not clear from enemies";
-PAPABEAR sidechat "Request denied. Enemies are too close to this position."; 
+PAPABEAR sidechat "Request denied. Enemies are too close to this position.";
 sleep 15;
   _repfob = [player,"fob_support"] call BIS_fnc_addCommMenuItem;
   DUWSrepfob = _repfob;
@@ -107,16 +108,39 @@ _fob addaction ["<t color='#ff0000'>Fortify FOB(4CP)</t>","inithq\fortifyFOB.sqf
 PAPABEAR sidechat "The FOB has been deployed.";
 
 /////////////////////////////////////////////////////////////////////////////
-if (Warcom_Limiter_Param == 1) then {
-[_foundPickupPos, _size] execvm "createpatrol.sqf";
-[_foundPickupPos, _size] execvm "createpatrol.sqf";
-_handle = [_foundPickupPos] execVM "initHQ\guards_limited.sqf";
-}
-else {
-[_foundPickupPos, _size] execvm "createpatrol.sqf";
-[_foundPickupPos, _size] execvm "createpatrol.sqf";
-[_foundPickupPos, _size] execvm "createpatrol.sqf";
-_handle = [_foundPickupPos] execVM "initHQ\guards.sqf";
+
+if(PlayableSide == west) then
+{
+    if (Warcom_Limiter_Param == 1) then
+    {
+        [_foundPickupPos, _size] execvm "createpatrol.sqf";
+        [_foundPickupPos, _size] execvm "createpatrol.sqf";
+        _handle = [_foundPickupPos] execVM "initHQ\guards_limited_BLUFOR.sqf";
+    }
+    else
+    {
+        [_foundPickupPos, _size] execvm "createpatrol.sqf";
+        [_foundPickupPos, _size] execvm "createpatrol.sqf";
+        [_foundPickupPos, _size] execvm "createpatrol.sqf";
+        _handle = [_foundPickupPos] execVM "initHQ\guards_BLUFOR.sqf";
+    };
+};
+
+if(PlayableSide == east) then
+{
+    if (Warcom_Limiter_Param == 1) then
+    {
+        [_foundPickupPos, _size] execvm "createpatrol.sqf";
+        [_foundPickupPos, _size] execvm "createpatrol.sqf";
+        _handle = [_foundPickupPos] execVM "initHQ\guards_limited_OPFOR.sqf";
+    }
+    else
+    {
+        [_foundPickupPos, _size] execvm "createpatrol.sqf";
+        [_foundPickupPos, _size] execvm "createpatrol.sqf";
+        [_foundPickupPos, _size] execvm "createpatrol.sqf";
+        _handle = [_foundPickupPos] execVM "initHQ\guardsOPFOR.sqf";
+    };
 };
 ////////////////////////////////////////////////////////////////////////////
 

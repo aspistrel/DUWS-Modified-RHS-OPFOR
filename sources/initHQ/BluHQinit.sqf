@@ -31,14 +31,32 @@ _trg5 setTriggerStatements["this", format["[""%1"",thislist] execvm 'enterlocati
 // warning trigger when an enemy approaches the camp
 _trgWarning=createTrigger["EmptyDetector",_hqblu];
 _trgWarning setTriggerArea[500,500,0,false];
-_trgWarning setTriggerActivation["EAST","PRESENT",true];
+if(PlayableSide == west) then
+{
+    _trgWarning setTriggerActivation["EAST","PRESENT",true];
+};
+
+if(PlayableSide == east) then
+{
+    _trgWarning setTriggerActivation["WEST","PRESENT",true];
+};
 _trgWarning setTriggerStatements["this","[]execVM 'warninghq.sqf'", ""];
 
 
 
 // CREATE THE OFFICER
 _group = createGroup PlayableSide;
-_hq = _group createUnit ["rhsusf_army_ocp_squadleader",(getmarkerpos str(player_hq_markername)), [], 0, "FORM"];
+
+if(PlayableSide == west) then
+{
+    _hq = _group createUnit ["rhsusf_army_ocp_squadleader",(getmarkerpos str(player_hq_markername)), [], 0, "FORM"];
+};
+
+if(PlayableSide == east) then
+{
+    _hq = _group createUnit ["rhs_msv_officer",(getmarkerpos str(player_hq_markername)), [], 0, "FORM"];
+};
+
 sleep 0.2;
 _hq setformdir 240;
 sleep 1;
@@ -51,11 +69,22 @@ removeallweapons _hq;
 _handle = [_hq] execVM "sounds\radiochatter.sqf";
 
 
-//GUARDS
-_handle = [getpos hq_player] execVM "initHQ\guards.sqf";
+if(PlayableSide == west) then
+{
+    //GUARDS
+    _handle = [getpos hq_player] execVM "initHQ\guardsBLUFOR.sqf";
 
-//STATIC DEFENSES
-_handle = [getpos hq_player] execVM "initHQ\fortify.sqf";
+    //STATIC DEFENSES
+    _handle = [getpos hq_player] execVM "initHQ\fortifyBLUFOR.sqf";
+}
+else
+{
+    //GUARDS
+    _handle = [getpos hq_player] execVM "initHQ\guardsOPFOR.sqf";
+
+    //STATIC DEFENSES
+    _handle = [getpos hq_player] execVM "initHQ\fortifyOPFOR.sqf";
+};
 
 
 // IF THE OFFICER IS DEAD -- BEGIN OF "SPAWN"

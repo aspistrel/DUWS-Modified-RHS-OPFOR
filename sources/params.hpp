@@ -71,5 +71,12 @@ class Params {
         values[] = {0,1};
         texts[] = {"Cap All Zones/Officer Killed","Cap All Zones/Officer & Players Killed"};
         default = 0;
-    };	
+    };
+
+   class HostSide {
+        title = "Playable side (players of other side will be kicked):";
+        values[] = {0, 1};
+        texts[] = {"EAST (OPFOR)","WEST (BLUFOR)"};
+        default = 1;
+    };
 }

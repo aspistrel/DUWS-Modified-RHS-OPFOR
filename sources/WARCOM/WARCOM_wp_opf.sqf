@@ -2,12 +2,14 @@ _group =_this select 0;
 
 _group setCombatMode "RED";
 
-
-// check if at least 1 zone is under BLU control, if not, attack HQ.
-if (count WARCOM_zones_controled_by_BLUFOR == 0) exitWith {
-    _wp = _group addWaypoint [WARCOM_blu_hq_pos, 0];
-    _wp setWaypointType "SAD"; 
-}; 
+if(PlayableSide == west) then
+{
+    // check if at least 1 zone is under BLU control, if not, attack HQ.
+    if (count WARCOM_zones_controled_by_BLUFOR == 0) exitWith {
+        _wp = _group addWaypoint [WARCOM_blu_hq_pos, 0];
+        _wp setWaypointType "SAD";
+    };
+};
 
 
 

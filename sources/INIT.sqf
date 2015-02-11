@@ -234,18 +234,24 @@ if (isMultiplayer) then {
 	MisEndCond = paramsArray select 10;
 
 	PlayableSide = west; //east - opfor, west - blufor
+    EnemySide = east;
 
-	if(PlayableSide == west) then
+	if((paramsArray select 11) == 0) then
     {
-        EnemySide = east;
-    };
-
-    if(PlayableSide == east) then
-    {
+        PlayableSide = east;
         EnemySide = west;
     };
 
-	PAPABEAR=[PlayableSide,"HQ"];
+
+    if(PlayableSide == west) then
+    {
+        PAPABEAR=[West,"HQ"];
+    }
+    else
+    {
+        PAPABEAR=[East,"base"];
+    };
+
 
     publicVariable "PlayableSide";
     publicVariable "EnemySide";
@@ -507,8 +513,9 @@ waitUntil {scriptDone _scriptExec};
 if (zones_manually_placed) then {
 waitUntil {!isNil ("Array_of_ENEMY_zones")};
 sleep 1;
-_warcom_init = [Array_of_ENEMY_zones, getpos hq_player, [0,0,0], blufor_ap, opfor_ap, 60,blufor_ai_skill,opfor_ai_skill, 60] execVM "WARCOM\WARCOM_init.sqf";
-};
+
+_warcom_init = [Array_of_ENEMY_zones, getpos hq_player, getpos hq_player, blufor_ap, opfor_ap, 60,blufor_ai_skill,opfor_ai_skill, 60] execVM "WARCOM\WARCOM_init.sqf";
+
 
 
 

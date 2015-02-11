@@ -59,7 +59,7 @@ _trg setTriggerStatements["this", format["[""%1"",%2,""%3"",""%4"",%5] execvm 'c
 _trg setTriggerTimeout [30, 60, 300, true ];
 // CREATE VARNAME FOR ZONE TRIGGER --> use the pos of the trigger
 _triggerName = format["trigger%1%2",round (_trigger select 0),round (_trigger select 1)];
-call compile format["%1 = _trg",_triggerName];
+call compile format["%1 = _trg;",_triggerName];
 
 
 
