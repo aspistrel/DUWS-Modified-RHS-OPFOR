@@ -27,8 +27,7 @@ _simulation_paracheck = getText (_checked_veh >> "simulation"); // check if not 
 
 
    if (_actual_vehclass == _vehClass && _actual_faction == _faction && _scope != 0 && _simulation_paracheck != "Parachute" && _classname != "B_MBT_01_mlrs_F" && _classname != "B_MBT_01_arty_F" && _classname != "B_APC_Tracked_01_AA_F" && _classname != "B_APC_Tracked_01_CRV_F" && _classname != "B_APC_Tracked_01_rcws_F" && _classname != "B_Heli_Light_01_F" && _classname != "Steerable_Parachute_F" && _classname != "B_Heli_Transport_03_F" && _classname != "B_Heli_Transport_03_unarmed_F") exitWith {  
-//   hintSilent format["%1",_classname];
-//   _veh = createVehicle [_classname, _position, [], 0, _vehClass];
+
    _foundVeh = _classname;
    _found = true;
    };
@@ -36,13 +35,18 @@ _simulation_paracheck = getText (_checked_veh >> "simulation"); // check if not 
 };   // --- VEHICLE FOUND --> _foundVeh
 
 // DETERMINE LA FACTION
-_side = EAST; 
-if(_faction=="rhs_faction_usarmy_wd") then {_side=WEST};
+_side = WEST;
+/*if(_faction=="rhs_faction_usarmy_wd") then {_side=WEST};
 if(_faction=="OPF_F") then {_side=EAST};
 if(_faction=="IND_F") then {_side=RESISTANCE};
-if(_faction=="CIV_F") then {_side=CIVILIAN};  
+if(_faction=="CIV_F") then {_side=CIVILIAN};  */
 
 _createdVehFnc = [_position,0,_foundVeh,_side] call bis_fnc_spawnvehicle;
+
+if(PlayableSide == east) then
+{
+    _killcp = [] call cp_ehkilledwest;
+};
 _vehGroup = _createdVehFnc select 2;
 _blu_assault = [_vehGroup] execVM "WARCOM\WARCOM_wp_blu_patrol.sqf";
 

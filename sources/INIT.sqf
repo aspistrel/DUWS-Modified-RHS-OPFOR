@@ -243,19 +243,26 @@ if (isMultiplayer) then {
     };
 
 
-    if(PlayableSide == west) then
-    {
-        PAPABEAR=[West,"HQ"];
-    }
-    else
+    if(PlayableSide == east) then
     {
         PAPABEAR=[East,"base"];
+    };
+
+    PlayerSideFolder = "zonesSpawns\BLUFOR";
+    EnemySideFolder = "zonesSpawns\OPFOR";
+
+    if(PlayableSide == east) then
+    {
+        PlayerSideFolder = "zonesSpawns\OPFOR";
+        EnemySideFolder = "zonesSpawns\BLUFOR";
     };
 
 
     publicVariable "PlayableSide";
     publicVariable "EnemySide";
 	publicVariable "WARCOMLimitAI";
+    publicVariable "PlayerSideFolder";
+    publicVariable "EnemySideFolder";
 
 	if(Warcom_Limiter_Param == 1) then {WARCOMLimitAI = 130}; // legacy
 	// TODO: delete all "Warcom_Limiter_Param" usings
@@ -273,12 +280,14 @@ if (revive_activated == 2) then {
 
 if ((!isDedicated) || (!isServer)) then {
 	waitUntil {!isNull player};
-	TCB_AIS_PATH = "ais_injury\";
-	{[_x] call compile preprocessFile (TCB_AIS_PATH+"init_ais.sqf")} forEach units group player;
+	TCB_AIS_PATH = "ais_injury";
+	{[_x] call compile preprocessFile (TCB_AIS_PATH+"\init_ais.sqf")} forEach units group player;
 };
 };
 // --------------------------------------------------------------------------------------------------------------
-	
+
+BOMBCODE1 = [];
+[] call compile preprocessfilelinenumbers "cp_ehkilled.sqf";
 		
 
 	if (support_armory_available) then {hq_player addaction ["<t color='#ff0066'>Armory 1 (VAS)</t>","VAS\open.sqf", "", 0, true, true, "", "_this == player"];};
@@ -514,7 +523,8 @@ if (zones_manually_placed) then {
 waitUntil {!isNil ("Array_of_ENEMY_zones")};
 sleep 1;
 
-_warcom_init = [Array_of_ENEMY_zones, getpos hq_player, getpos hq_player, blufor_ap, opfor_ap, 60,blufor_ai_skill,opfor_ai_skill, 60] execVM "WARCOM\WARCOM_init.sqf";
+//initZones\locatorzonesV1.sqf
+//_warcom_init = [Array_of_ENEMY_zones, getpos hq_player, getpos hq_player, blufor_ap, opfor_ap, 60,blufor_ai_skill,opfor_ai_skill, 60] execVM "WARCOM\WARCOM_init.sqf";
 
 
 
@@ -557,8 +567,6 @@ for[{_x = 2},{_x <= 12},{_x = _x + 1}] do
 
 trk = ["player"] execVM 'player_markers.sqf';
 
-BOMBCODE1 = [];
-[] call compile preprocessfilelinenumbers "cp_ehkilled.sqf";
 [] call compile preprocessfilelinenumbers "protectofficer.sqf";
 [] call compile preprocessfilelinenumbers "missions\missions\roulette\deathhint.sqf";
 

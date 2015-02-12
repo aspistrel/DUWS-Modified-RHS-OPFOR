@@ -58,8 +58,8 @@ if(PlayableSide == east) then
 _trg setTriggerStatements["this", format["[""%1"",%2,""%3"",""%4"",%5] execvm 'captured.sqf'",_place,_points,_markername,_markername2,_trigger], ""];
 _trg setTriggerTimeout [30, 60, 300, true ];
 // CREATE VARNAME FOR ZONE TRIGGER --> use the pos of the trigger
-_triggerName = format["trigger%1%2",round (_trigger select 0),round (_trigger select 1)];
-call compile format["%1 = _trg;",_triggerName];
+_triggerName = format["trigger%1%2",round (_trigger select 0)+100000,round (_trigger select 1)+100000];
+call compile format["%1 = _trg",_triggerName];
 
 
 
@@ -116,53 +116,62 @@ _trigger = [(_trigger select 0)-100,_trigger select 1];
 // Check if fortified is true
 if (_fortified) then  
 {
-      [_fortifiedspawn] execvm "createopfortified.sqf";
+      [_fortifiedspawn] execvm EnemySideFolder+"\createfortified.sqf";
       sleep 2;
 };
 
 // Check if radius is 100m or smaller => create 2 patrols then exit the script
 if (_size < 101) exitWith  
 {
-      _handle = [_trigger, _size] execvm "createoppatrol.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createpatrol.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createoppatrol.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createpatrol.sqf";
       waituntil {scriptdone _handle};
 };
 // Check if radius is 250m-100m => create 2 patrols and 1 fireteam then exit the script/500/8
 if (_size < 251) exitWith  
 {
-      _handle = [_trigger, _size] execvm "createoppatrol.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createpatrol.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createoppatrol.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createpatrol.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createopteam.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createteam.sqf";
 };
 // Check if radius is 250m-500m => create 2 patrols and 2 fireteams then exit the script/750-1000/12
 if (_size < 500) exitWith  
 {
 if (Warcom_Limiter_Param == 1) then {
 
-      _handle = [_trigger, _size] execvm "createoppatrol.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createpatrol.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createopteam.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createteam.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createopteam.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createteam.sqf";
 	  waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createoppatrol.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createpatrol.sqf";
 	  
 } else
 {
-      _handle = [_trigger, _size] execvm "createoppatrol.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createpatrol.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createoppatrol.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createpatrol.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createopteam.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createteam.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createopteam.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createteam.sqf";
 	  waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createopwpteam.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createwpteam.sqf";
 	  waituntil {scriptdone _handle};
-      ["rhs_faction_msv","rhs_vehclass_apc",_trigger,_size] execVM "random_veh.sqf";
+
+	  if(PlayableSide == west) then
+      {
+        ["rhs_faction_msv","rhs_vehclass_apc",_trigger,_size] execVM "random_veh.sqf";
+      };
+
+      if(PlayableSide == east) then
+      {
+        ["rhs_faction_usarmy_wd","rhs_vehclass_apc",_trigger,_size] execVM "random_veh.sqf";
+      };
 };
 };
 
@@ -170,35 +179,51 @@ if (_size <= 1000) exitWith
 {
 if (Warcom_Limiter_Param == 1) then {
 
-      _handle = [_trigger, _size] execvm "createoppatrol.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createpatrol.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createoppatrol.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createpatrol.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createopteam.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createteam.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createopwpteam.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createwpteam.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createopteam.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createteam.sqf";
       waituntil {scriptdone _handle};
-      ["rhs_faction_msv","rhs_vehclass_ifv",_trigger,_size] execVM "random_veh.sqf";
+      if(PlayableSide == west) then
+      {
+          ["rhs_faction_msv","rhs_vehclass_ifv",_trigger,_size] execVM "random_veh.sqf";
+      };
+
+      if(PlayableSide == east) then
+      {
+          ["rhs_faction_usarmy_wd","rhs_vehclass_ifv",_trigger,_size] execVM "random_veh.sqf";
+      };
 	  
 } else
 {
-      _handle = [_trigger, _size] execvm "createoppatrol.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createpatrol.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createoppatrol.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createpatrol.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createoppatrol.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createpatrol.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createopteam.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createteam.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createopteam.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createteam.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createopwpteam.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createwpteam.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createopteam.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createteam.sqf";
       waituntil {scriptdone _handle};
-      ["rhs_faction_msv","rhs_vehclass_ifv",_trigger,_size] execVM "random_veh.sqf";
+      if(PlayableSide == west) then
+      {
+        ["rhs_faction_msv","rhs_vehclass_ifv",_trigger,_size] execVM "random_veh.sqf";
+      };
+
+      if(PlayableSide == east) then
+      {
+        ["rhs_faction_usarmy_wd","rhs_vehclass_ifv",_trigger,_size] execVM "random_veh.sqf";
+      };
 };
 };
       
@@ -206,50 +231,85 @@ if (_size <= 1500) exitWith
 {
 if (Warcom_Limiter_Param == 1) then {
 
-_vehcreate = ["rhs_faction_msv","rhs_vehclass_ifv",_trigger,_size] execVM "random_veh.sqf";
-waitUntil {scriptDone _vehcreate};
-      _handle = [_trigger, _size] execvm "createoppatrol.sqf";
+    if(PlayableSide == west) then
+    {
+        _vehcreate = ["rhs_faction_msv","rhs_vehclass_ifv",_trigger,_size] execVM "random_veh.sqf";
+        waitUntil {scriptDone _vehcreate};
+    };
+
+    if(PlayableSide == east) then
+    {
+        _vehcreate = ["rhs_faction_usarmy_wd","rhs_vehclass_ifv",_trigger,_size] execVM "random_veh.sqf";
+        waitUntil {scriptDone _vehcreate};
+    };
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createpatrol.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createoppatrol.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createpatrol.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createoppatrol.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createpatrol.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createopteam.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createteam.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createopwpteam.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createwpteam.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createopteam.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createteam.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createopwpteam.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createwpteam.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createoppatrol.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createpatrol.sqf";
       waituntil {scriptdone _handle};   
-      ["rhs_faction_msv","rhs_vehclass_ifv",_trigger,_size] execVM "random_veh.sqf";
+      if(PlayableSide == west) then
+        {
+          ["rhs_faction_msv","rhs_vehclass_ifv",_trigger,_size] execVM "random_veh.sqf";
+        };
+
+        if(PlayableSide == east) then
+        {
+          ["rhs_faction_usarmy_wd","rhs_vehclass_ifv",_trigger,_size] execVM "random_veh.sqf";
+        };
 } else
 {
-_vehcreate = ["rhs_faction_vdv","rhs_vehclass_helicopter",_trigger,_size] execVM "random_veh.sqf";
-waitUntil {scriptDone _vehcreate};
-      _handle = [_trigger, _size] execvm "createoppatrol.sqf";
+    if(PlayableSide == west) then
+    {
+        _vehcreate = ["rhs_faction_vdv","rhs_vehclass_helicopter",_trigger,_size] execVM "random_veh.sqf";
+        waitUntil {scriptDone _vehcreate};
+    };
+
+    if(PlayableSide == east) then
+    {
+        _vehcreate = ["rhs_faction_usarmy_wd","rhs_vehclass_helicopter",_trigger,_size] execVM "random_veh.sqf";
+        waitUntil {scriptDone _vehcreate};
+    };
+
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createpatrol.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createoppatrol.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createpatrol.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createoppatrol.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createpatrol.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createopteam.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createteam.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createopwpteam.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createwpteam.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createopteam.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createteam.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createopteam.sqf"; 
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createteam.sqf"; 
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createopwpteam.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createwpteam.sqf";
       waituntil {scriptdone _handle};
-     _handle = [_trigger, _size] execvm "createopteam.sqf";
+     _handle = [_trigger, _size] execvm EnemySideFolder+"\createteam.sqf";
      waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createoppatrol.sqf";
-      waituntil {scriptdone _handle};   
-      ["rhs_faction_vdv","rhs_vehclass_helicopter",_trigger,_size] execVM "random_veh.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createpatrol.sqf";
+      waituntil {scriptdone _handle};
+      if(PlayableSide == west) then
+        {
+            ["rhs_faction_vdv","rhs_vehclass_helicopter",_trigger,_size] execVM "random_veh.sqf";
+        };
+
+        if(PlayableSide == east) then
+        {
+          ["rhs_faction_usarmy_wd","rhs_vehclass_helicopter",_trigger,_size] execVM "random_veh.sqf";
+        };
 };
 };
 	  
@@ -257,177 +317,271 @@ if (_size <= 2000) exitWith
 {
 if (Warcom_Limiter_Param == 1) then {
 
-_vehcreate = ["rhs_faction_msv","rhs_vehclass_ifv",_trigger,_size] execVM "random_veh.sqf";
-waitUntil {scriptDone _vehcreate};
-      _handle = [_trigger, _size] execvm "createoppatrol.sqf";
+    if(PlayableSide == west) then
+    {
+        _vehcreate = ["rhs_faction_msv","rhs_vehclass_ifv",_trigger,_size] execVM "random_veh.sqf";
+        waitUntil {scriptDone _vehcreate};
+    };
+
+    if(PlayableSide == east) then
+    {
+        _vehcreate = ["rhs_faction_usarmy_wd","rhs_vehclass_ifv",_trigger,_size] execVM "random_veh.sqf";
+        waitUntil {scriptDone _vehcreate};
+    };
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createpatrol.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createoppatrol.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createpatrol.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createopwpteam.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createwpteam.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createopteam.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createteam.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createopteam.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createteam.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createopwpteam.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createwpteam.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createopteam.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createteam.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createoppatrol.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createpatrol.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createoppatrol.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createpatrol.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createopteam.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createteam.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createoppatrol.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createpatrol.sqf";
       waituntil {scriptdone _handle};    
-      ["rhs_faction_msv","rhs_vehclass_ifv",_trigger,_size] execVM "random_veh.sqf";
+      if(PlayableSide == west) then
+      {
+        ["rhs_faction_msv","rhs_vehclass_ifv",_trigger,_size] execVM "random_veh.sqf";
+      };
+
+      if(PlayableSide == east) then
+      {
+        ["rhs_faction_usarmy_wd","rhs_vehclass_ifv",_trigger,_size] execVM "random_veh.sqf";
+      };
 } else
 {
-_vehcreate = ["rhs_faction_msv","rhs_vehclass_ifv",_trigger,_size] execVM "random_veh.sqf";
-waitUntil {scriptDone _vehcreate};
-      _handle = [_trigger, _size] execvm "createoppatrol.sqf";
+    if(PlayableSide == west) then
+    {
+        _vehcreate = ["rhs_faction_msv","rhs_vehclass_ifv",_trigger,_size] execVM "random_veh.sqf";
+        waitUntil {scriptDone _vehcreate};
+    };
+
+    if(PlayableSide == east) then
+    {
+        _vehcreate = ["rhs_faction_usarmy_wd","rhs_vehclass_ifv",_trigger,_size] execVM "random_veh.sqf";
+        waitUntil {scriptDone _vehcreate};
+    };
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createpatrol.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createoppatrol.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createpatrol.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createoppatrol.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createpatrol.sqf";
       waituntil {scriptdone _handle};
-     _handle = [_trigger, _size] execvm "createopteam.sqf";
+     _handle = [_trigger, _size] execvm EnemySideFolder+"\createteam.sqf";
      waituntil {scriptdone _handle};
-     _handle = [_trigger, _size] execvm "createopteam.sqf";
+     _handle = [_trigger, _size] execvm EnemySideFolder+"\createteam.sqf";
      waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createopwpteam.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createwpteam.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createopteam.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createteam.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createopteam.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createteam.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createopwpteam.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createwpteam.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createopteam.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createteam.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createoppatrol.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createpatrol.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createoppatrol.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createpatrol.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createopteam.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createteam.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createoppatrol.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createpatrol.sqf";
       waituntil {scriptdone _handle};    
-      ["rhs_faction_vdv","rhs_vehclass_aircraft",_trigger,_size] execVM "random_veh.sqf";
+      if(PlayableSide == west) then
+      {
+          ["rhs_faction_vdv","rhs_vehclass_aircraft",_trigger,_size] execVM "random_veh.sqf";
+      };
+
+      if(PlayableSide == east) then
+      {
+        ["rhs_faction_usarmy_wd","rhs_vehclass_aircraft",_trigger,_size] execVM "random_veh.sqf";
+      };
 };
 };
   
 if (_size <= 3000) exitWith  
 {
 if (Warcom_Limiter_Param == 1) then {
-_vehcreate = ["rhs_faction_msv","rhs_vehclass_ifv",_trigger,_size] execVM "random_veh.sqf";
-waitUntil {scriptDone _vehcreate};
+    if(PlayableSide == west) then
+    {
+        _vehcreate = ["rhs_faction_msv","rhs_vehclass_ifv",_trigger,_size] execVM "random_veh.sqf";
+        waitUntil {scriptDone _vehcreate};
 
-_vehcreate = ["rhs_faction_msv","rhs_vehclass_ifv",_trigger,_size] execVM "random_veh.sqf";
-waitUntil {scriptDone _vehcreate};
+        _vehcreate = ["rhs_faction_msv","rhs_vehclass_ifv",_trigger,_size] execVM "random_veh.sqf";
+        waitUntil {scriptDone _vehcreate};
+    };
 
-      _handle = [_trigger, _size] execvm "createoppatrol.sqf";
+    if(PlayableSide == east) then
+    {
+        _vehcreate = ["rhs_faction_usarmy_wd","rhs_vehclass_ifv",_trigger,_size] execVM "random_veh.sqf";
+        waitUntil {scriptDone _vehcreate};
+
+        _vehcreate = ["rhs_faction_usarmy_wd","rhs_vehclass_ifv",_trigger,_size] execVM "random_veh.sqf";
+        waitUntil {scriptDone _vehcreate};
+    };
+
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createpatrol.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createopwpteam.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createwpteam.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createopteam.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createteam.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createopwpteam.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createwpteam.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createopwpteam.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createwpteam.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createopteam.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createteam.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createopteam.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createteam.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createoppatrol.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createpatrol.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createoppatrol.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createpatrol.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createopteam.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createteam.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createoppatrol.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createpatrol.sqf";
       waituntil {scriptdone _handle};    
-      ["rhs_faction_vdv","rhs_vehclass_aircraft",_trigger,_size] execVM "random_veh.sqf";
+      if(PlayableSide == west) then
+        {
+            ["rhs_faction_vdv","rhs_vehclass_aircraft",_trigger,_size] execVM "random_veh.sqf";
+        };
+
+        if(PlayableSide == east) then
+        {
+          ["rhs_faction_usarmy_wd","rhs_vehclass_aircraft",_trigger,_size] execVM "random_veh.sqf";
+        };
 } else
 {
-_vehcreate = ["rhs_faction_msv","rhs_vehclass_ifv",_trigger,_size] execVM "random_veh.sqf";
-waitUntil {scriptDone _vehcreate};
+    if(PlayableSide == west) then
+    {
+        _vehcreate = ["rhs_faction_msv","rhs_vehclass_ifv",_trigger,_size] execVM "random_veh.sqf";
+        waitUntil {scriptDone _vehcreate};
 
-_vehcreate = ["rhs_faction_msv","rhs_vehclass_ifv",_trigger,_size] execVM "random_veh.sqf";
-waitUntil {scriptDone _vehcreate};
+        _vehcreate = ["rhs_faction_msv","rhs_vehclass_ifv",_trigger,_size] execVM "random_veh.sqf";
+        waitUntil {scriptDone _vehcreate};
+    };
 
-     _handle = [_trigger, _size] execvm "createoppatrol.sqf";
+    if(PlayableSide == east) then
+    {
+        _vehcreate = ["rhs_faction_usarmy_wd","rhs_vehclass_ifv",_trigger,_size] execVM "random_veh.sqf";
+        waitUntil {scriptDone _vehcreate};
+
+        _vehcreate = ["rhs_faction_usarmy_wd","rhs_vehclass_ifv",_trigger,_size] execVM "random_veh.sqf";
+        waitUntil {scriptDone _vehcreate};
+    };
+
+     _handle = [_trigger, _size] execvm EnemySideFolder+"\createpatrol.sqf";
      waituntil {scriptdone _handle};
-     _handle = [_trigger, _size] execvm "createoppatrol.sqf";
+     _handle = [_trigger, _size] execvm EnemySideFolder+"\createpatrol.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createoppatrol.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createpatrol.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createopteam.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createteam.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createopteam.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createteam.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createopwpteam.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createwpteam.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createopteam.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createteam.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createopwpteam.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createwpteam.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createopwpteam.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createwpteam.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createopteam.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createteam.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createopteam.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createteam.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createoppatrol.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createpatrol.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createoppatrol.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createpatrol.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createopteam.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createteam.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createoppatrol.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createpatrol.sqf";
       waituntil {scriptdone _handle};    
-      ["rhs_faction_vdv","rhs_vehclass_aircraft",_trigger,_size] execVM "random_veh.sqf";
+      if(PlayableSide == west) then
+      {
+          ["rhs_faction_vdv","rhs_vehclass_aircraft",_trigger,_size] execVM "random_veh.sqf";
+      };
+
+      if(PlayableSide == east) then
+      {
+        ["rhs_faction_usarmy_wd","rhs_vehclass_aircraft",_trigger,_size] execVM "random_veh.sqf";
+      };
 };
 };
 
 // IF NOT IN PARAMETERS (TOO BIG ZONE)        
-_vehcreate = ["rhs_faction_msv","rhs_vehclass_ifv",_trigger,_size] execVM "random_veh.sqf";
-waitUntil {scriptDone _vehcreate};
+    if(PlayableSide == west) then
+    {
+        _vehcreate = ["rhs_faction_msv","rhs_vehclass_ifv",_trigger,_size] execVM "random_veh.sqf";
+        waitUntil {scriptDone _vehcreate};
 
-_vehcreate = ["rhs_faction_msv","rhs_vehclass_ifv",_trigger,_size] execVM "random_veh.sqf";
-waitUntil {scriptDone _vehcreate};
+        _vehcreate = ["rhs_faction_msv","rhs_vehclass_ifv",_trigger,_size] execVM "random_veh.sqf";
+        waitUntil {scriptDone _vehcreate};
+    };
 
-      _handle = [_trigger, _size] execvm "createoppatrol.sqf";
+    if(PlayableSide == east) then
+    {
+        _vehcreate = ["rhs_faction_usarmy_wd","rhs_vehclass_ifv",_trigger,_size] execVM "random_veh.sqf";
+        waitUntil {scriptDone _vehcreate};
+
+        _vehcreate = ["rhs_faction_usarmy_wd","rhs_vehclass_ifv",_trigger,_size] execVM "random_veh.sqf";
+        waitUntil {scriptDone _vehcreate};
+    };
+
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createpatrol.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createoppatrol.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createpatrol.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createoppatrol.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createpatrol.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createopteam.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createteam.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createopwpteam.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createwpteam.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createopteam.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createteam.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createopwpteam.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createwpteam.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createopteam.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createteam.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createopwpteam.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createwpteam.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createopteam.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createteam.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createopteam.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createteam.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createoppatrol.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createpatrol.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createoppatrol.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createpatrol.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createopteam.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createteam.sqf";
       waituntil {scriptdone _handle};
-      _handle = [_trigger, _size] execvm "createoppatrol.sqf";
+      _handle = [_trigger, _size] execvm EnemySideFolder+"\createpatrol.sqf";
       waituntil {scriptdone _handle};   
-      ["rhs_faction_vdv","rhs_vehclass_aircraft",_trigger,_size] execVM "random_veh.sqf";          
+      if(PlayableSide == west) then
+      {
+          ["rhs_faction_vdv","rhs_vehclass_aircraft",_trigger,_size] execVM "random_veh.sqf";
+      };
+
+      if(PlayableSide == east) then
+      {
+          ["rhs_faction_usarmy_wd","rhs_vehclass_aircraft",_trigger,_size] execVM "random_veh.sqf";
+      };
       

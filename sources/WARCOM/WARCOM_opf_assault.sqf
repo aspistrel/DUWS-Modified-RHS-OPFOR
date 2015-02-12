@@ -106,8 +106,8 @@ aliveAllUnits = {alive _x} count allunits;
             PAPABEAR sidechat format["This is Eeagle, We are sending Task Force %1, we will try to push as far as possible in enemy territory",_TFname];
 
             _opf_assault = [_group] execVM "WARCOM\WARCOM_wp_opf.sqf";
-            _opf_assault = [_group,_TFname] execVM "WARCOM\WARCOM_gps_marker.sqf";
         };
+            _opf_assault = [_group,_TFname] execVM "WARCOM\WARCOM_gps_marker.sqf";
 
         if(PlayableSide == west) then
         {

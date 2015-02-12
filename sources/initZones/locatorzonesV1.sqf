@@ -117,7 +117,7 @@ sleep 9;
 _zones_array = [_zones_array, 0] call BIS_fnc_removeIndex;
 
 //player globalchat format["%1",_zones_array];
-_warcom_init = [_zones_array, getpos hq_player, [0,0,0], blufor_ap, opfor_ap, 2700,blufor_ai_skill,opfor_ai_skill, 2000] execVM "WARCOM\WARCOM_init.sqf"; // 2700 is 40 mins
+_warcom_init = [_zones_array, getpos hq_player, getpos hq_player, blufor_ap, opfor_ap, 2700,blufor_ai_skill,opfor_ai_skill, 2000] execVM "WARCOM\WARCOM_init.sqf"; // 2700 is 40 mins
 waitUntil {scriptDone _warcom_init};
 sleep 0.1;
 //savegame;

@@ -36,13 +36,17 @@ _simulation_paracheck = getText (_checked_veh >> "simulation"); // check if not 
 
 // DETERMINE LA FACTION
 _side = EAST; 
-if(_faction=="rhs_faction_vdv") then {_side=EAST};
+/*if(_faction=="rhs_faction_vdv") then {_side=EAST};
 if(_faction=="rhs_faction_msv") then {_side=EAST};
 if(_faction=="rhs_faction_vvs_c") then {_side=EAST};
-if(_faction=="CIV_F") then {_side=CIVILIAN};  
+if(_faction=="CIV_F") then {_side=CIVILIAN};  */
 
 _createdVehFnc = [_position,0,_foundVeh,_side] call bis_fnc_spawnvehicle;
-_killcp = [] call cp_ehkilledeast;
+
+if(PlayableSide == west) then
+{
+    _killcp = [] call cp_ehkilledeast;
+};
 _vehGroup = _createdVehFnc select 2;
 _opf_assault = [_vehGroup] execVM "WARCOM\WARCOM_wp_opf_patrol.sqf";
 

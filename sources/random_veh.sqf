@@ -39,6 +39,7 @@ _simulation_paracheck = getText (_checked_veh >> "simulation"); // check if not 
 _side = EAST; 
 if(_faction=="rhs_faction_usarmy_wd") then {_side=WEST};
 if(_faction=="rhs_faction_msv") then {_side=EAST};
+if(_faction=="rhs_faction_vdv") then {_side=EAST};
 if(_faction=="IND_F") then {_side=RESISTANCE};
 if(_faction=="CIV_F") then {_side=CIVILIAN};  
 

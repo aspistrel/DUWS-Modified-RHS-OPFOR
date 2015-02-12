@@ -19,7 +19,9 @@ _group = [_position, EAST, ["rhs_msv_sergeant","rhs_msv_aa","rhs_msv_aa","rhs_ms
 
 
 
-
-// ADD QRF eventhandler
-_EH = leader _group addEventHandler ["Fired", {[_this select 0] spawn QRF_test}];
-_killcp = [] call cp_ehkilledeast;
+if(PlayableSide == west) then
+{
+    // ADD QRF eventhandler
+    _EH = leader _group addEventHandler ["Fired", {[_this select 0] spawn QRF_test}];
+    _killcp = [] call cp_ehkilledeast;
+};

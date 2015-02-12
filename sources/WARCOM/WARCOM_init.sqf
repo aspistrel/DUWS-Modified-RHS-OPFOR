@@ -7,8 +7,8 @@ player globalchat "Initializing WARCOM...";
 WARCOM_init_done = false;
 
 _array_of_zones_total =_this select 0;
-_blu_hq_pos = getpos hq_player;
-_opf_hq_pos = getpos hq_player;
+_blu_hq_pos = _this select 1;
+_opf_hq_pos = _this select 2;
 _blufor_ap =_this select 3;
 _opfor_ap =_this select 4;
 _blu_attack_delay =_this select 5;
@@ -29,6 +29,7 @@ WARCOM_opf_ai_skill_range = _opfor_ai_skill;
 WARCOM_opf_attack_delay = _opfor_assault_delay;
 
 
+publicVariable "WARCOM_qrf_ready";
 publicVariable "WARCOM_blufor_ap";
 publicVariable "WARCOM_opfor_ap";
 publicVariable "WARCOM_blu_hq_pos";
