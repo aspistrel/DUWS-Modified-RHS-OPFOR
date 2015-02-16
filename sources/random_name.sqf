@@ -61,7 +61,7 @@ _firstArray = ["Homing ",
 "Rightful "
 ];
 
-_first = (_furstArray select (_first_dice-1));
+_first = (_firstArray select (_first_dice-1));
 };
 
 
