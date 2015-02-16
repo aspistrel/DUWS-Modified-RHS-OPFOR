@@ -66,12 +66,12 @@ while {!_found} do
     if (_playerDistance>(zones_max_radius + 500) && (hq_player distance _posDeMeilleurTruc)<=zones_max_dist_from_hq)  then {  // VERIFIE SI ELOIGNE DU JOUEUR ET REGARDE LA DISTANCE DES AUTRES ZONES. REGARDE AUSSI LA DISTANCE PAR RAPPORT AU QG
 
      _found_distance = true;
-     _MissionPos = _posDeMeilleurTruc;
+     _missionPos = _posDeMeilleurTruc;
       _distance = [];     
        for [{_t=1}, {_t<=count _zones_array}, {_t=_t+1}] do // I HAVE NO IDEA OF WHAT I'VE DONE
            {                                               
            _zones_array_index = _t-1;
-           _distance = _distance +[(_zones_array select _zones_array_index) distance (_MissionPos)]; // _distance is an array of all the distances relative to the newly found position and the other zones
+           _distance = _distance +[(_zones_array select _zones_array_index) distance (_missionPos)]; // _distance is an array of all the distances relative to the newly found position and the other zones
 //           hint format["%1",_distance];
             };
        for [{_t=1}, {_t<=count _distance}, {_t=_t+1}] do // OH GAWD
@@ -88,9 +88,9 @@ while {!_found} do
      
      if (_found_distance) then {
      _missionPos = [round(_missionPos select 0),round(_missionPos select 1)];
-     _generatezonescript = [format["Zone %1",_i],_points_zone,_zone_radius,_MissionPos,_fortified,true] execvm "initZones\createzone.sqf";     
+     _generatezonescript = [format["Zone %1",_i],_points_zone,_zone_radius,_missionPos,_fortified,true] execvm "initZones\createzone.sqf";     
      _found=true;
-     _zones_array = _zones_array + [_MissionPos]; 
+     _zones_array = _zones_array + [_missionPos]; 
 
      player globalChat format["Zone location #%1 found !",_i];
 	 player globalChat format["Generating zone #%1",_i];

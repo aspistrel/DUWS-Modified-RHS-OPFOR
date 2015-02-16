@@ -2,9 +2,18 @@ _position = _this select 0;
 _size = _this select 1;
 zoneFound = false;
 
+if(PlayableSide == west) then
 {
-if (player distance _x < 250) exitWith {zoneFound = true};
-} forEach WARCOM_zones_controled_by_BLUFOR;
+    {
+    if (player distance _x < 250) exitWith {zoneFound = true};
+    } forEach WARCOM_zones_controled_by_BLUFOR;
+}
+else
+{
+    {
+    if (player distance _x < 250) exitWith {zoneFound = true};
+    } forEach WARCOM_zones_controled_by_OPFOR;
+};
 
 if (!zoneFound) exitWith {
 	["Info",["NO FOB ALLOWED HERE","You Must Be Within 250m of a Green Zone's Center"]] call bis_fnc_showNotification;

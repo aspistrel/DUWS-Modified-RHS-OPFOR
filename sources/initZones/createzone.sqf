@@ -55,10 +55,10 @@ if(PlayableSide == east) then
 };
 
 //_trg setTriggerActivation["WEST","PRESENT",false];
-_trg setTriggerStatements["this", format["[""%1"",%2,""%3"",""%4"",%5] execvm 'captured.sqf'",_place,_points,_markername,_markername2,_trigger], ""];
+_trg setTriggerStatements["this", format["[""%1"",%2,""%3"",""%4"",%5, %6] execvm 'zonescap\capture.sqf'",_place,_points,_markername,_markername2,_trigger, PlayerSide], ""];
 _trg setTriggerTimeout [30, 60, 300, true ];
 // CREATE VARNAME FOR ZONE TRIGGER --> use the pos of the trigger
-_triggerName = format["trigger%1%2",round (_trigger select 0)+100000,round (_trigger select 1)+100000];
+_triggerName = format["trigger%1%2",round (_trigger select 0),round (_trigger select 1)];
 call compile format["%1 = _trg",_triggerName];
 
 
