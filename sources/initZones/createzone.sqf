@@ -40,26 +40,77 @@ str(_markername2) setMarkerAlpha 0.1;
 
 
 
+// Zone capture indicator
+ZoneCapturePos = ZoneCapturePos + [_trigger];
+ZoneCaptureMax = ZoneCaptureMax + [_size];
+ZoneCaptureTimeOpfor = ZoneCaptureTimeOpfor + [time];
+ZoneCaptureTimeBlufor = ZoneCaptureTimeBlufor + [time];
+ZoneCaptureOpforCount = ZoneCaptureOpforCount + [0];
+ZoneCaptureBluforCount = ZoneCaptureBluforCount + [0];
+ZoneCapturePoints = ZoneCapturePoints + [0];
+
+_currentIndex = count ZoneCapturePos;
+PlayerCurrentZoneIndex = -1;
+
 // CREATE ZONE CAPTURABLE TRIGGER
 _trg=createTrigger["EmptyDetector",_trigger];
 _trg setTriggerArea[_size,_size,0,false];
+_trg setTriggerActivation["LOGIC","PRESENT",false];
+
 
 if(PlayableSide == west) then
 {
-    _trg setTriggerActivation["WEST SEIZED","PRESENT",false];
+    _trg setTriggerStatements[format["(ZoneCapturePoints select %1) >= (ZoneCaptureMax select %1)/1.5", _currentIndex], format["[""%1"",%2,""%3"",""%4"",%5, %6, %7] execvm 'zonescap\capture.sqf'",_place,_points,_markername,_markername2,_trigger, PlayerSide, _currentIndex], ""];
 };
 
 if(PlayableSide == east) then
 {
-    _trg setTriggerActivation["EAST SEIZED","PRESENT",false];
+    _trg setTriggerStatements[format["(ZoneCapturePoints select %1) <= -1*(ZoneCaptureMax select %1)/1.5", _currentIndex], format["[""%1"",%2,""%3"",""%4"",%5, %6, %7] execvm 'zonescap\capture.sqf'",_place,_points,_markername,_markername2,_trigger, PlayerSide, _currentIndex], ""];
 };
 
 //_trg setTriggerActivation["WEST","PRESENT",false];
-_trg setTriggerStatements["this", format["[""%1"",%2,""%3"",""%4"",%5, %6] execvm 'zonescap\capture.sqf'",_place,_points,_markername,_markername2,_trigger, PlayerSide], ""];
 _trg setTriggerTimeout [30, 60, 300, true ];
 // CREATE VARNAME FOR ZONE TRIGGER --> use the pos of the trigger
 _triggerName = format["trigger%1%2",round (_trigger select 0),round (_trigger select 1)];
 call compile format["%1 = _trg",_triggerName];
+
+
+
+
+
+// CREATE ZONE NOTIFICATION TRIGGER
+_trg2=createTrigger["EmptyDetector",_trigger];
+_trg2 triggerAttachVehicle [player];
+_trg2 setTriggerArea[_size,_size,0,false];
+_trg2 setTriggerActivation["VEHICLE","PRESENT",true];
+_trg2 setTriggerStatements["this", format["[""%1"",thislist, %2] execvm 'enterlocation.sqf'",_place, _currentIndex], ""];
+
+
+_trgOpfor = createTrigger["EmptyDetector",_trigger];
+_trgOpfor setTriggerArea [_size, _size, 0, false ];
+_trgOpfor setTriggerActivation["EAST","PRESENT",true];
+_trgOpfor setTriggerStatements[format["(ZoneCaptureTimeOpfor select %1)<time", _currentIndex], format["ZoneCaptureOpforCount set [%1, ({alive _x} count thisList)]; ZoneCaptureTimeOpfor set [%1, time+0.1];",_currentIndex], ""];
+_trgOpfor setTriggerTimeout [0, 0, 0, false];
+_trgOpfor setTriggerType "NONE";
+
+_trgBlufor = createTrigger["EmptyDetector",_trigger];
+_trgBlufor setTriggerArea [_size, _size, 0, false ];
+_trgBlufor setTriggerActivation["WEST","PRESENT",true];
+_trgBlufor setTriggerStatements[format["(ZoneCaptureTimeBlufor select %1)<time", _currentIndex], format["ZoneCaptureBluforCount set [%1, ({alive _x} count thisList)]; ZoneCaptureTimeBlufor set [%1, time+0.1];",_currentIndex], ""];
+_trgBlufor setTriggerTimeout [0, 0, 0, false];
+_trgBlufor setTriggerType "NONE";
+
+publicVariable "ZoneCapturePos";
+publicVariable "ZoneCaptureMax";
+publicVariable "ZoneCaptureTimeOpfor";
+publicVariable "ZoneCaptureTimeBlufor";
+publicVariable "ZoneCaptureOpforCount";
+publicVariable "ZoneCaptureBluforCount";
+publicVariable "ZoneCapturePoints";
+
+
+//
+
 
 
 
@@ -95,15 +146,6 @@ _path = _prefab_array select 2;
 _prefab_create = [_trigger] execVM _path;
 str(_markername) setMarkerText _place;
 };
-
-
-
-// CREATE ZONE NOTIFICATION TRIGGER
-_trg2=createTrigger["EmptyDetector",_trigger];
-_trg2 triggerAttachVehicle [player];
-_trg2 setTriggerArea[_size,_size,0,false];
-_trg2 setTriggerActivation["VEHICLE","PRESENT",true];
-_trg2 setTriggerStatements["this", format["[""%1"",thislist] execvm 'enterlocation.sqf'",_place], ""];
 
 
 
@@ -584,4 +626,5 @@ if (Warcom_Limiter_Param == 1) then {
       {
           ["rhs_faction_usarmy_wd","rhs_vehclass_aircraft",_trigger,_size] execVM "random_veh.sqf";
       };
-      
+
+PAPABEAR sidechat (str ZoneCapturePoints);

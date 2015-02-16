@@ -2,8 +2,9 @@ _loop = true;
 
 WARCOM_opf_attack_wave_type = "";
 WARCOM_opf_attack_wave_avalaible = false;
+WARCOM_opf_attack_wave_index = 0;
+PREV_wave_index = -1;
 aliveAllUnits = {alive _x} count allunits;
-
 
 // Type of attack wave
 [] spawn {
@@ -52,7 +53,6 @@ aliveAllUnits = {alive _x} count allunits;
             };
 		 
 };
-
 
 
 

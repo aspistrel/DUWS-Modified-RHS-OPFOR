@@ -4,6 +4,7 @@ _markername = _this select 2;    //MARKER ICON
 _markername2 = _this select 3;   //MARKER ELLIPSE
 _triggerPos = _this select 4;
 _attackerSide = _this select 5;  // WEST or EAST
+_currentIndex = _this select 6;
 
 if(_attackerSide == west) then
 {
@@ -60,8 +61,17 @@ if(_attackerSide == west) then
     private "_trg";
     call compile format["_trg = trigger%1%2", (_triggerPos select 0), (_triggerPos select 1)];
     //// MAKE THE TRIGGER CAPTURABLE FOR OPFOR
-    _trg setTriggerActivation["EAST SEIZED","PRESENT",true];
-    _trg setTriggerStatements["this", format["[""%1"",%2,""%3"",""%4"",%5,%6] execvm 'zonescap\capture.sqf'",_place,_points,_markername,_markername2,_triggerPos, east], ""];
+    _trg setTriggerActivation["LOGIC","PRESENT",false];
+    //_trg setTriggerStatements["this", format["[""%1"",%2,""%3"",""%4"",%5,%6] execvm 'zonescap\capture.sqf'",_place,_points,_markername,_markername2,_triggerPos, east], ""];
+    _trg setTriggerStatements[format["(ZoneCapturePoints select %1) <= -1*(ZoneCaptureMax select %1)/1.5", _currentIndex], format["[""%1"",%2,""%3"",""%4"",%5, %6, %7] execvm 'zonescap\capture.sqf'",_place,_points,_markername,_markername2,_trigger, east, _currentIndex], ""];
+
+    publicVariable "ZoneCapturePos";
+    publicVariable "ZoneCaptureMax";
+    publicVariable "ZoneCaptureTimeOpfor";
+    publicVariable "ZoneCaptureTimeBlufor";
+    publicVariable "ZoneCaptureOpforCount";
+    publicVariable "ZoneCaptureBluforCount";
+    publicVariable "ZoneCapturePoints";
 };
 
 if(_attackerSide == east) then
@@ -117,6 +127,15 @@ if(_attackerSide == east) then
     private "_trg";
     call compile format["_trg = trigger%1%2", (_triggerPos select 0), (_triggerPos select 1)];
     //// MAKE THE TRIGGER CAPTURABLE FOR BLUFOR
-    _trg setTriggerActivation["WEST SEIZED","PRESENT",true];
-    _trg setTriggerStatements["this", format["[""%1"",%2,""%3"",""%4"",%5, %6] execvm 'zonescap\capture.sqf'",_place,_points,_markername,_markername2,_triggerPos, west], ""];
+    _trg setTriggerActivation["LOGIC","PRESENT",false];
+    //_trg setTriggerStatements["this", format["[""%1"",%2,""%3"",""%4"",%5, %6] execvm 'zonescap\capture.sqf'",_place,_points,_markername,_markername2,_triggerPos, west], ""];
+    _trg setTriggerStatements[format["(ZoneCapturePoints select %1) >= (ZoneCaptureMax select %1)/1.5", _currentIndex], format["[""%1"",%2,""%3"",""%4"",%5, %6, %7] execvm 'zonescap\capture.sqf'",_place,_points,_markername,_markername2,_trigger, west, _currentIndex], ""];
+
+    publicVariable "ZoneCapturePos";
+    publicVariable "ZoneCaptureMax";
+    publicVariable "ZoneCaptureTimeOpfor";
+    publicVariable "ZoneCaptureTimeBlufor";
+    publicVariable "ZoneCaptureOpforCount";
+    publicVariable "ZoneCaptureBluforCount";
+    publicVariable "ZoneCapturePoints";
 };

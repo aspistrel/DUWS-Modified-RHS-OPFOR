@@ -43,7 +43,7 @@ if(PlayableSide == west) then
                     _group = (_returnedArray select 0);
 
                   _killcp = [] call cp_ehkilledeast;
-                  _opf_assault = [_group,_unitPos] execVM "WARCOM\WARCOM_wp_opf_qrf.sqf";
+                  _opf_assault = [_group,_unitPos] execVM "WARCOM\WARCOM_wp_qrf.sqf";
 			  }
 			  else
 			  {

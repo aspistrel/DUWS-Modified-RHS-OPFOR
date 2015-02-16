@@ -67,8 +67,13 @@ else
     _WARCOM_zones_controled_by_BLUFOR = WARCOM_createdZones;
     WARCOM_zones_controled_by_BLUFOR = [] + _WARCOM_zones_controled_by_BLUFOR;
 };
+
+
+
 publicvariable "WARCOM_zones_controled_by_OPFOR";
 publicvariable "WARCOM_zones_controled_by_BLUFOR";
+
+
 
 // Init BLU patrols
 //_blu_patrol = [] execVM "WARCOM\WARCOM_blu_patrol.sqf";

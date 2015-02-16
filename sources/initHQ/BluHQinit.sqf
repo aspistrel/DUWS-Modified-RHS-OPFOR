@@ -26,7 +26,7 @@ _trg5=createTrigger["EmptyDetector",_hqblu];
 _trg5 triggerAttachVehicle [player];
 _trg5 setTriggerArea[100,100,0,false];
 _trg5 setTriggerActivation["VEHICLE","PRESENT",true];
-_trg5 setTriggerStatements["this", format["[""%1"",thislist] execvm 'enterlocation.sqf'",'Main Base'], ""];
+_trg5 setTriggerStatements["this", format["[""%1"",thislist, -1] execvm 'enterlocation.sqf'",'Main Base'], ""];
 
 // warning trigger when an enemy approaches the camp
 _trgWarning=createTrigger["EmptyDetector",_hqblu];

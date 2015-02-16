@@ -24,7 +24,6 @@ aliveAllUnits = {alive _x} count allunits;
         {
             PAPABEAR sidechat "This is HQ, US Military forces just arrived on the island, we'll soon be able to push through the enemy lines";
         };
-
         WARCOM_blu_attack_wave_avalaible = true;
 
         while {true} do

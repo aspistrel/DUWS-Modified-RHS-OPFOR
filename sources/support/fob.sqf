@@ -161,7 +161,7 @@ _trg23=createTrigger["EmptyDetector",_foundPickupPos];
 _trg23 triggerAttachVehicle [player];
 _trg23 setTriggerArea[_size,_size,0,false];
 _trg23 setTriggerActivation["VEHICLE","PRESENT",true];
-_trg23 setTriggerStatements["this", format["[""FOB %1"",thislist] execvm 'enterlocation.sqf'",_fobname], ""];
+_trg23 setTriggerStatements["this", format["[""FOB %1"",thislist, %2] execvm 'enterlocation.sqf'",_fobname, PlayerCurrentZoneIndex], ""];
 
 // warning trigger when an enemy approaches the camp
 _trgWarning=createTrigger["EmptyDetector",_foundPickupPos];

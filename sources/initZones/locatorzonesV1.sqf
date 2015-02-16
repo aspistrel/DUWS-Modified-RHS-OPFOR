@@ -13,6 +13,22 @@ failsafe_zones_not_found = true;
 [[{hint "DO NOT USE ACTION MENU UNTIL MISSION INITIALIZATION IS COMPLETE"}],"BIS_fnc_Spawn",true,false] call BIS_fnc_MP;
 
 
+ZoneCapturePos = [];
+ZoneCaptureMax = [];
+ZoneCaptureTimeOpfor = [];
+ZoneCaptureTimeBlufor = [];
+ZoneCaptureOpforCount = [];
+ZoneCaptureBluforCount = [];
+ZoneCapturePoints = [];
+
+publicVariable "ZoneCapturePos";
+publicVariable "ZoneCaptureMax";
+publicVariable "ZoneCaptureTimeOpfor";
+publicVariable "ZoneCaptureTimeBlufor";
+publicVariable "ZoneCaptureOpforCount";
+publicVariable "ZoneCaptureBluforCount";
+publicVariable "ZoneCapturePoints";
+
 // ON WATER ? >> FLAT ? >> DISTANCE BETWEEN ZONES ? >> OK !
 
 _worldName = getText(configFile >> "cfgWorlds" >> worldName >> "description");
@@ -115,6 +131,8 @@ sleep 9;
 
 // For some reasons I had to add a zone [0,0,0] in _zones_array, now I must remove it:
 _zones_array = [_zones_array, 0] call BIS_fnc_removeIndex;
+
+
 
 //player globalchat format["%1",_zones_array];
 _warcom_init = [_zones_array, getpos hq_player, getpos hq_player, blufor_ap, opfor_ap, 2700,blufor_ai_skill,opfor_ai_skill, 2000] execVM "WARCOM\WARCOM_init.sqf"; // 2700 is 40 mins

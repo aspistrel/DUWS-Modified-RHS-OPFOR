@@ -548,6 +548,8 @@ sleep 2;
 sleep 20;
 ["info",["DUWS Manual","Check the manual in the briefing for more info"]] call bis_fnc_showNotification;
 
+nul = [] execVM "WARCOM\WARCOM_zone_loop.sqf"; // zone capture indicator
+
 profileNamespace setVariable ["profile_DUWS_firstlaunch", false]; 
 saveProfileNamespace;
 };
