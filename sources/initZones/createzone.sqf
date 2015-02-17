@@ -52,6 +52,15 @@ ZoneCapturePoints = ZoneCapturePoints + [0];
 _currentIndex = count ZoneCapturePos;
 PlayerCurrentZoneIndex = -1;
 
+publicVariable "ZoneCapturePos";
+publicVariable "ZoneCaptureMax";
+publicVariable "ZoneCaptureTimeOpfor";
+publicVariable "ZoneCaptureTimeBlufor";
+publicVariable "ZoneCaptureOpforCount";
+publicVariable "ZoneCaptureBluforCount";
+publicVariable "ZoneCapturePoints";
+publicVariable "PlayerCurrentZoneIndex";
+
 // CREATE ZONE CAPTURABLE TRIGGER
 _trg=createTrigger["EmptyDetector",_trigger];
 _trg setTriggerArea[_size,_size,0,false];
@@ -85,28 +94,20 @@ _trg2 setTriggerArea[_size,_size,0,false];
 _trg2 setTriggerActivation["VEHICLE","PRESENT",true];
 _trg2 setTriggerStatements["this", format["[""%1"",thislist, %2] execvm 'enterlocation.sqf'",_place, _currentIndex], ""];
 
-
 _trgOpfor = createTrigger["EmptyDetector",_trigger];
 _trgOpfor setTriggerArea [_size, _size, 0, false ];
 _trgOpfor setTriggerActivation["EAST","PRESENT",true];
-_trgOpfor setTriggerStatements[format["(ZoneCaptureTimeOpfor select %1)<time", _currentIndex], format["ZoneCaptureOpforCount set [%1, ({alive _x} count thisList)]; ZoneCaptureTimeOpfor set [%1, time+0.1];",_currentIndex], ""];
+_trgOpfor setTriggerStatements[format["(ZoneCaptureTimeOpfor select %1)<time", _currentIndex], format['ZoneCaptureOpforCount set [%1, ({alive _x} count thisList)]; publicVariable "ZoneCaptureOpforCount"; ZoneCaptureTimeOpfor set [%1, time+0.1];',_currentIndex], ""];
 _trgOpfor setTriggerTimeout [0, 0, 0, false];
 _trgOpfor setTriggerType "NONE";
 
 _trgBlufor = createTrigger["EmptyDetector",_trigger];
 _trgBlufor setTriggerArea [_size, _size, 0, false ];
 _trgBlufor setTriggerActivation["WEST","PRESENT",true];
-_trgBlufor setTriggerStatements[format["(ZoneCaptureTimeBlufor select %1)<time", _currentIndex], format["ZoneCaptureBluforCount set [%1, ({alive _x} count thisList)]; ZoneCaptureTimeBlufor set [%1, time+0.1];",_currentIndex], ""];
+_trgBlufor setTriggerStatements[format["(ZoneCaptureTimeBlufor select %1)<time", _currentIndex], format['ZoneCaptureBluforCount set [%1, ({alive _x} count thisList)]; publicVariable "ZoneCaptureBluforCount"; ZoneCaptureTimeBlufor set [%1, time+0.1];',_currentIndex], ""];
 _trgBlufor setTriggerTimeout [0, 0, 0, false];
 _trgBlufor setTriggerType "NONE";
 
-publicVariable "ZoneCapturePos";
-publicVariable "ZoneCaptureMax";
-publicVariable "ZoneCaptureTimeOpfor";
-publicVariable "ZoneCaptureTimeBlufor";
-publicVariable "ZoneCaptureOpforCount";
-publicVariable "ZoneCaptureBluforCount";
-publicVariable "ZoneCapturePoints";
 
 
 //

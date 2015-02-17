@@ -6,7 +6,7 @@ _radius   = _this select 1;
 
 // hint format["%1",_position];
 
-_group = [_position, EAST, ["rhs_msv_junior_sergeant","hs_msv_aa","rhs_msv_at"],[],[],opfor_ai_skill] call BIS_fnc_spawnGroup;
+_group = [_position, EAST, ["rhs_msv_junior_sergeant","rhs_msv_aa","rhs_msv_at"],[],[],opfor_ai_skill] call BIS_fnc_spawnGroup;
 _patrolRadius = round(_radius/2);
 [_group, _position, _patrolRadius] call bis_fnc_taskPatrol;
 

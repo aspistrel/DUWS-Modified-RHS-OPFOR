@@ -527,6 +527,7 @@ sleep 1;
 //_warcom_init = [Array_of_ENEMY_zones, getpos hq_player, getpos hq_player, blufor_ap, opfor_ap, 60,blufor_ai_skill,opfor_ai_skill, 60] execVM "WARCOM\WARCOM_init.sqf";
 
 
+nul = [] execVM "WARCOM\WARCOM_zone_loop.sqf"; // zone capture indicator
 
 
 if (mission_DUWS_firstlaunch) then {
@@ -547,8 +548,6 @@ sleep 2;
 
 sleep 20;
 ["info",["DUWS Manual","Check the manual in the briefing for more info"]] call bis_fnc_showNotification;
-
-nul = [] execVM "WARCOM\WARCOM_zone_loop.sqf"; // zone capture indicator
 
 profileNamespace setVariable ["profile_DUWS_firstlaunch", false]; 
 saveProfileNamespace;
