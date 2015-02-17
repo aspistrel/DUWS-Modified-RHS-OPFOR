@@ -13,22 +13,6 @@ failsafe_zones_not_found = true;
 [[{hint "DO NOT USE ACTION MENU UNTIL MISSION INITIALIZATION IS COMPLETE"}],"BIS_fnc_Spawn",true,false] call BIS_fnc_MP;
 
 
-ZoneCapturePos = [];
-ZoneCaptureMax = [];
-ZoneCaptureTimeOpfor = [];
-ZoneCaptureTimeBlufor = [];
-ZoneCaptureOpforCount = [];
-ZoneCaptureBluforCount = [];
-ZoneCapturePoints = [];
-
-publicVariable "ZoneCapturePos";
-publicVariable "ZoneCaptureMax";
-publicVariable "ZoneCaptureTimeOpfor";
-publicVariable "ZoneCaptureTimeBlufor";
-publicVariable "ZoneCaptureOpforCount";
-publicVariable "ZoneCaptureBluforCount";
-publicVariable "ZoneCapturePoints";
-
 // ON WATER ? >> FLAT ? >> DISTANCE BETWEEN ZONES ? >> OK !
 
 _worldName = getText(configFile >> "cfgWorlds" >> worldName >> "description");
@@ -104,7 +88,7 @@ while {!_found} do
      
      if (_found_distance) then {
      _missionPos = [round(_missionPos select 0),round(_missionPos select 1)];
-     _generatezonescript = [format["Zone %1",_i],_points_zone,_zone_radius,_missionPos,_fortified,true] execvm "initZones\createzone.sqf";     
+     _generatezonescript = [format["Zone %1",_i],_points_zone,_zone_radius,_missionPos,_fortified,true, _i] execvm "initZones\createzone.sqf";
      _found=true;
      _zones_array = _zones_array + [_missionPos]; 
 

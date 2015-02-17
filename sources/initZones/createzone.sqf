@@ -8,6 +8,9 @@ _size = _this select 2;
 _trigger = _this select 3;
 _fortified = _this select 4;
 _prefab = _this select 5;
+_currentIndex = _this select 6;
+
+_currentIndex = _currentIndex-1;
 
 amount_zones_created = amount_zones_created + 1;
 publicVariable "amount_zones_created";
@@ -49,8 +52,6 @@ ZoneCaptureOpforCount = ZoneCaptureOpforCount + [0];
 ZoneCaptureBluforCount = ZoneCaptureBluforCount + [0];
 ZoneCapturePoints = ZoneCapturePoints + [0];
 
-_currentIndex = count ZoneCapturePos;
-PlayerCurrentZoneIndex = -1;
 
 publicVariable "ZoneCapturePos";
 publicVariable "ZoneCaptureMax";
@@ -59,7 +60,6 @@ publicVariable "ZoneCaptureTimeBlufor";
 publicVariable "ZoneCaptureOpforCount";
 publicVariable "ZoneCaptureBluforCount";
 publicVariable "ZoneCapturePoints";
-publicVariable "PlayerCurrentZoneIndex";
 
 // CREATE ZONE CAPTURABLE TRIGGER
 _trg=createTrigger["EmptyDetector",_trigger];
@@ -82,8 +82,6 @@ _trg setTriggerTimeout [30, 60, 300, true ];
 // CREATE VARNAME FOR ZONE TRIGGER --> use the pos of the trigger
 _triggerName = format["trigger%1%2",round (_trigger select 0),round (_trigger select 1)];
 call compile format["%1 = _trg",_triggerName];
-
-
 
 
 
@@ -111,14 +109,6 @@ _trgBlufor setTriggerType "NONE";
 
 
 //
-
-
-
-
-
-
-
-
 
 
 // CREATE PREFAB

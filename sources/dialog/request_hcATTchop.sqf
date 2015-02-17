@@ -7,11 +7,8 @@ _spawnPos = [(_spawnPos select 0)+250, _spawnPos select 1, (_spawnPos select 2)+
 _cost = 5;
 _grouptype = ["RHS_AH64D_wd"];
 
-if(PlayableSide == west) then
-{
-    _currentAiSkill = blufor_ai_skill;
-};
 
+_currentAiSkill = blufor_ai_skill;
 if(PlayableSide == east) then
 {
     _currentAiSkill = opfor_ai_skill;

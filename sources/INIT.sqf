@@ -257,12 +257,31 @@ if (isMultiplayer) then {
         EnemySideFolder = "zonesSpawns\BLUFOR";
     };
 
+    PlayerCurrentZoneIndex = -1;
 
+    ZoneCapturePos = [];
+    ZoneCaptureMax = [];
+    ZoneCaptureTimeOpfor = [];
+    ZoneCaptureTimeBlufor = [];
+    ZoneCaptureOpforCount = [];
+    ZoneCaptureBluforCount = [];
+    ZoneCapturePoints = [];
+
+    publicVariable "ZoneCapturePos";
+    publicVariable "ZoneCaptureMax";
+    publicVariable "ZoneCaptureTimeOpfor";
+    publicVariable "ZoneCaptureTimeBlufor";
+    publicVariable "ZoneCaptureOpforCount";
+    publicVariable "ZoneCaptureBluforCount";
+    publicVariable "ZoneCapturePoints";
+
+    publicVariable "PAPABEAR";
     publicVariable "PlayableSide";
     publicVariable "EnemySide";
 	publicVariable "WARCOMLimitAI";
     publicVariable "PlayerSideFolder";
     publicVariable "EnemySideFolder";
+    publicVariable "PlayerCurrentZoneIndex";
 
 	if(Warcom_Limiter_Param == 1) then {WARCOMLimitAI = 130}; // legacy
 	// TODO: delete all "Warcom_Limiter_Param" usings
@@ -524,10 +543,9 @@ waitUntil {!isNil ("Array_of_ENEMY_zones")};
 sleep 1;
 
 //initZones\locatorzonesV1.sqf
-//_warcom_init = [Array_of_ENEMY_zones, getpos hq_player, getpos hq_player, blufor_ap, opfor_ap, 60,blufor_ai_skill,opfor_ai_skill, 60] execVM "WARCOM\WARCOM_init.sqf";
-
-
-nul = [] execVM "WARCOM\WARCOM_zone_loop.sqf"; // zone capture indicator
+// manually placed?
+_warcom_init = [Array_of_ENEMY_zones, getpos hq_player, getpos hq_player, blufor_ap, opfor_ap, 60,blufor_ai_skill,opfor_ai_skill, 60] execVM "WARCOM\WARCOM_init.sqf";
+};
 
 
 if (mission_DUWS_firstlaunch) then {
@@ -552,6 +570,8 @@ sleep 20;
 profileNamespace setVariable ["profile_DUWS_firstlaunch", false]; 
 saveProfileNamespace;
 };
+
+_warcom_loop = [] execVM "WARCOM\WARCOM_zone_loop.sqf"; // zone capture indicator
 
 //Cleanup unused players.
 for[{_x = 2},{_x <= 12},{_x = _x + 1}] do

@@ -15,9 +15,6 @@ if(isServer) then
                 _currentBluforCount = (ZoneCaptureBluforCount select _forEachIndex);
                 _currentPoints = (ZoneCapturePoints select _forEachIndex);
 
-                PAPABEAR sidechat ("SERVER: "+(str PlayerCurrentZoneIndex)+" "+(str _forEachIndex)+" "+(str _currentPos)+" "+(str _currentMaxPoints)+" "+(str _currentOpforCount)+" "+(str _currentBluforCount)+" "+(str _currentPoints));
-
-
                 // limit to 10
                 if(_currentOpforCount > 10) then
                 {
@@ -85,24 +82,21 @@ if(isServer) then
             _currentOpforCount = (ZoneCaptureOpforCount select PlayerCurrentZoneIndex);
             _currentBluforCount = (ZoneCaptureBluforCount select PlayerCurrentZoneIndex);
 
-            PAPABEAR sidechat ("CLIENT: "+(str PlayerCurrentZoneIndex)+" "+(str _currentMaxPoints)+" "+(str _currentOpforCount)+" "+(str _currentBluforCount)+" "+(str _currentPoints));
 
             if(_currentPoints > 0) then
             {
                 _percent ctrlSetTextColor [0, 0, 1, 1];
-                _percent ctrlSetText "Controlled by BLUFOR ("+(str _currentPoints)+" / "+(str _currentMaxPoints)+") "+_currentOpforCount+":"+_currentBluforCount;
+                _percent ctrlSetText "Zone "+(str PlayerCurrentZoneIndex+1)+" controlled by BLUFOR ("+(str _currentPoints)+" / "+(str _currentMaxPoints)+") "+(str _currentOpforCount)+":"+(str _currentBluforCount);
                 _barBlue progressSetPosition (_currentPoints / _currentMaxPoints);
                 _barBlue progressSetPosition (_currentPoints / _currentMaxPoints);
             }
             else
             {
                 _percent ctrlSetTextColor [1, 0, 0, 1];
-                _percent ctrlSetText "Controlled by OPFOR ("+(str (_currentPoints * -1))+" / "+(str _currentMaxPoints)+") "+_currentOpforCount+":"+_currentBluforCount;
+                _percent ctrlSetText "Zone "+(str PlayerCurrentZoneIndex+1)+" controlled by OPFOR ("+(str (_currentPoints * -1))+" / "+(str _currentMaxPoints)+") "+(str _currentOpforCount)+":"+(str _currentBluforCount);
                 _barRed progressSetPosition ((_currentPoints * -1) / _currentMaxPoints);
                 _barRed progressSetPosition ((_currentPoints * -1) / _currentMaxPoints);
             };
-
-            sleep 0.1;
         }
         else
         {
@@ -110,6 +104,8 @@ if(isServer) then
             _barBlue progressSetPosition (0);
             _barBlue progressSetPosition (0);
         };
+
+        sleep 0.1;
 
     };
 };
