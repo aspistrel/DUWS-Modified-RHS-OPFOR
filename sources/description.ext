@@ -6,6 +6,7 @@ overviewText = "A procedurally generated campaign where you earn resources, exec
 overviewPicture = "rtipic.paa";
 LoadScreen = "rtipic.paa";
 respawnDialog = 0;
+enableDebugConsole = 1;
 
 class Header
 {

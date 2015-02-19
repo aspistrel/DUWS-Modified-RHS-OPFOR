@@ -58,11 +58,11 @@ if(isServer) then
 
     disableSerialization;
     _barBlue = findDisplay 46 ctrlCreate ["RscProgress", -1];
-    _barBlue ctrlSetPosition [0.25,-0.3,0.5,0.01];
+    _barBlue ctrlSetPosition [0.22,-0.3,0.5,0.01];
     _barBlue ctrlSetTextColor [0, 0, 1, 1];
 
     _barRed = findDisplay 46 ctrlCreate ["RscProgress", -1];
-    _barRed ctrlSetPosition [0.25,-0.3,0.5,0.01];
+    _barRed ctrlSetPosition [0.22,-0.3,0.5,0.01];
     _barRed ctrlSetTextColor [1, 0, 0, 1];
 
     _percent = findDisplay 46 ctrlCreate ["RscText", -1];
@@ -86,14 +86,14 @@ if(isServer) then
             if(_currentPoints > 0) then
             {
                 _percent ctrlSetTextColor [0, 0, 1, 1];
-                _percent ctrlSetText "Zone "+(str PlayerCurrentZoneIndex+1)+" controlled by BLUFOR ("+(str _currentPoints)+" / "+(str _currentMaxPoints)+") "+(str _currentOpforCount)+":"+(str _currentBluforCount);
+                _percent ctrlSetText format["Zone %1 controlled by BLUFOR (%2/%3)", (PlayerCurrentZoneIndex+1), _currentPoints, _currentMaxPoints];
                 _barBlue progressSetPosition (_currentPoints / _currentMaxPoints);
                 _barBlue progressSetPosition (_currentPoints / _currentMaxPoints);
             }
             else
             {
                 _percent ctrlSetTextColor [1, 0, 0, 1];
-                _percent ctrlSetText "Zone "+(str PlayerCurrentZoneIndex+1)+" controlled by OPFOR ("+(str (_currentPoints * -1))+" / "+(str _currentMaxPoints)+") "+(str _currentOpforCount)+":"+(str _currentBluforCount);
+                _percent ctrlSetText format["Zone %1 controlled by OPFOR (%2/%3)", (PlayerCurrentZoneIndex+1), _currentPoints, _currentMaxPoints];
                 _barRed progressSetPosition ((_currentPoints * -1) / _currentMaxPoints);
                 _barRed progressSetPosition ((_currentPoints * -1) / _currentMaxPoints);
             };
@@ -102,7 +102,7 @@ if(isServer) then
         {
             _percent ctrlSetText "";
             _barBlue progressSetPosition (0);
-            _barBlue progressSetPosition (0);
+            _barRed progressSetPosition (0);
         };
 
         sleep 0.1;

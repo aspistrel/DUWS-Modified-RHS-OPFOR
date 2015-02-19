@@ -63,7 +63,7 @@ if(_attackerSide == west) then
     //// MAKE THE TRIGGER CAPTURABLE FOR OPFOR
     _trg setTriggerActivation["LOGIC","PRESENT",false];
     //_trg setTriggerStatements["this", format["[""%1"",%2,""%3"",""%4"",%5,%6] execvm 'zonescap\capture.sqf'",_place,_points,_markername,_markername2,_triggerPos, east], ""];
-    _trg setTriggerStatements[format["(ZoneCapturePoints select %1) <= -1*(ZoneCaptureMax select %1)/1.5", _currentIndex], format["[""%1"",%2,""%3"",""%4"",%5, %6, %7] execvm 'zonescap\capture.sqf'",_place,_points,_markername,_markername2,_trigger, east, _currentIndex], ""];
+    _trg setTriggerStatements[format["(ZoneCapturePoints select %1) <= -1*(ZoneCaptureMax select %1)", _currentIndex], format["[""%1"",%2,""%3"",""%4"",%5, %6, %7] execvm 'zonescap\capture.sqf'",_place,_points,_markername,_markername2,_trigger, east, _currentIndex], ""];
 
     publicVariable "ZoneCapturePos";
     publicVariable "ZoneCaptureMax";
@@ -129,7 +129,7 @@ if(_attackerSide == east) then
     //// MAKE THE TRIGGER CAPTURABLE FOR BLUFOR
     _trg setTriggerActivation["LOGIC","PRESENT",false];
     //_trg setTriggerStatements["this", format["[""%1"",%2,""%3"",""%4"",%5, %6] execvm 'zonescap\capture.sqf'",_place,_points,_markername,_markername2,_triggerPos, west], ""];
-    _trg setTriggerStatements[format["(ZoneCapturePoints select %1) >= (ZoneCaptureMax select %1)/1.5", _currentIndex], format["[""%1"",%2,""%3"",""%4"",%5, %6, %7] execvm 'zonescap\capture.sqf'",_place,_points,_markername,_markername2,_trigger, west, _currentIndex], ""];
+    _trg setTriggerStatements[format["(ZoneCapturePoints select %1) >= (ZoneCaptureMax select %1)", _currentIndex], format["[""%1"",%2,""%3"",""%4"",%5, %6, %7] execvm 'zonescap\capture.sqf'",_place,_points,_markername,_markername2,_trigger, west, _currentIndex], ""];
 
     publicVariable "ZoneCapturePos";
     publicVariable "ZoneCaptureMax";

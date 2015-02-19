@@ -69,16 +69,16 @@ _trg setTriggerActivation["LOGIC","PRESENT",false];
 
 if(PlayableSide == west) then
 {
-    _trg setTriggerStatements[format["(ZoneCapturePoints select %1) >= (ZoneCaptureMax select %1)/1.5", _currentIndex], format["[""%1"",%2,""%3"",""%4"",%5, %6, %7] execvm 'zonescap\capture.sqf'",_place,_points,_markername,_markername2,_trigger, PlayerSide, _currentIndex], ""];
+    _trg setTriggerStatements[format["(ZoneCapturePoints select %1) >= (ZoneCaptureMax select %1)", _currentIndex], format["[""%1"",%2,""%3"",""%4"",%5, %6, %7] execvm 'zonescap\capture.sqf'",_place,_points,_markername,_markername2,_trigger, PlayerSide, _currentIndex], ""];
 };
 
 if(PlayableSide == east) then
 {
-    _trg setTriggerStatements[format["(ZoneCapturePoints select %1) <= -1*(ZoneCaptureMax select %1)/1.5", _currentIndex], format["[""%1"",%2,""%3"",""%4"",%5, %6, %7] execvm 'zonescap\capture.sqf'",_place,_points,_markername,_markername2,_trigger, PlayerSide, _currentIndex], ""];
+    _trg setTriggerStatements[format["(ZoneCapturePoints select %1) <= -1*(ZoneCaptureMax select %1)", _currentIndex], format["[""%1"",%2,""%3"",""%4"",%5, %6, %7] execvm 'zonescap\capture.sqf'",_place,_points,_markername,_markername2,_trigger, PlayerSide, _currentIndex], ""];
 };
 
 //_trg setTriggerActivation["WEST","PRESENT",false];
-_trg setTriggerTimeout [30, 60, 300, true ];
+_trg setTriggerTimeout [0, 0, 0, true ];
 // CREATE VARNAME FOR ZONE TRIGGER --> use the pos of the trigger
 _triggerName = format["trigger%1%2",round (_trigger select 0),round (_trigger select 1)];
 call compile format["%1 = _trg",_triggerName];
@@ -95,14 +95,14 @@ _trg2 setTriggerStatements["this", format["[""%1"",thislist, %2] execvm 'enterlo
 _trgOpfor = createTrigger["EmptyDetector",_trigger];
 _trgOpfor setTriggerArea [_size, _size, 0, false ];
 _trgOpfor setTriggerActivation["EAST","PRESENT",true];
-_trgOpfor setTriggerStatements[format["(ZoneCaptureTimeOpfor select %1)<time", _currentIndex], format['ZoneCaptureOpforCount set [%1, ({alive _x} count thisList)]; publicVariable "ZoneCaptureOpforCount"; ZoneCaptureTimeOpfor set [%1, time+0.1];',_currentIndex], ""];
+_trgOpfor setTriggerStatements[format["(ZoneCaptureTimeOpfor select %1)<time", _currentIndex], format['ZoneCaptureOpforCount set [%1, ({alive _x} count thisList)]; publicVariable "ZoneCaptureOpforCount"; ZoneCaptureTimeOpfor set [%2, time+1];',_currentIndex,_currentIndex], ""];
 _trgOpfor setTriggerTimeout [0, 0, 0, false];
 _trgOpfor setTriggerType "NONE";
 
 _trgBlufor = createTrigger["EmptyDetector",_trigger];
 _trgBlufor setTriggerArea [_size, _size, 0, false ];
 _trgBlufor setTriggerActivation["WEST","PRESENT",true];
-_trgBlufor setTriggerStatements[format["(ZoneCaptureTimeBlufor select %1)<time", _currentIndex], format['ZoneCaptureBluforCount set [%1, ({alive _x} count thisList)]; publicVariable "ZoneCaptureBluforCount"; ZoneCaptureTimeBlufor set [%1, time+0.1];',_currentIndex], ""];
+_trgBlufor setTriggerStatements[format["(ZoneCaptureTimeBlufor select %1)<time", _currentIndex], format['ZoneCaptureBluforCount set [%1, ({alive _x} count thisList)]; publicVariable "ZoneCaptureBluforCount"; ZoneCaptureTimeBlufor set [%1, time+1];',_currentIndex], ""];
 _trgBlufor setTriggerTimeout [0, 0, 0, false];
 _trgBlufor setTriggerType "NONE";
 
