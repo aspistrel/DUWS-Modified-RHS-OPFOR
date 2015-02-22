@@ -22,7 +22,7 @@ aliveAllUnits = {alive _x} count allunits;
 
             if(PlayableSide == east) then
             {
-                PAPABEAR sidechat "This is Eagle, area is secured. We'll soon be able to send reinforcements and capture the island. This will be a piece of cake.";
+                [[PAPABEAR, "This is Eagle, area is secured. We'll soon be able to send reinforcements and capture the island. This will be a piece of cake."],"sidechat",nil,false] call BIS_fnc_MP;
             };
             WARCOM_opf_attack_wave_avalaible = true;
 
@@ -43,7 +43,7 @@ aliveAllUnits = {alive _x} count allunits;
                     PREV_wave_index = WARCOM_opf_attack_wave_index;
                     if(PlayableSide == east) then
                     {
-                        PAPABEAR sidechat ("This is Eagle, we are ready to send reinforcements (level " + str WARCOM_opf_attack_wave_index + ")");
+                        [[PAPABEAR, "This is Eagle, we are ready to send reinforcements (level " + str WARCOM_opf_attack_wave_index + ")"],"sidechat",nil,false] call BIS_fnc_MP;
                     };
                 };
 
@@ -103,7 +103,7 @@ aliveAllUnits = {alive _x} count allunits;
         _TFname = [1] call compile preprocessFile "random_name.sqf";
         if(PlayableSide == east) then
         {
-            PAPABEAR sidechat format["This is Eeagle, We are sending Task Force %1, we will try to push as far as possible in enemy territory",_TFname];
+            [[PAPABEAR, format["This is Eeagle, We are sending Task Force %1, we will try to push as far as possible in enemy territory",_TFname]],"sidechat",nil,false] call BIS_fnc_MP;
 
             _opf_assault = [_group] execVM "WARCOM\WARCOM_wp_opf.sqf";
         };

@@ -45,6 +45,8 @@ else
     WARCOM_createdZones = [_array_of_zones_total,[WARCOM_opf_hq_pos],{_input0 distance _x},"ASCEND"] call BIS_fnc_sortBy;
 };
 
+publicVariable "WARCOM_createdZones";
+
 if(PlayableSide == west) then
 {
     // ARRAY OF ZONES UNDER BLUFOR CONTROL

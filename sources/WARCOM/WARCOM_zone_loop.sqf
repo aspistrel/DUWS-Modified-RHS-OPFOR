@@ -82,18 +82,20 @@ if(isServer) then
             _currentOpforCount = (ZoneCaptureOpforCount select PlayerCurrentZoneIndex);
             _currentBluforCount = (ZoneCaptureBluforCount select PlayerCurrentZoneIndex);
 
+            _zoneName = (ZoneCaptureNames select PlayerCurrentZoneIndex);
+
 
             if(_currentPoints > 0) then
             {
                 _percent ctrlSetTextColor [0, 0, 1, 1];
-                _percent ctrlSetText format["Zone %1 controlled by BLUFOR (%2/%3)", (PlayerCurrentZoneIndex+1), _currentPoints, _currentMaxPoints];
+                _percent ctrlSetText str (parseText format["<t>%1 BLUFOR (%2&#37;)</t>", _zoneName, (_currentPoints / _currentMaxPoints)*100]);
                 _barBlue progressSetPosition (_currentPoints / _currentMaxPoints);
                 _barBlue progressSetPosition (_currentPoints / _currentMaxPoints);
             }
             else
             {
                 _percent ctrlSetTextColor [1, 0, 0, 1];
-                _percent ctrlSetText format["Zone %1 controlled by OPFOR (%2/%3)", (PlayerCurrentZoneIndex+1), _currentPoints, _currentMaxPoints];
+                _percent ctrlSetText str (parseText format["<t>%1 OPFOR (%2&#37;)</t>", _zoneName, ((_currentPoints * -1) / _currentMaxPoints)*100]);
                 _barRed progressSetPosition ((_currentPoints * -1) / _currentMaxPoints);
                 _barRed progressSetPosition ((_currentPoints * -1) / _currentMaxPoints);
             };

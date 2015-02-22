@@ -266,14 +266,15 @@ if (isMultiplayer) then {
     ZoneCaptureOpforCount = [];
     ZoneCaptureBluforCount = [];
     ZoneCapturePoints = [];
+    ZoneCaptureNames = [];
 
-    publicVariable "ZoneCapturePos";
+    /*publicVariable "ZoneCapturePos";
     publicVariable "ZoneCaptureMax";
     publicVariable "ZoneCaptureTimeOpfor";
     publicVariable "ZoneCaptureTimeBlufor";
     publicVariable "ZoneCaptureOpforCount";
     publicVariable "ZoneCaptureBluforCount";
-    publicVariable "ZoneCapturePoints";
+    publicVariable "ZoneCapturePoints";*/
 
     publicVariable "PAPABEAR";
     publicVariable "PlayableSide";
@@ -282,6 +283,10 @@ if (isMultiplayer) then {
     publicVariable "PlayerSideFolder";
     publicVariable "EnemySideFolder";
     publicVariable "PlayerCurrentZoneIndex";
+
+    SupplyPoints = 0;
+    publicVariable "SupplyPoints";
+
 
 	if(Warcom_Limiter_Param == 1) then {WARCOMLimitAI = 130}; // legacy
 	// TODO: delete all "Warcom_Limiter_Param" usings
@@ -304,6 +309,10 @@ if ((!isDedicated) || (!isServer)) then {
 };
 };
 // --------------------------------------------------------------------------------------------------------------
+
+
+_scriptExec = [] execVM "initZones\zoneIndicator.sqf";
+waitUntil {scriptDone _scriptExec};
 
 BOMBCODE1 = [];
 [] call compile preprocessfilelinenumbers "cp_ehkilled.sqf";
@@ -538,6 +547,7 @@ waitUntil {scriptDone _scriptExec};
 _scriptExec = [] execVM "Squads\512functions.sqf";
 waitUntil {scriptDone _scriptExec};
 
+
 if (zones_manually_placed) then {
 waitUntil {!isNil ("Array_of_ENEMY_zones")};
 sleep 1;
@@ -546,6 +556,7 @@ sleep 1;
 // manually placed?
 _warcom_init = [Array_of_ENEMY_zones, getpos hq_player, getpos hq_player, blufor_ap, opfor_ap, 60,blufor_ai_skill,opfor_ai_skill, 60] execVM "WARCOM\WARCOM_init.sqf";
 };
+
 
 
 if (mission_DUWS_firstlaunch) then {
@@ -570,8 +581,6 @@ sleep 20;
 profileNamespace setVariable ["profile_DUWS_firstlaunch", false]; 
 saveProfileNamespace;
 };
-
-_warcom_loop = [] execVM "WARCOM\WARCOM_zone_loop.sqf"; // zone capture indicator
 
 //Cleanup unused players.
 for[{_x = 2},{_x <= 12},{_x = _x + 1}] do

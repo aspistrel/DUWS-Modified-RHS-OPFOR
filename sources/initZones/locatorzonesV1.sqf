@@ -3,6 +3,7 @@ _diff = _this select 1;
 _infinite_failsafe_loop = true;
 
 
+
 [] spawn {  // Spawn the failsafe
 sleep 90;
 failsafe_zones_not_found = true;
@@ -103,6 +104,14 @@ while {!_found} do
 //hintSilent format["All zones found\nWelcome to %1\nHave fun !\nDUWS by kibot",_worldName];
 player globalChat format["All zones found. Welcome to %1, %2",_worldName,profileName];
 
+publicVariable "ZoneCapturePos";
+publicVariable "ZoneCaptureMax";
+publicVariable "ZoneCaptureTimeOpfor";
+publicVariable "ZoneCaptureTimeBlufor";
+publicVariable "ZoneCaptureOpforCount";
+publicVariable "ZoneCaptureBluforCount";
+publicVariable "ZoneCapturePoints";
+publicVariable "ZoneCaptureNames";
 
 //hint format["MISSION INITIALIZATION COMPLETE!\nCampaign generated\nzones: %1\nmaximum radius: %2m\nminimum radius: %3m\nmax. distance from HQ: %4m\n\nIf you experience performance issues, restart the mission and try reducing the amount of zones/and or their radius",zones_number,zones_max_radius,zones_min_radius,zones_max_dist_from_hq];
 [[{player globalChat "MISSION INITIALIZATION COMPLETE!"}],"BIS_fnc_Spawn",true,false] call BIS_fnc_MP;
@@ -111,6 +120,8 @@ player globalChat format["All zones found. Welcome to %1, %2",_worldName,profile
 sleep 9;
 [] execVM "misc\bottom_right_message.sqf";
 };
+
+[[], "InitZoneIndicator", nil, true, true] call BIS_fnc_MP;
 
 
 // For some reasons I had to add a zone [0,0,0] in _zones_array, now I must remove it:

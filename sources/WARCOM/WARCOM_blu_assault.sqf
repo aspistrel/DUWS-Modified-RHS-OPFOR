@@ -22,7 +22,7 @@ aliveAllUnits = {alive _x} count allunits;
 
         if(PlayableSide == west) then
         {
-            PAPABEAR sidechat "This is HQ, US Military forces just arrived on the island, we'll soon be able to push through the enemy lines";
+            [[PAPABEAR, "This is HQ, US Military forces just arrived on the island, we'll soon be able to push through the enemy lines"],"sidechat",nil,false] call BIS_fnc_MP;
         };
         WARCOM_blu_attack_wave_avalaible = true;
 
@@ -43,7 +43,7 @@ aliveAllUnits = {alive _x} count allunits;
                 PREV_wave_index = WARCOM_blu_attack_wave_index;
                 if(PlayableSide == west) then
                 {
-                    PAPABEAR sidechat ("This is HQ, we are ready to send reinforcements (level " + str WARCOM_blu_attack_wave_index + ")");
+                    [[PAPABEAR, "test"],"This is HQ, we are ready to send reinforcements (level " + str WARCOM_blu_attack_wave_index + ")",nil,false] call BIS_fnc_MP;
                 };
             };
 
@@ -102,7 +102,7 @@ aliveAllUnits = {alive _x} count allunits;
                   _TFname = [1] call compile preprocessFile "random_name.sqf";
                   if(PlayableSide == west) then
                   {
-                     PAPABEAR sidechat format["This is HQ, We are sending Task Force %1, we will try to push as far as possible in enemy territory",_TFname];
+                    [[PAPABEAR, format["This is HQ, We are sending Task Force %1, we will try to push as far as possible in enemy territory",_TFname]],"sidechat",nil,false] call BIS_fnc_MP;
 
                       _blu_assault = [_group] execVM "WARCOM\WARCOM_wp_blu.sqf";
                   };

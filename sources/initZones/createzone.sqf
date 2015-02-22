@@ -52,15 +52,6 @@ ZoneCaptureOpforCount = ZoneCaptureOpforCount + [0];
 ZoneCaptureBluforCount = ZoneCaptureBluforCount + [0];
 ZoneCapturePoints = ZoneCapturePoints + [0];
 
-
-publicVariable "ZoneCapturePos";
-publicVariable "ZoneCaptureMax";
-publicVariable "ZoneCaptureTimeOpfor";
-publicVariable "ZoneCaptureTimeBlufor";
-publicVariable "ZoneCaptureOpforCount";
-publicVariable "ZoneCaptureBluforCount";
-publicVariable "ZoneCapturePoints";
-
 // CREATE ZONE CAPTURABLE TRIGGER
 _trg=createTrigger["EmptyDetector",_trigger];
 _trg setTriggerArea[_size,_size,0,false];
@@ -78,19 +69,11 @@ if(PlayableSide == east) then
 };
 
 //_trg setTriggerActivation["WEST","PRESENT",false];
-_trg setTriggerTimeout [0, 0, 0, true ];
+_trg setTriggerTimeout [5, 10, 7, true ];
 // CREATE VARNAME FOR ZONE TRIGGER --> use the pos of the trigger
 _triggerName = format["trigger%1%2",round (_trigger select 0),round (_trigger select 1)];
 call compile format["%1 = _trg",_triggerName];
 
-
-
-// CREATE ZONE NOTIFICATION TRIGGER
-_trg2=createTrigger["EmptyDetector",_trigger];
-_trg2 triggerAttachVehicle [player];
-_trg2 setTriggerArea[_size,_size,0,false];
-_trg2 setTriggerActivation["VEHICLE","PRESENT",true];
-_trg2 setTriggerStatements["this", format["[""%1"",thislist, %2] execvm 'enterlocation.sqf'",_place, _currentIndex], ""];
 
 _trgOpfor = createTrigger["EmptyDetector",_trigger];
 _trgOpfor setTriggerArea [_size, _size, 0, false ];
@@ -133,6 +116,8 @@ _prefab_array = _array_of_prefabs select _dice;
 _place = _prefab_array select 0;
 _fortified = _prefab_array select 1;
 _path = _prefab_array select 2;
+
+ZoneCaptureNames = ZoneCaptureNames + [_place];
 
 _prefab_create = [_trigger] execVM _path;
 str(_markername) setMarkerText _place;
@@ -617,5 +602,3 @@ if (Warcom_Limiter_Param == 1) then {
       {
           ["rhs_faction_usarmy_wd","rhs_vehclass_aircraft",_trigger,_size] execVM "random_veh.sqf";
       };
-
-PAPABEAR sidechat (str ZoneCapturePoints);
