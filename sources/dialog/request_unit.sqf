@@ -1,13 +1,8 @@
 _index = lbCurSel 2100;
 
-_skill = blufor_ai_skill;
-_skillSF = blufor_ai_skill;
+_skill = (blufor_ai_skill select 0)+0.2;
+_skillSF = (blufor_ai_skill select 0)+0.5;
 
-if(PlayableSide == west) then
-{
-    _skill = (blufor_ai_skill select 0)+0.2;
-    _skillSF = (blufor_ai_skill select 0)+0.5;
-};
 
 if(PlayableSide == east) then
 {
@@ -17,7 +12,30 @@ if(PlayableSide == east) then
 
 _spawnpos = [(getpos player select 0)-78, (getpos player select 1)-73.5];
 
-switch (_index) do
+_cost = ((RequestUnit select _index) select 1);
+_boosted = ((RequestUnit select _index) select 2);
+
+_resultSkill = _skill;
+
+if(_boosted) then
+{
+    _resultSkill = _skillSF;
+};
+
+if (commandpoints >= _cost) then
+{
+    hint "Unit ready !";
+    commandpoints = commandpoints - _cost;
+    ctrlSetText [1000, format["%1",commandpoints]];
+    _group = group player ;
+    ((RequestUnit select _index) select 0) createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execvm 'ais_injury\init_ais.sqf'}; if (player_fatigue == 0) then {this enablefatigue false};", _resultSkill, "private"] ;
+}
+else
+{
+    hint "Not enough command points";
+};
+
+/*switch (_index) do
 {
     case 0:  
     {
@@ -27,7 +45,7 @@ switch (_index) do
                commandpoints = commandpoints - 2;
                ctrlSetText [1000, format["%1",commandpoints]];
                _group = group player ;
-               "rhsusf_army_ocp_rifleman" createUnit [_spawnpos, _group, "if (player_fatigue == 0) then {this enablefatigue false};if (revive_activated == 2) then {[this] execvm 'ais_injury\init_ais.sqf'};", _skill, "private"];
+               "rhsusf_army_ocp_rifleman" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execvm 'ais_injury\init_ais.sqf'}; if (player_fatigue == 0) then {this enablefatigue false};", _skill, "private"];
              } 
           else 
              {
@@ -415,7 +433,7 @@ case 25:
              };
     }; 		
 	
-};
+};*/
 
 //hint format["AI skill: %1",_skill];            
 publicVariable "commandpoints";

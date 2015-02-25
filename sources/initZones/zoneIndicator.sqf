@@ -1,4 +1,5 @@
 InitZoneIndicator = {
+
     {
         _currentIndex = _forEachIndex;
 
@@ -6,8 +7,6 @@ InitZoneIndicator = {
         _size = ZoneCaptureMax select _currentIndex;
         _place = ZoneCaptureNames select _currentIndex;
 
-
-        // CREATE ZONE NOTIFICATION TRIGGER
         _trg =createTrigger["EmptyDetector",_pos];
         _trg triggerAttachVehicle [player];
         _trg setTriggerArea[_size,_size,0,false];

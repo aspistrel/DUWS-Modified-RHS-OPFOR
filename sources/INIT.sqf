@@ -1,4 +1,4 @@
-diag_log format ["------------------ DUWS Modified START ----v1.75 Modified by BigShot------ player: %1", profileName];
+diag_log format ["------------------ DUWS Modified START ----v1.75 Modified by BigShot / Edited by BUDU_KRATOK & aspistrel (DUWS Total Conversion) ------ player: %1", profileName];
 //////////////////////////////////////////////////////
 //  HOW TO MANUALLY CREATE THE MISSION:   
 //  1)YOU MUST PLACE THE HQ LOCATION
@@ -91,7 +91,24 @@ execvm "dynamic_music\dyn_music_init.sqf";
 	clientisSync = false;
 	fobSwitch = false;
 	player_is_choosing_hqpos = false;
-	
+    PlayableSide = west; //east - opfor, west - blufor
+    EnemySide = east;
+
+    PlayerSideFolder = "zonesSpawns\BLUFOR";
+    EnemySideFolder = "zonesSpawns\OPFOR";
+
+    PlayerCurrentZoneIndex = -1;
+
+    ZoneCapturePos = [];
+    ZoneCaptureMax = [];
+    ZoneCaptureTimeOpfor = [];
+    ZoneCaptureTimeBlufor = [];
+    ZoneCaptureOpforCount = [];
+    ZoneCaptureBluforCount = [];
+    ZoneCapturePoints = [];
+    ZoneCaptureNames = [];
+
+    SupplyPoints = 0;
 	
 
 	if (isNil "amount_zones_created") then
@@ -206,7 +223,7 @@ execvm "dynamic_music\dyn_music_init.sqf";
 	//Time of Day
 	 if (time < 10) then {
     setDate [2035, 8, 6, (paramsArray select 3), 1];
-};
+    };
 
 	#include "dialog\supports_init.hpp"
 	#include "dialog\squad_number_init.hpp"
@@ -215,8 +232,9 @@ execvm "dynamic_music\dyn_music_init.sqf";
 		
 if (!isMultiplayer) then {
 	getsize_script = [player] execVM "mapsize.sqf";
-};	
-	
+};
+
+
 
 Warcom_Limiter_Param = paramsArray select 6; //disbale/enable warcomm AI limiter for improved fps
 // IF MP
@@ -233,9 +251,6 @@ if (isMultiplayer) then {
 	UseSiren = paramsArray select 9;
 	MisEndCond = paramsArray select 10;
 
-	PlayableSide = west; //east - opfor, west - blufor
-    EnemySide = east;
-
 	if((paramsArray select 11) == 0) then
     {
         PlayableSide = east;
@@ -248,25 +263,12 @@ if (isMultiplayer) then {
         PAPABEAR=[East,"base"];
     };
 
-    PlayerSideFolder = "zonesSpawns\BLUFOR";
-    EnemySideFolder = "zonesSpawns\OPFOR";
-
     if(PlayableSide == east) then
     {
         PlayerSideFolder = "zonesSpawns\OPFOR";
         EnemySideFolder = "zonesSpawns\BLUFOR";
     };
 
-    PlayerCurrentZoneIndex = -1;
-
-    ZoneCapturePos = [];
-    ZoneCaptureMax = [];
-    ZoneCaptureTimeOpfor = [];
-    ZoneCaptureTimeBlufor = [];
-    ZoneCaptureOpforCount = [];
-    ZoneCaptureBluforCount = [];
-    ZoneCapturePoints = [];
-    ZoneCaptureNames = [];
 
     /*publicVariable "ZoneCapturePos";
     publicVariable "ZoneCaptureMax";
@@ -276,16 +278,17 @@ if (isMultiplayer) then {
     publicVariable "ZoneCaptureBluforCount";
     publicVariable "ZoneCapturePoints";*/
 
-    publicVariable "PAPABEAR";
-    publicVariable "PlayableSide";
-    publicVariable "EnemySide";
-	publicVariable "WARCOMLimitAI";
-    publicVariable "PlayerSideFolder";
-    publicVariable "EnemySideFolder";
-    publicVariable "PlayerCurrentZoneIndex";
-
-    SupplyPoints = 0;
-    publicVariable "SupplyPoints";
+    if(isServer) then
+    {
+        publicVariable "PAPABEAR";
+        publicVariable "PlayableSide";
+        publicVariable "EnemySide";
+        publicVariable "WARCOMLimitAI";
+        publicVariable "PlayerSideFolder";
+        publicVariable "EnemySideFolder";
+        publicVariable "PlayerCurrentZoneIndex";
+        publicVariable "SupplyPoints";
+    };
 
 
 	if(Warcom_Limiter_Param == 1) then {WARCOMLimitAI = 130}; // legacy
@@ -310,6 +313,9 @@ if ((!isDedicated) || (!isServer)) then {
 };
 // --------------------------------------------------------------------------------------------------------------
 
+
+_scriptExec = [] execVM "requestDatabase.sqf";
+waitUntil {scriptDone _scriptExec};
 
 _scriptExec = [] execVM "initZones\zoneIndicator.sqf";
 waitUntil {scriptDone _scriptExec};
@@ -433,7 +439,8 @@ if (!isServer) then { // WHEN CLIENT CONNECTS INIT (might need sleep)
 	player setpos [(getmarkerpos str player_hq_markername select 0),(getmarkerpos str player_hq_markername select 1)+10];
 	_drawicon = [] execVM "inithq\drawIcon.sqf";
 	hintsilent "Waiting for the host to select the campaign parameters...";	
-	waitUntil {chosen_settings};	
+	waitUntil {chosen_settings};
+
 	[hq_player] execVM "initHQ\HQaddactions.sqf";
 	sleep 1;
 	player setdamage 0;	

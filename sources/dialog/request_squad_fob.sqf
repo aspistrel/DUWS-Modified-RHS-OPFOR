@@ -3,16 +3,10 @@ _index = lbCurSel 2121;
 _spawnPos = getpos player;
 _spawnPos = [(_spawnPos select 0)+25, _spawnPos select 1];
 
-if(PlayableSide == west) then
-{
-    _currentAiSkill = blufor_ai_skill;
-};
+[_index, _spawnPos] call SpawnRequestSquadFob;
 
-if(PlayableSide == east) then
-{
-    _currentAiSkill = opfor_ai_skill;
-};
 
+/*
 // Duh, again?
 switch (_index) do
 {
@@ -80,7 +74,7 @@ switch (_index) do
 	
 
 
-};
+};*/
 
 
 publicVariable "commandpoints";

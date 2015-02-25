@@ -3,59 +3,6 @@ _index = lbCurSel 2101;
 _spawnPos = getpos player;
 _spawnPos = [(_spawnPos select 0)+25, _spawnPos select 1];
 
-SpawnRequestSquad = {
-
-    private ["_currentIndex"];
-    _currentIndex = select 0;
-    _pos = select 1;
-
-    if(PlayableSide == west) then
-    {
-        _currentAiSkill = blufor_ai_skill;
-    };
-
-    if(PlayableSide == east) then
-    {
-        _currentAiSkill = opfor_ai_skill;
-    };
-
-
-    if(_aiBoosted) then
-    {
-        _aiSkill = [0.9,1];
-    }
-    else
-    {
-        _aiSkill = _currentAiSkill;
-    }
-
-    _cost = (RequestCost select _currentIndex);
-    _side = PlayableSide;
-    _grouptype = (RequestGroups select _currentIndex);
-    _name = ((RequestNames select _currentIndex) select 0);
-
-    _grouptype = _type;
-    if (commandpoints >= _cost) then
-    {
-        _group = [_pos, _side, _grouptype, [], [], _aiSkill] call BIS_fnc_spawnGroup;
-        player hcsetgroup [_group,""];
-        commandpoints = commandpoints - _cost;
-        ctrlSetText [1000, format["%1",commandpoints]];
-
-        RequestNames set [_currentIndex, [_name, ((RequestNames select _currentIndex) select 0)+1];
-
-        _newNumber = ((RequestNames select _currentIndex) select 1);
-
-        _group setGroupId [format[_name+" %1",_newNumber]];
-        hint "Squad ready !\nAccess it with [L.CTRL - SPACE]";
-    }
-    else
-    {
-        hint "Not enough command points";
-    };
-
-};
-
 [_index, _spawnPos] call SpawnRequestSquad;
 
 publicVariable "commandpoints";

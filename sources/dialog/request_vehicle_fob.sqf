@@ -4,7 +4,21 @@ _index = lbCurSel 2122;
 _spawnPos = getpos player;
 _spawnPos = [(_spawnPos select 0)+30, _spawnPos select 1];
 
-switch (_index) do
+_vehName = (RequestVehicleFob select _index) select 0;
+_cost = (RequestVehicleFob select _index) select 1;
+
+if (commandpoints >= _cost) then
+{
+    hint "Vehicle ready !";
+    commandpoints = commandpoints - _cost;
+    ctrlSetText [1000, format["%1",commandpoints]];
+    _vehic = _vehName createVehicle _spawnPos;
+}
+else
+{
+    hint "Not enough command points";
+};
+/*switch (_index) do
 {
     case 0:  
     {
@@ -221,7 +235,8 @@ case 12:
           };  
     };	
    
-};
+};*/
+
 publicVariable "commandpoints";
 //hint format["index: %1",_index];
 

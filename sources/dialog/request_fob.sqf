@@ -16,9 +16,14 @@
   };
     
 // UNITS  
-    _index = lbAdd [2120, "Rifleman(2CP)"];                 // 0
+    /*_index = lbAdd [2120, "Rifleman(2CP)"];                 // 0
     _index = lbAdd [2120, "Medic(4CP)"];                    // 1
 	_index = lbAdd [2120, "Repair Specialist(4CP)"];        // 2
+	*/
+	{
+        _currentName = str getText(configfile >> "CfgVehicles" >> (_x select 0) >> "displayName");
+        _index = lbAdd [2100, format["%1 (%2CP)",_currentName, (_x select 1)]];
+    } forEach RequestUnitFob;
     	
 	
   lbSetCurSel [2120, 0];
@@ -35,7 +40,7 @@
   
 
 // VEHICLES  
-    _index1 = lbAdd [2122, "M998W 4 Door(4CP)"]; // 0
+    /*_index1 = lbAdd [2122, "M998W 4 Door(4CP)"]; // 0
 	_index1 = lbAdd [2122, "M998W 2 Door(6CP)"];       // 1
 	_index1 = lbAdd [2122, "m1025 Unarmed(5CP)"];            // 2
     _index1 = lbAdd [2122, "M1025 M2(18CP)"];               // 3
@@ -48,6 +53,11 @@
 	_index1 = lbAdd [2122, "HEMTT Fuel(10CP)"];      		      // 10
 	_index1 = lbAdd [2122, "Stomper Autonomous Recon(10CP)"];    // 11
 	_index1 = lbAdd [2122, "UAV Darter(5CP)"];    // 12
+	*/
+	{
+        _currentName = str getText(configfile >> "CfgVehicles" >> (_x select 0) >> "displayName");
+        _index1 = lbAdd [2100, format["%1 (%2CP)",_currentName, (_x select 1)]];
+    } forEach RequestVehicleFob;
 	
   lbSetCurSel [2122, 0];
     

@@ -3,7 +3,7 @@ _loop = true;
 WARCOM_blu_attack_wave_type = "";
 WARCOM_blu_attack_wave_avalaible = false;
 WARCOM_blu_attack_wave_index = 0;
-PREV_wave_index = -1;
+PREV_wave_index_blu = -1;
 aliveAllUnits = {alive _x} count allunits;
 
 // Type of attack wave
@@ -38,9 +38,9 @@ aliveAllUnits = {alive _x} count allunits;
             } forEach BLUFOR_ASSAULT_SQUADS;
             WARCOM_blu_attack_wave_avalaible = true;
             
-            if(PREV_wave_index != WARCOM_blu_attack_wave_index) then 
+            if(PREV_wave_index_blu != WARCOM_blu_attack_wave_index) then
             {
-                PREV_wave_index = WARCOM_blu_attack_wave_index;
+                PREV_wave_index_blu = WARCOM_blu_attack_wave_index;
                 if(PlayableSide == west) then
                 {
                     [[PAPABEAR, "test"],"This is HQ, we are ready to send reinforcements (level " + str WARCOM_blu_attack_wave_index + ")",nil,false] call BIS_fnc_MP;
@@ -86,16 +86,16 @@ aliveAllUnits = {alive _x} count allunits;
                       // find a zone *** end///// Spawn Troops
                       _randomZone = [(_randomZone select 0)+40,_randomZone select 1];
 
-                      _returnedArray = [_randomZone, WARCOM_blu_attack_wave_type, west, 1] call SpawnRhsSquad;
+                      _returnedArray = [_randomZone, WARCOM_blu_attack_wave_type, west, 0] call SpawnRhsSquad;
                   }
                   else
                   {
-                      _returnedArray = [WARCOM_blu_hq_pos, WARCOM_blu_attack_wave_type, west, 1] call SpawnRhsSquad;
+                      _returnedArray = [WARCOM_blu_hq_pos, WARCOM_blu_attack_wave_type, west, 0] call SpawnRhsSquad;
                   };
 
-                  {
+                  /*{
                       [(_x select 0), position (_x select 0)] spawn Rhs_paradrop;
-                  } forEach (_returnedArray select 1);
+                  } forEach (_returnedArray select 1);*/
 
                   _group = (_returnedArray select 0);
 
@@ -103,10 +103,10 @@ aliveAllUnits = {alive _x} count allunits;
                   if(PlayableSide == west) then
                   {
                     [[PAPABEAR, format["This is HQ, We are sending Task Force %1, we will try to push as far as possible in enemy territory",_TFname]],"sidechat",nil,false] call BIS_fnc_MP;
-
-                      _blu_assault = [_group] execVM "WARCOM\WARCOM_wp_blu.sqf";
                   };
-                      _blu_assault = [_group,_TFname] execVM "WARCOM\WARCOM_gps_marker.sqf";
+
+                  _blu_assault = [_group] execVM "WARCOM\WARCOM_wp_blu.sqf";
+                  _blu_assault = [_group,_TFname] execVM "WARCOM\WARCOM_gps_marker.sqf";
 
                   if(PlayableSide == east) then
                     {

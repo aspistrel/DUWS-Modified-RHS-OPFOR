@@ -12,7 +12,7 @@ class Header
 {
  gameType = COOP;            //DM, Team, Coop, ...
  minPlayers = 1;             //min # of players the mission supports
- maxPlayers = 12;            //Max # of players the mission supports
+ maxPlayers = 14;            //Max # of players the mission supports
 };
 
 respawn = 3;

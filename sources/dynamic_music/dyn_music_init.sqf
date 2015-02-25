@@ -6,7 +6,14 @@ player removeEventHandler ["FiredNear", dynamic_music_EH_firednear];
 // check if opfor is near
 _trg=createTrigger["EmptyDetector",getpos player];
 _trg setTriggerArea[150,150,0,false];
-_trg setTriggerActivation["EAST","PRESENT",false];
+if(PlayableSide == west) then
+{
+    _trg setTriggerActivation["EAST","PRESENT",false];
+}
+else
+{
+    _trg setTriggerActivation["WEST","PRESENT",false];
+};
 _trg setTriggerStatements["this", "", ""];
 sleep 1;
 _enemypresent = triggeractivated _trg;

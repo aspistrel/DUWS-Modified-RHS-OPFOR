@@ -19,10 +19,10 @@
   //ctrlSetText [1002, format["%1",WARCOM_opfor_ap]];
     
 // UNITS  
-    _index = lbAdd [2100, "Rifleman(2CP)"];                  // 0
+    /*_index = lbAdd [2100, "Rifleman(2CP)"];                  // 0
     _index = lbAdd [2100, "Rifleman Light(2CP)"];                 // 1
-    _index = lbAdd [2100, "Rifleman M16(2CP)"];        // 2
-    _index = lbAdd [2100, "Rifleman M136(3CP)"];               // 3
+    _index = lbAdd [2100, "Rifleman(2CP)"];        // 2
+    _index = lbAdd [2100, "Rifleman (grenade launcher)(3CP)"];               // 3
     _index = lbAdd [2100, "Grenadier(3CP)"];                     // 4
     _index = lbAdd [2100, "Marksman(3CP)"];             // 5
     _index = lbAdd [2100, "Autorifleman(3CP)"];         // 6 
@@ -44,7 +44,11 @@
     _index = lbAdd [2100, "Combat Crew(2CP)"];             // 22
     _index = lbAdd [2100, "Driver(2CP)"];                  // 23
     _index = lbAdd [2100, "Diver(3CP)"];                  // 24
-    _index = lbAdd [2100, "Explosives Diver(4CP)"];                  // 25
+    _index = lbAdd [2100, "Explosives Diver(4CP)"];                  // 25*/
+    {
+        _currentName = str getText(configfile >> "CfgVehicles" >> (_x select 0) >> "displayName");
+        _index = lbAdd [2100, format["%1 (%2CP)",_currentName, (_x select 1)]];
+    } forEach RequestUnit;
 
 lbSetCurSel [2100, 0];
 
@@ -61,14 +65,14 @@ lbSetCurSel [2100, 0];
     _index0 = lbAdd [2101, "Medical Team(10CP)"];              // 9
     _index0 = lbAdd [2101, "Motorized scouts(28CP)"];          // 10
     _index0 = lbAdd [2101, "Mechanized squad(36CP)"];          // 11
-	_index0 = lbAdd [2101, "Tank Section Abrams(40CP)"];          // 12
+	_index0 = lbAdd [2101, "Tank Section(40CP)"];          // 12
 	_index0 = lbAdd [2101, "Tank Platoon AA(40CP)"];          // 13
 	
 	
   lbSetCurSel [2101, 0];
 
 // VEHICLES  
-    _index1 = lbAdd [2102, "M998W 4 Door(O)(4CP)"];       // 0
+/*    _index1 = lbAdd [2102, "M998W 4 Door(O)(4CP)"];       // 0
     _index1 = lbAdd [2102, "M998W 4 Door(S)(4CP)"];       // 1
     _index1 = lbAdd [2102, "M998W 4 Door(C)(4CP)"];            // 2
     _index1 = lbAdd [2102, "M998W 2 Door(O)(6CP)"];               // 3
@@ -109,7 +113,12 @@ lbSetCurSel [2100, 0];
 	_index1 = lbAdd [2102, "A-10A(45CP)"];    // 38
 	_index1 = lbAdd [2102, "Attack UAV(15CP)"];    // 39
 	_index1 = lbAdd [2102, "CAS UAV(15CP)"];    // 40
-	_index1 = lbAdd [2102, "UAV Darter(5CP)"];    // 41
+	_index1 = lbAdd [2102, "UAV Darter(5CP)"];    // 41*/
+
+	{
+	    _currentName = str getText(configfile >> "CfgVehicles" >> (_x select 0) >> "displayName");
+	    _index1 = lbAdd [2102, format["%1 (%2CP)",_currentName, (_x select 1)]];
+	} forEach RequestVehicle;
 
 	
   lbSetCurSel [2102, 0];

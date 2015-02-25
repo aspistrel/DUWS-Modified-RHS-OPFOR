@@ -96,7 +96,7 @@ while {!_found} do
      player globalChat format["Zone location #%1 found !",_i];
 	 player globalChat format["Generating zone #%1",_i];
 	 waituntil {scriptdone _generatezonescript};
-     }; // END OF THIRD LOOP     
+     }; // END OF THIRD LOOP
    };  // END SECOND LOOP
 };  // END WHILE LOOP --- LOCATION FOUND
 }; // END FOR LOOP -- ALL ZONES CREATED 
@@ -121,7 +121,7 @@ sleep 9;
 [] execVM "misc\bottom_right_message.sqf";
 };
 
-[[], "InitZoneIndicator", nil, true, true] call BIS_fnc_MP;
+[[], "InitZoneIndicator", nil, true, false] call BIS_fnc_MP;
 
 
 // For some reasons I had to add a zone [0,0,0] in _zones_array, now I must remove it:
