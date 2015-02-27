@@ -100,12 +100,14 @@ aliveAllUnits = {alive _x} count allunits;
         _group = (_returnedArray select 0);
 
         _TFname = [1] call compile preprocessFile "random_name.sqf";
+
+        _opf_assault = [_group] execVM "WARCOM\WARCOM_wp_opf.sqf";
+
         if(PlayableSide == east) then
         {
             [[PAPABEAR, format["This is Eeagle, We are sending Task Force %1, we will try to push as far as possible in enemy territory",_TFname]],"sidechat",nil,false] call BIS_fnc_MP;
-        };
-        _opf_assault = [_group] execVM "WARCOM\WARCOM_wp_opf.sqf";
         _opf_assault = [_group,_TFname] execVM "WARCOM\WARCOM_gps_marker.sqf";
+        };
 
         if(PlayableSide == west) then
         {

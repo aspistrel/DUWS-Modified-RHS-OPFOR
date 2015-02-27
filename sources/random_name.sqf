@@ -5,17 +5,6 @@ _operation = "Operation ";
 _first = "--blank--";
 
 if (_length==0) then {
-_first_dice = round (random 52);
-
-if(_first_dice > 52) then
-{
-    _first_dice = 52;
-};
-
-if(_first_dice < 0) then
-{
-    _first_dice = 0;
-};
 
 _firstArray = ["Homing ",
 "Flaming ",
@@ -71,30 +60,20 @@ _firstArray = ["Homing ",
 "Rightful "
 ];
 
-_first = (_firstArray select (_first_dice-1));
+_first = _firstArray call BIS_fnc_selectRandom;
 };
 
 
 
 
 _second = "--blank--";
-_second_dice = round (random 67);
-if(_second_dice > 67) then
-{
-    _second_dice = 67;
-};
-
-if(_second_dice < 0) then
-{
-    _second_dice = 0;
-};
 
 _secondArray = ["Switchblade","Knight","Guardian","Trident","Wraith","Rage","Hawk","Thunder","Poltergeist","Steel","Grave","Shield","Iron","Assault","Arrow","Bolt","Freedom","Sword","Lance","Witch",
 "Nightmare","Force","Lion","Claw","Wolf","Blade","Sabre","Warrior","God","Cannon","Vengeance","Dagger","Fist","Warlock","Copper","Bronze","Talon","Viper","Cobra","Falcon","Eagle","Onslaught","Phoenix",
 "Raven","Dragon","Crusader","Devil","Angel","Hammer","Cleaver","Nova","Marauder","Dart","Rodent","Swordfish","Boar","Rhino","Shark","Goul","Anvil","Star","Sun","Morgenstern","Gladius",
 "Chieftain","Spirit","Paladin"];
 
-_second = (_secondArray select (_second_dice-1));
+_second = _secondArray call BIS_fnc_selectRandom;
 
 
 if (_length==1) exitWith {

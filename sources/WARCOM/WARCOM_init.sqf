@@ -28,6 +28,12 @@ WARCOM_blu_ai_skill_range = _blu_ai_skill_range;  // !! IS USING blufor_ai_skill
 WARCOM_opf_ai_skill_range = _opfor_ai_skill;
 WARCOM_opf_attack_delay = _opfor_assault_delay;
 
+WARCOM_opf_arty_squads = [];
+WARCOM_blu_arty_squads = [];
+
+WARCOM_opf_arty_cd_time = [];
+WARCOM_blu_arty_cd_time = [];
+
 
 publicVariable "WARCOM_qrf_ready";
 publicVariable "WARCOM_blufor_ap";
@@ -89,10 +95,22 @@ publicvariable "WARCOM_zones_controled_by_BLUFOR";
 _blu_assault = [] execVM "WARCOM\WARCOM_blu_assault.sqf";
 waitUntil {scriptDone _blu_assault};
 
-
 // Init the OPF attack waves
 _opf_assault = [] execVM "WARCOM\WARCOM_opf_assault.sqf";
 waitUntil {scriptDone _opf_assault};
+
+_tempHqPos = _blu_hq_pos;
+if(PlayableSide == east) then
+{
+    _tempHqPos = _opf_hq_pos;
+};
+
+// Artillery
+_player_arty = [_tempHqPos, PlayableSide] execVM "WARCOM\WARCOM_arty_init.sqf";
+waitUntil {scriptDone _player_arty};
+
+_enemy_arty = [_tempHqPos, EnemySide] execVM "WARCOM\WARCOM_arty_init.sqf";
+waitUntil {scriptDone _enemy_arty};
 
 
 

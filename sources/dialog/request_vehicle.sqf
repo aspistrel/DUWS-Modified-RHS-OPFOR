@@ -13,6 +13,17 @@ if (commandpoints >= _cost) then
     commandpoints = commandpoints - _cost;
     ctrlSetText [1000, format["%1",commandpoints]];
     _vehic = _vehName createVehicle _spawnPos;
+
+    if(_vehName == "B_UAV_02_F" || _vehName == "B_UAV_02_CAS_F" || _vehName == "B_UAV_01_F") then
+    {
+        createVehicleCrew _vehic;
+    };
+
+    if(_vehName == "rhs_2s3_tv" || _vehName == "rhsusf_m109_usarmy" || _vehName == "B_MBT_01_mlrs_F") then
+    {
+        _vehic addEventHandler ["Fired", {[(getPos (_this select 0)), PlayableSide] call ArtyEvent;}];
+    };
+
 }
 else
 {

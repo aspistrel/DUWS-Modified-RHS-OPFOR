@@ -543,6 +543,8 @@ if (isMultiplayer) then {
 		};  // -- END OF SPAWN
 
 
+_scriptExec = [] execVM "Squads\Artillery.sqf";
+waitUntil {scriptDone _scriptExec};
 
 _scriptExec = [] execVM "Squads\Opfor.sqf";
 waitUntil {scriptDone _scriptExec};
@@ -561,7 +563,7 @@ sleep 1;
 
 //initZones\locatorzonesV1.sqf
 // manually placed?
-_warcom_init = [Array_of_ENEMY_zones, getpos hq_player, getpos hq_player, blufor_ap, opfor_ap, 60,blufor_ai_skill,opfor_ai_skill, 60] execVM "WARCOM\WARCOM_init.sqf";
+_warcom_init = [Array_of_ENEMY_zones, getpos hq_player, getpos hq_player, blufor_ap, opfor_ap, 2700,blufor_ai_skill,opfor_ai_skill, 2700] execVM "WARCOM\WARCOM_init.sqf";
 };
 
 

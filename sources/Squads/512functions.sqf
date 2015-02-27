@@ -40,24 +40,23 @@ _collectedVehicles = [];
 if ((_squadInfo select 0) != "") then
 {
     _commanderIsVehicle = true;
-    if(_spawnVehiclesOnAir == 0) then
-    {
-        _modifiedPosition = [(_position select 0)+5, (_position select 1)+5];
-    }
-    else
+    _modifiedPosition = [(_position select 0)+5, (_position select 1)+5];
+
+    if(_spawnVehiclesOnAir == 1) then
     {
         _modifiedPosition = [(_position select 0)+5, (_position select 1)+5, 300];
     };
 
     _commanderVehicleSpawn = [_modifiedPosition, 0, (_squadInfo select 0), _side] call BIS_fnc_spawnVehicle;
-    _collectedVehicles = _collectedVehicles + [commanderVehicleSpawn];
+    _collectedVehicles = _collectedVehicles + [_commanderVehicleSpawn];
 
     _group = (_commanderVehicleSpawn select 2);
 
     _groupCommander = leader _group;
 
-    _vehicle = (_vehicleSpawn select 0);
+    _vehicle = (_commanderVehicleSpawn select 0);
     _group addVehicle _vehicle;
+    sleep 0.01;
 }
 else
 {
@@ -88,6 +87,8 @@ if(count (_squadInfo select 2) != 0) then
         } forEach (units _vehicleUnits);
 
         _group addVehicle _vehicle;
+
+        sleep 0.01;
 
     } forEach (_squadInfo select 2);
 };

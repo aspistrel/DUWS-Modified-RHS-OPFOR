@@ -329,3 +329,15 @@ BLUFOR_CONVOY_SQUADS =
      ]]
 ];
 publicVariable "BLUFOR_CONVOY_SQUADS";
+
+BLUFOR_ARTILLERY_SQUAD = [
+         "rhsusf_m109_usarmy",
+         [],
+         [
+             "rhsusf_m109_usarmy",
+             "rhsusf_m109_usarmy",
+             "rhsusf_m109_usarmy"
+
+         ]
+     ];
+publicVariable "BLUFOR_ARTILLERY_SQUAD";

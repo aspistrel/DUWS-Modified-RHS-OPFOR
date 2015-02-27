@@ -332,3 +332,16 @@ OPFOR_CONVOY_SQUADS =
      ]]
 ];
 publicVariable "OPFOR_CONVOY_SQUADS";
+
+OPFOR_ARTILLERY_SQUAD = [
+             "rhs_2s3_tv",
+             [],
+             [
+                 "rhs_2s3_tv",
+                 "rhs_2s3_tv",
+                 "rhs_2s3_tv",
+                 "rhs_2s3_tv"
+
+             ]
+         ];
+publicVariable "OPFOR_ARTILLERY_SQUAD";
