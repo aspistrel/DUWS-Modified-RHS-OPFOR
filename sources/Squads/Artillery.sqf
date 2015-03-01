@@ -118,11 +118,11 @@ ArtyEvent = {
             {
                 if(_side == west) then
                 {
-                    WARCOM_blu_arty_cd_time set [_index, time+60];
+                    WARCOM_blu_arty_cd_time set [_index, time+120];
                 }
                 else
                 {
-                    WARCOM_opf_arty_cd_time set [_index, time+60];
+                    WARCOM_opf_arty_cd_time set [_index, time+120];
                 };
             };
         }
