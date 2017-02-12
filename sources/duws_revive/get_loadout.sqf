@@ -27,7 +27,7 @@
 
 */
 
-private ["_target","_options","_saveMagsAmmo","_onFoot","_currentWeapon","_currentMode","_isFlashlightOn","_isIRLaserOn","_loadedMagazines","_saveWeapon","_getMagsAmmo","_magazinesName","_magazinesAmmo","_backPackItems","_assignedItems","_data"];
+private ["_target","_options","_saveMagsAmmo","_onFoot","_currentWeapon","_currentMode","_isFlashlightOn","_isIRLaserOn","_loadedMagazines","_saveWeapon","_getMagsAmmo","_magazinesName","_magazinesAmmo","_backpackItems","_assignedItems","_data"];
 
 _options = [];
 
@@ -174,7 +174,7 @@ _backpacks = [];
 		_backpacks set [count _backpacks, _x];
 	};
 } foreach (_cargo select 0);	
-_backPackItems = (backpackitems _target) + _backpacks;
+_backpackItems = (backpackitems _target) + _backpacks;
 
 // get assigned items
 _assignedItems = assignedItems _target;
@@ -248,8 +248,8 @@ _data = [
 	vest _target, //9
 	[vestItems _target] call _getMagsAmmo, //10
 
-	backpack _target, //11 
-	[_backPackItems] call _getMagsAmmo, //12
+	backpack _target, //11
+	[_backpackItems] call _getMagsAmmo, //12
 
 	_loadedMagazines, //13 (optional)
 	_currentWeapon, //14 (optional)

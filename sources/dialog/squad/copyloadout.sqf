@@ -32,7 +32,7 @@ _pistol = handgunweapon player;
 {
 // strip
 removeallweapons _x;
-removeBackpack _x;
+removebackpack _x;
 removeVest _x;
 removeUniform _x;
 removeAllAssignedItems _x;
@@ -40,8 +40,8 @@ removeAllAssignedItems _x;
 // put new clothes && gun
 _x addUniform _uniform;
 _x addVest _vest;
-_x addBackpack _backpack;
-clearAllItemsFromBackpack _x;
+_x addbackpack _backpack;
+clearAllItemsFrombackpack _x;
 _x addWeapon _rifle;
 _x addweapon _launcher;
 _x addweapon _pistol;

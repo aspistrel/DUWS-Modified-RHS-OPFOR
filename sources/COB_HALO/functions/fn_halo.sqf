@@ -97,17 +97,17 @@ if (_chemLight) then {
 };
 
 //save the backpack and its contents, also adds fake pack to front of unit
-if (_saveLoadOut && !isNull (unitBackpack _unit) && (backpack _unit) != "b_parachute") then {
+if (_saveLoadOut && !isNull (unitbackpack _unit) && (backpack _unit) != "b_parachute") then {
 	private ["_pack","_class","_magazines","_weapons","_items","_helmet"];
-	_pack	   = unitBackpack _unit;
+	_pack	   = unitbackpack _unit;
 	_class	   = typeOf _pack;
 	_magazines = getMagazineCargo _pack;
 	_weapons   = getWeaponCargo _pack;
 	_items	   = getItemCargo _pack;
 	_helmet	   = headgear _unit;
  
-	removeBackpack _unit; //remove the backpack
-	_unit addBackpack "b_parachute"; //add the parachute
+	removebackpack _unit; //remove the backpack
+	_unit addbackpack "b_parachute"; //add the parachute
 
 	[_unit,_class,_magazines,_weapons,_items,_helmet,_altitude] spawn {
 		private ["_unit","_class","_magazines","_weapons","_items","_helmet","_altitude"];
@@ -121,7 +121,7 @@ if (_saveLoadOut && !isNull (unitBackpack _unit) && (backpack _unit) != "b_parac
 		
 		private "_packHolder";
 		_packHolder = createVehicle ["groundWeaponHolder", [0,0,0], [], 0, "can_collide"];
-		_packHolder addBackpackCargoGlobal [_class, 1];
+		_packHolder addbackpackCargoGlobal [_class, 1];
 				
 		waitUntil {animationState _unit == "HaloFreeFall_non"};
 		_packHolder attachTo [_unit,[-0.12,-0.02,-.74],"pelvis"]; 
@@ -135,22 +135,22 @@ if (_saveLoadOut && !isNull (unitBackpack _unit) && (backpack _unit) != "b_parac
 		detach _packHolder;
 		deleteVehicle _packHolder; //delete the backpack in front
 			
-		_unit addBackpack _class; //return the backpack
-		clearAllItemsFromBackpack _unit; //clear all gear from new backpack
-		if (_altitude > 3040 && _helmet != "" && _helmet != "H_CrewHelmetHeli_B") then {(unitBackpack _unit) addItemCargoGlobal [_helmet, 1]}; //(not complete) do a check to see if there is available space
+		_unit addbackpack _class; //return the backpack
+		clearAllItemsFrombackpack _unit; //clear all gear from new backpack
+		if (_altitude > 3040 && _helmet != "" && _helmet != "H_CrewHelmetHeli_B") then {(unitbackpack _unit) addItemCargoGlobal [_helmet, 1]}; //(not complete) do a check to see if there is available space
 
 		for "_i" from 0 to (count (_magazines select 0) - 1) do {
-			(unitBackpack _unit) addMagazineCargoGlobal [(_magazines select 0) select _i,(_magazines select 1) select _i]; //return the magazines
+			(unitbackpack _unit) addMagazineCargoGlobal [(_magazines select 0) select _i,(_magazines select 1) select _i]; //return the magazines
 		};
 		for "_i" from 0 to (count (_weapons select 0) - 1) do {
-			(unitBackpack _unit) addWeaponCargoGlobal [(_weapons select 0) select _i,(_weapons select 1) select _i]; //return the weapons
+			(unitbackpack _unit) addWeaponCargoGlobal [(_weapons select 0) select _i,(_weapons select 1) select _i]; //return the weapons
 		};
 		for "_i" from 0 to (count (_items select 0) - 1) do {
-			(unitBackpack _unit) addItemCargoGlobal [(_items select 0) select _i,(_items select 1) select _i]; //return the items
+			(unitbackpack _unit) addItemCargoGlobal [(_items select 0) select _i,(_items select 1) select _i]; //return the items
 		};
 	};
 } else {
-	if ((backpack _unit) != "b_parachute") then {_unit addBackpack "B_parachute"}; //add the parachute if unit has no backpack
+	if ((backpack _unit) != "b_parachute") then {_unit addbackpack "B_parachute"}; //add the parachute if unit has no backpack
 };
 
 if (_altitude > 3040 && (headgear _unit) != "H_CrewHelmetHeli_B") then {_unit addHeadgear "H_CrewHelmetHeli_B"};

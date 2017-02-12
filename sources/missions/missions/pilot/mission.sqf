@@ -27,10 +27,10 @@ str(_markername2) setMarkerAlpha 0.5;
 
 // CREATE PATROLS
       sleep 1;
-      [_randompos, _radius] execvm "createoppatrol.sqf";
-      [_randompos, _radius] execvm "createoppatrol.sqf";
-      [_randompos, _radius] execvm "createoppatrol.sqf";
-      [_randompos, _radius] execvm "createopteam.sqf";
+      [_randompos, _radius] execVM "createoppatrol.sqf";
+      [_randompos, _radius] execVM "createoppatrol.sqf";
+      [_randompos, _radius] execVM "createoppatrol.sqf";
+      [_randompos, _radius] execVM "createopteam.sqf";
         
 // CREATE WRECK
 _choppa = "Land_Wreck_Plane_Transport_01_F" createVehicle (_missionpos);
@@ -94,7 +94,7 @@ commandpoints = commandpoints + 20;
 publicVariable "commandpoints";
 publicVariable "WARCOM_blufor_ap";
 missions_success = missions_success + 1;
-_operHandler = []execVM "dialog\operative\operative_mission_complete.sqf"; 
+_operHandler = []execVM "dialog\operative\operative_mission_complete.sqf";
 
 
 // ADD PERSISTENT STAT

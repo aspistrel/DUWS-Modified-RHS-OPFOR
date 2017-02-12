@@ -28,7 +28,7 @@ switch(_ctrl) do
 	
 	case (_display displayCtrl 2962): 
 	{
-		player addItemToBackpack (_arr select 2);
+		player addItemTobackpack (_arr select 2);
 	};
 };
 

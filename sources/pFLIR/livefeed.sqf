@@ -1,14 +1,14 @@
-// pFLIRenable = player addaction ["<t color='#a9ff59'>Activate FLIR</t>","pflir\livefeed.sqf","", 0,false,true,"","_target == _this"];
+// pFLIRenable = player addAction ["<t color='#a9ff59'>Activate FLIR</t>","pflir\livefeed.sqf","", 0,false,true,"","_target == _this"];
 
 // pflir aim
 trucPIPtarget = "Land_Sack_F" createVehicle ([0,0,0]);        // PAS OUBLIER DE SUPPRIMER LE TRUC
 trucPIPtarget attachTo [player,[0,2000,1]];
-trucPIPtarget hideobject true;
+trucPIPtarget hideObject true;
 
 // pflir camera creation
 _lol = [player, trucPIPtarget, player,2] call BIS_fnc_liveFeed;
 BIS_liveFeed attachTo [player,[0,1,1]];
-BIS_liveFeed camPrepareFOV 0.2;
+BIS_liveFeed camPrepareFov 0.2;
 BIS_liveFeed camCommitPrepared 0;
 
 pFlirActivated = true;
@@ -43,8 +43,8 @@ switch (_actualStance) do
 // add action to disable FLIR
 sleep 1;
 
-pFLIRdisable = player addaction ["<t color='#a9ff59'>Deactivate FLIR</t>","pflir\livefeedexit.sqf","", 0,false,true,"","_target == _this"];
-PlayerKilledEH2 = player addEventHandler ["killed", {execvm "pflir\livefeedexit.sqf"}]; //removes screen from hud
+pFLIRdisable = player addAction ["<t color='#a9ff59'>Deactivate FLIR</t>","pflir\livefeedexit.sqf","", 0,false,true,"","_target == _this"];
+PlayerKilledEH2 = player addEventHandler ["killed", {execVM "pflir\livefeedexit.sqf"}]; //removes screen from hud
 
 
 

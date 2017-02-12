@@ -20,56 +20,56 @@ _parachute1 = "Steerable_Parachute_F" CreateVehicle _lz;
 _parachute1 setPos [_lz select 0, _lz select 1, (_lz select 2)+150];
 _soldier1 = _group createUnit ["B_medic_F",[0,0,0],[],0,"form"];
 _soldier1 moveindriver _parachute1;
-if (revive_activated == 2) then {[_soldier1] execvm 'ais_injury\init_ais.sqf';};
+if (revive_activated == 2) then {[_soldier1] execVM 'ais_injury\init_ais.sqf';};
 if (player_fatigue == 0) then {_soldier1 enablefatigue false;};
 
 _parachute2 = "Steerable_Parachute_F" CreateVehicle _lz;  
 _parachute2 setPos [(_lz select 0)+(random _radius)-(random _radius), (_lz select 1)+(random _radius)-(random _radius), (_lz select 2)+150];
 _soldier2 = _group createUnit ["rhsusf_army_ocp_riflemanat",[0,0,0],[],0,"form"];
 _soldier2 moveindriver _parachute2;
-if (revive_activated == 2) then {[_soldier2] execvm 'ais_injury\init_ais.sqf';};
+if (revive_activated == 2) then {[_soldier2] execVM 'ais_injury\init_ais.sqf';};
 if (player_fatigue == 0) then {_soldier2 enablefatigue false;};
 
 _parachute3 = "Steerable_Parachute_F" CreateVehicle _lz;  
 _parachute3 setPos [(_lz select 0)+(random _radius)-(random _radius), (_lz select 1)+(random _radius)-(random _radius), (_lz select 2)+150];
 _soldier3 = _group createUnit ["rhsusf_army_ocp_grenadier",[0,0,0],[],0,"form"];
 _soldier3 moveindriver _parachute3;
-if (revive_activated == 2) then {[_soldier3] execvm 'ais_injury\init_ais.sqf';};
+if (revive_activated == 2) then {[_soldier3] execVM 'ais_injury\init_ais.sqf';};
 if (player_fatigue == 0) then {_soldier3 enablefatigue false;};
 
 _parachute4 = "Steerable_Parachute_F" CreateVehicle _lz;  
 _parachute4 setPos [_lz select 0, _lz select 1, (_lz select 2)+150];
 _soldier4 = _group createUnit ["rhsusf_army_ocp_grenadier",[0,0,0],[],0,"form"];
 _soldier4 moveindriver _parachute4;
-if (revive_activated == 2) then {[_soldier4] execvm 'ais_injury\init_ais.sqf';};
+if (revive_activated == 2) then {[_soldier4] execVM 'ais_injury\init_ais.sqf';};
 if (player_fatigue == 0) then {_soldier4 enablefatigue false;};
 
 _parachute5 = "Steerable_Parachute_F" CreateVehicle _lz;  
 _parachute5 setPos [(_lz select 0)+(random _radius)-(random _radius), (_lz select 1)+(random _radius)-(random _radius), (_lz select 2)+150];
 _soldier5 = _group createUnit ["rhsusf_army_ocp_autorifleman",[0,0,0],[],0,"form"];
 _soldier5 moveindriver _parachute5;
-if (revive_activated == 2) then {[_soldier5] execvm 'ais_injury\init_ais.sqf';};
+if (revive_activated == 2) then {[_soldier5] execVM 'ais_injury\init_ais.sqf';};
 if (player_fatigue == 0) then {_soldier5 enablefatigue false;};
 
 _parachute6 = "Steerable_Parachute_F" CreateVehicle _lz;  
 _parachute6 setPos [(_lz select 0)+(random _radius)-(random _radius), (_lz select 1)+(random _radius)-(random _radius), (_lz select 2)+150];
 _soldier6 = _group createUnit ["rhsusf_army_ocp_rifleman",[0,0,0],[],0,"form"];
 _soldier6 moveindriver _parachute6;
-if (revive_activated == 2) then {[_soldier6] execvm 'ais_injury\init_ais.sqf';};
+if (revive_activated == 2) then {[_soldier6] execVM 'ais_injury\init_ais.sqf';};
 if (player_fatigue == 0) then {_soldier6 enablefatigue false;};
 
 _parachute7 = "Steerable_Parachute_F" CreateVehicle _lz;  
 _parachute7 setPos [(_lz select 0)+(random _radius)-(random _radius), (_lz select 1)+(random _radius)-(random _radius), (_lz select 2)+150];
 _soldier7 = _group createUnit ["rhsusf_army_ocp_riflemanat",[0,0,0],[],0,"form"];
 _soldier7 moveindriver _parachute7;
-if (revive_activated == 2) then {[_soldier7] execvm 'ais_injury\init_ais.sqf';};
+if (revive_activated == 2) then {[_soldier7] execVM 'ais_injury\init_ais.sqf';};
 if (player_fatigue == 0) then {_soldier7 enablefatigue false;};
 
 _parachute8 = "Steerable_Parachute_F" CreateVehicle _lz;  
 _parachute8 setPos [(_lz select 0)+(random _radius)-(random _radius), (_lz select 1)+(random _radius)-(random _radius), (_lz select 2)+150];
 _soldier8 = _group createUnit ["rhsusf_army_ocp_autorifleman",[0,0,0],[],0,"form"];
 _soldier8 moveindriver _parachute8;
-if (revive_activated == 2) then {[_soldier8] execvm 'ais_injury\init_ais.sqf';};
+if (revive_activated == 2) then {[_soldier8] execVM 'ais_injury\init_ais.sqf';};
 if (player_fatigue == 0) then {_soldier8 enablefatigue false;};
 
 

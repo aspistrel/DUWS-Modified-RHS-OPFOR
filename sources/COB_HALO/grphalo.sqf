@@ -14,7 +14,7 @@ pos = [];
 ATM_Jump_mapclick = false; 
 onMapSingleClick "ATM_Jump_clickpos = _pos; ATM_Jump_mapclick = true; onMapSingleClick ''; true;";
 waitUntil {ATM_Jump_mapclick or !(visiblemap)};
-if (!visibleMap) exitwith {systemChat "Halo jump canceled."; Jump = true; breakOut "main";};
+if (!visibleMap) exitWith {systemChat "Halo jump canceled."; Jump = true; breakOut "main";};
 _pos = pos;
 pos = ATM_Jump_clickpos; publicvariable "pos";
 _closest = [WARCOM_zones_controled_by_OPFOR, ATM_Jump_clickpos] call BIS_fnc_nearestPosition;
@@ -43,7 +43,7 @@ ATM_Jump_mapclick = if(true) then{
 		
 	commandpoints = commandpoints - 5;
 	{_x setpos [xCoord,yCoord,zCoord+Altitude];sleep 0.1;} forEach units group player; 
-	[[{{[_x, 2500, true, true, true] execVM "COB_HALO\functions\fn_halo.sqf";} forEach units group player}],"BIS_fnc_Call",group player,false] call BIS_fnc_MP;	
+	[[{{[_x, 2500, true, true, true] execVM "COB_HALO\functions\fn_halo.sqf";} forEach units group player}],"BIS_fnc_Call",group player,false] call BIS_fnc_MP;
 	hint '';
 	openMap false;
     deleteMarker "mkr_halo";	

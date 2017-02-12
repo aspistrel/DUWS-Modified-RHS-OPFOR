@@ -24,7 +24,7 @@ class background_request: RscText
 class squadmng_mainframe: RscFrame
 {
 	idc = 1800;
-	text = "SQUAD MANAGER"; //--- ToDo: Localize;
+	text = "SQUAD MANAGER"; //--- ToDo: localize;
 	x = 0.04 * GUI_GRID_W + GUI_GRID_X;
 	y = 8.02 * GUI_GRID_H + GUI_GRID_Y;
 	w = 40 * GUI_GRID_W;
@@ -34,7 +34,7 @@ class squadmng_mainframe: RscFrame
 class dismiss_frame: RscFrame
 {
 	idc = 1801;
-	text = "Your personnal squad"; //--- ToDo: Localize;
+	text = "Your personnal squad"; //--- ToDo: localize;
 	x = 0.5 * GUI_GRID_W + GUI_GRID_X;
 	y = 9 * GUI_GRID_H + GUI_GRID_Y;
 	w = 39 * GUI_GRID_W;
@@ -43,29 +43,29 @@ class dismiss_frame: RscFrame
 class dismissdelbutton: RscButton
 {
 	idc = 1600;
-	text = "Disband/Delete Yellow Team"; //--- ToDo: Localize;
+	text = "Disband/Delete Yellow Team"; //--- ToDo: localize;
 	x = 8 * GUI_GRID_W + GUI_GRID_X;
 	y = 13 * GUI_GRID_H + GUI_GRID_Y;
 	w = 12 * GUI_GRID_W;
 	h = 1 * GUI_GRID_H;
-	tooltip = "Disband and delete the squad members under your control"; //--- ToDo: Localize;
+	tooltip = "Disband and delete the squad members under your control"; //--- ToDo: localize;
 	action = "_derp = [] execVM 'dialog\squad\dismissDEL.sqf'; closeDialog 0";
 };
 class dismissbutton: RscButton
 {
 	idc = 1600;
-	text = "Add Yellow Team to High Command"; //--- ToDo: Localize;
+	text = "Add Yellow Team to High Command"; //--- ToDo: localize;
 	x = 21.5 * GUI_GRID_W + GUI_GRID_X;
 	y = 13 * GUI_GRID_H + GUI_GRID_Y;
 	w = 12 * GUI_GRID_W;
 	h = 1 * GUI_GRID_H;
-	tooltip = "Add the squad members under your control with High Command"; //--- ToDo: Localize;
+	tooltip = "Add the squad members under your control with High Command"; //--- ToDo: localize;
 	action = "_derp = [] execVM 'dialog\squad\dismiss.sqf'; closeDialog 0";
 };
 class dismiss_txt_info: RscText
 {
 	idc = 1000;
-	text = "To select a squad member, select him(F1-F12) then assign him to team yellow with the radio menu (9-4)"; //--- ToDo: Localize;
+	text = "To select a squad member, select him(F1-F12) then assign him to team yellow with the radio menu (9-4)"; //--- ToDo: localize;
 	x = 1 * GUI_GRID_W + GUI_GRID_X;
 	y = 10 * GUI_GRID_H + GUI_GRID_Y;
 	w = 38 * GUI_GRID_W;
@@ -77,7 +77,7 @@ class dismiss_txt_info: RscText
 class HCdismiss_frame: RscFrame
 {
 	idc = 1802;
-	text = "High Command squads"; //--- ToDo: Localize;
+	text = "High Command squads"; //--- ToDo: localize;
 	x = 0.5 * GUI_GRID_W + GUI_GRID_X;
 	y = 15 * GUI_GRID_H + GUI_GRID_Y;
 	w = 39 * GUI_GRID_W;
@@ -86,7 +86,7 @@ class HCdismiss_frame: RscFrame
 class dismissHC_txt: RscText
 {
 	idc = 1001;
-	text = "When asked to select a squad, you'll have 10 seconds to select it with the command menu (F1-F12)"; //--- ToDo: Localize;
+	text = "When asked to select a squad, you'll have 10 seconds to select it with the command menu (F1-F12)"; //--- ToDo: localize;
 	x = 1 * GUI_GRID_W + GUI_GRID_X;
 	y = 16 * GUI_GRID_H + GUI_GRID_Y;
 	w = 38 * GUI_GRID_W;
@@ -98,34 +98,34 @@ class dismissHC_txt: RscText
 class dismissHC_button: RscButton
 {
 	idc = 1601;
-	text = "Disband selected HC squad and add the units to your squad"; //--- ToDo: Localize;
+	text = "Disband selected HC squad and add the units to your squad"; //--- ToDo: localize;
 	x = 12.5 * GUI_GRID_W + GUI_GRID_X;
 	y = 19 * GUI_GRID_H + GUI_GRID_Y;
 	w = 24.5 * GUI_GRID_W;
 	h = 1 * GUI_GRID_H;
-	tooltip = "Dismiss a HC squad and add the units under your direct control"; //--- ToDo: Localize;
-	action = "_derp = [] execVM 'dialog\squad\dismissHC.sqf'; closeDialog 0";	
+	tooltip = "Dismiss a HC squad and add the units under your direct control"; //--- ToDo: localize;
+	action = "_derp = [] execVM 'dialog\squad\dismissHC.sqf'; closeDialog 0";
 };
 class renameHC_button: RscButton
 {
 	idc = 1601;
-	text = "Rename a HC squad"; //--- ToDo: Localize;
+	text = "Rename a HC squad"; //--- ToDo: localize;
 	x = 2 * GUI_GRID_W + GUI_GRID_X;
 	y = 19 * GUI_GRID_H + GUI_GRID_Y;
 	w = 10 * GUI_GRID_W;
 	h = 1 * GUI_GRID_H;
-	tooltip = "Rename a HC squad"; //--- ToDo: Localize;
+	tooltip = "Rename a HC squad"; //--- ToDo: localize;
 	action = "closeDialog 0; _handle = createDialog 'squad_rename_dialog'";	
 };
 class leave_button: RscButton
 {
 	idc = 1600;
-	text = "LEAVE"; //--- ToDo: Localize;
+	text = "LEAVE"; //--- ToDo: localize;
 	x = 14.5 * GUI_GRID_W + GUI_GRID_X;
 	y = 22.5 * GUI_GRID_H + GUI_GRID_Y;
 	w = 11 * GUI_GRID_W;
 	h = 1 * GUI_GRID_H;
-	tooltip = "Exit the squad manager"; //--- ToDo: Localize;
+	tooltip = "Exit the squad manager"; //--- ToDo: localize;
 	action = "closeDialog 0";		
 };
 ////////////////////////////////////////////////////////

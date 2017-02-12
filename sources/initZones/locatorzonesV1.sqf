@@ -89,7 +89,7 @@ while {!_found} do
      
      if (_found_distance) then {
      _missionPos = [round(_missionPos select 0),round(_missionPos select 1)];
-     _generatezonescript = [format["Zone %1",_i],_points_zone,_zone_radius,_missionPos,_fortified,true, _i] execvm "initZones\createzone.sqf";
+     _generatezonescript = [format["Zone %1",_i],_points_zone,_zone_radius,_missionPos,_fortified,true, _i] execVM "initZones\createzone.sqf";
      _found=true;
      _zones_array = _zones_array + [_missionPos]; 
 

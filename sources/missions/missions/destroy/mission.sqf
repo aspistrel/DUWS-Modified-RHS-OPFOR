@@ -39,9 +39,9 @@ _taskhandle setSimpleTaskDestination (getMarkerPos str(_markername));
 
 // CREATE PATROLS
       sleep 1;
-      [_missionpos, 15] execvm "createoppatrol.sqf"; // <-- around target
-      [_randompos, _radius] execvm "createoppatrol.sqf";
-      [_randompos, _radius] execvm "createopteam.sqf";
+      [_missionpos, 15] execVM "createoppatrol.sqf"; // <-- around target
+      [_randompos, _radius] execVM "createoppatrol.sqf";
+      [_randompos, _radius] execVM "createopteam.sqf";
       
 //      _group = createGroup east;
 //_unit = _group createUnit ["rhs_vdv_rifleman", _missionpos, [], 0, "FORM"]; 
@@ -69,7 +69,7 @@ finishedMissionsNumber = finishedMissionsNumber + 1;
 publicvariable "finishedMissionsNumber";
 publicVariable "commandpoints";
 publicVariable "WARCOM_blufor_ap";
-_operHandler = []execVM "dialog\operative\operative_mission_complete.sqf"; 
+_operHandler = []execVM "dialog\operative\operative_mission_complete.sqf";
 
 // ADD PERSISTENT STAT
 _addmission = [] execVM "persistent\persistent_stats_missions_total.sqf";

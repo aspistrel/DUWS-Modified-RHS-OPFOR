@@ -70,7 +70,7 @@ class VAS_Diag {
 			y = 0.35 + (11 / 250);
 		};
 		
-		class VAS_BackpackBG : VAS_ContainerBG
+		class VAS_backpackBG : VAS_ContainerBG
 		{
 			idc = 2952;
 			y = 0.5 + (11 / 250);
@@ -95,7 +95,7 @@ class VAS_Diag {
 			y = 0.395;
 		};
 		
-		class VAS_BackpackPicSlot : VAS_UniformPicSlot
+		class VAS_backpackPicSlot : VAS_UniformPicSlot
 		{
 			idc = 2962;
 			text = "";
@@ -123,7 +123,7 @@ class VAS_Diag {
 			y = 0.52;
 		};
 		
-		class VAS_BackpackLoad : VAS_loadBarP
+		class VAS_backpackLoad : VAS_loadBarP
 		{
 			idc = 2972;
 			y = 0.67;
@@ -248,10 +248,10 @@ class VAS_Diag {
 			h = (1 / 25);
 		};
 		
-		class BackpacksBtn : VAS_RscButtonMenu
+		class backpacksBtn : VAS_RscButtonMenu
 		{
 			idc = -1;
-			text = "$STR_VAS_Main_Backpacks";
+			text = "$STR_VAS_Main_backpacks";
 			colorBackground[] = {"(profilenamespace getvariable ['GUI_BCG_RGB_R',0.3843])", "(profilenamespace getvariable ['GUI_BCG_RGB_G',0.7019])", "(profilenamespace getvariable ['GUI_BCG_RGB_B',0.8862])", 0.5};
 			onButtonClick = "['packs',false] spawn VAS_fnc_mainDisplay";
 			x = 0.42; y = 0.45;

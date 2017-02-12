@@ -28,7 +28,7 @@ if (commandpoints >= _cost) then
     commandpoints = commandpoints - _cost;
     ctrlSetText [1000, format["%1",commandpoints]];
     _group = group player ;
-    ((RequestUnitFob select _index) select 0) createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execvm 'ais_injury\init_ais.sqf'}; if (player_fatigue == 0) then {this enablefatigue false};", _resultSkill, "private"] ;
+    ((RequestUnitFob select _index) select 0) createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execVM 'ais_injury\init_ais.sqf'}; if (player_fatigue == 0) then {this enablefatigue false};", _resultSkill, "private"] ;
 }
 else
 {
@@ -46,7 +46,7 @@ else
                commandpoints = commandpoints - 2;
                ctrlSetText [1000, format["%1",commandpoints]];
                _group = group player ;
-               "rhsusf_army_ocp_rifleman" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execvm 'ais_injury\init_ais.sqf'}; if (player_fatigue == 0) then {this enablefatigue false};", _skill, "private"] ;
+               "rhsusf_army_ocp_rifleman" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execVM 'ais_injury\init_ais.sqf'}; if (player_fatigue == 0) then {this enablefatigue false};", _skill, "private"] ;
              } 
           else 
              {
@@ -62,7 +62,7 @@ else
                commandpoints = commandpoints - 4;
                ctrlSetText [1000, format["%1",commandpoints]];
                _group = group player ;
-               "rhsusf_army_ocp_medic" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execvm 'ais_injury\init_ais.sqf'}; if (player_fatigue == 0) then {this enablefatigue false};", _skill, "private"] ;
+               "rhsusf_army_ocp_medic" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execVM 'ais_injury\init_ais.sqf'}; if (player_fatigue == 0) then {this enablefatigue false};", _skill, "private"] ;
              } 
           else 
              {
@@ -78,7 +78,7 @@ else
                commandpoints = commandpoints - 4;
                ctrlSetText [1000, format["%1",commandpoints]];
                _group = group player ;
-               "rhsusf_army_ocp_engineer" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execvm 'ais_injury\init_ais.sqf'}; if (player_fatigue == 0) then {this enablefatigue false};", _skill, "private"] ;
+               "rhsusf_army_ocp_engineer" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execVM 'ais_injury\init_ais.sqf'}; if (player_fatigue == 0) then {this enablefatigue false};", _skill, "private"] ;
              } 
           else 
              {

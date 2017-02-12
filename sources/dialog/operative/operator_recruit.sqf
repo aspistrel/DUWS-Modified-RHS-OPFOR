@@ -33,7 +33,7 @@ if (!_proceed) exitWith {hint "You don't have enough Command Points"};
 
 _soldier = group player createUnit [_selected_soldier_class, [(getpos player select 0)-78, (getpos player select 1)-73.5], [], 0, "FORM"];
 if (player_fatigue == 0) then {_soldier enablefatigue false;};
-if (revive_activated == 2) then {[_soldier] execvm 'ais_injury\init_ais.sqf';};
+if (revive_activated == 2) then {[_soldier] execVM 'ais_injury\init_ais.sqf';};
 removeGoggles _soldier;
 
 

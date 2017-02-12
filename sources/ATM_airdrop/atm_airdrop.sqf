@@ -22,7 +22,7 @@ private ["_position","_cut","_dialog","_s_alt","_s_alt_text","_sound","_sound2",
 		Altitude = 2500;
 		
 		
-	hint Localize "STR_ATM_hinton";
+	hint localize "STR_ATM_hinton";
 	openMap true;	
 	
 Jump = false;	
@@ -32,13 +32,13 @@ ATM_Jump_clickpos = [];
 ATM_Jump_mapclick = false; 
 onMapSingleClick "ATM_Jump_clickpos = _pos; ATM_Jump_mapclick = true; onMapSingleClick ''; true;";
 waitUntil {ATM_Jump_mapclick or !(visiblemap)};
-if (!visibleMap) exitwith {systemChat "Halo jump canceled."; Jump = true; breakOut "main";};	
+if (!visibleMap) exitWith {systemChat "Halo jump canceled."; Jump = true; breakOut "main";};
 _pos = ATM_Jump_clickpos;
 _closest = [WARCOM_zones_controled_by_OPFOR, ATM_Jump_clickpos] call BIS_fnc_nearestPosition;
 _dist = _closest distance ATM_Jump_clickpos;
 if (_closest distance ATM_Jump_clickpos < 999) then {
 ["info",["CLICKED TOO CLOSE TO RED ZONE","No Halo Within 1km of a Red Zone's CENTER"]] call bis_fnc_showNotification; hint format ["Try Again!\nYou Must Click At Least 1km Away From A Red Zone's CENTER\n\nYOUR MAPCLICK WAS ONLY\n%1m AWAY\n\n Large GridBox Lines = 1km apart\nSmall GridBox Lines = 100m apart",_dist];}
-else {Jump=true};
+else {Jump=true;};
 
 };
 	
@@ -74,7 +74,7 @@ _loadout=[_target] call GetloadoutATM;
 	openMap false;
 	deleteMarker "mkr_halo";
 
-if (!isNil backPack _target) then {removebackpack _target} else {};
+if (!isNil backpack _target) then { removeBackpack _target} else {};
 
 	sleep 0.5;
 	_target addBackpack "B_Parachute";
@@ -84,8 +84,8 @@ if ((getPos _target select 2) >= 8000) then{
 	sleep 0.5;
 };
 
-hintsilent "";
-//hint Localize "STR_ATM_hintjump";
+hintSilent "";
+//hint localize "STR_ATM_hintjump";
 //Cut_Rope = (FindDisplay 46) displayAddEventHandler ["keydown","_this call dokeyDown"];
 
 	_height = getPos _target select 2;
@@ -104,22 +104,22 @@ while {(getPos _target select 2) > 2} do {
 	};
 	if(!alive _target) then {
 	_target setPos [getPos _target select 0, getPos _target select 1, 0];
-	0=[_target,_loadout] call SetloadoutATM;
+	[_target,_loadout] call SetloadoutATM;
 	};
 };
 
-	hint Localize "STR_ATM_hintload";
+	hint localize "STR_ATM_hintload";
 		_target removeAction RedOn;
 		_target removeAction BlueOn;
 		_target removeAction YellowOn;
 		_target removeAction GreenOn;
-		_target removeaction Iron;
+		_target removeAction Iron;
 		
 
-hintsilent "";
+hintSilent "";
 sleep 1;
 
-	0=[_target,_loadout] call SetloadoutATM;
+	[_target,_loadout] call SetloadoutATM;
 
 
 if (true) exitWith {};

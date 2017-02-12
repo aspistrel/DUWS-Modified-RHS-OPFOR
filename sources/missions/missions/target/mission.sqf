@@ -27,12 +27,12 @@ str(_markername2) setMarkerAlpha 0.5;
 
 // CREATE PATROLS
       sleep 1;
-      [_missionpos, 15] execvm "createoppatrol.sqf"; // <-- around target
-      [_randompos, _radius] execvm "createoppatrol.sqf";
-      [_randompos, _radius] execvm "createoppatrol.sqf";
-	  [_randompos, _radius] execvm "createoppatrol.sqf";
-      [_randompos, _radius] execvm "createopteam.sqf";
-	  [_randompos, _radius] execvm "createopteam.sqf";
+      [_missionpos, 15] execVM "createoppatrol.sqf"; // <-- around target
+      [_randompos, _radius] execVM "createoppatrol.sqf";
+      [_randompos, _radius] execVM "createoppatrol.sqf";
+	  [_randompos, _radius] execVM "createoppatrol.sqf";
+      [_randompos, _radius] execVM "createopteam.sqf";
+	  [_randompos, _radius] execVM "createopteam.sqf";
      // "rhs_tigr_vdv" createVehicle ([(_missionpos select 0)+(random 150),(_missionpos select 1)+(random 150)]); //  	rhs_tigr_vdv
 	  _group = [_randompos, EAST, WARCOM_opf_attack_wave_type,[],[],[0.90,1.0]] call BIS_fnc_spawnGroup;
 	  _group setCombatMode "RED";
@@ -88,7 +88,7 @@ publicVariable "commandpoints";
 publicVariable "WARCOM_blufor_ap";
 finishedMissionsNumber = finishedMissionsNumber + 1;
 publicvariable "finishedMissionsNumber";
-_operHandler = []execVM "dialog\operative\operative_mission_complete.sqf";  
+_operHandler = []execVM "dialog\operative\operative_mission_complete.sqf";
 
 // ADD PERSISTENT STAT
 _addmission = [] execVM "persistent\persistent_stats_missions_total.sqf";

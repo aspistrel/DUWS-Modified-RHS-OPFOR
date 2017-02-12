@@ -64,11 +64,11 @@ if(PlayableSide == east) then
     _trg setTriggerActivation["EAST","PRESENT",false];
 };
 
-_trg setTriggerStatements["this",format["['%1',%2,%3,%4,%5,'%6',this]execvm 'missions\missions\rescue\success.sqf'",_markername,_soldier1,_soldier2,_soldier3,_MissionPos,_markername2], ""];
+_trg setTriggerStatements["this",format["['%1',%2,%3,%4,%5,'%6',this]execVM 'missions\missions\rescue\success.sqf'",_markername,_soldier1,_soldier2,_soldier3,_MissionPos,_markername2], ""];
 _trg setTriggerTimeout [10, 10, 10, true ];  
 
 // CREATE OPFOR PATROLS
       sleep 1;
-      [_randompos, _radius] execvm "createopteam.sqf";
-      [_randompos, _radius] execvm "createopteam.sqf";
+      [_randompos, _radius] execVM "createopteam.sqf";
+      [_randompos, _radius] execVM "createopteam.sqf";
 

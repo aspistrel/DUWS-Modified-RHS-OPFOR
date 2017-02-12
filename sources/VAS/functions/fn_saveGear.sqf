@@ -28,7 +28,7 @@ _vitems = [];
 _bitems = [];
 if(_uniform != "") then {{_uitems set[count _uitems,_x];} foreach (uniformItems player);};
 if(_vest != "") then {{_vitems set[count _vitems,_x];} foreach (vestItems player);};
-if(_backpack != "") then {{_bitems set[count _bitems,_x];} foreach (backPackItems player);};
+if(_backpack != "") then {{_bitems set[count _bitems,_x];} foreach (backpackItems player);};
 
 if(goggles player != "") then { _items set[count _items, goggles player]; };
 if(headgear player != "") then { _items set[count _items, headgear player]; };

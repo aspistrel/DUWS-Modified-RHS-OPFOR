@@ -129,7 +129,7 @@ switch(_cfg) do
 				_scope = _details select 3;
 				_type = _details select 4;
 				_base = inheritsFrom (configFile >> _cfg >> _class);
-				if(_scope >= 2 && _type == "Backpacks" && _picture != "") then
+				if(_scope >= 2 && _type == "backpacks" && _picture != "") then
 				{
 					_str = [_class,4] call VAS_fnc_KRON_StrLeft;
 					if(_str != "ACRE" && !(_base in VAS_r_backpacks) && !(_class in VAS_r_backpacks)) then

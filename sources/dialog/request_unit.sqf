@@ -28,7 +28,7 @@ if (commandpoints >= _cost) then
     commandpoints = commandpoints - _cost;
     ctrlSetText [1000, format["%1",commandpoints]];
     _group = group player ;
-    ((RequestUnit select _index) select 0) createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execvm 'ais_injury\init_ais.sqf'}; if (player_fatigue == 0) then {this enablefatigue false};", _resultSkill, "private"] ;
+    ((RequestUnit select _index) select 0) createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execVM 'ais_injury\init_ais.sqf'}; if (player_fatigue == 0) then {this enablefatigue false};", _resultSkill, "private"] ;
 }
 else
 {
@@ -45,7 +45,7 @@ else
                commandpoints = commandpoints - 2;
                ctrlSetText [1000, format["%1",commandpoints]];
                _group = group player ;
-               "rhsusf_army_ocp_rifleman" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execvm 'ais_injury\init_ais.sqf'}; if (player_fatigue == 0) then {this enablefatigue false};", _skill, "private"];
+               "rhsusf_army_ocp_rifleman" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execVM 'ais_injury\init_ais.sqf'}; if (player_fatigue == 0) then {this enablefatigue false};", _skill, "private"];
              } 
           else 
              {
@@ -61,7 +61,7 @@ else
                commandpoints = commandpoints - 2;
                ctrlSetText [1000, format["%1",commandpoints]];
                _group = group player ;
-               "rhsusf_army_ocp_riflemanl" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execvm 'ais_injury\init_ais.sqf'}; if (player_fatigue == 0) then {this enablefatigue false};", _skill, "private"] ;
+               "rhsusf_army_ocp_riflemanl" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execVM 'ais_injury\init_ais.sqf'}; if (player_fatigue == 0) then {this enablefatigue false};", _skill, "private"] ;
              } 
           else 
              {
@@ -77,7 +77,7 @@ else
                commandpoints = commandpoints - 2;
                ctrlSetText [1000, format["%1",commandpoints]];
                _group = group player ;
-               "rhsusf_army_ocp_rifleman_m16" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execvm 'ais_injury\init_ais.sqf'}; if (player_fatigue == 0) then {this enablefatigue false};", _skill, "private"] ;
+               "rhsusf_army_ocp_rifleman_m16" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execVM 'ais_injury\init_ais.sqf'}; if (player_fatigue == 0) then {this enablefatigue false};", _skill, "private"] ;
              } 
           else 
              {
@@ -93,7 +93,7 @@ else
                commandpoints = commandpoints - 3;
                ctrlSetText [1000, format["%1",commandpoints]];
                _group = group player ;
-               "rhsusf_army_ocp_riflemanat" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execvm 'ais_injury\init_ais.sqf'}; if (player_fatigue == 0) then {this enablefatigue false};", _skill, "private"] ;
+               "rhsusf_army_ocp_riflemanat" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execVM 'ais_injury\init_ais.sqf'}; if (player_fatigue == 0) then {this enablefatigue false};", _skill, "private"] ;
              } 
           else 
              {
@@ -109,7 +109,7 @@ else
                commandpoints = commandpoints - 4;
                ctrlSetText [1000, format["%1",commandpoints]];
                _group = group player ;
-               "rhsusf_army_ocp_grenadier" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execvm 'ais_injury\init_ais.sqf'}; if (player_fatigue == 0) then {this enablefatigue false};", _skill, "private"] ;
+               "rhsusf_army_ocp_grenadier" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execVM 'ais_injury\init_ais.sqf'}; if (player_fatigue == 0) then {this enablefatigue false};", _skill, "private"] ;
              } 
           else 
              {
@@ -125,7 +125,7 @@ else
                commandpoints = commandpoints - 3;
                ctrlSetText [1000, format["%1",commandpoints]];
                _group = group player ;
-               "rhsusf_army_ocp_marksman" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execvm 'ais_injury\init_ais.sqf'}; if (player_fatigue == 0) then {this enablefatigue false};", _skill, "private"] ;
+               "rhsusf_army_ocp_marksman" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execVM 'ais_injury\init_ais.sqf'}; if (player_fatigue == 0) then {this enablefatigue false};", _skill, "private"] ;
              } 
           else 
              {
@@ -140,7 +140,7 @@ else
                commandpoints = commandpoints - 3;
                ctrlSetText [1000, format["%1",commandpoints]];
                _group = group player ;
-               "rhsusf_army_ocp_autorifleman" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execvm 'ais_injury\init_ais.sqf'}; if (player_fatigue == 0) then {this enablefatigue false};", _skill, "private"] ;
+               "rhsusf_army_ocp_autorifleman" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execVM 'ais_injury\init_ais.sqf'}; if (player_fatigue == 0) then {this enablefatigue false};", _skill, "private"] ;
              } 
           else 
              {
@@ -155,7 +155,7 @@ else
                commandpoints = commandpoints - 2;
                ctrlSetText [1000, format["%1",commandpoints]];
                _group = group player ;
-               "rhsusf_army_ocp_autoriflemana" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execvm 'ais_injury\init_ais.sqf'}; if (player_fatigue == 0) then {this enablefatigue false};", _skill, "private"] ;
+               "rhsusf_army_ocp_autoriflemana" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execVM 'ais_injury\init_ais.sqf'}; if (player_fatigue == 0) then {this enablefatigue false};", _skill, "private"] ;
              } 
           else 
              {
@@ -170,7 +170,7 @@ else
                commandpoints = commandpoints - 4;
                ctrlSetText [1000, format["%1",commandpoints]];
                _group = group player ;
-               "rhsusf_army_ocp_machinegunner" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execvm 'ais_injury\init_ais.sqf'}; if (player_fatigue == 0) then {this enablefatigue false};", _skillSF, "private"] ;
+               "rhsusf_army_ocp_machinegunner" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execVM 'ais_injury\init_ais.sqf'}; if (player_fatigue == 0) then {this enablefatigue false};", _skillSF, "private"] ;
              } 
           else 
              {
@@ -185,7 +185,7 @@ else
                commandpoints = commandpoints - 2;
                ctrlSetText [1000, format["%1",commandpoints]];
                _group = group player ;
-               "rhsusf_army_ocp_machinegunnera" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execvm 'ais_injury\init_ais.sqf'}; if (player_fatigue == 0) then {this enablefatigue false};", _skill, "private"] ;
+               "rhsusf_army_ocp_machinegunnera" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execVM 'ais_injury\init_ais.sqf'}; if (player_fatigue == 0) then {this enablefatigue false};", _skill, "private"] ;
              } 
           else 
              {
@@ -200,7 +200,7 @@ else
                commandpoints = commandpoints - 4;
                ctrlSetText [1000, format["%1",commandpoints]];
                _group = group player ;
-               "rhsusf_army_ocp_sniper" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execvm 'ais_injury\init_ais.sqf'}; if (player_fatigue == 0) then {this enablefatigue false};", _skillSF, "private"] ;
+               "rhsusf_army_ocp_sniper" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execVM 'ais_injury\init_ais.sqf'}; if (player_fatigue == 0) then {this enablefatigue false};", _skillSF, "private"] ;
              } 
           else 
              {
@@ -215,7 +215,7 @@ else
                commandpoints = commandpoints - 4;
                ctrlSetText [1000, format["%1",commandpoints]];
                _group = group player ;
-               "B_sniper_F" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execvm 'ais_injury\init_ais.sqf'}; if (player_fatigue == 0) then {this enablefatigue false};", _skillSF, "private"] ;
+               "B_sniper_F" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execVM 'ais_injury\init_ais.sqf'}; if (player_fatigue == 0) then {this enablefatigue false};", _skillSF, "private"] ;
              } 
           else 
              {
@@ -230,7 +230,7 @@ else
                commandpoints = commandpoints - 4;
                ctrlSetText [1000, format["%1",commandpoints]];
                _group = group player ;
-               "B_spotter_F" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execvm 'ais_injury\init_ais.sqf'}; if (player_fatigue == 0) then {this enablefatigue false};", _skill, "private"] ;
+               "B_spotter_F" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execVM 'ais_injury\init_ais.sqf'}; if (player_fatigue == 0) then {this enablefatigue false};", _skill, "private"] ;
              } 
           else 
              {
@@ -245,7 +245,7 @@ case 13:
                commandpoints = commandpoints - 4;
                ctrlSetText [1000, format["%1",commandpoints]];
                _group = group player ;
-               "rhsusf_army_ocp_squadleader" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execvm 'ais_injury\init_ais.sqf'}; if (player_fatigue == 0) then {this enablefatigue false};", _skill, "private"] ;
+               "rhsusf_army_ocp_squadleader" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execVM 'ais_injury\init_ais.sqf'}; if (player_fatigue == 0) then {this enablefatigue false};", _skill, "private"] ;
              } 
           else 
              {
@@ -260,7 +260,7 @@ case 14:
                commandpoints = commandpoints - 3;
                ctrlSetText [1000, format["%1",commandpoints]];
                _group = group player ;
-               "rhsusf_army_ocp_teamleader" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execvm 'ais_injury\init_ais.sqf'}; if (player_fatigue == 0) then {this enablefatigue false};", _skill, "private"] ;
+               "rhsusf_army_ocp_teamleader" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execVM 'ais_injury\init_ais.sqf'}; if (player_fatigue == 0) then {this enablefatigue false};", _skill, "private"] ;
              } 
           else 
              {
@@ -275,7 +275,7 @@ case 15:
                commandpoints = commandpoints - 4;
                ctrlSetText [1000, format["%1",commandpoints]];
                _group = group player ;
-               "rhsusf_army_ocp_medic" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execvm 'ais_injury\init_ais.sqf'}; if (player_fatigue == 0) then {this enablefatigue false};", _skill, "private"] ;
+               "rhsusf_army_ocp_medic" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execVM 'ais_injury\init_ais.sqf'}; if (player_fatigue == 0) then {this enablefatigue false};", _skill, "private"] ;
              } 
           else 
              {
@@ -290,7 +290,7 @@ case 16:
                commandpoints = commandpoints - 4;
                ctrlSetText [1000, format["%1",commandpoints]];
                _group = group player ;
-               "rhsusf_army_ocp_engineer" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execvm 'ais_injury\init_ais.sqf'}; if (player_fatigue == 0) then {this enablefatigue false};", _skill, "private"] ;
+               "rhsusf_army_ocp_engineer" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execVM 'ais_injury\init_ais.sqf'}; if (player_fatigue == 0) then {this enablefatigue false};", _skill, "private"] ;
              } 
           else 
              {
@@ -305,7 +305,7 @@ case 17:
                commandpoints = commandpoints - 2;
                ctrlSetText [1000, format["%1",commandpoints]];
                _group = group player ;
-               "rhsusf_army_ocp_javelin" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execvm 'ais_injury\init_ais.sqf'}; if (player_fatigue == 0) then {this enablefatigue false};", _skill, "private"] ;
+               "rhsusf_army_ocp_javelin" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execVM 'ais_injury\init_ais.sqf'}; if (player_fatigue == 0) then {this enablefatigue false};", _skill, "private"] ;
              } 
           else 
              {
@@ -320,7 +320,7 @@ case 18:
                commandpoints = commandpoints - 2;
                ctrlSetText [1000, format["%1",commandpoints]];
                _group = group player ;
-               "rhsusf_army_ocp_aa" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execvm 'ais_injury\init_ais.sqf'}; if (player_fatigue == 0) then {this enablefatigue false};", _skill, "private"] ;
+               "rhsusf_army_ocp_aa" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execVM 'ais_injury\init_ais.sqf'}; if (player_fatigue == 0) then {this enablefatigue false};", _skill, "private"] ;
              } 
           else 
              {
@@ -335,7 +335,7 @@ case 19:
                commandpoints = commandpoints - 2;
                ctrlSetText [1000, format["%1",commandpoints]];
                _group = group player ;
-               "rhsusf_army_ocp_helipilot" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execvm 'ais_injury\init_ais.sqf'}; if (player_fatigue == 0) then {this enablefatigue false};", _skill, "private"] ;
+               "rhsusf_army_ocp_helipilot" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execVM 'ais_injury\init_ais.sqf'}; if (player_fatigue == 0) then {this enablefatigue false};", _skill, "private"] ;
              } 
           else 
              {
@@ -350,7 +350,7 @@ case 20:
                commandpoints = commandpoints - 2;
                ctrlSetText [1000, format["%1",commandpoints]];
                _group = group player ;
-               "rhsusf_army_ocp_helicrew" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execvm 'ais_injury\init_ais.sqf'}; if (player_fatigue == 0) then {this enablefatigue false};", _skill, "private"] ;
+               "rhsusf_army_ocp_helicrew" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execVM 'ais_injury\init_ais.sqf'}; if (player_fatigue == 0) then {this enablefatigue false};", _skill, "private"] ;
              } 
           else 
              {
@@ -365,7 +365,7 @@ case 21:
                commandpoints = commandpoints - 2;
                ctrlSetText [1000, format["%1",commandpoints]];
                _group = group player ;
-               "rhsusf_army_ocp_crewman" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execvm 'ais_injury\init_ais.sqf'}; if (player_fatigue == 0) then {this enablefatigue false};", _skill, "private"] ;
+               "rhsusf_army_ocp_crewman" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execVM 'ais_injury\init_ais.sqf'}; if (player_fatigue == 0) then {this enablefatigue false};", _skill, "private"] ;
              } 
           else 
              {
@@ -380,7 +380,7 @@ case 22:
                commandpoints = commandpoints - 3;
                ctrlSetText [1000, format["%1",commandpoints]];
                _group = group player ;
-               "rhsusf_army_ocp_combatcrewman" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execvm 'ais_injury\init_ais.sqf'}; if (player_fatigue == 0) then {this enablefatigue false};", _skill, "private"] ;
+               "rhsusf_army_ocp_combatcrewman" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execVM 'ais_injury\init_ais.sqf'}; if (player_fatigue == 0) then {this enablefatigue false};", _skill, "private"] ;
              } 
           else 
              {
@@ -395,7 +395,7 @@ case 23:
                commandpoints = commandpoints - 2;
                ctrlSetText [1000, format["%1",commandpoints]];
                _group = group player ;
-               "rhsusf_army_ocp_driver" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execvm 'ais_injury\init_ais.sqf'}; if (player_fatigue == 0) then {this enablefatigue false};", _skill, "private"] ;
+               "rhsusf_army_ocp_driver" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execVM 'ais_injury\init_ais.sqf'}; if (player_fatigue == 0) then {this enablefatigue false};", _skill, "private"] ;
              } 
           else 
              {
@@ -410,7 +410,7 @@ case 24:
                commandpoints = commandpoints - 3;
                ctrlSetText [1000, format["%1",commandpoints]];
                _group = group player ;
-               "B_diver_F" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execvm 'ais_injury\init_ais.sqf'}; if (player_fatigue == 0) then {this enablefatigue false};", _skill, "private"] ;
+               "B_diver_F" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execVM 'ais_injury\init_ais.sqf'}; if (player_fatigue == 0) then {this enablefatigue false};", _skill, "private"] ;
              } 
           else 
              {
@@ -425,7 +425,7 @@ case 25:
                commandpoints = commandpoints - 4;
                ctrlSetText [1000, format["%1",commandpoints]];
                _group = group player ;
-               "B_diver_exp_F" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execvm 'ais_injury\init_ais.sqf'}; if (player_fatigue == 0) then {this enablefatigue false};", _skill, "private"] ;
+               "B_diver_exp_F" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execVM 'ais_injury\init_ais.sqf'}; if (player_fatigue == 0) then {this enablefatigue false};", _skill, "private"] ;
              } 
           else 
              {

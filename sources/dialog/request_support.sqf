@@ -200,13 +200,13 @@ switch (_index2) do
                 {
                   commandpoints = commandpoints - 3;
                   ctrlSetText [1000, format["%1",commandpoints]];
-                  hq_player addaction ["<t color='#ff0066'>Armory 1 (VAS)</t>","VAS\open.sqf", "", 0, true, true, "", "_this == player"];
-				  hq_player addaction ["<t color='#ff0066'>Armory 2 (VA)</t>","va.sqf", "", 0, true, true, "", "_this == player"];
+                  hq_player addAction ["<t color='#ff0066'>Armory 1 (VAS)</t>","VAS\open.sqf", "", 0, true, true, "", "_this == player"];
+				  hq_player addAction ["<t color='#ff0066'>Armory 2 (VA)</t>","va.sqf", "", 0, true, true, "", "_this == player"];
 				  lbSetColor [2103, 6, [0, 1, 0, 1]];
                   support_armory_available = true;
 				  
-				 {_x addaction ["<t color='#ff0066'>Armory 1 (VAS)</t>","VAS\open.sqf", "", 0, true, true, "", "_this == player"]} forEach (Array_of_FOBS);
-				 {_x addaction ["<t color='#ff0066'>Armory 2 (VA)</t>","va.sqf", "", 0, true, true, "", "_this == player"]} forEach (Array_of_FOBS);
+				 {_x addAction ["<t color='#ff0066'>Armory 1 (VAS)</t>","VAS\open.sqf", "", 0, true, true, "", "_this == player"]} forEach (Array_of_FOBS);
+				 {_x addAction ["<t color='#ff0066'>Armory 2 (VA)</t>","va.sqf", "", 0, true, true, "", "_this == player"]} forEach (Array_of_FOBS);
 				  
 				  playSound "loadgun";
 				 // publicVariable "support_armory_available";
@@ -233,8 +233,8 @@ switch (_index2) do
                 {
                   commandpoints = commandpoints - 12;
                   ctrlSetText [1000, format["%1",commandpoints]];
-                  pFLIRenable = player addaction ["<t color='#a9ff59'>Activate FLIR</t>","pflir\livefeed1.sqf","", 0,false,true,"","_target == _this"];
-				  PlayerRespawnEH2 = player addEventHandler ["respawn",{pFLIRenable = player addaction ["<t color='#a9ff59'>Enable FLIR</t>","pflir\livefeed1.sqf","", 0,false,true,"","_target == _this"]}];
+                  pFLIRenable = player addAction ["<t color='#a9ff59'>Activate FLIR</t>","pflir\livefeed1.sqf","", 0,false,true,"","_target == _this"];
+				  PlayerRespawnEH2 = player addEventHandler ["respawn",{pFLIRenable = player addAction ["<t color='#a9ff59'>Enable FLIR</t>","pflir\livefeed1.sqf","", 0,false,true,"","_target == _this"]}];
                   lbSetColor [2103, 7, [0, 1, 0, 1]];
                   support_pflir_available = true;
 				  playSound "loadgun";
@@ -519,12 +519,12 @@ case 16:
                 {
                   commandpoints = commandpoints - 15;
                   ctrlSetText [1000, format["%1",commandpoints]];
-                  hq_player addaction ["<t color='#15ff00'>HALO Alone (5CP)</t>", "ATM_airdrop\atm_airdrop.sqf", "", 0, true, true, "", "_this == player"];
-				  hq_player addaction ["<t color='#15ff00'>HALO Group (5CP)</t>", "COB_HALO\grphalo.sqf", "", 0, true, true, "", "_this == player"];
+                  hq_player addAction ["<t color='#15ff00'>HALO Alone (5CP)</t>", "ATM_airdrop\atm_airdrop.sqf", "", 0, true, true, "", "_this == player"];
+				  hq_player addAction ["<t color='#15ff00'>HALO Group (5CP)</t>", "COB_HALO\grphalo.sqf", "", 0, true, true, "", "_this == player"];
                   lbSetColor [2103, 16, [0, 1, 0, 1]];
                   support_halo_available = true;
-				  {_x addaction ["<t color='#15ff00'>HALO Alone (5CP)</t>", "ATM_airdrop\atm_airdrop.sqf", "", 0, true, true, "", "_this == player"]} forEach (Array_of_FOBS);
-				  {_x addaction ["<t color='#15ff00'>HALO Group (5CP)</t>", "COB_HALO\grphalo.sqf", "", 0, true, true, "", "_this == player"]} forEach (Array_of_FOBS);
+				  {_x addAction ["<t color='#15ff00'>HALO Alone (5CP)</t>", "ATM_airdrop\atm_airdrop.sqf", "", 0, true, true, "", "_this == player"]} forEach (Array_of_FOBS);
+				  {_x addAction ["<t color='#15ff00'>HALO Group (5CP)</t>", "COB_HALO\grphalo.sqf", "", 0, true, true, "", "_this == player"]} forEach (Array_of_FOBS);
 				  playSound "loadgun";
 				 // publicVariable "support_halo_available";
                   ["halo",["Halo Unlocked","Access Halo Jumping at the HQ and at FOB's"]] call bis_fnc_showNotification;

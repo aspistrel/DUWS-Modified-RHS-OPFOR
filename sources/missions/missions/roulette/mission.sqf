@@ -90,11 +90,11 @@ leader BOMBCODE1 setVariable["persistent",true];
 
 // CREATE PATROLS without secret code
 sleep 1;
-[_missionpos, 15] execvm "createopteam.sqf"; // <-- around target		
-[_randompos, _radius] execvm "createoppatrol.sqf";
-[_randompos, _radius] execvm "createoppatrol.sqf";
-[_randompos, _radius] execvm "createopteam.sqf";
-[_randompos, _radius] execvm "createopteam.sqf";
+[_missionpos, 15] execVM "createopteam.sqf"; // <-- around target
+[_randompos, _radius] execVM "createoppatrol.sqf";
+[_randompos, _radius] execVM "createoppatrol.sqf";
+[_randompos, _radius] execVM "createopteam.sqf";
+[_randompos, _radius] execVM "createopteam.sqf";
  
 
 

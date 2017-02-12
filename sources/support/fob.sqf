@@ -92,27 +92,27 @@ sleep 5;
 _fob = "Land_Cargo_HQ_V1_F" createVehicle _foundPickupPos;
 
 DUWS_fnc_fob = {
-	_this addaction ["<t color='#ffbe1a'>Player Stats</t>","dialog\info\info.sqf", "", 0, true, true, "", "_this == player"];
+	_this addAction ["<t color='#ffbe1a'>Player Stats</t>","dialog\info\info.sqf", "", 0, true, true, "", "_this == player"];
     _this addAction ["<t color='#ff0066'>Heal (2CP)</t>", "heal.sqf", "", 0, true, true, "", "_this == player"];
-    if (support_armory_available) then {_this addaction ["<t color='#ff0066'>Armory 1 (VAS)</t>","VAS\open.sqf", "", 0, true, true, "", "_this == player"];};
-	if (support_armory_available) then {_this addaction ["<t color='#ff0066'>Armory 2 (VA)</t>","va.sqf", "", 0, true, true, "", "_this == player"];};
+    if (support_armory_available) then {_this addAction ["<t color='#ff0066'>Armory 1 (VAS)</t>","VAS\open.sqf", "", 0, true, true, "", "_this == player"];};
+	if (support_armory_available) then {_this addAction ["<t color='#ff0066'>Armory 2 (VA)</t>","va.sqf", "", 0, true, true, "", "_this == player"];};
     if (support_halo_available) then {_this addAction ["<t color='#15ff00'>HALO Alone (5CP)</t>", "ATM_airdrop\atm_airdrop.sqf", "", 0, true, true, "", "_this == player"];};
 	if (support_halo_available) then {_this addAction ["<t color='#15ff00'>HALO Group (5CP)</t>", "COB_HALO\grphalo.sqf", "", 0, true, true, "", "_this == player"];};
-    _this addaction ["<t color='#15ff00'>FOB/Teleport</t>","dialog\fob\FOBmanageropen.sqf", "", 0, true, true, "", "_this == player"];
-    _this addaction ["<t color='#99ff00'>REQUESTS MENU>></t>","dialog\request_fob.sqf", "", 6, true, true, "", "_this == player"];
-    _this addaction ["<t color='#ffb700'>Squad Manager</t>","dialog\squad\squadmng.sqf", "", 0, true, true, "", "_this == player"];
+    _this addAction ["<t color='#15ff00'>FOB/Teleport</t>","dialog\fob\FOBmanageropen.sqf", "", 0, true, true, "", "_this == player"];
+    _this addAction ["<t color='#99ff00'>REQUESTS MENU>></t>","dialog\request_fob.sqf", "", 6, true, true, "", "_this == player"];
+    _this addAction ["<t color='#ffb700'>Squad Manager</t>","dialog\squad\squadmng.sqf", "", 0, true, true, "", "_this == player"];
     
 	if (isServer) then {
-	_this addaction ["<t color='#00b7ff'>Rest (wait/save)</t>","savegame.sqf", "", 0, true, true, "", "_this == player"];
+	_this addAction ["<t color='#00b7ff'>Rest (wait/save)</t>","savegame.sqf", "", 0, true, true, "", "_this == player"];
 	};
 	if (!isServer) then {
-	_this addaction ["<t color='#00b7ff'>Rest</t>","savegameClient.sqf", "", 0, true, true, "", "_this == player"];
+	_this addAction ["<t color='#00b7ff'>Rest</t>","savegameClient.sqf", "", 0, true, true, "", "_this == player"];
 	};	
 };
 [_fob,"DUWS_fnc_fob",true,true] spawn BIS_fnc_MP; // [_fob,"DUWS_fnc_fob",nil,true] spawn BIS_fnc_MP;
 
 // For fortifying
-_fob addaction ["<t color='#ff0000'>Fortify FOB(4CP)</t>","inithq\fortifyFOB.sqf", getpos _fob, 0, true, true, "", "_this == player"];
+_fob addAction ["<t color='#ff0000'>Fortify FOB(4CP)</t>","inithq\fortifyFOB.sqf", getpos _fob, 0, true, true, "", "_this == player"];
 
 PAPABEAR sidechat "The FOB has been deployed.";
 
@@ -122,15 +122,15 @@ if(PlayableSide == west) then
 {
     if (Warcom_Limiter_Param == 1) then
     {
-        [_foundPickupPos, _size] execvm "createpatrol.sqf";
-        [_foundPickupPos, _size] execvm "createpatrol.sqf";
+        [_foundPickupPos, _size] execVM "createpatrol.sqf";
+        [_foundPickupPos, _size] execVM "createpatrol.sqf";
         _handle = [_foundPickupPos] execVM "initHQ\guards_limited_BLUFOR.sqf";
     }
     else
     {
-        [_foundPickupPos, _size] execvm "createpatrol.sqf";
-        [_foundPickupPos, _size] execvm "createpatrol.sqf";
-        [_foundPickupPos, _size] execvm "createpatrol.sqf";
+        [_foundPickupPos, _size] execVM "createpatrol.sqf";
+        [_foundPickupPos, _size] execVM "createpatrol.sqf";
+        [_foundPickupPos, _size] execVM "createpatrol.sqf";
         _handle = [_foundPickupPos] execVM "initHQ\guards_BLUFOR.sqf";
     };
 };
@@ -139,15 +139,15 @@ if(PlayableSide == east) then
 {
     if (Warcom_Limiter_Param == 1) then
     {
-        [_foundPickupPos, _size] execvm "createpatrol.sqf";
-        [_foundPickupPos, _size] execvm "createpatrol.sqf";
+        [_foundPickupPos, _size] execVM "createpatrol.sqf";
+        [_foundPickupPos, _size] execVM "createpatrol.sqf";
         _handle = [_foundPickupPos] execVM "initHQ\guards_limited_OPFOR.sqf";
     }
     else
     {
-        [_foundPickupPos, _size] execvm "createpatrol.sqf";
-        [_foundPickupPos, _size] execvm "createpatrol.sqf";
-        [_foundPickupPos, _size] execvm "createpatrol.sqf";
+        [_foundPickupPos, _size] execVM "createpatrol.sqf";
+        [_foundPickupPos, _size] execVM "createpatrol.sqf";
+        [_foundPickupPos, _size] execVM "createpatrol.sqf";
         _handle = [_foundPickupPos] execVM "initHQ\guardsOPFOR.sqf";
     };
 };
@@ -161,7 +161,7 @@ _trg23=createTrigger["EmptyDetector",_foundPickupPos];
 _trg23 triggerAttachVehicle [player];
 _trg23 setTriggerArea[_size,_size,0,false];
 _trg23 setTriggerActivation["VEHICLE","PRESENT",true];
-_trg23 setTriggerStatements["this", format["[""FOB %1"",thislist, %2] execvm 'enterlocation.sqf'",_fobname, PlayerCurrentZoneIndex], ""];
+_trg23 setTriggerStatements["this", format["[""FOB %1"",thislist, %2] execVM 'enterlocation.sqf'",_fobname, PlayerCurrentZoneIndex], ""];
 
 // warning trigger when an enemy approaches the camp
 _trgWarning=createTrigger["EmptyDetector",_foundPickupPos];

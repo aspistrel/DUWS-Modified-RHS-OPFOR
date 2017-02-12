@@ -14,7 +14,7 @@ class controls
 class confirmation_frame: RscFrame
 {
 	idc = 1800;
-	text = "Confirmation"; //--- ToDo: Localize;
+	text = "Confirmation"; //--- ToDo: localize;
 	x = 6.5 * GUI_GRID_W + GUI_GRID_X;
 	y = 9 * GUI_GRID_H + GUI_GRID_Y;
 	w = 29 * GUI_GRID_W;
@@ -23,7 +23,7 @@ class confirmation_frame: RscFrame
 class confirmation_text: RscText
 {
 	idc = 1000;
-	text = "You will need to restart the mission"; //--- ToDo: Localize;
+	text = "You will need to restart the mission"; //--- ToDo: localize;
 	x = 7 * GUI_GRID_W + GUI_GRID_X;
 	y = 9 * GUI_GRID_H + GUI_GRID_Y;
 	w = 34 * GUI_GRID_W;
@@ -33,7 +33,7 @@ class confirmation_text: RscText
 class reset_button: RscButton
 {
 	idc = 1600;
-	text = "RESET STATS"; //--- ToDo: Localize;
+	text = "RESET STATS"; //--- ToDo: localize;
 	x = 7.5 * GUI_GRID_W + GUI_GRID_X;
 	y = 11.5 * GUI_GRID_H + GUI_GRID_Y;
 	w = 12.5 * GUI_GRID_W;
@@ -47,7 +47,7 @@ class reset_button: RscButton
 class no_button: RscButton
 {
 	idc = 1601;
-	text = "KEEP STATS"; //--- ToDo: Localize;
+	text = "KEEP STATS"; //--- ToDo: localize;
 	x = 22 * GUI_GRID_W + GUI_GRID_X;
 	y = 11.5 * GUI_GRID_H + GUI_GRID_Y;
 	w = 12.5 * GUI_GRID_W;

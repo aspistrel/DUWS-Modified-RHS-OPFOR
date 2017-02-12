@@ -41,7 +41,7 @@ RemoveAllWeapons player;
 {player removeMagazine _x;} foreach (magazines player);
 removeUniform player;
 removeVest player;
-removeBackpack player;
+removebackpack player;
 removeGoggles player;
 removeHeadGear player;
 {

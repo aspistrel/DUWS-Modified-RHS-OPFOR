@@ -69,12 +69,12 @@ waitUntil {alive BOMBCODE1};
 
 // CREATE PATROLS
 sleep 1;
-[_missionpos, 15] execvm "createopteam.sqf"; // <-- around target		
-[_randompos, _radius] execvm "createoppatrol.sqf";
-[_randompos, _radius] execvm "createopteam.sqf";
-[_randompos, _radius] execvm "createopteam.sqf";
-[_randompos, _radius] execvm "createoppatrol.sqf";
-[_randompos, _radius] execvm "createoppatrol.sqf";
+[_missionpos, 15] execVM "createopteam.sqf"; // <-- around target
+[_randompos, _radius] execVM "createoppatrol.sqf";
+[_randompos, _radius] execVM "createopteam.sqf";
+[_randompos, _radius] execVM "createopteam.sqf";
+[_randompos, _radius] execVM "createoppatrol.sqf";
+[_randompos, _radius] execVM "createoppatrol.sqf";
  
 
 

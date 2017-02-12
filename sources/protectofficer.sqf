@@ -12,10 +12,10 @@ protect_officer = {
 	
 
     if(_shooter == player) then {_victim allowdamage false};
-	if(_shooter != player) exitwith {};
+	if(_shooter != player) exitWith {};
 	
 
-	[] execvm "damag.sqf";
+	[] execVM "damag.sqf";
 	
 	
     };    

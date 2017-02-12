@@ -94,7 +94,7 @@ _ret = [];
 			
 			case (typeName _type == "STRING" && typeName _filter == "STRING") :
 			{
-				if(_type == "Backpacks" && _filter == "packs") then
+				if(_type == "backpacks" && _filter == "packs") then
 				{
 					_ret set[count _ret,_x];
 				};

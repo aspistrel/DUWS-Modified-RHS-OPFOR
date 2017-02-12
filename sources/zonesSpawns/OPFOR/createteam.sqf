@@ -1,4 +1,4 @@
-// usage: [position, radius] execvm "createoppatrol.sqf"
+// usage: [position, radius] execVM "createoppatrol.sqf"
 // radius: 50 for patrol inside and around base, 500 for medium lenght skirmish, 1300 for island
 
 _position = _this select 0;

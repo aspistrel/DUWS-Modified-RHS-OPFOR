@@ -44,7 +44,7 @@ class CfgCommunicationMenu
     {
         text = "Supply drop (5 CP)"; // Text displayed in the menu and in a notification
         submenu = ""; // Submenu opened upon activation
-        expression = "_null = [player] execVM 'support\ammobox.sqf'"; 
+        expression = "_null = [player] execVM 'support\ammobox.sqf'";
         icon = "\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\supplydrop_ca.paa"; // Icon displayed permanently next to the command menu
         cursor = ""; // Custom cursor displayed when the item is selected
         enable = "1"; // Simple expression condition for enabling the item
@@ -54,7 +54,7 @@ class CfgCommunicationMenu
     {
         text = "Airborne troops (24 CP)"; // Text displayed in the menu and in a notification
         submenu = ""; // Submenu opened upon activation
-        expression = "_null = [player] execVM 'support\paradrop.sqf'"; 
+        expression = "_null = [player] execVM 'support\paradrop.sqf'";
         icon = "\a3\ui_f\data\gui\cfg\hints\BasicStances_ca.paa";
         cursor = ""; // Custom cursor displayed when the item is selected
         enable = "1"; // Simple expression condition for enabling the item
@@ -64,7 +64,7 @@ class CfgCommunicationMenu
     {
         text = "UAV Recon (3 CP)"; // Text displayed in the menu and in a notification
         submenu = ""; // Submenu opened upon activation
-        expression = "_null = execVM 'support\mapclickuav.sqf'"; 
+        expression = "_null = execVM 'support\mapclickuav.sqf'";
         icon = "\a3\ui_f\data\gui\cfg\hints\Radar_ca.paa";
         cursor = ""; // Custom cursor displayed when the item is selected
         enable = "1"; // Simple expression condition for enabling the item
@@ -74,7 +74,7 @@ class CfgCommunicationMenu
     {
         text = "Vehicle Refit (3 CP)"; // Text displayed in the menu and in a notification
         submenu = ""; // Submenu opened upon activation
-        expression = "_null = execVM 'support\veh_refit.sqf'"; 
+        expression = "_null = execVM 'support\veh_refit.sqf'";
         icon = "\a3\ui_f\data\gui\cfg\hints\VehicleAmmo_ca.paa";
         cursor = ""; // Custom cursor displayed when the item is selected
         enable = "1"; // Simple expression condition for enabling the item
@@ -84,7 +84,7 @@ class CfgCommunicationMenu
     {
         text = "Establish FOB (10 CP)"; // Text displayed in the menu and in a notification
         submenu = ""; // Submenu opened upon activation
-        expression = "_null = [getpos player, 500] execVM 'support\fob.sqf'"; 
+        expression = "_null = [getpos player, 500] execVM 'support\fob.sqf'";
         icon = "\a3\ui_f\data\gui\cfg\hints\Head_ca.paa";
         cursor = ""; // Custom cursor displayed when the item is selected
         enable = "1"; // Simple expression condition for enabling the item
@@ -94,7 +94,7 @@ class CfgCommunicationMenu
     {
         text = "Heli-Taxi MH-9 (5 CP)"; // Text displayed in the menu and in a notification
         submenu = ""; // Submenu opened upon activation
-        expression = "_nill = [getpos player,50] execVM 'support\taxi\helotaximh9.sqf'"; 
+        expression = "_nill = [getpos player,50] execVM 'support\taxi\helotaximh9.sqf'";
         icon = "\a3\ui_f\data\gui\cfg\hints\TakeOff_ca.paa";
         cursor = ""; // Custom cursor displayed when the item is selected
         enable = "1"; // Simple expression condition for enabling the item
@@ -104,7 +104,7 @@ class CfgCommunicationMenu
     {
         text = "Heli-Taxi CH-47 (12 CP)"; // Text displayed in the menu and in a notification
         submenu = ""; // Submenu opened upon activation
-        expression = "_nill = [getpos player,50] execVM 'support\taxi\helotaxi80.sqf'"; 
+        expression = "_nill = [getpos player,50] execVM 'support\taxi\helotaxi80.sqf'";
         icon = "\a3\ui_f\data\gui\cfg\hints\TakeOff_ca.paa";
         cursor = ""; // Custom cursor displayed when the item is selected
         enable = "1"; // Simple expression condition for enabling the item
@@ -114,7 +114,7 @@ class CfgCommunicationMenu
     {
         text = "Heli-Taxi Stealth Helicopter (10 CP)"; // Text displayed in the menu and in a notification
         submenu = ""; // Submenu opened upon activation
-        expression = "_nill = [getpos player,50] execVM 'support\taxi\helotaxi290.sqf'"; 
+        expression = "_nill = [getpos player,50] execVM 'support\taxi\helotaxi290.sqf'";
         icon = "\a3\ui_f\data\gui\cfg\hints\TakeOff_ca.paa";
         cursor = ""; // Custom cursor displayed when the item is selected
         enable = "1"; // Simple expression condition for enabling the item
@@ -124,7 +124,7 @@ class CfgCommunicationMenu
     {
         text = "Mk.20 II CBU (6 CP)"; // Text displayed in the menu and in a notification
         submenu = ""; // Submenu opened upon activation
-        expression = "_null = [1, 250, 1, 90, 1, 6, 'grenade'] execVM 'support\cluster\mapclickcluster.sqf'"; 
+        expression = "_null = [1, 250, 1, 90, 1, 6, 'grenade'] execVM 'support\cluster\mapclickcluster.sqf'";
         icon = "\a3\ui_f\data\gui\cfg\hints\Death_ca.paa";
         cursor = ""; // Custom cursor displayed when the item is selected
         enable = "1"; // Simple expression condition for enabling the item
@@ -134,7 +134,7 @@ class CfgCommunicationMenu
     {
         text = "Boat taxi (1 CP)"; // Text displayed in the menu and in a notification
         submenu = ""; // Submenu opened upon activation
-        expression = "_null = [getpos player,10] execVM 'support\taxi\boattaxi.sqf'"; 
+        expression = "_null = [getpos player,10] execVM 'support\taxi\boattaxi.sqf'";
         icon = "\a3\ui_f\data\gui\cfg\hints\BasicDive_ca.paa";
         cursor = ""; // Custom cursor displayed when the item is selected
         enable = "1"; // Simple expression condition for enabling the item
@@ -144,7 +144,7 @@ class CfgCommunicationMenu
     {
         text = "HC Close Air Support (5 CP)"; // Text displayed in the menu and in a notification
         submenu = ""; // Submenu opened upon activation
-        expression = "_nil=[]ExecVM ""dialog\request_hcCAS.sqf"""; 
+        expression = "_nil=[]execVM ""dialog\request_hcCAS.sqf""";
         icon = "\a3\ui_f\data\gui\cfg\hints\UnitType_ca.paa";
         cursor = ""; // Custom cursor displayed when the item is selected
         enable = "1"; // Simple expression condition for enabling the item
@@ -154,7 +154,7 @@ class CfgCommunicationMenu
     {
         text = "HC Attack Chopper (5 CP)"; // Text displayed in the menu and in a notification
         submenu = ""; // Submenu opened upon activation
-        expression = "_nil=[]ExecVM ""dialog\request_hcATTchop.sqf"""; 
+        expression = "_nil=[]execVM ""dialog\request_hcATTchop.sqf""";
         icon = "\a3\ui_f\data\gui\cfg\hints\UnitType_ca.paa";
         cursor = ""; // Custom cursor displayed when the item is selected
         enable = "1"; // Simple expression condition for enabling the item
@@ -164,7 +164,7 @@ class CfgCommunicationMenu
     {
         text = "HC Air Transport (3 CP)"; // Text displayed in the menu and in a notification
         submenu = ""; // Submenu opened upon activation
-        expression = "_nil=[]ExecVM ""dialog\request_hcAirTrans.sqf"""; 
+        expression = "_nil=[]execVM ""dialog\request_hcAirTrans.sqf""";
         icon = "\a3\ui_f\data\gui\cfg\hints\UnitType_ca.paa";
         cursor = ""; // Custom cursor displayed when the item is selected
         enable = "1"; // Simple expression condition for enabling the item
@@ -174,7 +174,7 @@ class CfgCommunicationMenu
     {
         text = "HC Ground Transport (2 CP)"; // Text displayed in the menu and in a notification
         submenu = ""; // Submenu opened upon activation
-        expression = "_nil=[]ExecVM ""dialog\request_hcGrTrans.sqf"""; 
+        expression = "_nil=[]execVM ""dialog\request_hcGrTrans.sqf""";
         icon = "\a3\ui_f\data\gui\cfg\hints\UnitType_ca.paa";
         cursor = ""; // Custom cursor displayed when the item is selected
         enable = "1"; // Simple expression condition for enabling the item
@@ -184,7 +184,7 @@ class CfgCommunicationMenu
     {
         text = "HC Bobcat Repair/Rearm/Refuel Vehicle (8 CP)"; // Text displayed in the menu and in a notification
         submenu = ""; // Submenu opened upon activation
-        expression = "_nil=[]ExecVM ""dialog\request_hcBob.sqf"""; 
+        expression = "_nil=[]execVM ""dialog\request_hcBob.sqf""";
         icon = "\a3\ui_f\data\gui\cfg\hints\UnitType_ca.paa";
         cursor = ""; // Custom cursor displayed when the item is selected
         enable = "1"; // Simple expression condition for enabling the item
@@ -194,7 +194,7 @@ class CfgCommunicationMenu
     {
         text = "HC Repair Team (4 CP)"; // Text displayed in the menu and in a notification
         submenu = ""; // Submenu opened upon activation
-        expression = "_nil=[]ExecVM ""dialog\request_hcRepair.sqf"""; 
+        expression = "_nil=[]execVM ""dialog\request_hcRepair.sqf""";
         icon = "\a3\ui_f\data\gui\cfg\hints\UnitType_ca.paa";
         cursor = ""; // Custom cursor displayed when the item is selected
         enable = "1"; // Simple expression condition for enabling the item
@@ -204,7 +204,7 @@ class CfgCommunicationMenu
     {
         text = "HC Refuel Team (2 CP)"; // Text displayed in the menu and in a notification
         submenu = ""; // Submenu opened upon activation
-        expression = "_nil=[]ExecVM ""dialog\request_hcRefuel.sqf"""; 
+        expression = "_nil=[]execVM ""dialog\request_hcRefuel.sqf""";
         icon = "\a3\ui_f\data\gui\cfg\hints\UnitType_ca.paa";
         cursor = ""; // Custom cursor displayed when the item is selected
         enable = "1"; // Simple expression condition for enabling the item
@@ -214,7 +214,7 @@ class CfgCommunicationMenu
     {
         text = "Recon Camera System (5 CP)"; // Text displayed in the menu and in a notification
         submenu = ""; // Submenu opened upon activation
-        expression = "_nil=[]ExecVM ""dialog\request_camsys.sqf"""; 
+        expression = "_nil=[]execVM ""dialog\request_camsys.sqf""";
         icon = "\a3\ui_f\data\gui\cfg\hints\Radar_ca.paa";
         cursor = ""; // Custom cursor displayed when the item is selected
         enable = "1"; // Simple expression condition for enabling the item

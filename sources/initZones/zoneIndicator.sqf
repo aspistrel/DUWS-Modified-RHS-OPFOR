@@ -11,7 +11,7 @@ InitZoneIndicator = {
         _trg triggerAttachVehicle [player];
         _trg setTriggerArea[_size,_size,0,false];
         _trg setTriggerActivation["VEHICLE","PRESENT",true];
-        _trg setTriggerStatements["this", format["[""%1"",thislist, %2] execvm 'enterlocation.sqf'",_place, _currentIndex], ""];
+        _trg setTriggerStatements["this", format["[""%1"",thislist, %2] execVM 'enterlocation.sqf'",_place, _currentIndex], ""];
 
     } forEach ZoneCapturePos;
 

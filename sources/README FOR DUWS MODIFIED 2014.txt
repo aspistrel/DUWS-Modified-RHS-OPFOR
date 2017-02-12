@@ -105,7 +105,7 @@ New As of Feb 26th, 2014:
 
 - fixed: the "No Fast Travel for Chopper Taxi" Option is now functioning as it should and is set as default.
 
-- fixed: Personal Flir "enable/disable" addaction now works after respawning (under certain conditions you may notice 2 instances of enable appearing in action menu but it will still function properly).
+- fixed: Personal Flir "enable/disable" addAction now works after respawning (under certain conditions you may notice 2 instances of enable appearing in action menu but it will still function properly).
 
 - fixed: When Field Commander Ability unlocks, the Squad Manager Action Menu Item no longer disappears if player respawns.
 

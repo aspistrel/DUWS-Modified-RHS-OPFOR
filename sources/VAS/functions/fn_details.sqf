@@ -18,7 +18,7 @@ _data = (_control lbData (_this select 1));
 _details = [_data] call VAS_fnc_fetchCfgDetails;
 if(count _details == 0) exitWith {call VAS_fnc_closeDetails;}; //No info? Exit
 if(!((_details select 4) in [1,2,4,5,4096])) exitWith {call VAS_fnc_closeDetails;}; //Not a gun? Exit
-if(count (_details select 7) == 0) exitwith {call VAS_fnc_closeDetails;}; //No mags? Exit
+if(count (_details select 7) == 0) exitWith {call VAS_fnc_closeDetails;}; //No mags? Exit
 _magazines = (_details select 7);
 (VAS_getControl(VAS_Main_Display,VAS_detail_mags)) ctrlSetStructuredText parseText format["<t align='center'>%1</t>",(_details select 1)];
 _control = VAS_getControl(VAS_Main_Display,VAS_detail_mags_list);

@@ -22,10 +22,10 @@ while {true} do {
 	hint "Valid pos, creating HQ";
 	openMap [false, false]; 
 	chosen_hq_placement = true;
-	_handle = [_foundPickupPos] execVM "initHQ\bluHQinit.sqf";	
+	_handle = [_foundPickupPos] execVM "initHQ\bluHQinit.sqf";
 	};  
     
     };
   sleep 0.2;
-  if (chosen_hq_placement) exitwith {};
+  if (chosen_hq_placement) exitWith {};
 };

@@ -56,7 +56,7 @@ if(count _data < 13) exitWith {
 #define _THIS(A) EL(_this,A)
 
 // placeholders
-#define PLACEHOLDER_BACKPACK QUOTE(B_Kitbag_mcamo) // any backpack with capacity>0
+#define PLACEHOLDER_backpack QUOTE(B_Kitbag_mcamo) // any backpack with capacity>0
 #define PLACEHOLDER_ITEM QUOTE(ItemWatch) // item placeholder should be smallest item possible
 
 _loadMagsAmmo = "ammo" in _options;
@@ -109,11 +109,11 @@ _add = {
 // remove clothes to prevent incorrect mag loading
 removeUniform _target;
 removeVest _target;
-removeBackpack _target;
+removebackpack _target;
 
-_outfit = PLACEHOLDER_BACKPACK; // we need to add items somewhere before we can assign them
-_target addBackpack _outfit;
-clearAllItemsFromBackpack _target;
+_outfit = PLACEHOLDER_backpack; // we need to add items somewhere before we can assign them
+_target addbackpack _outfit;
+clearAllItemsFrombackpack _target;
 removeAllAssignedItems _target;
 
 // add loaded magazines of assigned items
@@ -132,7 +132,7 @@ if(count _loadedMagazines>=3) then {
 // universal add weapon to hands
 _addWeapon = {
 	private ["_weapon","_magazines","_muzzles"];
-	clearAllItemsFromBackpack _target;
+	clearAllItemsFrombackpack _target;
 	_target removeWeapon ([] call _THIS(0));
 	_weapon = _data select _THIS(1);     
 	if(_weapon != "") then {
@@ -247,7 +247,7 @@ if(_currentMode == "" && _currentWeapon != "") then {
 	_target selectWeapon _currentWeapon;
 };
 
-clearAllItemsFromBackpack _target;
+clearAllItemsFrombackpack _target;
 
 // add uniform, add uniform items and fill uniform with item placeholders
 _outfit = _data select 7;  
@@ -310,14 +310,14 @@ _add = {
 		};
 	} else {
 		if(isClass(configFile>>"CfgMagazines">>_item)) then {
-			(unitBackpack _target) addMagazineCargo [_item,1];
+			(unitbackpack _target) addMagazineCargo [_item,1];
 		} else {
 			if(_item != "") then {
 				if(getNumber(configFile>>"CfgVehicles">>_item>>"isbackpack")==1) then {
-					(unitBackpack _target) addBackpackCargo [_item,1];  
+					(unitbackpack _target) addbackpackCargo [_item,1];
 				} else {
 					if(isClass(configFile>>"CfgWeapons">>_item>>"WeaponSlotsInfo") && getNumber(configFile>>"CfgWeapons">>_item>>"showempty")==1) then {
-						(unitBackpack _target) addWeaponCargo [_item,1];  
+						(unitbackpack _target) addWeaponCargo [_item,1];
 					} else {
 						_target addItem _item;         
 					};
@@ -328,15 +328,15 @@ _add = {
 };     
 
 // add backpack and add backpack items
-removeBackpack _target;
+removebackpack _target;
 _outfit = _data select 11; 
 if(_outfit != "") then {
 	if(getNumber(configFile>>"CfgVehicles">>_outfit>>"isbackpack")==1) then {
-		_target addBackpack _outfit;                                                                    
-		clearAllItemsFromBackpack _target;
+		_target addbackpack _outfit;
+		clearAllItemsFrombackpack _target;
 		_target addItem PLACEHOLDER_ITEM;
 		_placeholderCount = _placeholderCount + 1;
-		if(loadBackpack _target > 0) then {		
+		if(loadbackpack _target > 0) then {
 			{
 				[_target, _x] call _add;
 			} forEach (_data select 12);

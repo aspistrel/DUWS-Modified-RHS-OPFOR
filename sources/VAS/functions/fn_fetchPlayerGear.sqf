@@ -59,10 +59,10 @@ if(vest player != "") then
 	{_ret set[count _ret,_x];} foreach (vestItems player); //Get vest items
 };
 
-if(backpack player != "") then 
+if(backpack player != "") then
 {
-	_ret set[count _ret,backpack player]; //Get Backpack
-	{_ret set[count _ret,_x];} foreach (backpackItems player); //Get Backpack Items
+	_ret set[count _ret,backpack player]; //Get backpack
+	{_ret set[count _ret,_x];} foreach (backpackItems player); //Get backpack Items
 };
 
 if(count (assignedItems player) > 0) then 

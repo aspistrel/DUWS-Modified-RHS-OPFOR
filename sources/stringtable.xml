@@ -46,8 +46,8 @@
 			<Russian>Вещи</Russian>
 			<Spanish>Articulos</Spanish>
 		</Key>
-		<Key ID="STR_VAS_Main_Backpacks">
-			<Original>Backpacks</Original>
+		<Key ID="STR_VAS_Main_backpacks">
+			<Original>backpacks</Original>
 			<German>Rucksäcke</German>
 			<French>Sacs à dos</French>
 			<Polish>Plecaki</Polish>

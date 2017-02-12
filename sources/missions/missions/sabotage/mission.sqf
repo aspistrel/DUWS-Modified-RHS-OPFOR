@@ -47,10 +47,10 @@ call compile format ["%1 = _taskhandle",_VARtaskgeneratedName]; // create variab
 
 // CREATE OPFOR PATROLS
       sleep 1;
-      [_randompos, _radius] execvm "createoppatrol.sqf";
-      [_randompos, _radius] execvm "createoppatrol.sqf";
-	  [_randompos, _radius] execvm "createopteam.sqf";
-      [_missionpos, 10] execvm "createoppatrol.sqf"; // <-- around target
-      [_missionpos, 15] execvm "createoppatrol.sqf"; // <-- around target
-	  [_missionpos, 20] execvm "createopteam.sqf"; // <-- around target
-	  [_missionpos, 25] execvm "createoppatrol.sqf"; // <-- around target
+      [_randompos, _radius] execVM "createoppatrol.sqf";
+      [_randompos, _radius] execVM "createoppatrol.sqf";
+	  [_randompos, _radius] execVM "createopteam.sqf";
+      [_missionpos, 10] execVM "createoppatrol.sqf"; // <-- around target
+      [_missionpos, 15] execVM "createoppatrol.sqf"; // <-- around target
+	  [_missionpos, 20] execVM "createopteam.sqf"; // <-- around target
+	  [_missionpos, 25] execVM "createoppatrol.sqf"; // <-- around target

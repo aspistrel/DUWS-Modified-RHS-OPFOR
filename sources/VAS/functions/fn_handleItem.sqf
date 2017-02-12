@@ -55,7 +55,7 @@ if(_bool) then
 			
 			if(_ispack) then
 			{
-				player addItemToBackpack _item;
+				player addItemTobackpack _item;
 			}
 				else
 			{
@@ -79,10 +79,10 @@ if(_bool) then
 			if(backpack player != "") then
 			{
 				_items = (backpackItems player);
-				removeBackpack player;
+				removebackpack player;
 			};
-			player addBackpack _item;
-			clearAllItemsFromBackpack player;
+			player addbackpack _item;
+			clearAllItemsFrombackpack player;
 			if(!isNil {_items}) then 
 			{ 
 				{[_x,true,true,false,true] spawn VAS_fnc_handleItem; } foreach _items;
@@ -93,7 +93,7 @@ if(_bool) then
 		{
 			if(_toUniform) exitWith {player addItemToUniform _item;};
 			if(_toVest) exitWith {player addItemToVest _item;};
-			if(_ispack) exitWith {player addItemToBackpack _item;};
+			if(_ispack) exitWith {player addItemTobackpack _item;};
 			
 			player addMagazine _item;
 		};
@@ -103,7 +103,7 @@ if(_bool) then
 			//New addition
 			if(_toUniform) exitWith {player addItemToUniform _item;};
 			if(_toVest) exitWith {player addItemToVest _item;};
-			if(_ispack) exitWith {player addItemToBackpack _item;};
+			if(_ispack) exitWith {player addItemTobackpack _item;};
 			
 			if((_details select 4) in [1,2,4,5,4096]) then
 			{
@@ -140,7 +140,7 @@ if(_bool) then
 					{
 						if(_ispack) then
 						{
-							player addItemToBackpack _item;
+							player addItemTobackpack _item;
 						}
 							else
 						{
@@ -166,7 +166,7 @@ if(_bool) then
 					{
 						if(_ispack) then
 						{
-							player addItemToBackpack _item;
+							player addItemTobackpack _item;
 						}
 							else
 						{
@@ -195,7 +195,7 @@ if(_bool) then
 					{
 						if(_ispack) then
 						{
-							player addItemToBackpack _item;
+							player addItemTobackpack _item;
 						}
 							else
 						{
@@ -235,7 +235,7 @@ if(_bool) then
 					{
 						if(_ispack) then 
 						{
-							player addItemToBackpack _item;
+							player addItemTobackpack _item;
 						}
 							else
 						{
@@ -272,7 +272,7 @@ if(_bool) then
 					{
 						if(_ispack) then
 						{
-							player addItemToBackpack _item;
+							player addItemTobackpack _item;
 						}
 							else
 						{
@@ -320,7 +320,7 @@ if(_bool) then
 					{
 						if(_ispack) then
 						{
-							player addItemToBackpack _item;
+							player addItemTobackpack _item;
 						}
 							else
 						{
@@ -369,7 +369,7 @@ if(_bool) then
 					{
 						if(_ispack) then
 						{
-							player addItemToBackpack _item;
+							player addItemTobackpack _item;
 						}
 							else
 						{
@@ -418,7 +418,7 @@ if(_bool) then
 					{
 						if(_ispack) then
 						{
-							player addItemToBackpack _item;
+							player addItemTobackpack _item;
 						}
 							else
 						{
@@ -438,7 +438,7 @@ if(_bool) then
 					{
 						if(_ispack) then
 						{
-							player addItemToBackpack _item;
+							player addItemTobackpack _item;
 						}
 							else
 						{
@@ -458,7 +458,7 @@ if(_bool) then
 					{ 
 						if(_ispack) then 
 						{
-							player addItemToBackpack _item;
+							player addItemTobackpack _item;
 						} 
 							else 
 						{
@@ -476,7 +476,7 @@ if(_bool) then
 	{
 		case "CfgVehicles":
 		{
-			removeBackpack player;
+			removebackpack player;
 		};
 		
 		case "CfgMagazines":
@@ -532,7 +532,7 @@ if(_bool) then
 				{
 					if(_ispack) then
 					{
-						player removeItemFromBackpack _item;
+						player removeItemFrombackpack _item;
 					}
 						else
 					{
@@ -540,7 +540,7 @@ if(_bool) then
 						{
 							case (_item in (uniformItems player)): {player removeItemFromUniform _item;};
 							case (_item in (vestItems player)) : {player removeItemFromVest _item;};
-							case (_item in (backpackItems player)) : {player removeItemFromBackpack _item;};
+							case (_item in (backpackItems player)) : {player removeItemFrombackpack _item;};
 							default {player removeWeapon _item;};
 						};
 					};

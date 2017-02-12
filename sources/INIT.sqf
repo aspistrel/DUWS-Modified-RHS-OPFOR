@@ -7,9 +7,9 @@ diag_log format ["------------------ DUWS Modified START ----v1.75 Modified by B
 //  -- YOU MUST PLACE MANUALLY THE HQ IF YOU ARE ALREADY PLACING THE ZONES BY HAND 
 //  3) DONT FORGET TO DEFINE THE VARIABLES BELOW. If you are ONLY placing the HQ by hand, you just need to put "hq_manually_placed" to "true" instead of "false". If you are also placing the zones by hand, make "zones_manually_placed" to "true".
 /////////////////////////////////////////////////////////////
-//  1) In the gamelogic, for the HQ( !! MAKE ONLY ONE HQ !!): _null=[getpos this] execVM "initHQ\BluHQinit.sqf" 
+//  1) In the gamelogic, for the HQ( !! MAKE ONLY ONE HQ !!): _null=[getpos this] execVM "initHQ\BluHQinit.sqf"
 // 
-//  2) In the init of gamelogic, to create a capturable enemy zone: _null = ["zone name",pts awarded upon capture, zone radius,getpos this,false/true,false/true] execvm "createzone.sqf";
+//  2) In the init of gamelogic, to create a capturable enemy zone: _null = ["zone name",pts awarded upon capture, zone radius,getpos this,false/true,false/true] execVM "createzone.sqf";
 //  "zone name": name of the zone
 //  pts awarded upon capture: points you earn when you capture the zone. Also the amount of points of army power you take and receive from the enemy after capture
 //  zone radius: how large the zone is
@@ -17,11 +17,11 @@ diag_log format ["------------------ DUWS Modified START ----v1.75 Modified by B
 //  false/true: if the zone is fortified or not. If the zone is fortified, there will be a bit more enemies and they will be maning static defences if there are any
 //  false/true: if the zone is selecting randomly a prefab base. Prefab is selected according to the zone radius. The bigger the zone, the bigger the prefab asset will be chosen.
 //
-//  EXAMPLE, in the init of a gamelogic you have placed on the map:_null=["OP Xander",20,200,getpos this,true,false] execvm "initZones\createzone.sqf"
+//  EXAMPLE, in the init of a gamelogic you have placed on the map:_null=["OP Xander",20,200,getpos this,true,false] execVM "initZones\createzone.sqf"
 //
 //  3) Define these variables:
 
-		if (isNil "weather_type") then {weather_type = "tropical";};     // choose between "tropical" - "arid" - "temperate" - "temperate_cold" - "mediterranean"
+		if (isNil "weather_type") then {weather_type = "mediterranean";};     // choose between "tropical" - "arid" - "temperate" - "temperate_cold" - "mediterranean"
         if (isNil "opfor_ai_skill") then {opfor_ai_skill = [0.35,0.45];};    // set the skill range of ennemy AI
         if (isNil "blufor_ai_skill") then {blufor_ai_skill = [0.9,1.0];};    // set the skill range of friendly AI, from 0 to 1 (0 being completely dumb)
         hq_manually_placed = false;  // you must specify if you have manually placed HQ or not. false = HQ is randomly placed -- true = you have manually placed the HQ
@@ -69,7 +69,7 @@ zones_min_radius = 350; // Determine the minium radius a generated zone can have
 QRF_test = compile preprocessFile "WARCOM\WARCOM_opf_qrf.sqf";
 persistent_stat_script_init = [] execVM "persistent\persistent_stats_init.sqf";
 waitUntil {scriptDone persistent_stat_script_init};
-execvm "dynamic_music\dyn_music_init.sqf";
+execVM "dynamic_music\dyn_music_init.sqf";
 [] call compile preprocessFile "kndr_unit_markers.sqf";
 
 
@@ -291,14 +291,14 @@ if (isMultiplayer) then {
     };
 
 
-	if(Warcom_Limiter_Param == 1) then {WARCOMLimitAI = 130}; // legacy
+	if(Warcom_Limiter_Param == 1) then {WARCOMLimitAI = 130;}; // legacy
 	// TODO: delete all "Warcom_Limiter_Param" usings
 
 	if (revive_activated == 1) then {[]execVM "duws_revive\reviveInit.sqf"};
-	if (revive_activated == 0) then {vas_onRespawn = true};
-	if (AttackHeli == 0) then {Attack = false};
-	if (AttackHeli == 1) then {Attack = true};
-	if (TrkAllPlayer == 0) then {PlayerMrkrs = false};
+	if (revive_activated == 0) then {vas_onRespawn = true;};
+	if (AttackHeli == 0) then {Attack = false;};
+	if (AttackHeli == 1) then {Attack = true;};
+	if (TrkAllPlayer == 0) then {PlayerMrkrs = false;};
 	if (player_fatigue == 0) then {[]execVM "fatigue.sqf"};
 	if (UseIED == 1) then {[] spawn {call compile preprocessFileLineNumbers "EPD\Ied_Init.sqf";}};
 	
@@ -321,18 +321,18 @@ _scriptExec = [] execVM "initZones\zoneIndicator.sqf";
 waitUntil {scriptDone _scriptExec};
 
 BOMBCODE1 = [];
-[] call compile preprocessfilelinenumbers "cp_ehkilled.sqf";
+[] call compile preprocessFileLineNumbers "cp_ehkilled.sqf";
 		
 
-	if (support_armory_available) then {hq_player addaction ["<t color='#ff0066'>Armory 1 (VAS)</t>","VAS\open.sqf", "", 0, true, true, "", "_this == player"];};
-	if (support_armory_available) then {hq_player addaction ["<t color='#ff0066'>Armory 2 (VA)</t>","va.sqf", "", 0, true, true, "", "_this == player"];};
+	if (support_armory_available) then {hq_player addAction ["<t color='#ff0066'>Armory 1 (VAS)</t>","VAS\open.sqf", "", 0, true, true, "", "_this == player"];};
+	if (support_armory_available) then {hq_player addAction ["<t color='#ff0066'>Armory 2 (VA)</t>","va.sqf", "", 0, true, true, "", "_this == player"];};
 	if (support_halo_available) then {hq_player addAction ["<t color='#15ff00'>HALO Alone (5CP)</t>", "ATM_airdrop\atm_airdrop.sqf", "", 0, true, true, "", "_this == player"];};
 	if (support_halo_available) then {hq_player addAction ["<t color='#15ff00'>HALO Group (5CP)</t>", "COB_HALO\grphalo.sqf", "", 0, true, true, "", "_this == player"];};
 	
-	if (support_armory_available) then {_x addaction ["<t color='#ff0066'>Armory 1 (VAS)</t>","VAS\open.sqf", "", 0, true, true, "", "_this == player"]} forEach (Array_of_FOBS);
-	if (support_armory_available) then {_x addaction ["<t color='#ff0066'>Armory 2 (VA)</t>","va.sqf", "", 0, true, true, "", "_this == player"]} forEach (Array_of_FOBS);
-	if (support_halo_available) then {_x addaction ["<t color='#15ff00'>HALO Alone (5CP)</t>", "ATM_airdrop\atm_airdrop.sqf", "", 0, true, true, "", "_this == player"]} forEach (Array_of_FOBS);
-    if (support_halo_available) then {_x addaction ["<t color='#15ff00'>HALO Group (5CP)</t>", "COB_HALO\grphalo.sqf", "", 0, true, true, "", "_this == player"]} forEach (Array_of_FOBS);	
+	if (support_armory_available) then {_x addAction ["<t color='#ff0066'>Armory 1 (VAS)</t>","VAS\open.sqf", "", 0, true, true, "", "_this == player"]} forEach (Array_of_FOBS);
+	if (support_armory_available) then {_x addAction ["<t color='#ff0066'>Armory 2 (VA)</t>","va.sqf", "", 0, true, true, "", "_this == player"]} forEach (Array_of_FOBS);
+	if (support_halo_available) then {_x addAction ["<t color='#15ff00'>HALO Alone (5CP)</t>", "ATM_airdrop\atm_airdrop.sqf", "", 0, true, true, "", "_this == player"]} forEach (Array_of_FOBS);
+    if (support_halo_available) then {_x addAction ["<t color='#15ff00'>HALO Group (5CP)</t>", "COB_HALO\grphalo.sqf", "", 0, true, true, "", "_this == player"]} forEach (Array_of_FOBS);
 	
 	
 		
@@ -362,10 +362,10 @@ BOMBCODE1 = [];
 	"savegameNumber" addPublicVariableEventHandler {[] execVM "savegameClient.sqf";};
 	};
 	if (!isServer) then {
-	"capturedZonesNumber" addPublicVariableEventHandler {[] execVM "persistent\persistent_stats_zones_add.sqf";}; // change the shown CP for request dialog	
+	"capturedZonesNumber" addPublicVariableEventHandler {[] execVM "persistent\persistent_stats_zones_add.sqf";}; // change the shown CP for request dialog
 	};
 	if (!isServer) then {
-	"finishedMissionsNumber" addPublicVariableEventHandler {[] execVM "persistent\persistent_stats_missions_total.sqf";}; // change the shown CP for request dialog	
+	"finishedMissionsNumber" addPublicVariableEventHandler {[] execVM "persistent\persistent_stats_missions_total.sqf";}; // change the shown CP for request dialog
 	};
 		
 		
@@ -420,7 +420,7 @@ clean = [
 		5*60, // seconds to delete dropped weapons (0 means don't delete)
 		0, // seconds to deleted planted explosives (0 means don't delete)
 		10*60 // seconds to delete dropped smokes/chemlights (0 means don't delete)
-] execVM 'repetitive_cleanup.sqf';	
+] execVM 'repetitive_cleanup.sqf';
 };
 
 
@@ -441,7 +441,7 @@ if (!isServer) then { // WHEN CLIENT CONNECTS INIT (might need sleep)
 	hintsilent "Waiting for the host to select the campaign parameters...";	
 	waitUntil {chosen_settings};
 
-	[hq_player] execVM "initHQ\HQaddactions.sqf";
+	[hq_player] execVM "initHQ\HQaddActions.sqf";
 	sleep 1;
 	player setdamage 0;	
 	player allowDamage true;

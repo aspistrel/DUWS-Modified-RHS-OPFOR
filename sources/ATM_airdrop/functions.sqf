@@ -193,7 +193,7 @@ dokeyDown={
 	player setvariable ["key",false];
    _r = false ;
 
-   if (player getvariable["key",true] and (_this select 1)  == Keys) exitwith {player setvariable["key",false]; [_key_delay] spawn {sleep (_this select 0);player setvariable["key",true]; }; _r};
+   if (player getvariable["key",true] and (_this select 1)  == Keys) exitWith {player setvariable["key",false]; [_key_delay] spawn {sleep (_this select 0);player setvariable["key",true]; }; _r};
      if ((_this select 1)  == Keys) then {
        if  (player != vehicle player and player getvariable ["cutaway",true]) then  {
 		playSound "Para";
@@ -201,7 +201,7 @@ dokeyDown={
 	   {
 			deletevehicle _x;
 	   } foreach _cut;
-	player addBackpack "B_Parachute";
+	player addbackpack "B_Parachute";
 	deletevehicle (player getvariable "frontpack"); player setvariable ["frontpack",nil,true];
     player setvariable["key",true];
     player setvariable ["cutaway",false];
@@ -217,9 +217,9 @@ _gear = [];
 
 	_headgear = headgear player;
     _back_pack = backpack player;
-	_back_pack_items = getItemCargo (unitBackpack player);
-	_back_pack_weap = getWeaponCargo (unitBackpack player);
-	_back_pack_maga = getMagazineCargo (unitBackpack player);
+	_back_pack_items = getItemCargo (unitbackpack player);
+	_back_pack_weap = getWeaponCargo (unitbackpack player);
+	_back_pack_maga = getMagazineCargo (unitbackpack player);
 	
 	_gear =
 	[
@@ -237,36 +237,36 @@ SetloadoutATM={
 _unit = _this select 0;
 	_gear = _this select 1;
 	removeheadgear _unit;
-	removeBackPack _unit;
-	_unit addBackpack "B_AssaultPack_blk";
-	removeBackPack _unit;
-	if ((_gear select 1) != "") then {_unit addBackPack (_gear select 1);clearAllItemsFromBackpack _unit;};
+	removebackpack _unit;
+	_unit addbackpack "B_AssaultPack_blk";
+	removebackpack _unit;
+	if ((_gear select 1) != "") then {_unit addbackpack (_gear select 1);clearAllItemsFrombackpack _unit;};
 	if ((_gear select 0) != "") then {_unit addHeadgear (_gear select 0);};
 	if (count ((_gear select 3) select 0) > 0) then
 	{
 		for "_i" from 0 to (count ((_gear select 3) select 0) - 1) do
 		{
-			(unitBackpack _unit) addweaponCargoGlobal [((_gear select 3) select 0) select _i,((_gear select 3) select 1) select _i];
+			(unitbackpack _unit) addweaponCargoGlobal [((_gear select 3) select 0) select _i,((_gear select 3) select 1) select _i];
 		};
 	};
 	if (count ((_gear select 4) select 0) > 0) then
 	{
 		for "_i" from 0 to (count ((_gear select 4) select 0) - 1) do
 		{
-			(unitBackpack _unit) addMagazineCargoGlobal [((_gear select 4) select 0) select _i,((_gear select 4) select 1) select _i];
+			(unitbackpack _unit) addMagazineCargoGlobal [((_gear select 4) select 0) select _i,((_gear select 4) select 1) select _i];
 		};
 	};
 	if (count ((_gear select 2) select 0) > 0) then
 	{
 		for "_i" from 0 to (count ((_gear select 2) select 0) - 1) do
 		{
-			(unitBackpack _unit) addItemCargoGlobal [((_gear select 2) select 0) select _i,((_gear select 2) select 1) select _i];
+			(unitbackpack _unit) addItemCargoGlobal [((_gear select 2) select 0) select _i,((_gear select 2) select 1) select _i];
 		};
 	};
 };
 
 Frontpack={
-	_pack = unitBackpack _target;
+	_pack = unitbackpack _target;
 	_class = typeOf _pack;
 
 	[_target,_class] spawn {
@@ -275,7 +275,7 @@ Frontpack={
 		_class 	= _this select 1;
 
 		_packHolder = createVehicle ["groundWeaponHolder", [0,0,0], [], 0, "can_collide"];
-		_packHolder addBackpackCargo [_class, 1];
+		_packHolder addbackpackCargo [_class, 1];
 		_packHolder attachTo [_target,[0.1,0.56,-.72],"pelvis"];
 		_target setvariable ["frontpack", _packHolder,true];
 		_packHolder setVectorDirAndUp [[0,1,0],[0,0,-1]];

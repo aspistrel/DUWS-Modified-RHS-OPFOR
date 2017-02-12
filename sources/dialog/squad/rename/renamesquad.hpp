@@ -16,13 +16,13 @@ class controls
 class renameHCmainframe: RscFrame
 {
 	idc = 1800;
-	text = "Enter new name"; //--- ToDo: Localize;
+	text = "Enter new name"; //--- ToDo: localize;
 	x = 5 * GUI_GRID_W + GUI_GRID_X;
 	y = 12 * GUI_GRID_H + GUI_GRID_Y;
 	w = 30 * GUI_GRID_W;
 	h = 5 * GUI_GRID_H;
 	moving = 1;
-	tooltip = "Enter the new name of the selected HC squad"; //--- ToDo: Localize;
+	tooltip = "Enter the new name of the selected HC squad"; //--- ToDo: localize;
 };
 class editbox_rename: RscEdit
 {
@@ -31,17 +31,17 @@ class editbox_rename: RscEdit
 	y = 13 * GUI_GRID_H + GUI_GRID_Y;
 	w = 29 * GUI_GRID_W;
 	h = 1.5 * GUI_GRID_H;
-	tooltip = "Enter the new name of the selected HC squad"; //--- ToDo: Localize;
+	tooltip = "Enter the new name of the selected HC squad"; //--- ToDo: localize;
 };
 class confirm_button: RscButton
 {
 	idc = 1600;
-	text = "Confirm"; //--- ToDo: Localize;
+	text = "Confirm"; //--- ToDo: localize;
 	x = 10 * GUI_GRID_W + GUI_GRID_X;
 	y = 15 * GUI_GRID_H + GUI_GRID_Y;
 	w = 19 * GUI_GRID_W;
 	h = 1.5 * GUI_GRID_H;
-	action = "_derp = [] execVM 'dialog\squad\rename\renamesquad.sqf'";	
+	action = "_derp = [] execVM 'dialog\squad\rename\renamesquad.sqf'";
 };
 ////////////////////////////////////////////////////////
 // GUI EDITOR OUTPUT END

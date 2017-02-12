@@ -26,7 +26,7 @@ _trg5=createTrigger["EmptyDetector",_hqblu];
 _trg5 triggerAttachVehicle [player];
 _trg5 setTriggerArea[100,100,0,false];
 _trg5 setTriggerActivation["VEHICLE","PRESENT",true];
-_trg5 setTriggerStatements["this", format["[""%1"",thislist, -1] execvm 'enterlocation.sqf'",'Main Base'], ""];
+_trg5 setTriggerStatements["this", format["[""%1"",thislist, -1] execVM 'enterlocation.sqf'",'Main Base'], ""];
 
 // warning trigger when an enemy approaches the camp
 _trgWarning=createTrigger["EmptyDetector",_hqblu];
@@ -64,7 +64,7 @@ _hq disableAI "MOVE";
 hq_player = _hq;
 publicVariable "hq_player";
 _hq setpos [_hqblu select 0, _hqblu select 1, .59];
-_handle = [hq_player] execVM "initHQ\HQaddactions.sqf";
+_handle = [hq_player] execVM "initHQ\HQaddActions.sqf";
 removeallweapons _hq;
 _handle = [_hq] execVM "sounds\radiochatter.sqf";
 

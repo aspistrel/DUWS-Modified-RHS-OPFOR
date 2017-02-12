@@ -23,7 +23,7 @@ class background_request: RscText
 class hq_placement_frame: RscFrame
 {
 	idc = 1800;
-	text = "Select how the HQ is placed on the island"; //--- ToDo: Localize;
+	text = "Select how the HQ is placed on the island"; //--- ToDo: localize;
 	x = 10 * GUI_GRID_W + GUI_GRID_X;
 	y = 11 * GUI_GRID_H + GUI_GRID_Y;
 	w = 20 * GUI_GRID_W;
@@ -32,24 +32,24 @@ class hq_placement_frame: RscFrame
 class hq_placement_random_button: RscButton
 {
 	idc = 1600;
-	text = "RANDOM"; //--- ToDo: Localize;
+	text = "RANDOM"; //--- ToDo: localize;
 	x = 11 * GUI_GRID_W + GUI_GRID_X;
 	y = 12.5 * GUI_GRID_H + GUI_GRID_Y;
 	w = 18 * GUI_GRID_W;
 	h = 2.5 * GUI_GRID_H;
-	tooltip = "The HQ is randomly placed somewhere on the island"; //--- ToDo: Localize;
-	action = "_nul = [] execvm ""dialog\startup\hq_placement\random.sqf""; closedialog 0;";	
+	tooltip = "The HQ is randomly placed somewhere on the island"; //--- ToDo: localize;
+	action = "_nul = [] execVM ""dialog\startup\hq_placement\random.sqf""; closedialog 0;";
 };
 class hq_placement_manual_button: RscButton
 {
 	idc = 1601;
-	text = "MANUAL PLACEMENT"; //--- ToDo: Localize;
+	text = "MANUAL PLACEMENT"; //--- ToDo: localize;
 	x = 11 * GUI_GRID_W + GUI_GRID_X;
 	y = 16 * GUI_GRID_H + GUI_GRID_Y;
 	w = 18 * GUI_GRID_W;
 	h = 2.5 * GUI_GRID_H;
-	tooltip = "You choose where the HQ is placed on the island"; //--- ToDo: Localize;
-	action = "_nul = [] execvm ""dialog\startup\hq_placement\manual.sqf""; closedialog 0;";	
+	tooltip = "You choose where the HQ is placed on the island"; //--- ToDo: localize;
+	action = "_nul = [] execVM ""dialog\startup\hq_placement\manual.sqf""; closedialog 0;";
 };
 ////////////////////////////////////////////////////////
 // GUI EDITOR OUTPUT END

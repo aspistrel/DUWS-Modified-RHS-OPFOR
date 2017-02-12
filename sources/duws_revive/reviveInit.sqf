@@ -1,9 +1,9 @@
 DUWS_PlayerRespawnReviveEH = player addEventHandler ["respawn", {_this execVM "duws_revive\onKilled.sqf"}];
 DUWS_player_injured = false;
 
-DUWS_revive_addaction = {
+DUWS_revive_addAction = {
 		if (!DUWS_player_injured) then {
-		_this addaction ["<t color='#ff00ff'>Revive</t>","duws_revive\playerRevived.sqf", "", 0, true, true, "", "(_target distance _this) < 3"];
+		_this addAction ["<t color='#ff00ff'>Revive</t>","duws_revive\playerRevived.sqf", "", 0, true, true, "", "(_target distance _this) < 3"];
 		};
 };	
 

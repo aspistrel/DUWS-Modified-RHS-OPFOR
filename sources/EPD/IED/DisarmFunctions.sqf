@@ -21,7 +21,7 @@ DISARM_ACTION = {
 	_iedArray = _this select 3 select 0;
 		
 	//deleteVehicle (_iedArray select 1); //deleting the trigger
-	//(_iedArray select 0) removeaction 0; //remove the disarm addaction
+	//(_iedArray select 0) removeaction 0; //remove the disarm addAction
 	deleteMarker (_iedArray select 4); //remove the map marker
 	//hint "disarmed!";
 	

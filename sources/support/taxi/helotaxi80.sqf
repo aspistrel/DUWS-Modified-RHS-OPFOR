@@ -69,7 +69,7 @@ _random2 = round random 9;
 _pilot sideChat format["This is %1 %2-%3, we're approaching your location for pick up, check your map for the LZ",_fobname,_random1,_random2];
 
 // ADD ACTION MENU TO CANCEL CHOPPER IF DESIRED**********
-_id = player addaction ["<t color='#F00000'>Detonate Taxi</t>","support\taxi\canceltaxi80.sqf",[_pilot,_copilot,_helo], 0, true, true, "", "_this == player"];
+_id = player addAction ["<t color='#F00000'>Detonate Taxi</t>","support\taxi\canceltaxi80.sqf",[_pilot,_copilot,_helo], 0, true, true, "", "_this == player"];
 
 
 waitUntil {_foundpickuppos distance _helo < 350 or (getdammage _helo > 0.7 or !alive _pilot)}; // wait until the helo is near the lz
